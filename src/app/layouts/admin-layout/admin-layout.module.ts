@@ -12,6 +12,7 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { UserComponent } from "../../pages/user/user.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
+import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
@@ -34,6 +35,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     TypographyComponent,
     NotificationsComponent,
     MapComponent,
+    ConvocatoriaCRUDComponent,
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent

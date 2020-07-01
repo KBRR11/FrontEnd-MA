@@ -64,6 +64,14 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-world",
     class: ""
   },
+  {
+    path: "/convocatoriamin",
+    title: "Convocatoria",
+    rtlTitle: "CRUD Conv",
+    icon: "icon-single-copy-04",
+    class: ""
+  },
+  
  /* {
     path: "/inicio",
     title: "FUNCA INICIO",
