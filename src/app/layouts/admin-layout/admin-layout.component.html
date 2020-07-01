@@ -7,7 +7,7 @@
   </div>
 </div>
 <div class=" fixed-plugin">
-  <div class=" show-dropdown" ngbDropdown>
+  <div class=" show-dropdown" ngbDropdown #myDrop="ngbDropdown">
     <a data-toggle="dropdown" ngbDropdownToggle>
       <i class=" fa fa-cog fa-2x"> </i>
     </a>
@@ -36,13 +36,13 @@
       <li class=" adjustments-line text-center color-change">
         <span class=" color-label"> LIGHT MODE </span>
         <span class=" badge light-badge mr-2" (click)="changeDashboardColor('white-content')"> </span>
-        <span class=" badge dark-badge ml-2" (click)="changeDashboardColor('black-content')"> </span>
-        <span class=" color-label"> DARK MODE </span>
+       <span class=" badge dark-badge ml-2" (click)="changeDashboardColor('black-content')"> </span>
+        <span class=" color-label"> MODO OSCURO </span>
       </li>
       <li class="button-container">
-        <a onclick="" class="btn btn-primary btn-block btn-round" (click)="guardarcambios(); myDrop.close();">Guardar Cambios</a>
-        <a onclick="" class="btn btn-default btn-block btn-round" (click)="myDrop.close();">Cancelar</a>
-       </li>
+       <a onclick="" class="btn btn-primary btn-block btn-round" (click)="guardarcambios(); myDrop.close();">Guardar Cambios</a>
+       <a onclick="" class="btn btn-default btn-block btn-round" (click)="myDrop.close();">Cancelar</a>
+      </li>
     </ul>
   </div>
 </div>

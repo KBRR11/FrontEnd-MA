@@ -100,11 +100,21 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    
+    this.datosUser();
+   
+   
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {
       return false;
     }
     return true;
+  }
+  datosUser(){/// sirve para obtener los datos
+    let datos = JSON.parse(sessionStorage.getItem("personas"))
+    document.getElementById("datosu").innerHTML=datos.nombres+"<br> "+datos.apellidos;
+    
+      
   }
 }

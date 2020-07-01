@@ -49,7 +49,7 @@ export class AdminLayoutComponent implements OnInit {
     
     let id = JSON.parse(sessionStorage.getItem("personas"));
     this.usuario.idusuario = id.idusuario;
-    console.log(id.idusuario);
+    //console.log(id.idusuario);
     this.usuario.color_fondo = localStorage.getItem("color_fondo");
     this.usuario.color_menu = localStorage.getItem("color_menu");
     this.usuariosService.updateColores(this.usuario).subscribe();
