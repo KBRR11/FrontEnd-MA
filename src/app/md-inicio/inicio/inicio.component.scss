@@ -1,0 +1,158 @@
+.container-fluid{
+    //background: red;
+    width: 100%;
+    height: 760px;
+    margin-top: 115px;
+    display: block;
+    
+}
+.carrusel{
+    background-image: url("../../../../src/assets/recursos/background.png");
+    margin-left: -15px;
+    margin-right: -15px;
+    height: 760px;
+       
+}
+#internet{
+    margin-top: 100px;
+    margin-left: 200px;
+}
+#internet img{
+    transform: translateX(2000px);
+    animation: slideUp 1s ease-in-out forwards 0.5s;
+    
+}
+@keyframes slideUp{
+    0%{
+        transform: translateX(50px) scale(1);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px) scale(1);
+        opacity: 1;
+    }
+}
+#telefono{
+    float: right;
+    margin-top: -250px;
+    margin-right: 250px;
+}
+
+#chip4g{
+    margin-left: 400px;
+    margin-top:20px ;
+}
+#frase{
+margin-left: 150px;
+margin-top: 40px;
+}
+#registro{
+    margin-left: 390px;
+    margin-top: 100px;
+}
+#mundo{
+    margin-left: 100px;
+    margin-top: 70px;
+}
+#ubiedu{
+    position: relative;
+    float: right;
+    margin-top: -630px;
+    margin-right:45% ;
+}
+#sellonor{
+    float: right;
+    margin-left: 1170px;
+    margin-top: -570px;
+}
+#frase2{
+    margin-left: 920px;
+    margin-top: -260px;
+}
+#postular{
+    margin-left: 1160px;
+    margin-top: 90px;
+}
+@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(-360deg);}}
+@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(-360deg);}}
+#mundo img{
+    -webkit-animation: 7s rotate linear infinite;
+    animation: 7s rotate linear infinite;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+
+/////////////////////////////////////////////////////////////////
+/* Wobble To Bottom Right */
+@-webkit-keyframes hvr-wobble-to-bottom-right {
+    16.65% {
+      -webkit-transform: translate(8px, 8px);
+      transform: translate(8px, 8px);
+    }
+    33.3% {
+      -webkit-transform: translate(-6px, -6px);
+      transform: translate(-6px, -6px);
+    }
+    49.95% {
+      -webkit-transform: translate(4px, 4px);
+      transform: translate(4px, 4px);
+    }
+    66.6% {
+      -webkit-transform: translate(-2px, -2px);
+      transform: translate(-2px, -2px);
+    }
+    83.25% {
+      -webkit-transform: translate(1px, 1px);
+      transform: translate(1px, 1px);
+    }
+    100% {
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes hvr-wobble-to-bottom-right {
+    16.65% {
+      -webkit-transform: translate(8px, 8px);
+      transform: translate(8px, 8px);
+    }
+    33.3% {
+      -webkit-transform: translate(-6px, -6px);
+      transform: translate(-6px, -6px);
+    }
+    49.95% {
+      -webkit-transform: translate(4px, 4px);
+      transform: translate(4px, 4px);
+    }
+    66.6% {
+      -webkit-transform: translate(-2px, -2px);
+      transform: translate(-2px, -2px);
+    }
+    83.25% {
+      -webkit-transform: translate(1px, 1px);
+      transform: translate(1px, 1px);
+    }
+    100% {
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+    }
+  }
+  .hvr-wobble-to-bottom-right {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .hvr-wobble-to-bottom-right:hover, .hvr-wobble-to-bottom-right:focus, .hvr-wobble-to-bottom-right:active {
+    -webkit-animation-name: hvr-wobble-to-bottom-right;
+    animation-name: hvr-wobble-to-bottom-right;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+  }

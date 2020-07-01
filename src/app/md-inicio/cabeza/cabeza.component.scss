@@ -1,0 +1,212 @@
+.top-bar-bg {
+    background: #921538 none repeat center center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1030;
+    width: 100%;
+    height: 37px;
+    content: "";
+    box-sizing: content-box;
+    color: #ffffff;
+    
+}
+.navi{
+    position: fixed;
+        
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1030;
+    width: 100%;
+    height: 100px;
+    content: "";
+    box-sizing: content-box;
+    color: #ffffff ;
+    margin-top: 37px;
+    background: white;
+    /////// SOMBRAS //////////////////
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+     box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+
+   
+}
+.logoUpeu{
+    width: 302.141px;
+    height: 100px;
+    margin-left:7%;
+    //margin-top: 0px;
+    //background: yellow;
+}
+
+img{
+    margin-top: -10px;;
+}
+
+ul{
+    float: right;
+    
+    width: 782.656px;
+    height: 100px;
+    margin-top: -100px;
+    margin-right: 19%;
+    list-style-type: none;
+}
+li{
+    float: left;
+    
+    width: 130px;
+    height: 100px;
+    text-align: center;
+    
+    
+}
+a{
+    line-height: 100px;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    height: 65px;
+}
+.menu-text{
+    font: normal 500 16px / 17px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+    color: #333333;
+    font-weight: 600;
+}
+
+.hvr-underline-from-left{
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+.hvr-underline-from-left:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    background: #921538;
+    height: 2px;
+    -webkit-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
+    right: 0;
+  }
+
+
+.login{
+    
+    width: 170.2px;
+    height: 100px;
+    //float: right;
+    margin-left: 77%;
+    margin-top: -100px;
+    text-align: center;
+}
+.btn-login{
+    color: #992e45;
+    border: 2px solid;
+    border-color: #992e45;
+    background: none;
+    border-radius: 3px;
+    margin-top: 30px;
+    width: 150px;
+    height: 40px;
+    
+}
+.btn-login:hover{
+    color: white;
+    background: #992e45 ;
+    .text-log{
+        color: white;
+    }
+    
+}
+.text-log{
+    font: normal 500 16px / 17px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+    color: #992e45;
+    font-weight: 600;  
+}
+
+
+
+
+
+
+/*
+@media only screen and (max-width:1060px) {
+    .top-bar-bg{
+        background: white;
+    }
+    .navi{
+        height: 85px ;
+        margin-top: 15px;
+        
+    }
+    img{
+        width:240.141px;
+        height:70px;
+    }
+    .logoUpeu{
+        margin-top: 5px;
+    }
+}
+@media only screen and (max-width:1050px) {
+    .top-bar-bg{
+        background: white;
+    }
+    .navi{
+        
+        height: 60px ;
+        margin-top: 5px;
+    }
+    img{
+        width:240.141px;
+        height:70px;
+    }
+    .logoUpeu{
+        margin-top: -4px;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .top-bar-bg{
+        
+        display: block;
+    }
+    .logoUpeu{
+        margin-top: 4px;
+    }
+    img{
+        width:200.141px;
+        height:50px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .top-bar-bg{
+       
+        display: none;
+    }
+    .navi{
+        
+        height: 60px ;
+        margin-top: 0px;
+    }
+    
+}*/

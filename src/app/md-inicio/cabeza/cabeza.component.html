@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="row">
+      
+    <div class="top-bar-bg">
+      aqui va info
+    </div>
+    <div class="navi">
+      <div class="logoUpeu">
+        <a  href="https://www.upeu.edu.pe/">
+                 
+          <img src='assets/recursos/movilidadacademica.png' class="img-fluid" width="250.141" height="80" >
+         </a>
+      </div>
+      <ul class="main-nav">
+    <li>
+      <a class="hvr-underline-from-left" id="text-main" [routerLink]="['/inicio']"  routerLinkActive="router-link-active"   >
+        <span class="menu-text">
+           INICIO
+        </span>
+        </a>
+    </li>
+    <li>
+      <a class="hvr-underline-from-left" id="text-main" [routerLink]="['/convenios']"    >
+        <span class="menu-text">
+           CONVENIOS
+        </span>
+        </a>
+    </li>
+    <li>
+      <a class="hvr-underline-from-left" id="text-main" href="" >
+        <span class="menu-text">
+           POSTULAR
+        </span>
+        </a>
+    </li>
+    <li>
+      <a class="hvr-underline-from-left" id="text-main" [routerLink]="['/convocatorias']"  >
+        <span class="menu-text">
+           CONVOCATORIAS
+        </span>
+        </a>
+    </li>
+      </ul>
+      <div class="login">
+        
+          <button class="btn-login" [routerLink]="['/login']">
+            <i class="fas fa-user"></i>
+            <span class="text-log">  Inicia Sesión</span>
+          </button>
+          
+        
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+    </div>
+    </div>
