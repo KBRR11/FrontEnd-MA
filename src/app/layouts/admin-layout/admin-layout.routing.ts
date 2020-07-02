@@ -8,11 +8,7 @@ import { UserComponent } from "../../pages/user/user.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
-<<<<<<< HEAD
-import { OpcionComponent} from "../../pages/opcion/opcion/opcion.component";
-=======
 import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/detalleconvocatoria.component";
->>>>>>> 8504fac147d074c518d31876e7f7176ace6e219e
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 //import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 //import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
@@ -34,11 +30,7 @@ export const AdminLayoutRoutes: Routes = [
   canActivate:[AuthGuard]},
   { path: "convocatoriamin", component: ConvocatoriaCRUDComponent ,
   canActivate:[AuthGuard]},
-<<<<<<< HEAD
-  { path: "opcion", component: OpcionComponent ,
-=======
   { path: "detalleconv", component: DetalleconvocatoriaComponent ,
->>>>>>> 8504fac147d074c518d31876e7f7176ace6e219e
   canActivate:[AuthGuard]},
   //{ path: "inicio", component: InicioComponent },
   //{ path: "convenios", component: ConveniosComponent },
