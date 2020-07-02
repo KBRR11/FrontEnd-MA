@@ -77,6 +77,13 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "CRUD Conv",
     icon: "icon-single-copy-04",
     class: ""
+  },
+  {
+    path: "/detalleconv",
+    title: "Listar Convocatorias",
+    rtlTitle: "CRUD Conv",
+    icon: "icon-bullet-list-67",
+    class: ""
   }
   
  /* {
