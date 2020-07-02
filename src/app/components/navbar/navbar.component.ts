@@ -3,7 +3,8 @@ import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import Swal from 'sweetalert2';
+import { LoginService } from "src/app/service/login.service";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -24,7 +25,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private loginService:LoginService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -192,5 +194,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
+  }
+
+  logout():void{
+    let datos = JSON.parse(sessionStorage.getItem("personas"));
+    Swal.fire({
+      title: 'Cerrar Sesión',
+      text: "¿Está seguro de cerrar sesión?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#DD6B55',
+      
+      confirmButtonText: 'Cerrar Sesión'
+    }).then((result) => {
+      if (result.value) {
+        this.loginService.logout();
+      Swal.fire('Logout', 'Hola '+ datos.nombres+' has cerrado sesión con Exito!', 'success')
+      this.router.navigate(['/login']);
+        
+      }
+    })
+    
   }
 }

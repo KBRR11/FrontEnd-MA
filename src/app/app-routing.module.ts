@@ -13,7 +13,7 @@ import { LoginComponent } from "./login/login.component";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/cabeza",
+    redirectTo: "/inicio",
     pathMatch: "full"
   },
   {
@@ -58,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "/cabeza"
+    redirectTo: "/inicio"
   }
 ];
 

@@ -70,7 +70,15 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "123",
     icon: "icon-world",
     class: ""
+  },
+  {
+    path: "/convocatoriamin",
+    title: "Convocatoria",
+    rtlTitle: "CRUD Conv",
+    icon: "icon-single-copy-04",
+    class: ""
   }
+  
  /* {
     path: "/inicio",
     title: "FUNCA INICIO",
@@ -99,11 +107,21 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    
+    this.datosUser();
+   
+   
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {
       return false;
     }
     return true;
+  }
+  datosUser(){/// sirve para obtener los datos
+    let datos = JSON.parse(sessionStorage.getItem("personas"))
+    document.getElementById("datosu").innerHTML=datos.nombres+"<br> "+datos.apellidos;
+    
+      
   }
 }
