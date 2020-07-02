@@ -14,7 +14,7 @@ export class SeviceloginService {
       if(e.status==401 || e.status==403){
           
         this.router.navigate(['/login'])
-        Swal.fire('Error Login','Username o Password incorrectos');
+        Swal.fire('Error Login','Username o Password incorrectos','error');
         return true;
       }
       
