@@ -71,7 +71,13 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-single-copy-04",
     class: ""
   },
-  
+  {
+    path: "/opcion",
+    title: "Opcion",
+    rtlTitle: "CRUD Opcion",
+    icon: "tim-icons icon-settings",
+    class: ""
+  },
  /* {
     path: "/inicio",
     title: "FUNCA INICIO",
