@@ -64,6 +64,13 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-world",
     class: ""
   },
+  {
+    path: "/usuario_i",
+    title: "User Int",
+    rtlTitle: "123",
+    icon: "icon-world",
+    class: ""
+  }
  /* {
     path: "/inicio",
     title: "FUNCA INICIO",
