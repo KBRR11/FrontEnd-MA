@@ -26,7 +26,7 @@ import { Usuarios } from "src/app/Modelo/Usuarios";
 
       updateColores(usuario:Usuarios){
         let id = JSON.parse(sessionStorage.getItem("personas"));
-   console.log(this.usuario.idusuario);
+  // console.log(this.usuario.idusuario);
     this.usuario.idusuario = id.idusuario;
         return this.http.put<Usuarios>(`${ environment.apiUrl }/api/upd/colores/`+this.usuario.idusuario,usuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
