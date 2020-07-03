@@ -65,13 +65,33 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
+    path: "/usuario_i",
+    title: "User Int",
+    rtlTitle: "123",
+    icon: "icon-world",
+    class: ""
+  },
+  {
     path: "/convocatoriamin",
     title: "Convocatoria",
     rtlTitle: "CRUD Conv",
     icon: "icon-single-copy-04",
     class: ""
   },
-  
+  {
+    path: "/detalleconv",
+    title: "Listar Convocatorias",
+    rtlTitle: "CRUD Conv",
+    icon: "icon-bullet-list-67",
+    class: ""
+  },
+  {
+    path: "/opcion",
+    title: "Opcion",
+    rtlTitle: "CRUD Opcion",
+    icon: "tim-icons icon-settings",
+    class: ""
+  },
  /* {
     path: "/inicio",
     title: "FUNCA INICIO",

@@ -146,5 +146,12 @@
   "defaultProject": "black-dashboard-angular",
   "cli": {
     "analytics": false
+  },
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      }
+    }
   }
 }
