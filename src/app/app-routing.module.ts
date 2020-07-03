@@ -7,8 +7,9 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { CabezaComponent } from "./md-inicio/cabeza/cabeza.component";
 import { LoginComponent } from "./login/login.component";
-//import { InicioComponent } from './md-inicio/inicio/inicio.component';
-//import { ConveniosComponent } from "./md-inicio/convenios/convenios.component";
+import { RegisterPerComponent } from "./Registro-Usuarios/register-per/register-per.component";
+import { RegisterUSERComponent } from "./Registro-Usuarios/register-user/register-user.component";
+import { DatosAcademicosComponent } from "./Registro-Usuarios/datos-academicos/datos-academicos.component";
 
 const routes: Routes = [
   {
@@ -23,7 +24,19 @@ const routes: Routes = [
   {
     path:"login",
     component:LoginComponent
-      },
+  },
+  {
+    path:"register-per",
+    component:RegisterPerComponent
+  },
+ {
+    path:"register-user",
+    component:RegisterUSERComponent
+ },
+ {
+path:"datos-academicos",
+component: DatosAcademicosComponent
+ },
   {
    path: "",
    component:CabezaComponent,
