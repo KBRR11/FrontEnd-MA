@@ -6,7 +6,7 @@ export class Personas {
     n_documento:string;
     correo:string;
     telefono:string;
-    
+    direccion:string;
     /////////////////////////////
     idusuario:number;
     usuario:string;
