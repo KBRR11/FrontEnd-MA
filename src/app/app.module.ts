@@ -18,7 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterPerComponent } from './Registro-Usuarios/register-per/register-per.component';
 import { RegisterUSERComponent } from './Registro-Usuarios/register-user/register-user.component';
 import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/datos-academicos.component';
-
+import { OpcionComponent } from './pages/opcion/opcion/opcion.component';
 
 
 
@@ -33,7 +33,7 @@ import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/d
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, RegisterPerComponent, RegisterUSERComponent, DatosAcademicosComponent, ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, OpcionComponent, ],
   providers: [],
   bootstrap: [AppComponent]
 })
