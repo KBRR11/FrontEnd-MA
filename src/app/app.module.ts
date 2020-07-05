@@ -33,7 +33,7 @@ import { OpcionComponent } from './pages/opcion/opcion/opcion.component';
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, OpcionComponent, ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, OpcionComponent,DatosAcademicosComponent,RegisterUSERComponent,RegisterPerComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
