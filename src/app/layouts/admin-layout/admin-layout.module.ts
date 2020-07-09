@@ -12,7 +12,9 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { UserComponent } from "../../pages/user/user.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
+import { CrearconvocatoriaComponent } from "../../pages/crearconvocatoria/crearconvocatoria.component";
 import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
+import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/detalleconvocatoria.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
@@ -41,7 +43,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     RolesComponent,
     UsuariointComponent,
     ConvocatoriaCRUDComponent,
-    
+    CrearconvocatoriaComponent,
+    DetalleconvocatoriaComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent

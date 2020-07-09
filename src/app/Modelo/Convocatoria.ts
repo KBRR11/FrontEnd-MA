@@ -3,8 +3,8 @@ export class Convocatoria{
     idconvocatoria:number;
     nom_convocatoria:String;
     info_convocatoria:String;
-    n_vancates:number;
-    cicloacademico:String;
+    n_vacnates:number;
+    ciclo_academico:String;
     estado:String;
 }
 
@@ -14,7 +14,7 @@ export interface DetalleConvocatoria{
     idescuela:number;
     estado:String;
     desde:String;
-    hasta:number;
+    hasta:String;
     nombre:String;
     escuela:String;
 }

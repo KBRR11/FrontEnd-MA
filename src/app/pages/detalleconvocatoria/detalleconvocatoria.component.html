@@ -20,14 +20,14 @@
                                     <th class="text-center"><h4>Informe</h4></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody *ngFor="let detconv of convocatorias">
                                 <tr>
                                     <td>1</td>
-                                    <td>12/03/2020 - 12/06/2020</td>
-                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes"></i></td>
-                                    <td >Ingenieria Sistemas</td>
+                                    <td>{{detconv.desde}} - {{detconv.hasta}}</td>
+                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="listaralumnos(detconv.idconvocatoria)" data-toggle="modal" data-target="#exampleModal"></i></td>
+                                    <td >{{detconv.escuela}}</td>
                                     <td>Activo</td>
-                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil"></i></td>
+                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="editardet(detconv)"></i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -37,3 +37,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
