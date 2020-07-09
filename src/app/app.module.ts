@@ -21,7 +21,6 @@ import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/d
 
 
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
