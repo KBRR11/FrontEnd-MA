@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { positionElements } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 
 @Component({
-  selector: 'app-usuarioint',
-  templateUrl: './usuarioint.component.html',
-  styleUrls: ['./usuarioint.component.scss']
+  selector: 'app-roles',
+  templateUrl: './roles.component.html',
+  styleUrls: ['./roles.component.scss']
 })
-export class UsuariointComponent implements OnInit {
-
-  user_cont: any[] = [{nombre: "Pele"}, {nombre: "Messi"}, {nombre: "Nick"}, {nombre: "Albert"}];
-  title: string = "Usuarios"
+export class RolesComponent implements OnInit {
+  user_cont: any[] = [{nombre: "Juan"}, {nombre: "Messi"}, {nombre: "Nick"}, {nombre: "Albert"}];
+  title: string = "Roles"
 
   modifica: boolean = false;
   crea: boolean = false;
@@ -19,7 +17,6 @@ export class UsuariointComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
   mostrar_crear(){
     this.crea=true;
@@ -37,4 +34,5 @@ export class UsuariointComponent implements OnInit {
     this.bori=false;
     this.header=false;
   }
+
 }

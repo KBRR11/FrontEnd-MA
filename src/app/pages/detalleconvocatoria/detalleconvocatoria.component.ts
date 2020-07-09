@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Convocatoria } from "src/app/Modelo/Convocatoria";
+import { ConvocatoriaService } from "src/app/service/convocatoria.service";
 
 @Component({
   selector: 'app-detalleconvocatoria',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detalleconvocatoria.component.scss']
 })
 export class DetalleconvocatoriaComponent implements OnInit {
-
-  constructor() { }
+  convocatorias: Convocatoria[]=[];
+  constructor(private convocatoriaservice:ConvocatoriaService) { }
 
   ngOnInit(): void {
+    this.Listar();
   }
-
+  Listar(){
+    this.convocatoriaservice.listaConvocatoria().subscribe(
+      (data) =>{
+        this.convocatorias=data["LIST_CONVOCATORIA"];
+        console.log(this.convocatorias);
+      },(error)=>{
+        alert("OCURRIO UN ERROR "+error);
+      }
+    )
+  }
+  Crear(convocatoria:Convocatoria){
+    this.convocatoriaservice.crearConvocatoria(convocatoria).subscribe(
+      (data)=>{
+        alert(data);
+      },(error)=>{
+        alert("OCURRIO UN ERROR "+error);
+      }
+    )
+  }
 }

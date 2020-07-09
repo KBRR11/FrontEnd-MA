@@ -20,6 +20,9 @@ import { RegisterUSERComponent } from './Registro-Usuarios/register-user/registe
 import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/datos-academicos.component';
 
 
+//import { ConvocatoriasComponent } from './md-inicio/convocatorias/convocatorias.component';
+//import { ConveniosComponent } from './md-inicio/convenios/convenios.component';
+
 
 @NgModule({
   imports: [

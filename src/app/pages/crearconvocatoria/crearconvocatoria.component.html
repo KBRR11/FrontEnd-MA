@@ -1,0 +1,77 @@
+<div class=" content">
+    <div class=" row">
+        <div class=" col-md-12">
+            <div class=" card">
+                <div class=" card-header">
+                    <h1 class="title">CONVOCATORIAS</h1>
+                </div>
+                <div style="height: 50px;"></div>
+                <div class=" card-body derecha">
+                    <div class="row">
+                        <div class=" col-md-4 px-md-1">
+                            <div class=" form-group">
+                                <label> Año Academico </label>
+                                <input class=" form-control" placeholder="Año Academico" type="text" [(ngModel)]="convocatoria.cicloacademico" name="cicloacademico">
+                            </div>
+                        </div>
+
+                        <div class=" col-md-4 px-md-1">
+                            <div class=" form-group">
+                                <label> Nombre de la Convocatoria </label>
+                                <input class=" form-control" placeholder="Nombre" type="text" [(ngModel)]="convocatoria.nom_convocatoria" name="nom_convocatoria">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 px-md-1">
+                            <label for="exampleFormControlTextarea1">Informacion Adicional</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="convocatoria.info_convocatoria" name="info_convocatoria"></textarea>
+                          </div>
+                        <div class=" col-md-4 px-md-1">
+                            <div class=" form-group">
+                                <label> Vacantes Disponibles </label>
+                                <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatoria.n_vancates" name="n_vancates">
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="true" >
+                                Subir a Facebook
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class=" col-md-4 px-md-1">
+                            <div class=" form-group">
+                                <label> Vacantes Disponibles </label>
+                                <input class=" form-control" placeholder="" type="file" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                Subir a Facebook
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class=" col-md-4 px-md-1">
+                            <div class=" form-group">
+                                <label> Subir a Twitter </label>
+                                <input class=" form-control" type="file" />
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success" (click)="Crear(convocatoria);">Nueva Convocatoria</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
