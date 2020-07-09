@@ -33,10 +33,10 @@ export class RegisterPerComponent implements OnInit {
 if((this.persona.nombres && this.persona.apellidos && this.persona.t_documento
   && this.persona.n_documento && this.persona.correo && this.persona.telefono
    && this.persona.direccion) !=null ){
-    //console.log(this.persona.nombre1);
+    
 localStorage.setItem('registerper',JSON.stringify(this.persona));
    
-   console.log(localStorage);
+   //console.log(localStorage);
     
     Swal.fire({
       icon: 'success',
