@@ -4,7 +4,7 @@
             <div class="card" *ngIf="show">
                 <div class="card-header">
                     <h1 class="title">Opcion</h1>
-                    <button class="btn btn-success" (click)="show=!show">AgregarOpcion</button>
+                    <button class="btn btn-success" (click)="show=!show;show3=!show3;">AgregarOpcion</button>
                 </div>
                 <div class="card-body">
                     <div class="">
@@ -13,30 +13,37 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
+                                    <th scope="col">Descripcion</th>
                                     <th scope="col">Enlace</th>
                                     <th scope="col">Icono</th>
                                     <th colspan="2">Opcion</th>
                                 </tr>
                             </thead>
                             <tbody>
+                               
                                 <tr *ngFor="let opcion of listOpcion ;let i=index">
                                     <th scope="row">{{i+1}}</th>
-                                    <td>{{opcion.nombre}}</td>
+                                    <td>{{opcion.nombre}}</td> 
                                     <td>{{opcion.descripcion}}</td>
                                     <td>{{opcion.enlace}}</td>
                                     <td>{{opcion.icono}}</td>
-                                    <td>{{opcion.enlace}}</td>
-                                    <td><button class="tim-icons icon-pencil" (click)="loadOpcion(opcion)"
-                                            data-toggle="modal" data-target="#updateOpcionmodal"></button></td>
-                                    <td><button class="tim-icons icon-simple-remove" (click)="loadOpcion(opcion)"
-                                            data-toggle="modal" data-target="#confirmdelete"></button></td>
+                                    <td><i class="tim-icons icon-pencil" (click)="show2=!show2;show=!show;UpdateOpcion()"></i></td>
+                                    <td><i class="tim-icons icon-simple-remove" (click)="DeleteOpcion(opcion)"></i></td>
                                 </tr>
+                                <!--  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Registrar</td> 
+                                    <td>Prueba</td>
+                                    <td>http:123123:/opcion</td>
+                                    <td><i class="tim-icons icon-pencil" (click)="show2=!show2;show=!show;UpdateOpcion()"></i></td>
+                                    <td><i class="tim-icons icon-simple-remove" (click)="DeleteOpcion()"></i></td>
+                                </tr>#region -->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="card" *ngIf="!show">
+            <div class="card" *ngIf="show3">
                 <div class="card-header">
                     <h1 class="title">Nueva Opcion</h1>
                 </div>
@@ -45,8 +52,53 @@
                         <form action="">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Nombre:</label>
+                                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="name of the opcion" [(ngModel)]="AddOpcion.nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Icono:</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="name of the opcion">
+                                    placeholder="name of the opcion" name="icono" [(ngModel)]="AddOpcion.icono">
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Icono:</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option >fa fa-user</option>
+                                    <option>fa fa-delete</option>
+                                    <option>fa fa-trash</option>
+                                    <option>fa fa-pencil</option>
+                                    <option>fa fa-cerrar</option>
+                                </select>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Descripcion:</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion" [(ngModel)]="AddOpcion.descripcion"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Enlace:</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Add Enlace" name="enlace" [(ngModel)]="AddOpcion.enlace">
+                            </div>
+                            <div class="derecha">
+                                <button type="button" class="btn btn-primary" (click)="show3=!show3;show=!show">Cancelar</button>
+                                <button type="button" class="btn btn-success  btn-fill" (click)="guardar();show3=!show3;show=!show" >Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card" *ngIf="show2">
+                <div class="card-header">
+                    <h1 class="title">Modificar Opcion</h1>
+                </div>
+                <div class="card-body">
+                    <div class="reduccion" >
+                        <form action="">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Nombre:</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="name of the opcion" >
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Estado:</label>
@@ -75,8 +127,8 @@
                                     placeholder="name@example.com">
                             </div>
                             <div class="derecha">
-                                <button type="button" class="btn btn-primary" (click)="show=!show">Cancelar</button>
-                                <button type="button" class="btn btn-success  btn-fill" (click)="show=!show">Guardar</button>
+                                <button type="button" class="btn btn-primary" (click)="show2=!show2;show=!show">Cancelar</button>
+                                <button type="button" class="btn btn-success  btn-fill" (click)="modificar();show2=!show2;show=!show" >Actualizar</button>
                             </div>
                         </form>
                     </div>
