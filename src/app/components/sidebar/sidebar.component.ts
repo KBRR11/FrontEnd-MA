@@ -20,7 +20,7 @@ export const ROUTES: RouteInfo[] = [
     title: "Icons",
     rtlTitle: "الرموز",
     icon: "icon-atom",
-    class: ""
+    class: "",
   },
   {
     path: "/maps",
@@ -35,7 +35,6 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-bell-55",
     class: ""
   },
-
   {
     path: "/user",
     title: "User Profile",
@@ -56,6 +55,7 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "طباعة",
     icon: "icon-align-center",
     class: ""
+    
   },
   {
     path: "/rtl",
@@ -65,21 +65,28 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
+    path: "/rol",
+    title: "Rol",
+    rtlTitle: "111",
+    icon: "icon-atom",
+    class: "",
+  },
+  {
     path: "/usuario_i",
     title: "User Int",
     rtlTitle: "123",
     icon: "icon-world",
-    class: ""
+    class: "",
   },
   {
-    path: "/convocatoriamin",
+    path: "/creaconv",
     title: "Convocatoria",
     rtlTitle: "CRUD Conv",
     icon: "icon-single-copy-04",
     class: ""
   },
   {
-    path: "/detalleconv",
+    path: "/listarconv",
     title: "Listar Convocatorias",
     rtlTitle: "CRUD Conv",
     icon: "icon-bullet-list-67",

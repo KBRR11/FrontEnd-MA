@@ -23,7 +23,7 @@
                           </div>
                         </span>
                         <select name="postulante" class="form-control" id="t_postulante"
-                                                    [(ngModel)]="usuario.tipo" (ngModelChange)="updateTipo()">
+                                                    [(ngModel)]="usuario.tipo" (ngModelChange)="updateTipo()" >
                                                     <option     disabled selected class="diselec" >Tipo de Postulante:</option>
                                                     <option value=1>Estudiante</option>
                                                     <option value=2>Docente</option>
@@ -46,7 +46,7 @@
                                 </div>
                             </span>
                             <select name="sede" class="form-control" id="sede"
-                    >
+                    [(ngModel)]="usuario.sede">
                                 <option disabled selected class="diselec">Sede:</option>
                                 <option value=1>Sede Lima</option>
                                 <option value=2>Filial Juliaca</option>
@@ -72,7 +72,7 @@
                                     </div>
                                 </span>
                                 <input aria-describedby="addon-right addon-left" name="codigo"
-                                    id="codigo" placeholder="Codigo Universitario*" class="form-control"
+                                    id="codigo" placeholder="Codigo Universitario*" [(ngModel)]="usuario.codigo" class="form-control"
                                     >
                                 <!---->
                             </div>
@@ -92,7 +92,7 @@
                                     </div>
                                 </span>
                                 <select name="ciclo" class="form-control" id="ciclo"
-                                    >
+                                   [(ngModel)]="usuario.ciclo" >
                                     <option disabled selected class="diselec">Ciclo Actual:</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -122,10 +122,11 @@
                                         <i class="fas fa-university"></i>
                                     </div>
                                 </span>
-                                <select name="facultad" class="form-control" id="facultad"
-                                   >
-                                    <option disabled selected class="diselec">Facultad:</option>
-                                    <option value="1">Facultad de Ingenieria y Arquitectura</option>
+                                <select name="facultad" class="form-control" id="facultad" 
+                                [(ngModel)]="ep.IDFACULTAD" (ngModelChange)="ObtenerIdfac()">
+                                    <option disabled selected class="diselec" >Facultad:</option>
+                                    <option *ngFor="let facu of facultad"
+                                     value={{facu.IDFACULTAD}}>{{facu.NOM_FACULTAD}}</option>
                                     
                                 </select>
                                 <!---->
@@ -149,9 +150,9 @@
                                         </div>
                                     </span>
                                     <select name="ep" class="form-control" id="ep"
-                                        >
+                                        [(ngModel)]="usuario.idep">
                                         <option disabled selected class="diselec">Escuela Profesional:</option>
-                                        <option value="1">Ingenieria de Sistemas</option>
+                                        <option *ngFor="let eps of ep" value={{eps.IDEP}}>{{eps.NOM_EP}}</option>
                                         
                                     </select>
                                     <!---->
@@ -167,7 +168,7 @@
                     <!--aqui termina el contenedor-->
                   </div>
                   <!----------------------------->
-                  <button type="button" class="btn btn-block btn-success" (click)='addusuario(usuario)'>Continuar</button>
+                  <button type="button" class="btn btn-block btn-success" (click)='adddatAcademic()'>Continuar</button>
                 </form>
               </div>
   

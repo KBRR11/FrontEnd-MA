@@ -1,0 +1,257 @@
+<div class=" content">
+    <div class="row">
+        <div class=" col-md-12">
+            <div class=" card card-plain">
+                <div class="titulo">
+                    <h2 style="margin-left: 37px; margin-top: 10px; margin-bottom: 10px;">{{title}}</h2>
+                </div>
+                <div class=" card-header" *ngIf="header;">
+                    <div>
+                        <form id="formacabeza">
+                            <div class="input-group no-border col-md-8">
+                                <input type="text" value="" placeholder="Search..." class="form-control search"
+                                    style="margin-left: 5px;">
+                                <div class="input-group-append" id="iconobuscar">
+                                    <div class="input-group-text">
+                                        <i class="tim-icons icon-zoom-split"></i>
+                                        <style></style>
+                                    </div>
+                                </div>
+                                <div class="boton" style="float: right;">
+                                    <button class=" btn btn-fill btn-info" type="submit" (click)="mostrar_crear()">Nuevo
+                                        Rol</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <section *ngIf="bori;">
+                    <div class="card-body col-md-12" id="">
+                        <div *ngFor="let user of user_cont">
+                            <div class="card card-user col-md-3" style="float: left; margin-left: 20px">
+                                <div class="image">
+                                    <img src="assets/img/damir-bosnjak.jpg" alt="...">
+                                </div>
+                                <div class="card-body">
+                                    <div class="author">
+                                        <a href="#">
+                                            <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+                                            <h5 class="title">{{user.nombre}}</h5>
+                                        </a>
+                                        <p class="description">
+                                            @chetfaker
+                                        </p>
+                                    </div>
+                                    <p class="description text-center">
+                                        "I like the way you work it
+                                        <br> No diggity
+                                        <br> I wanna bag it up"
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <hr>
+                                    <div class="button-container">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-6 col-6 ml-auto">
+                                                <h5>12
+                                                    <br>
+                                                    <small (click)="mostrar_modi()">Files</small>
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                                                <h5>2GB
+                                                    <br>
+                                                    <small>Used</small>
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-3 mr-auto">
+                                                <h5>24,6$
+                                                    <br>
+                                                    <small>Spent</small>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-------------------------------Registrar Rol-->
+                <section *ngIf="crea;">
+                    <div class="content crear">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="title">
+                                            Carecteristicas de Rol C
+                                        </h4>
+                                    </div>
+                                    <div class="card-body ">
+                                        <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+                                            <div class="row in">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label> Nombre </label>
+                                                        <input class="form-control" placeholder="..." type="text"
+                                                            value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row in">
+                                                <div class="col-md-8">
+                                                    <div class="form-group"><label>
+                                                            Estado
+                                                        </label>
+                                                        <select class="form-control" name="" id="">
+                                                            <option value="">Seleccione una Opcion</option>
+                                                            <option value="">Activo</option>
+                                                            <option value="">Inactivo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row in">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label> Descripcion </label>
+                                                        <textarea class="form-control" name="" id="" cols="80"
+                                                            rows="4"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <div class="row in">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <center><button class="btn btn-fill btn-danger" type="submit"
+                                                                (click)="ocultar_crear()"> Guardar Datos </button>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="container-fluid">
+                                            <ul class="nav upeu">
+                                                <li class="nav-item">
+                                                    UPeU - Sistemas V ciclo 2020
+                                                </li>
+                                            </ul>
+                                            <div class="copyright">
+                                                &copy; {{ test | date: "yyyy" }} made with
+                                                <i class=" tim-icons icon-heart-2"> </i> by
+                                                <a href="" target="_blank"> El richeti </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+
+
+                <!-------------------------------Modificar Rol-->
+
+                <section *ngIf="modifica;">
+                    <div class="content modificar">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="title">
+                                            Carecteristicas de Rol M
+                                        </h4>
+                                    </div>
+                                    <div class="card-body ">
+                                        <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+                                            <div class="row in">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label> Nombre </label>
+                                                        <input class="form-control" placeholder="..." type="text"
+                                                            value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row in">
+                                                <div class="col-md-8">
+                                                    <div class="form-group"><label>
+                                                            Estado
+                                                        </label>
+                                                        <select class="form-control" name="" id="">
+                                                            <option value="">Seleccione una Opcion</option>
+                                                            <option value="">Activo</option>
+                                                            <option value="">Inactivo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row in">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label> Descripcion </label>
+                                                        <textarea class="form-control" cols="80"
+                                                            rows="4"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <div class="row in">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <center><button class="btn btn-fill btn-danger" type="submit"
+                                                                (click)="ocultar_crear()"> Guardar Datos </button>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="container-fluid">
+                                            <ul class="nav upeu">
+                                                <li class="nav-item">
+                                                    UPeU - Sistemas V ciclo 2020
+                                                </li>
+                                            </ul>
+                                            <div class="copyright">
+                                                &copy; {{ test | date: "yyyy" }} made with
+                                                <i class=" tim-icons icon-heart-2"></i>  by 
+                                                <a  target="_blank" > El richeti </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

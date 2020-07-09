@@ -28,7 +28,7 @@ import Swal from 'sweetalert2';
     }
   
     crearPersona(persona:Personas){
-      return this.http.post<Personas>(`${ environment.apiUrl }/personas/add`,persona,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      return this.http.post<Personas>(`${ environment.apiUrl }/api/personas/add`,persona,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
        // Swal.fire('Registro Exitoso !!','Listo '+persona.nombre1+', ahora crea tu usuario.', 'success',);
         return throwError(e);
       }))

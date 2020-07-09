@@ -3,7 +3,7 @@
         <div class=" col-md-12">
             <div class=" card">
                 <div class=" card-header">
-                    <h1 class=" title">CONVOCATORIAS</h1>
+                    <h1 class=" title">DETALLE CONVOCATORIAS</h1>
                     <button class="btn btn-success">Nueva Convocatoria</button>
                 </div>
                 <div style="height: 50px;"></div>
@@ -13,19 +13,21 @@
                             <thead  >
                                 <tr >
                                     <th><h4>Nro</h4></th>
-                                    <th><h4>Semestre</h4></th>
-                                    <th><h4>Vacantes</h4></th>
-                                    <th><h4>Plan de Convocatoria</h4></th>
-                                    <th class="text-center"><h4>Opciones</h4></th>
+                                    <th><h4>Inicio - Fin</h4></th>
+                                    <th><h4>Estudiantes</h4></th>
+                                    <th><h4>Escuela Profecional</h4></th>
+                                    <th><h4>Estado</h4></th>
+                                    <th class="text-center"><h4>Informe</h4></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody *ngFor="let detconv of convocatorias">
                                 <tr>
                                     <td>1</td>
-                                    <td>2018-1</td>
-                                    <td ><h3 >5</h3></td>
-                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes"></i></td>
-                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil"></i></td>
+                                    <td>{{detconv.desde}} - {{detconv.hasta}}</td>
+                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="listaralumnos(detconv.idconvocatoria)" data-toggle="modal" data-target="#exampleModal"></i></td>
+                                    <td >{{detconv.escuela}}</td>
+                                    <td>Activo</td>
+                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="editardet(detconv)"></i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -35,3 +37,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

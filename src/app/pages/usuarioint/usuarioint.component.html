@@ -2,29 +2,392 @@
   <div class="row">
     <div class=" col-md-12">
       <div class=" card card-plain">
-        <div class=" card-header">
-          <div>
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" placeholder="Search..." class="form-control">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="tim-icons icon-zoom-split"></i>
-                    <style></style>
+        <div class="titulo">
+          <h2 style="margin-left: 37px; margin-top: 10px; margin-bottom: 10px;">{{title}}</h2>
+        </div>
+        <div class=" card-header" *ngIf="header;">
+            <div >
+              <form id="formacabeza">
+                <div class="input-group no-border col-md-8">
+                  <input type="text" value="" placeholder="Search..." class="form-control search"
+                    style="margin-left: 5px;">
+                  <div class="input-group-append" id="iconobuscar">
+                    <div class="input-group-text">
+                      <i class="tim-icons icon-zoom-split"></i>
+                      <style></style>
+                    </div>
+                  </div>
+                  <div class="boton" style="float: right;">
+                    <button class=" btn btn-fill btn-info" type="submit" 
+                      (click)="mostrar_crear()">Nuevo Usuario</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+
+        <section *ngIf="bori;">
+          <div class="card-body col-md-12" id="" >
+            <div *ngFor="let user of user_cont">
+              <div class="card card-user col-md-3" style="float: left; margin-left: 20px">
+                <div class="image">
+                  <img src="assets/img/damir-bosnjak.jpg" alt="...">
+                </div>
+                <div class="card-body">
+                  <div class="author">
+                    <a href="#">
+                      <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+                      <h5 class="title">{{user.nombre}}</h5>
+                    </a>
+                    <p class="description">
+                      @chetfaker
+                    </p>
+                  </div>
+                  <p class="description text-center">
+                    "I like the way you work it
+                    <br> No diggity
+                    <br> I wanna bag it up"
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <hr>
+                  <div class="button-container">
+                    <div class="row">
+                      <div class="col-lg-3 col-md-6 col-6 ml-auto">
+                        <h5>12
+                          <br>
+                          <small (click)="mostrar_modi()">Files</small>
+                        </h5>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                        <h5>2GB
+                          <br>
+                          <small>Used</small>
+                        </h5>
+                      </div>
+                      <div class="col-lg-3 mr-auto">
+                        <h5>24,6$
+                          <br>
+                          <small>Spent</small>
+                        </h5>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
-          <div>
-            <button class=" btn btn-fill btn-info" type="submit">Nuevo Usuario</button>
-          </div>
-        </div>
-        <div class="card-body">
+        </section>
+        
 
-        </div>
+
+        <!-------------------------------Registrar Usuario-->
+        <section *ngIf="crea;">
+          <div class="content crear" >
+            <div class="row">
+              <div class="col-md-9">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="title">
+                      Perfil de Usuario C
+                    </h4>
+                  </div>
+                  <div class="card-body ">
+                    <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+                      <div class="row">
+                        <div class="col-md-5 pr-md-1">
+                          <div class="form-group"><label>
+                              Sede
+                            </label>
+                            <select class="form-control" name="" id="">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="">Lima</option>
+                              <option value="">Juliaca</option>
+                              <option value="">Tarapoto</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-3 px-md-1">
+                          <div class="form-group"><label>
+                              Nombre de usuario
+                            </label><input class="form-control" type="text" placeholder="michael23" value=""></div>
+                        </div>
+                        <div class="col-md-4 pl-md-1">
+                          <div class="form-group"><label>
+                              Contraseña
+                            </label><input class="form-control" placeholder="..." type="password"></div>
+                        </div>
+                      </div>
+  
+  
+                      <div class="row">
+                        <div class="col-md-6 pr-md-1">
+                          <div class="form-group"><label> Nombres
+                            </label><input class="form-control" type="text" value=""></div>
+                        </div>
+                        <div class="col-md-6 pl-md-1">
+                          <div class="form-group"><label>
+                              Apellidos
+                            </label><input class="form-control" type="text" value=""></div>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group"><label>
+                              Tipo Documento </label>
+                            <select class="form-control" name="" id="">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="">DNI</option>
+                              <option value="">Carnet Extranjeria</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4 px-md-1">
+                          <div class="form-group">
+                            <label>N° Documento</label>
+                            <input class="form-control" type="text" value="">
+                          </div>
+                        </div>
+                        <div class="col-md-4 pl-md-1">
+                          <div class="form-group"><label>
+                              Rol
+                            </label>
+                            <select class="form-control" name="" id="">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="">Profesor</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group"><label>
+                              Escuela Profesional </label>
+                            <select class="form-control" name="" id="">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="">Ingeniria Sistemas</option>
+                              <option value="">Medicina</option>
+                              <option value="">Teologia</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4 px-md-1">
+                          <div class="form-group"><label>
+                              Codigo
+                            </label><input class="form-control" type="text" value="" disabled="">
+                          </div>
+                        </div>
+                        <div class="col-md-4 pl-md-1">
+                          <div class="form-group"><label>
+                              Telefono
+                            </label>
+                            <input class="form-control" type="text" value="">
+                          </div>
+                        </div>
+                      </div>
+  
+  
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label> Correo (Institucional)</label>
+                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value="">
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <center><button class="btn btn-fill btn-danger" type="submit"  (click)="ocultar_crear()"> Guardar Datos </button>
+                            </center>
+                          </div>
+                        </div>
+                      </div>
+  
+                    </form>
+                  </div>
+                  <div class="card-footer">
+                    <div class="container-fluid">
+                      <ul class="nav upeu">
+                        <li class="nav-item">
+                          UPeU - Sistemas V ciclo 2020
+                        </li>
+                      </ul>
+                      <div class="copyright">
+                        &copy; {{ test | date: "yyyy" }} made with
+                        <i class=" tim-icons icon-heart-2"> </i> by
+                        <a href="" target="_blank"> El richeti </a>
+                        for a better web.
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+        </section>
+          
+        
+
+        <!-------------------------------Modificar Usuario-->
+
+        <section *ngIf="modifica">
+          <div class="content modificar" >
+            <div class="row">
+              <div class="col-md-9">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="title">
+                      Perfil de Usuario M
+                    </h4>
+                  </div>
+                  <div class="card-body">
+                    <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+                      <div class="row">
+                        <div class="col-md-5 pr-md-1">
+                          <div class="form-group"><label>
+                              Sede
+                            </label>
+                            <select class="form-control" name="" id="">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="">Lima</option>
+                              <option value="">Juliaca</option>
+                              <option value="">Tarapoto</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-3 px-md-1">
+                          <div class="form-group"><label>
+                              Nombre de usuario
+                            </label><input class="form-control" type="text" placeholder="michael23" value=""></div>
+                        </div>
+                        <div class="col-md-4 pl-md-1">
+                          <div class="form-group"><label>
+                              Contraseña
+                            </label><input class="form-control" placeholder="..." type="password"></div>
+                        </div>
+                      </div>
+  
+  
+                      <div class="row">
+                        <div class="col-md-6 pr-md-1">
+                          <div class="form-group"><label> Nombres
+                            </label><input class="form-control" type="text" value=""></div>
+                        </div>
+                        <div class="col-md-6 pl-md-1">
+                          <div class="form-group"><label>
+                              Apellidos
+                            </label><input class="form-control" type="text" value=""></div>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group"><label>
+                              Tipo Documento </label>
+                            <select class="form-control" name="" id="">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="">DNI</option>
+                              <option value="">Carnet Extranjeria</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4 px-md-1">
+                          <div class="form-group">
+                            <label>N° Documento</label>
+                            <input class="form-control" type="text" value="">
+                          </div>
+                        </div>
+                        <div class="col-md-4 pl-md-1">
+                          <div class="form-group"><label>
+                              Rol
+                            </label>
+                            <select class="form-control" name="" id="">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="">Profesor</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group"><label>
+                              Escuela Profesional </label>
+                            <select class="form-control" name="" id="">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="">Ingeniria Sistemas</option>
+                              <option value="">Medicina</option>
+                              <option value="">Teologia</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4 px-md-1">
+                          <div class="form-group"><label>
+                              Codigo
+                            </label><input class="form-control" type="text" value="" disabled="">
+                          </div>
+                        </div>
+                        <div class="col-md-4 pl-md-1">
+                          <div class="form-group"><label>
+                              Telefono
+                            </label>
+                            <input class="form-control" type="text" value="">
+                          </div>
+                        </div>
+                      </div>
+  
+  
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label> Correo (Institucional)</label>
+                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value="">
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <center><button class="btn btn-fill btn-danger" type="submit" (click)="cabeza=!cabeza; cuerpo=!cuerpo; ver2=!ver2"> Guardar Datos </button>
+                            </center>
+                          </div>
+                        </div>
+                      </div>
+  
+                    </form>
+                  </div>
+                  <div class="card-footer">
+                    <div class="container-fluid">
+                      <ul class="nav upeu">
+                        <li class="nav-item">
+                          UPeU - Sistemas V ciclo 2020
+                        </li>
+                      </ul>
+                      <div class="copyright">
+                        &copy; {{ test | date: "yyyy" }} made with
+                        <i class=" tim-icons icon-heart-2"> </i> by
+                        <a href="" target="_blank"> El richeti </a>
+                        for a better web.
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+
+
       </div>
     </div>
   </div>
 </div>
-

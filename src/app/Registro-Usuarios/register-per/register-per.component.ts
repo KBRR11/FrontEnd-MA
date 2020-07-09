@@ -36,7 +36,7 @@ if((this.persona.nombres && this.persona.apellidos && this.persona.t_documento
     //console.log(this.persona.nombre1);
 localStorage.setItem('registerper',JSON.stringify(this.persona));
    
-   //console.log(localStorage);
+   console.log(localStorage);
     
     Swal.fire({
       icon: 'success',
