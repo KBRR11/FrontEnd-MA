@@ -16,7 +16,7 @@ import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convoca
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
-
+import { OpcionRComponent } from '../../pages/OpcionRol/opcion-r/opcion-r.component';
 import { UsuariointComponent } from '../../pages/usuarioint/usuarioint.component';
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -38,7 +38,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     NotificationsComponent,
     MapComponent,
     UsuariointComponent,
-    ConvocatoriaCRUDComponent
+    ConvocatoriaCRUDComponent,
+    OpcionRComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent
