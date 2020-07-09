@@ -18,6 +18,7 @@ import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
 
 import { UsuariointComponent } from '../../pages/usuarioint/usuarioint.component';
+import { RolesComponent } from '../../pages/roles/roles.component';
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
@@ -37,8 +38,10 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     TypographyComponent,
     NotificationsComponent,
     MapComponent,
+    RolesComponent,
     UsuariointComponent,
-    ConvocatoriaCRUDComponent
+    ConvocatoriaCRUDComponent,
+    
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent

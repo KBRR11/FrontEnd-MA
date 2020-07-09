@@ -1,0 +1,179 @@
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card mx-4">
+                        <div class="card-body p-4">
+                            <form>
+                                <h1>Registrate</h1>
+                                <p class="text-muted">Crea tu cuenta</p>
+
+                                <div class="row justify-content-center mt-4">
+                                    <!--------------------------------iNICIA CONTENEDOR DE 2 INPUTS------------------------------------------->
+                                    <div class="col-sm-6">
+                                        <!---------------------------------------------------------------------------------->
+                                        <div class="form-group has-icon">
+                                            <!---->
+                                            <div class="mb-0 input-group">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="tim-icons icon-single-02"></i>
+                                                    </div>
+                                                </span>
+                                                <input aria-describedby="addon-right addon-left" name="firstName"
+                                                    id="nombres" placeholder="Nombres*" class="form-control"
+                                                    [(ngModel)]="persona.nombres">
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+
+
+                                    </div>
+                                    <!--------------------------------TERMINA CONTENEDOR DE 2 INPUTS------------------------------------------->
+
+
+                                    <!--------------------------------iNICIA CONTENEDOR DE 2 INPUTS------------------------------------------->
+                                    <div class="col-sm-6">
+                                        <!---------------------------------------------------------------------------------->
+                                        <div class="form-group has-icon">
+                                            <!---->
+                                            <div class="mb-0 input-group">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="tim-icons icon-caps-small"></i>
+                                                    </div>
+                                                </span>
+                                                <input aria-describedby="addon-right addon-left" name="Lastname"
+                                                    id="apellidos" placeholder="Apellidos*" class="form-control"
+                                                    [(ngModel)]="persona.apellidos">
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+
+                                    </div>
+                                    <!--------------------------------TERMINA CONTENEDOR DE 2 INPUTS------------------------------------------->
+
+                                    <!--------------------------------iNICIA CONTENEDOR DE 2 INPUTS------------------------------------------->
+                                    <div class="col-sm-6">
+                                        <!---------------------------------------------------------------------------------->
+                                        <div class="form-group has-icon">
+                                            <!---->
+                                            <div class="mb-0 input-group">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="fas fa-id-badge"></i>
+                                                    </div>
+                                                </span>
+                                                <select name="document" class="form-control" id="t_doc"
+                                                    [(ngModel)]="persona.t_documento">
+                                                    <option disabled selected class="diselec">Tipo Documento:</option>
+                                                    <option value="1">DNI</option>
+                                                    <option value="2">PASAPORTE</option>
+                                                    <option value="3">Carnet Extranjería</option>
+                                                </select>
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+
+
+                                    </div>
+                                    <!--------------------------------TERMINA CONTENEDOR DE 2 INPUTS------------------------------------------->
+
+                                    <!--------------------------------iNICIA CONTENEDOR DE 2 INPUTS------------------------------------------->
+                                    <div class="col-sm-6">
+                                        <!---------------------------------------------------------------------------------->
+                                        <div class="form-group has-icon">
+                                            <!---->
+                                            <div class="mb-0 input-group">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="fas fa-id-card"></i>
+                                                    </div>
+                                                </span>
+                                                <input aria-describedby="addon-right addon-left" name="identity"
+                                                    id="docid" placeholder="Documento de Identidad*"
+                                                    class="form-control" [(ngModel)]="persona.n_documento">
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+
+                                    </div>
+                                    <!--------------------------------TERMINA CONTENEDOR DE 2 INPUTS------------------------------------------->
+                                    <!---------------------------------------------------------------------------------->
+                                    <div class="col-sm-6">
+                                        <div class="form-group has-icon">
+                                            <!---->
+                                            <div class="mb-0 input-group">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="tim-icons icon-email-85"></i>
+                                                    </div>
+                                                </span>
+                                                <input aria-describedby="addon-right addon-left" name="email"
+                                                    id="correo" placeholder="Correo Institucional*" class="form-control"
+                                                    [(ngModel)]="persona.correo" type="email">
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <!---------------------------------------------------------------------------------->
+                                    <!---------------------------------------------------------------------------------->
+                                    <div class="col-sm-6">
+                                        <div class="form-group has-icon">
+                                            <!---->
+                                            <div class="mb-0 input-group">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="tim-icons icon-mobile"></i>
+                                                    </div>
+                                                </span>
+                                                <input aria-describedby="addon-right addon-left" name="phone"
+                                                    id="telefono" placeholder="Teléfono*" class="form-control"
+                                                    [(ngModel)]="persona.telefono" type="number">
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <!---------------------------------------------------------------------------------->
+                                    <!--------------------------------INICIA CONTENEDOR DE INPUT LARGO------------------------------------------->
+                                    <div class="col-sm-12">
+                                        <div class="form-group has-icon">
+                                            <!---->
+                                            <div class="mb-0 input-group">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="tim-icons icon-square-pin"></i>
+                                                    </div>
+                                                </span>
+                                                <input aria-describedby="addon-right addon-left" name="address"
+                                                    id="direcc" placeholder="Dirección" class="form-control"
+                                                    [(ngModel)]="persona.direccion">
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <!--------------------------------TERMINA CONTENEDOR DE INPUT LARGO------------------------------------------->
+                                    <!--aqui termina el contenedor-->
+                                </div>
+                                <!----------------------------->
+                                <button type="button" class="btn btn-block btn-success" (click)='addpersona(persona)'
+                                    id="continuar">Continuar</button>
+                                <button type="button" class="btn btn-block " (click)='advertencia()'><i
+                                        class="far fa-arrow-alt-circle-left"></i>Volver</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

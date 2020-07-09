@@ -1,0 +1,182 @@
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card mx-4">
+              <div class="card-body p-4">
+                <form>
+                  <h1>Registrate</h1>
+                  <p class="text-muted">Datos Académicos: </p>
+  
+                  <div class="row justify-content-center mt-4">
+                    <!--------------------------------iNICIA CONTENEDOR GENERAL------------------------------------------->
+                 
+                     <!--------------------------------INICIA CONTENEDOR DE INPUT LARGO------------------------------------------->
+                     <div class="col-sm-6">
+                         <div class="form-group has-icon">
+                      <!---->
+                      <div class="mb-0 input-group">
+                        <span class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-single-02"></i>
+                          </div>
+                        </span>
+                        <select name="postulante" class="form-control" id="t_postulante"
+                                                    [(ngModel)]="usuario.tipo" (ngModelChange)="updateTipo()" >
+                                                    <option     disabled selected class="diselec" >Tipo de Postulante:</option>
+                                                    <option value=1>Estudiante</option>
+                                                    <option value=2>Docente</option>
+                                                </select>
+                       
+                        <!---->
+                      </div>
+                      <!---->
+                    </div>
+                  </div>
+                 <!---------------------------------------------------------------------------------->
+                  <div class="col-sm-6">
+                    
+                    <div class="form-group has-icon">
+                        <!---->
+                        <div class="mb-0 input-group">
+                            <span class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-university"></i>
+                                </div>
+                            </span>
+                            <select name="sede" class="form-control" id="sede"
+                    [(ngModel)]="usuario.sede">
+                                <option disabled selected class="diselec">Sede:</option>
+                                <option value=1>Sede Lima</option>
+                                <option value=2>Filial Juliaca</option>
+                                <option value=3>filial Tarapoto</option>
+                            </select>
+                            <!---->
+                        </div>
+                        <!---->
+                    </div>
+
+
+                </div>
+                     <!--------------------------------TERMINA CONTENEDOR DE INPUT LARGO------------------------------------------->
+                     
+                     <div class="col-sm-6" *ngIf="estudiante">
+                        <!---------------------------------------------------------------------------------->
+                        <div class="form-group has-icon">
+                            <!---->
+                            <div class="mb-0 input-group">
+                                <span class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-barcode	"></i>
+                                    </div>
+                                </span>
+                                <input aria-describedby="addon-right addon-left" name="codigo"
+                                    id="codigo" placeholder="Codigo Universitario*" [(ngModel)]="usuario.codigo" class="form-control"
+                                    >
+                                <!---->
+                            </div>
+                            <!---->
+                        </div>
+
+                    </div>
+                    <!---------------------------------------------------------------------------------->
+                    <div class="col-sm-6" *ngIf="estudiante">
+                        
+                        <div class="form-group has-icon">
+                            <!---->
+                            <div class="mb-0 input-group">
+                                <span class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-graduation-cap"></i>
+                                    </div>
+                                </span>
+                                <select name="ciclo" class="form-control" id="ciclo"
+                                   [(ngModel)]="usuario.ciclo" >
+                                    <option disabled selected class="diselec">Ciclo Actual:</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                                <!---->
+                            </div>
+                            <!---->
+                        </div>
+
+
+                    </div>
+                      <!-------------------------------------select largo----------------------------------------->
+                      <div class="col-sm-12">
+                    
+                        <div class="form-group has-icon">
+                            <!---->
+                            <div class="mb-0 input-group">
+                                <span class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-university"></i>
+                                    </div>
+                                </span>
+                                <select name="facultad" class="form-control" id="facultad" 
+                                [(ngModel)]="ep.IDFACULTAD" (ngModelChange)="ObtenerIdfac()">
+                                    <option disabled selected class="diselec" >Facultad:</option>
+                                    <option *ngFor="let facu of facultad"
+                                     value={{facu.IDFACULTAD}}>{{facu.NOM_FACULTAD}}</option>
+                                    
+                                </select>
+                                <!---->
+                            </div>
+                            <!---->
+                        </div>
+    
+    
+                    </div>
+                      <!---------------------------------------------------------------------------------->
+                       <!--------------------------------TERMINA CONTENEDOR DE INPUT LARGO------------------------------------------->
+                        <!--------------------------------INICIA CONTENEDOR DE INPUT LARGO------------------------------------------->
+                        <div class="col-sm-12">
+                    
+                            <div class="form-group has-icon">
+                                <!---->
+                                <div class="mb-0 input-group">
+                                    <span class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-cogs"></i>
+                                        </div>
+                                    </span>
+                                    <select name="ep" class="form-control" id="ep"
+                                        [(ngModel)]="usuario.idep">
+                                        <option disabled selected class="diselec">Escuela Profesional:</option>
+                                        <option *ngFor="let eps of ep" value={{eps.IDEP}}>{{eps.NOM_EP}}</option>
+                                        
+                                    </select>
+                                    <!---->
+                                </div>
+                                <!---->
+                            </div>
+        
+        
+                        </div>
+
+                       
+                       <!--------------------------------TERMINA CONTENEDOR DE INPUT LARGO------------------------------------------->
+                    <!--aqui termina el contenedor-->
+                  </div>
+                  <!----------------------------->
+                  <button type="button" class="btn btn-block btn-success" (click)='adddatAcademic()'>Continuar</button>
+                </form>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+   

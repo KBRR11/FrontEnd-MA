@@ -15,7 +15,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { CabezaComponent } from './md-inicio/cabeza/cabeza.component';
 import { LoginComponent } from './login/login.component';
-import { OpcionComponent } from './pages/opcion/opcion/opcion.component';
+import { RegisterPerComponent } from './Registro-Usuarios/register-per/register-per.component';
+import { RegisterUSERComponent } from './Registro-Usuarios/register-user/register-user.component';
+import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/datos-academicos.component';
+
 
 //import { ConvocatoriasComponent } from './md-inicio/convocatorias/convocatorias.component';
 //import { ConveniosComponent } from './md-inicio/convenios/convenios.component';
@@ -32,7 +35,7 @@ import { OpcionComponent } from './pages/opcion/opcion/opcion.component';
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, OpcionComponent, ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, RegisterPerComponent, RegisterUSERComponent, DatosAcademicosComponent, ],
   providers: [],
   bootstrap: [AppComponent]
 })
