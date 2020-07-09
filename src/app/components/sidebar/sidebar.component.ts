@@ -72,14 +72,14 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/convocatoriamin",
+    path: "/creaconv",
     title: "Convocatoria",
     rtlTitle: "CRUD Conv",
     icon: "icon-single-copy-04",
     class: ""
   },
   {
-    path: "/detalleconv",
+    path: "/listarconv",
     title: "Listar Convocatorias",
     rtlTitle: "CRUD Conv",
     icon: "icon-bullet-list-67",

@@ -10,6 +10,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
 import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/detalleconvocatoria.component";
 import { OpcionComponent} from "../../pages/opcion/opcion/opcion.component";
+import { CrearconvocatoriaComponent } from '../../pages/crearconvocatoria/crearconvocatoria.component';
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 //import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 //import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
@@ -29,12 +30,15 @@ export const AdminLayoutRoutes: Routes = [
   canActivate:[AuthGuard]},
   { path: "typography", component: TypographyComponent ,
   canActivate:[AuthGuard]},
-  { path: "convocatoriamin", component: ConvocatoriaCRUDComponent ,
+  { path: "creaconv", component: CrearconvocatoriaComponent ,
   canActivate:[AuthGuard]},
-  { path: "detalleconv", component: DetalleconvocatoriaComponent ,
+  { path: "listarconv", component: ConvocatoriaCRUDComponent ,
   canActivate:[AuthGuard]},
   { path: "opcion", component: OpcionComponent ,
   canActivate:[AuthGuard]},
+  { path: "detalleconv", component: DetalleconvocatoriaComponent ,
+  canActivate:[AuthGuard]},
+  
   //{ path: "inicio", component: InicioComponent },
   //{ path: "convenios", component: ConveniosComponent },
   
