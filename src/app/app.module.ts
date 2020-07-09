@@ -16,6 +16,7 @@ import { ComponentsModule } from "./components/components.module";
 import { CabezaComponent } from './md-inicio/cabeza/cabeza.component';
 import { LoginComponent } from './login/login.component';
 
+
 //import { ConvocatoriasComponent } from './md-inicio/convocatorias/convocatorias.component';
 //import { ConveniosComponent } from './md-inicio/convenios/convenios.component';
 
@@ -31,7 +32,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })

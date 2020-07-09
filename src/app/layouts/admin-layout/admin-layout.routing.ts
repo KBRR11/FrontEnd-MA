@@ -9,6 +9,9 @@ import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
 import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/detalleconvocatoria.component";
+import { UsuariointComponent } from 'src/app/pages/usuarioint/usuarioint.component';
+import { RolesComponent } from 'src/app/pages/roles/roles.component';
+
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 //import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 //import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
@@ -31,6 +34,10 @@ export const AdminLayoutRoutes: Routes = [
   { path: "convocatoriamin", component: ConvocatoriaCRUDComponent ,
   canActivate:[AuthGuard]},
   { path: "detalleconv", component: DetalleconvocatoriaComponent ,
+  canActivate:[AuthGuard]},
+  { path: "usuario_i", component: UsuariointComponent ,
+  canActivate:[AuthGuard]},
+  { path: "rol", component: RolesComponent ,
   canActivate:[AuthGuard]},
   //{ path: "inicio", component: InicioComponent },
   //{ path: "convenios", component: ConveniosComponent },
