@@ -8,6 +8,7 @@ export class Usuarios{
     estado:number;
     idpersona: number;
     idep:number;
+    ciclo:string;
     
     idrol:number
     rol:string;

@@ -83,10 +83,22 @@ export const ROUTES: RouteInfo[] = [
     title: "Convocatoria",
     rtlTitle: "CRUD Conv",
     icon: "icon-single-copy-04",
-    class: "",
+    class: ""
   },
-
-  
+  {
+    path: "/detalleconv",
+    title: "Listar Convocatorias",
+    rtlTitle: "CRUD Conv",
+    icon: "icon-bullet-list-67",
+    class: ""
+  },
+  {
+    path: "/opcion",
+    title: "Opcion",
+    rtlTitle: "CRUD Opcion",
+    icon: "tim-icons icon-settings",
+    class: ""
+  },
  /* {
     path: "/inicio",
     title: "FUNCA INICIO",

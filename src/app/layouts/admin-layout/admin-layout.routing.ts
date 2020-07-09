@@ -12,6 +12,7 @@ import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/de
 import { UsuariointComponent } from 'src/app/pages/usuarioint/usuarioint.component';
 import { RolesComponent } from 'src/app/pages/roles/roles.component';
 
+import { OpcionComponent} from "../../pages/opcion/opcion/opcion.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 //import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 //import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
