@@ -15,3 +15,14 @@ export class Personas {
     color_fondo:string;
     color_menu:string;
     }
+
+export class Persona{
+    idpersona:number;
+    nombres:string;
+    apellidos:string;
+    t_documento:number;
+    n_documento:string;
+    correo:string;
+    telefono:string;
+    direccion:string;
+}

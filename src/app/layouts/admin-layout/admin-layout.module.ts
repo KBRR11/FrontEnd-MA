@@ -18,7 +18,7 @@ import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/de
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
-
+import { OpcionRComponent } from '../../pages/OpcionRol/opcion-r/opcion-r.component';
 import { UsuariointComponent } from '../../pages/usuarioint/usuarioint.component';
 import { RolesComponent } from '../../pages/roles/roles.component';
 
@@ -43,6 +43,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     RolesComponent,
     UsuariointComponent,
     ConvocatoriaCRUDComponent,
+    OpcionRComponent,
     CrearconvocatoriaComponent,
     DetalleconvocatoriaComponent
     //InicioComponent,
