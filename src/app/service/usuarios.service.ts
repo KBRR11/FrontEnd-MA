@@ -5,7 +5,8 @@ import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { LoginService } from "src/app/service/login.service";
-import { Usuarios } from "src/app/Modelo/Usuarios";
+import { Usuarios, Usuario } from "src/app/Modelo/Usuarios";
+import { Rol} from "src/app/Modelo/Rol";
 @Injectable({
     providedIn: 'root'
   })
@@ -49,4 +50,54 @@ import { Usuarios } from "src/app/Modelo/Usuarios";
           return throwError(e);
         }));
       }
+
+      //////////new inter////////////////////777
+      getUser(){
+        return this.http.get<Usuario>(`${ environment.apiUrl }/api/listar`,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
+      getUserID(iduser: number){
+        return this.http.get<Usuario>(`${ environment.apiUrl }/api/listar/`+ iduser,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
+
+      crearUser(usuario:Usuario){
+        return this.http.post<Usuario>(`${ environment.apiUrl }/api/add_user`,usuario,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+             return throwError(e);
+           }))
+      }
+
+      modificaUser(usuario:Usuario){
+        return this.http.put<Usuario>(`${ environment.apiUrl }/api/update/`+usuario.idusuario,usuario,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
+
+      deleteUser(iduser:number){
+        return this.http.get<Usuario>(`${ environment.apiUrl }/api/delete/`+ iduser,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
+
+      getrol(){
+        return this.http.get<Rol>(`${ environment.apiUrl }/api/rol`,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
+
+      getrolId(idrol:number){
+        return this.http.get<Rol>(`${ environment.apiUrl }/api/rol/`+idrol,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
+
     }
