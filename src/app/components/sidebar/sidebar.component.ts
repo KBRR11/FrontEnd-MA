@@ -100,13 +100,6 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/Opcion-r",
-    title: "AsignarOpcionRol",
-    rtlTitle: "CRUD Opcionr",
-    icon: "tim-icons icon-settings",
-    class: ""
-  },
-  {
     path: "/recepcionardoc",
     title: "Recepcionar",
     rtlTitle: "Recepcionar DOcumentos",
