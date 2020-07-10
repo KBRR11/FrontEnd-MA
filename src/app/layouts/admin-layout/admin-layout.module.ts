@@ -21,7 +21,8 @@ import { ConveniosComponent } from "../../md-inicio/convenios/convenios.componen
 import { OpcionRComponent } from '../../pages/OpcionRol/opcion-r/opcion-r.component';
 import { UsuariointComponent } from '../../pages/usuarioint/usuarioint.component';
 import { RolesComponent } from '../../pages/roles/roles.component';
-
+import { RecepcionardocComponent } from '../../pages/recepcionardoc/recepcionardoc.component';
+import { OpcionComponent } from '../../pages/opcion/opcion/opcion.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
@@ -45,7 +46,9 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     ConvocatoriaCRUDComponent,
     OpcionRComponent,
     CrearconvocatoriaComponent,
-    DetalleconvocatoriaComponent
+    DetalleconvocatoriaComponent,
+    RecepcionardocComponent,
+    OpcionComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent
