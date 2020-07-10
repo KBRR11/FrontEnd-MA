@@ -12,14 +12,17 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { UserComponent } from "../../pages/user/user.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
+import { CrearconvocatoriaComponent } from "../../pages/crearconvocatoria/crearconvocatoria.component";
 import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
+import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/detalleconvocatoria.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
-
+import { OpcionRComponent } from '../../pages/OpcionRol/opcion-r/opcion-r.component';
 import { UsuariointComponent } from '../../pages/usuarioint/usuarioint.component';
 import { RolesComponent } from '../../pages/roles/roles.component';
-
+import { RecepcionardocComponent } from '../../pages/recepcionardoc/recepcionardoc.component';
+import { OpcionComponent } from '../../pages/opcion/opcion/opcion.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
@@ -41,7 +44,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     RolesComponent,
     UsuariointComponent,
     ConvocatoriaCRUDComponent,
-    
+    OpcionRComponent,
+    CrearconvocatoriaComponent,
+    DetalleconvocatoriaComponent,
+    RecepcionardocComponent,
+    OpcionComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent
