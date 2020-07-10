@@ -73,6 +73,11 @@ export class ConvocatoriaService {
     return this.http.delete<DetalleConvocatoria>(`${environment.apiUrl}/detconvocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
+  //buscar alumno by convocatoria
+  buscarAlumnoDetConvocatoria(idconvocatoria:number): Observable<DetalleConvocatoria> {
+    return this.http.get<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/alum/`+idconvocatoria,{headers: this.agregarAutorizacion()})
+                    .pipe(catchError(this.handlerError));
+  }
   private handlerError( error ) {
     return throwError(error.message || "Server Error")
   }

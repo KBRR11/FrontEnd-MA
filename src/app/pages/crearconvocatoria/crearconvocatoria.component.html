@@ -30,7 +30,7 @@
                                   <div class=" table-full-width table-responsive">
                                     <table class=" table">
                                       <tbody>
-                                        <tr>
+                                        <tr *ngFor="let ep of listaep">
                                           <td>
                                             <div class=" form-check">
                                               <label class=" form-check-label">
@@ -48,7 +48,7 @@
                                             </div>
                                           </td>
                                           <td>
-                                            <p class=" title">Update the Documentation</p>
+                                            <p class=" title">{{ep.nom_ep}}</p>
                                           </td>
                                           <td class=" td-actions text-right">
                                             <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Edit Task" container="body" >
@@ -73,7 +73,13 @@
                                 <label> Vacantes Disponibles </label>
                                 <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatoria.n_vancates" name="n_vancates">
                             </div>
-                        </div>                        
+                        </div>   
+                        <div class=" col-md-3 px-md-1">
+                          <div class=" form-group">
+                              <label> Vacantes Disponibles </label>
+                              <input type="date" class=" form-control">
+                          </div>
+                      </div>                      
                     </div>
                     <div class="row">
                         <div class="form-check">

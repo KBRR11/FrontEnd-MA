@@ -26,4 +26,16 @@ export class ConvocatoriaCRUDComponent implements OnInit {
     alert(localStorage.getItem("idconvocaotria"))
     this.router.navigate(['detalleconv']);
   }
+  elminarconv(id:number){
+    this.convocatoriaservice.eliminarConvocatoria(id).subscribe(
+      (data)=>{
+        console.log(data);
+      }
+    )
+  }
+  editarconv(convocatoria:Convocatoria){
+    this.convocatoriaservice.actualizarConvocatoria(convocatoria).subscribe((data)=>{
+      console.log(data);
+    })
+  }
 }

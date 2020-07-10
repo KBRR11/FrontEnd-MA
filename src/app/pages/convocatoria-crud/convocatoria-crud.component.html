@@ -24,7 +24,7 @@
                                     <td>{{convocatoria.ciclo_academico}}</td>
                                     <td ><h3 >{{convocatoria.n_vacnates}}</h3></td>
                                     <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="detalleconv(convocatoria.idconvocatoria)" routerLinkActive="router-link-active" ></i></td>
-                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil"></i></td>
+                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="editarconv(convocatoria)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminarconv(detconv.idetalle_convocatoria)"></i></td>
                                 </tr>
                             </tbody>
                         </table>

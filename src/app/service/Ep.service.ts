@@ -33,4 +33,7 @@ import Swal from 'sweetalert2';
         console.log(idfacutad);
         return this.http.get<Ep[]>(`${ environment.apiUrl }/api/fac_ep/${ idfacutad }`);
     }
+    ListAllEp(){
+      return this.http.get<Ep[]>(`${ environment.apiUrl }/api/escuela/`,{headers: this.agregarAutorizacion()});
+  }
     }
