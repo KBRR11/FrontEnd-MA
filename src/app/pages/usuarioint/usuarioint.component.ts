@@ -29,8 +29,13 @@ export class UsuariointComponent implements OnInit {
   personas : Persona[] = [];
 
   escuela : Ep = new Ep();
+  escuelas : Ep[] = [];
+
   facultad : Facultades = new Facultades();
+  facultades : Facultades[] = [];
+
   rol : Rol = new Rol();
+  roles : Rol[] = [];
 
   modifica: boolean = false;
   crea: boolean = false;
@@ -65,28 +70,30 @@ export class UsuariointComponent implements OnInit {
     this.header=false;
   }
   getFacultad(){
-    this.facultadService.getAllFacultades().subscribe((data) =>{
-      this.facultad = data['LIST_FACULTADES'];
+    this.facultadService.getAllFacultades().subscribe(
+      (data) =>{
+      this.facultades = data['LIST_FACULTADES'];
+        console.log(this.facultades);
     })
   }
   getEscuela(){
-    this.epService.getEpforId(this.escuela.IDFACULTAD).subscribe(
+    this.epService.getEpforId(3).subscribe(
       (data) => {
-        this.escuela = data['EP'];
-       console.log(this.escuela);
+        this.escuelas = data['EP'];
+       console.log(this.escuelas);
       });
       }
   
   getRol(){
     this.userService.getrol().subscribe((data) =>{
-      this.rol = data['ROL'];
-      console.log(this.rol);
+      this.roles = data['ROL'];
+      console.log(this.roles);
     })
   }
 
   getuser(){
     this.userService.getUser().subscribe((data) => {
-      this.users = data['(LIST_USER'];
+      this.users = data['LIST_USER'];
       console.log(this.users);
     })
    }
