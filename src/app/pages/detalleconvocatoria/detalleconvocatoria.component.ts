@@ -45,6 +45,15 @@ export class DetalleconvocatoriaComponent implements OnInit {
   editardet(detconv:DetalleConvocatoria){
     console.log(detconv)
   }
+  elminardet(idconvocatoria:number){
+    this.convocatoriaservice.eliminarDetConvocatoria(idconvocatoria).subscribe(
+      (data)=>{
+        console.log(data);
+      },(error)=>{
+        alert("OCURRIO UN ERROR "+error);
+      }
+    )
+  }
   listaralumnos(idconvocatoria:number){
     //alert(idconvocatoria)
     this.convocatoriaservice.buscarAlumnoDetConvocatoria(idconvocatoria).subscribe(

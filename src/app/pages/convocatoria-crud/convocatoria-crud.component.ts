@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Convocatoria } from 'src/app/Modelo/Convocatoria';
 import { ConvocatoriaService } from 'src/app/service/convocatoria.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ConvocatoriaCRUDComponent implements OnInit {
   listaconvocatorias:Convocatoria[]=[]
-  constructor(private convocatoriaservice:ConvocatoriaService, private router: Router) { }
+  closeResult = '';
+  constructor(private convocatoriaservice:ConvocatoriaService, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.listar();
@@ -37,5 +39,22 @@ export class ConvocatoriaCRUDComponent implements OnInit {
     this.convocatoriaservice.actualizarConvocatoria(convocatoria).subscribe((data)=>{
       console.log(data);
     })
+  }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

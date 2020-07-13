@@ -48,7 +48,7 @@ export class ConvocatoriaService {
   }
   //buscar convocatoria
   eliminarConvocatoria(idconvocatoria:number) {
-    return this.http.delete<Convocatoria>(`${environment.apiUrl}/convocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
+    return this.http.delete<Convocatoria>(`${environment.apiUrl}/api/convocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
   /////////////DETALLE CONVOCATORIA/////////////
@@ -70,7 +70,7 @@ export class ConvocatoriaService {
   }
   //buscar convocatoria
   eliminarDetConvocatoria(idconvocatoria:number) {
-    return this.http.delete<DetalleConvocatoria>(`${environment.apiUrl}/detconvocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
+    return this.http.delete<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
   //buscar alumno by convocatoria
