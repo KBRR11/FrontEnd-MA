@@ -249,9 +249,67 @@
                 </section>
 
 
-
+                <div class="row" id="modals">
+                    <div class="col-md-4">
+                      <button
+                        class="btn btn-primary"
+                        data-target="#myModal"
+                        (click)="myModal.show()"
+                      >
+                        Launch Modal
+                      </button>
+                    </div>
+                  </div>
+                  
+                  
 
             </div>
         </div>
     </div>
 </div>
+
+
+<div
+    aria-hidden="true"
+    aria-labelledby="myModalLabel"
+    bsModal
+    class="modal fade"
+    #myModal="bs-modal"
+    id="myModal"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <button
+            aria-hidden="true"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="myModal.hide()"
+          >
+            <i class="tim-icons icon-simple-remove"> </i>
+          </button>
+          <h4 class="title title-up">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts. Separated
+            they live in Bookmarksgrove right at the coast of the Semantics, a
+            large language ocean. A small river named Duden flows by their
+            place and supplies it with the necessary regelialia. It is a
+            paradisematic country, in which roasted parts of sentences fly
+            into your mouth.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" type="button">Nice Button</button>
+          <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="myModal.hide()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
