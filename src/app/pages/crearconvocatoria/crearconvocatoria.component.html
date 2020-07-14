@@ -1,128 +1,133 @@
 <div class=" content">
-    <div class=" row">
-        <div class=" col-md-12">
-            <div class=" card">
-                <div class=" card-header">
-                    <h1 class="title">CONVOCATORIAS</h1>
-                </div>
-                <div style="height: 50px;"></div>
-                <div class=" card-body derecha">
-                    <div class="row">
-                        <div class=" col-md-3 px-md-1">
-                            <div class=" form-group">
-                                <label> Año Academico </label>
-                                <input class=" form-control" placeholder="Año Academico" type="text" [(ngModel)]="convocatoria.ciclo_academico" name="ciclo_academico">
-                            </div>
-                        </div>
+  <div class=" row">
+    <div class=" col-md-10">
+      <div class=" card">
+        <div class=" card-header">
+          <h1 class="title">CONVOCATORIAS</h1>
+        </div>
+        <div style="height: 50px;"></div>
+        <div class=" card-body derecha">
+          <div class="row">
+            <div class=" col-md-5 px-md-1">
+              <div class=" form-group">
+                <label> Año Academico </label>
+                <input class=" form-control" placeholder="Año Academico" type="text"
+                  [(ngModel)]="convocatoria.ciclo_academico" name="ciclo_academico">
+              </div>
+            </div>
 
-                        <div class=" col-md-3 px-md-1">
-                            <div class=" form-group">
-                                <label> Nombre de la Convocatoria </label>
-                                <input class=" form-control" placeholder="Nombre" type="text" [(ngModel)]="convocatoria.nom_convocatoria" name="nom_convocatoria">
-                            </div>
-                        </div>
-                            <div class=" col-lg-4 col-md-12">
-                              <div class=" card">
-                                <div class=" card-header">
-                                  <h4>Escoja las Escuelas Profesionales</h4>
-                                </div>
-                                <div class=" card-body">
-                                  <div class=" table-full-width table-responsive">
-                                    <table class=" table">
-                                      <tbody>
-                                        <tr *ngFor="let ep of listaep">
-                                          <td>
-                                            <div class=" form-check">
-                                              <label class=" form-check-label">
-                                                <input
-                                                checked=""
-                                                  class=" form-check-input"
-                                                  type="checkbox"
-                                                  value=""
-                                                />
-                        
-                                                <span class=" form-check-sign">
-                                                  <span class=" check"> </span>
-                                                </span>
-                                              </label>
-                                            </div>
-                                          </td>
-                                          <td>
-                                            <p class=" title">{{ep.nom_ep}}</p>
-                                          </td>
-                                          <td class=" td-actions text-right">
-                                            <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Edit Task" container="body" >
-                                              <i class=" tim-icons icon-pencil"> </i>
-                                            </button>
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3 px-md-1">
-                            <label for="exampleFormControlTextarea1">Informacion Adicional</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="convocatoria.info_convocatoria" name="info_convocatoria"></textarea>
-                          </div>
-                        <div class=" col-md-3 px-md-1">
-                            <div class=" form-group">
-                                <label> Vacantes Disponibles </label>
-                                <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatoria.n_vancates" name="n_vancates">
-                            </div>
-                        </div>   
-                        <div class=" col-md-3 px-md-1">
-                          <div class=" form-group">
-                              <label> Vacantes Disponibles </label>
-                              <input type="date" class=" form-control">
-                          </div>
-                      </div>                      
-                    </div>
-                    <div class="row">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="true" >
-                                Subir a Facebook
-                                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                </span>
-                            </label>
-                        </div>
-                        <div class=" col-md-4 px-md-1">
-                            <div class=" form-group">
-                                <label> Vacantes Disponibles </label>
-                                <input class=" form-control" placeholder="" type="file" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                Subir a Facebook
-                                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                </span>
-                            </label>
-                        </div>
-                        <div class=" col-md-4 px-md-1">
-                            <div class=" form-group">
-                                <label> Subir a Twitter </label>
-                                <input class=" form-control" type="file" />
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-success" (click)="Crear(convocatoria);">Nueva Convocatoria</button>
+            <div class=" col-md-5 px-md-1">
+              <div class=" form-group">
+                <label> Nombre de la Convocatoria </label>
+                <input class=" form-control" placeholder="Nombre" type="text"
+                  [(ngModel)]="convocatoria.nom_convocatoria" name="nom_convocatoria">
+              </div>
+            </div>
+            <div class=" col-lg-5 col-md-12 escuela">
+              <div class=" card">
+                <div class=" card-header">
+                  <h4>Escoja las Escuelas Profesionales</h4>
                 </div>
+                <div class=" card-body">
+                  <div class=" table-full-width table-responsive">
+                    <table class=" table">
+                      <tbody>
+                        <tr *ngFor="let ep of listaep">
+                          <td>
+                            <div class=" form-check">
+                              <label class=" form-check-label">
+                                <input checked="" class=" form-check-input" type="checkbox" value="" />
+
+                                <span class=" form-check-sign">
+                                  <span class=" check"> </span>
+                                </span>
+                              </label>
+                            </div>
+                          </td>
+                          <td>
+                            <p class=" title">{{ep.nom_ep}}</p>
+                          </td>
+                          <td class=" td-actions text-right">
+                            <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Editar "
+                              container="body">
+                              <i class=" tim-icons icon-pencil"> </i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
 
             </div>
+            <div class="row" style="margin-top: 19px; margin-left: 23px;">
+              <div class=" col-md-9 px-md-1">
+                <div class=" form-group">
+                  <label> Vacantes Disponibles </label>
+                  <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatoria.n_vancates"
+                    name="n_vancates">
+                </div>
+              </div>
+              <div class=" col-md-9 px-md-1">
+                <div class=" form-group">
+                  <label> Fecha Duracion </label>
+                  <input type="date" class=" form-control">
+                </div>
+              </div>
+              <div class=" col-md-9 px-md-1">
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Informacion Adicional</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    [(ngModel)]="convocatoria.info_convocatoria" name="info_convocatoria"></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+
+            <div class=" col-md-4 px-md-1">
+              <div class=" form-group">
+                <label> Subir a Twitter </label>
+                <input class=" form-control" type="file" />
+              </div>
+            </div>
+          </div>
+
+          <div class=" row">
+            <div class=" col-md-4 col-sm-4">
+              <h4 class=" card-title">
+                Imagen regular
+              </h4>
+
+                <div _ngcontent-vxb-c8="" class="fileinput text-center" >
+                  <input (change)="selecfoto($event)" multiple="multiple" accept="image/*" type="file">
+                  <div _ngcontent-vxb-c8="" class="thumbnail"><img _ngcontent-vxb-c8="" alt="..."
+                      src="assets/img/image_placeholder.jpg"></div>
+                  <div _ngcontent-vxb-c8="">
+                    <!---->
+                    <!----><button _ngcontent-vxb-c8="" class="btn-round btn btn-primary ng-star-inserted">
+                       Seleccionar imagen 
+                    </button>
+                    <!---->
+                  </div>
+                </div>
+            </div>
+            
+          </div>
+          <button class="btn btn-success" (click)="Crear(convocatoria);">Nueva Convocatoria</button>
         </div>
+
+      </div>
     </div>
+  </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
