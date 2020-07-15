@@ -1,6 +1,50 @@
 <div class="content">
     <div class="card">
-        <h1>Recepcionar documentos
-        </h1>
+        <div class="card-header">
+            <h1 class="title">Documentos:</h1>
+        </div>
+        <div class="card-body">
+            <div>
+                <table class="table" style="width:70%;">
+                    <thead></thead>
+                    <tbody>
+                        <th>1. Carta de Motivacion</th>
+                        <th><div *ngIf="show"><i class=" tim-icons icon-minimal-down" (click)="change(1);show=!show"  id="1"></i></div>
+                            <i class=" tim-icons icon-minimal-up" *ngIf="!show" (click)="change(1);show=!show" id="1"></i> 
+                        </th>
+                    </tbody>
+                    <tbody *ngIf="!show">
+                        <th> Hola soy la carta de motivacion</th>
+                        <th><div *ngIf="show2"><i class=" tim-icons icon-minimal-down" (click)="change(1);show2=!show2"  id="1"></i></div>
+                            <i class=" tim-icons icon-minimal-up" *ngIf="!show2" (click)="change(1);show2=!show2" id="1"></i>
+                        </th>
+                    </tbody>
+                    <tbody>
+                        <th>2. Solicitud</th>
+                        <th><div *ngIf="show2"><i class=" tim-icons icon-minimal-down" (click)="change(1);show2=!show2"  id="1"></i></div>
+                            <i class=" tim-icons icon-minimal-up" *ngIf="!show2" (click)="change(1);show2=!show2" id="1"></i>
+                        </th>
+                    </tbody>
+                    <tbody>
+                        <th>3. Documento de Identidad</th>
+                        <th><div *ngIf="show3"><i class=" tim-icons icon-minimal-down" (click)="change(1);show3=!show3"  id="1"></i></div>
+                            <i class=" tim-icons icon-minimal-up" *ngIf="!show3" (click)="change(1);show3=!show3" id="1"></i>
+                        </th>
+                    </tbody>
+                    <tbody>
+                        <th>4. Pasaporte</th>
+                        <th><div *ngIf="show4"><i class=" tim-icons icon-minimal-down" (click)="change(1);show4=!show4"  id="1"></i></div>
+                            <i class=" tim-icons icon-minimal-up" *ngIf="!show4" (click)="change(1);show4=!show4" id="1"></i>
+                        </th>
+                    </tbody>
+                    <tbody>
+                        <th>5. Informes de notas</th>
+                        <th><div *ngIf="show5"><i class=" tim-icons icon-minimal-down" (click)="change(1);show5=!show5"  id="1"></i></div>
+                            <i class=" tim-icons icon-minimal-up" *ngIf="!show5" (click)="change(1);show5=!show5" id="1"></i>
+                        </th>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

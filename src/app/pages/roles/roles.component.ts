@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef, ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+
+
 
 @Component({
   selector: 'app-roles',
@@ -36,3 +39,4 @@ export class RolesComponent implements OnInit {
   }
 
 }
+

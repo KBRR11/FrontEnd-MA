@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpErrorResponse, HttpEventType} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Convocatoria,DetalleConvocatoria } from '../Modelo/Convocatoria';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Usuarios } from '../Modelo/Usuarios';
 import { LoginService } from './login.service';
+import { Recurso} from '../Modelo/Recursos'
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,11 @@ import { LoginService } from './login.service';
 export class ConvocatoriaService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   usuario:Usuarios = new Usuarios();
-  constructor(private http: HttpClient, private router: Router, private loginService:LoginService) { }
+  headers: Headers;
+  constructor(private http: HttpClient, private router: Router, private loginService:LoginService) { 
+    this.headers = new Headers();
+    this.headers.set('Content-Type', 'multipart/form-data');
+  }
   //listar convocatoria
   private agregarAutorizacion(){
     let token = this.loginService.token;
@@ -48,7 +53,7 @@ export class ConvocatoriaService {
   }
   //buscar convocatoria
   eliminarConvocatoria(idconvocatoria:number) {
-    return this.http.delete<Convocatoria>(`${environment.apiUrl}/convocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
+    return this.http.delete<Convocatoria>(`${environment.apiUrl}/api/convocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
   /////////////DETALLE CONVOCATORIA/////////////
@@ -70,10 +75,35 @@ export class ConvocatoriaService {
   }
   //buscar convocatoria
   eliminarDetConvocatoria(idconvocatoria:number) {
-    return this.http.delete<DetalleConvocatoria>(`${environment.apiUrl}/detconvocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
+    return this.http.delete<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/del/`+idconvocatoria,{headers: this.agregarAutorizacion()})
+                    .pipe(catchError(this.handlerError));
+  }
+  //buscar alumno by convocatoria
+  buscarAlumnoDetConvocatoria(idconvocatoria:number): Observable<DetalleConvocatoria> {
+    return this.http.get<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/alum/`+idconvocatoria,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
   private handlerError( error ) {
     return throwError(error.message || "Server Error")
+  }
+
+  ///////////////// subir archivo //////////////
+
+  upload(archivo: File, id, idr,tipo:number): any{
+    const formData = new FormData();
+    console.log(archivo)
+    console.log("hi2")
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+    formData.append("idr", idr)
+    return this.http.post(`${environment.apiUrl}/upload/`+ tipo, formData)
+
+    
+  }
+  crear(archivo: File, id,tipo:number): any{
+    const formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+    return this.http.post(`${environment.apiUrl}/upload/create/`+ tipo, formData)
   }
 }

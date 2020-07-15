@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Convocatoria,DetalleConvocatoria } from "src/app/Modelo/Convocatoria";
 import { ConvocatoriaService } from "src/app/service/convocatoria.service";
+import { Ep } from 'src/app/Modelo/EP';
+import { EpService } from 'src/app/service/Ep.service';
 
 @Component({
   selector: 'app-detalleconvocatoria',
@@ -9,11 +11,10 @@ import { ConvocatoriaService } from "src/app/service/convocatoria.service";
 })
 export class DetalleconvocatoriaComponent implements OnInit {
   convocatorias: DetalleConvocatoria[]=[];
-
-  constructor(private convocatoriaservice:ConvocatoriaService) { }
+  listaep:Ep[]=[];
+  constructor(private convocatoriaservice:ConvocatoriaService,private epservice:EpService) { }
   id:number = Number(localStorage.getItem("idconvocaotria"))
   ngOnInit(): void {
-    
     this.Listar();
   }
   Listar() {
@@ -31,6 +32,7 @@ export class DetalleconvocatoriaComponent implements OnInit {
       }
     )
   }
+  
   Crear(convocatoria:Convocatoria){
     this.convocatoriaservice.crearConvocatoria(convocatoria).subscribe(
       (data)=>{
@@ -43,7 +45,23 @@ export class DetalleconvocatoriaComponent implements OnInit {
   editardet(detconv:DetalleConvocatoria){
     console.log(detconv)
   }
+  elminardet(idconvocatoria:number){
+    this.convocatoriaservice.eliminarDetConvocatoria(idconvocatoria).subscribe(
+      (data)=>{
+        console.log(data);
+      },(error)=>{
+        alert("OCURRIO UN ERROR "+error);
+      }
+    )
+  }
   listaralumnos(idconvocatoria:number){
     //alert(idconvocatoria)
+    this.convocatoriaservice.buscarAlumnoDetConvocatoria(idconvocatoria).subscribe(
+      (data)=>{
+        console.log(data);
+      },(error)=>{
+        alert("OCURRIO UN ERROR "+error);
+      }
+    )
   }
 }

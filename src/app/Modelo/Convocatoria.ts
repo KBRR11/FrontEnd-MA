@@ -6,6 +6,7 @@ export class Convocatoria{
     n_vacnates:number;
     ciclo_academico:String;
     estado:String;
+    documento:string;
 }
 
 export interface DetalleConvocatoria{
