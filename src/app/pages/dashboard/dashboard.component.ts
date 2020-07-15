@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import Chart from 'chart.js';
+import { Usuarios } from "src/app/Modelo/Usuarios";
+import { UsuariosService } from "src/app/service/usuarios.service";
 
 @Component({
   selector: "app-dashboard",
@@ -15,9 +17,53 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
   public clicked2: boolean = false;
 
-  constructor() {}
+  usuariopen : Usuarios = new Usuarios();
+  usuarioact : Usuarios = new Usuarios();
+  usuarioEstpen : Usuarios = new Usuarios();
+  usuarioTeachpen : Usuarios = new Usuarios();
+  usuarioEstact : Usuarios = new Usuarios();
+  usuarioTeachact : Usuarios = new Usuarios();
+
+  constructor(private usuarioService:UsuariosService) {}
 
   ngOnInit() {
+    this.usuarioService.getCont_Pending().subscribe((data) =>{
+      this.usuariopen = data['P_CURSOR_PEN'];
+     
+    })
+    ////////////////////////////////////////////////////
+    
+    this.usuarioService.getContEst_Pending().subscribe((data) =>{
+      this.usuarioEstpen = data['P_CURSOR_EST_PEN'];
+     
+    })
+
+    ////////////////////////////////////////////////////
+
+    this.usuarioService.getContTeach_Pending().subscribe((data) =>{
+      this.usuarioTeachpen = data['P_CURSOR_TEACH_PEN'];
+     
+    })
+
+   ////////////////////////////////////////////////////
+   this.usuarioService.getCont_Actives().subscribe((data) =>{
+    this.usuarioact = data['P_CURSOR_ACT'];
+   
+  })
+  ////////////////////////////////////////////////////
+  this.usuarioService.getContEst_Actives().subscribe((data) =>{
+    this.usuarioEstact = data['P_CURSOR_EST_ACT'];
+   
+  })
+  ////////////////////////////////////////////////////
+  this.usuarioService.getContTeach_Actives().subscribe((data) =>{
+    this.usuarioTeachact = data['P_CURSOR_TEACH_ACT'];
+   
+  })
+  ////////////////////////////////////////////////////
+
+
+
     var gradientChartOptionsConfigurationWithTooltipBlue: any = {
       maintainAspectRatio: false,
       legend: {

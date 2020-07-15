@@ -14,6 +14,7 @@ export class RegisterPerComponent implements OnInit {
 
   ngOnInit() {
     this.terminarProceso();
+    //console.log(localStorage);
   }
 
   addpersona (persona:Personas){ 
