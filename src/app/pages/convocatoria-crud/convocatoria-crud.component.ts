@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ConvocatoriaCRUDComponent implements OnInit {
   listaconvocatorias:Convocatoria[]=[]
+  convocatora:Convocatoria = new Convocatoria();
   closeResult = '';
   constructor(private convocatoriaservice:ConvocatoriaService, private router: Router, private modalService: NgbModal) { }
 
@@ -35,26 +36,18 @@ export class ConvocatoriaCRUDComponent implements OnInit {
       }
     )
   }
-  editarconv(convocatoria:Convocatoria){
-    this.convocatoriaservice.actualizarConvocatoria(convocatoria).subscribe((data)=>{
-      console.log(data);
+  buscarConvocatoria(convocatoria:Convocatoria){
+    console.log(convocatoria)
+    this.convocatora=convocatoria
+    
+  }
+  editarconv(){
+    this.convocatoriaservice.actualizarConvocatoria(this.convocatora).subscribe((data)=>{
+      console.log(this.convocatora);
+      this.listar();
     })
   }
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 }

@@ -17,42 +17,36 @@ export class CrearconvocatoriaComponent implements OnInit {
 
   //////////////////////
   public archivoSeleccionado: File;
-  listaconvocatorias:Convocatoria[]=[]
   constructor(private convocatoriaservice:ConvocatoriaService, private epservice:EpService, private http:HttpClient) { }
  
   ngOnInit(): void {
     
     this.listarep();
     }
-     listar(){
-        this.convocatoriaservice.listaConvocatoria().subscribe((data)=>{
-        console.log(data["LIST_CONVOCATORIA"])
-        this.listaconvocatorias=data["LIST_CONVOCATORIA"]
-      })
-      
-    }
   Crear(){
     
 
-    /*this.convocatoriaservice.crearConvocatoria(this.convocatoria).subscribe(
+    this.convocatoriaservice.crearConvocatoria(this.convocatoria).subscribe(
 
       (data)=>{
         alert(data);
+        this.convocatoriaservice.listaConvocatoria().subscribe((data)=>{
+          console.log(data["LIST_CONVOCATORIA"])
+           var x:any = data["LIST_CONVOCATORIA"][0] 
+          console.log(x as Convocatoria);
+          this.convocatoriaservice.crear(this.archivoSeleccionado,(x as Convocatoria).idconvocatoria , 1)
+          .subscribe(data =>{
+            console.log(data)
+            swal.fire('Son putos por eso de subio', 'Felicitaciones lo lograron vayanse a dormir', 'success');
+          });
+        })
       },(error)=>{
         alert("OCURRIO UN ERROR "+error);
       }
     )
-    */
-   console.log(this.listar());
-   this.listar();
-   var x = this.listaconvocatorias[this.listaconvocatorias.length]
-    console.log(x)
-   this.convocatoriaservice.crear(this.archivoSeleccionado, 1, 1)
-   .subscribe(data =>{
-     console.log(data)
-     swal.fire('Son putos por eso de subio', 'Felicitaciones lo lograron vayanse a dormir', 'success');
-   });
-   console.log("hi")
+   
+  /* 
+   console.log("hi")*/
   }
   listarep(){
     this.epservice.ListAllEp().subscribe(
