@@ -24,6 +24,7 @@ import { RolesComponent } from '../../pages/roles/roles.component';
 import { RecepcionardocComponent } from '../../pages/recepcionardoc/recepcionardoc.component';
 import { OpcionComponent } from '../../pages/opcion/opcion/opcion.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { RequisitoComponent} from '../../pages/requisito/requisito.component'
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     CrearconvocatoriaComponent,
     DetalleconvocatoriaComponent,
     RecepcionardocComponent,
-    OpcionComponent
+    OpcionComponent,
+    RequisitoComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent
