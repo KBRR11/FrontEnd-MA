@@ -48,13 +48,13 @@ export class RequisitoService {
   }
 
   updateRequisito(requisito:Requisito){
-    return this.http.put<Requisito>(`${environment.apiUrl}/api/requisitos/upd/`+requisito.idrequisito+requisito,{headers: this.Autorization()}).pipe(catchError(e =>{
+    return this.http.put<Requisito>(`${environment.apiUrl}/api/requisitos/upd/`+requisito.idrequisitos+requisito,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }
 
   DeleteNoRequisito(requisito:Requisito):Observable<Requisito[]>{
-    console.log('hola estamos en delete',requisito.idrequisitos);
+    console.log('hola estamos en delete'+requisito.idrequisitos);
     return this.http.delete<Requisito[]>(this.convenios+'api/requisitos/del/'+requisito.idrequisitos,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));

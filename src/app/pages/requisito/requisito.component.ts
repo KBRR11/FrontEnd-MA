@@ -37,7 +37,7 @@ export class RequisitoComponent implements OnInit {
   }
 
   getId(requisito:Requisito):void{
-    this.service.getRequisitoId(requisito.idrequisito).subscribe((data)=>{
+    this.service.getRequisitoId(requisito.idrequisitos).subscribe((data)=>{
       this.loadReqData = data['P_IDREQUISITOS'];
       console.log('busqueda de id'+this.loadReqData);
     })
