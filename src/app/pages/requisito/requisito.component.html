@@ -36,8 +36,8 @@
                                     <th scope="row">{{i+1}}</th>
                                     <td>{{req.nombre}}</td> 
                                     <td>{{req.estado}}</td>
-                                    <td><i class="tim-icons icon-pencil" (click)="show2=!show2;show=!show;UpdateOpcion()"></i></td>
-                                    <td><i class="tim-icons icon-simple-remove" (click)="DeleteOpcion(opcion)"></i></td>
+                                    <td><i class="tim-icons icon-pencil" (click)="show2=!show2;show=!show;UpdateRequisito(req)"></i></td>
+                                    <td><i class="tim-icons icon-simple-remove" (click)="DeleteRequisito(req.idrequisito)"></i></td>
                                 </tr>
                                 <!--  <tr>
                                     <th scope="row">1</th>
@@ -91,6 +91,40 @@
                             <div class="derecha">
                                 <button type="button" class="btn btn-primary" (click)="show3=!show3;show=!show">Cancelar</button>
                                 <button type="button" class="btn btn-success  btn-fill" (click)="saveRequisito();show3=!show3;show=!show" >Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card" *ngIf="show2">
+                <div class="card-header">
+                    <h1 class="title">Modificar Requisito</h1>
+                </div>
+                <div class="card-body">
+                    <div class="reduccion" >
+                        <form action="">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Nombre:</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="name of the opcion" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Estado:</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pers" class="col-form-label">Convenios:</label>
+                                <select class="form-control" (change)="selectConvenio2($event)">
+                                  <option value="0">Seleccionar...</option>
+                                  <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
+                                </select>
+                            </div>
+                            <div class="derecha">
+                                <button type="button" class="btn btn-primary" (click)="show2=!show2;show=!show">Cancelar</button>
+                                <button type="button" class="btn btn-success  btn-fill" (click)="modificar();show2=!show2;show=!show" >Actualizar</button>
                             </div>
                         </form>
                     </div>

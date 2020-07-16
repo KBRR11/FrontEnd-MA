@@ -77,4 +77,23 @@ export class RequisitoComponent implements OnInit {
   selectConvenio2(event:any){
     this.selectedConvenio2 = event.target.value;
   }
+
+  DeleteRequisito(idrequisito:number){
+    Swal.fire({
+      title:'¿Esta seguro?',
+      text:'No podras revertir los cambios!',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor:'#3085d6',
+      cancelButtonColor:'#d33',
+      confirmButtonText:'Eliminar'
+    }).then(result  =>{
+      if(result.value){
+        this.service.DeleteNoRequisito(idrequisito).subscribe((data)=>{
+          Swal.fire('Eliminado!','Requisito Eliminado Correctamente!','success')
+          this.getReqConve();
+        })
+      }
+    })
+  }
 }
