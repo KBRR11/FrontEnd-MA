@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://moac-bcknd.herokuapp.com'
+  /////////////apiUrl: 'https://moviaca-bknd.herokuapp.com'
+  apiUrl: 'http://localhost:8090'
+ 
 };
 
 /*

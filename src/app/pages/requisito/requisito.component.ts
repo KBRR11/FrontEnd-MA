@@ -78,7 +78,7 @@ export class RequisitoComponent implements OnInit {
     this.selectedConvenio2 = event.target.value;
   }
 
-  DeleteRequisito(idrequisito:number){
+  DeleteRequisito(req:Requisito){
     Swal.fire({
       title:'¿Esta seguro?',
       text:'No podras revertir los cambios!',
@@ -89,7 +89,7 @@ export class RequisitoComponent implements OnInit {
       confirmButtonText:'Eliminar'
     }).then(result  =>{
       if(result.value){
-        this.service.DeleteNoRequisito(idrequisito).subscribe((data)=>{
+        this.service.DeleteNoRequisito(req).subscribe((data)=>{
           Swal.fire('Eliminado!','Requisito Eliminado Correctamente!','success')
           this.getReqConve();
         })

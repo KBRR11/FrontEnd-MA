@@ -53,8 +53,9 @@ export class RequisitoService {
     }));
   }
 
-  DeleteNoRequisito(idrequisito:number){
-    return this.http.delete<Requisito>(`${environment.apiUrl}/api/requisitos/del/`+idrequisito,{headers: this.Autorization()}).pipe(catchError(e =>{
+  DeleteNoRequisito(requisito:Requisito):Observable<Requisito[]>{
+    console.log('hola estamos en delete',requisito.idrequisitos);
+    return this.http.delete<Requisito[]>(this.convenios+'api/requisitos/del/'+requisito.idrequisitos,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }

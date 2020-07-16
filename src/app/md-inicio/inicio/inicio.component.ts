@@ -14,7 +14,8 @@ export class InicioComponent implements OnInit {
     // _config.interval = 2000;
     }
 
-  ngOnInit(): void {
+  ngOnInit() {
+localStorage.clear();
   }
 
 }

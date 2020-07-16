@@ -28,7 +28,7 @@
 
         <section *ngIf="bori;">
           <div class="card-body col-md-12" id="" >
-            <div *ngFor="let user of user_cont">
+            <div *ngFor="let user of users" >
               <div class="card card-user col-md-3" style="float: left; margin-left: 20px">
                 <div class="image">
                   <img src="assets/img/damir-bosnjak.jpg" alt="...">
@@ -37,38 +37,39 @@
                   <div class="author">
                     <a href="#">
                       <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
-                      <h5 class="title">{{user.nombre}}</h5>
+                      <h3 class="title">{{user.usuario}}</h3>
                     </a>
                     <p class="description">
-                      @chetfaker
                     </p>
                   </div>
                   <p class="description text-center">
-                    "I like the way you work it
-                    <br> No diggity
-                    <br> I wanna bag it up"
+                    {{user.nombres }}
+                    <br> {{user.apellidos }}
+                    <br> Bien Causa
                   </p>
                 </div>
                 <div class="card-footer">
                   <hr>
                   <div class="button-container">
                     <div class="row">
-                      <div class="col-lg-3 col-md-6 col-6 ml-auto">
-                        <h5>12
+                      <div class="col-lg-4 col-md-6 col-6 ml-auto">
+                        <h5 (click)="loadUser(user.idusuario); met_tipo(user.tipo)">
+                          <i class="tim-icons icon-refresh-01"></i>
                           <br>
-                          <small (click)="mostrar_modi()">Files</small>
+                          <small >Actualizar</small>
                         </h5>
                       </div>
                       <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                        <h5>2GB
+                        <h5>{{user.estado}}
                           <br>
-                          <small>Used</small>
+                          <small>Estado</small>
                         </h5>
                       </div>
                       <div class="col-lg-3 mr-auto">
-                        <h5>24,6$
+                        <h5 (click)="eliminiarUser(user.idusuario)">
+                          <i class="tim-icons icon-simple-remove"></i>
                           <br>
-                          <small>Spent</small>
+                          <small>Delete</small>
                         </h5>
                       </div>
                     </div>
@@ -99,23 +100,23 @@
                           <div class="form-group"><label>
                               Sede
                             </label>
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" id="" [(ngModel)]="user.sede" name="sede">
                               <option value="">Seleccione una Opcion</option>
-                              <option value="">Lima</option>
-                              <option value="">Juliaca</option>
-                              <option value="">Tarapoto</option>
+                              <option value="1">Lima</option>
+                              <option value="2">Juliaca</option>
+                              <option value="3">Tarapoto</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-3 px-md-1">
                           <div class="form-group"><label>
                               Nombre de usuario
-                            </label><input class="form-control" type="text" placeholder="michael23" value=""></div>
+                            </label><input class="form-control" type="text" placeholder="michael23" value="" [(ngModel)]="user.usuario" name="user"></div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
                               Contraseña
-                            </label><input class="form-control" placeholder="..." type="password"></div>
+                            </label><input class="form-control" placeholder="..." type="password" [(ngModel)]="user.password" name="pass"></div>
                         </div>
                       </div>
   
@@ -123,12 +124,12 @@
                       <div class="row">
                         <div class="col-md-6 pr-md-1">
                           <div class="form-group"><label> Nombres
-                            </label><input class="form-control" type="text" value=""></div>
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="persona.nombres" name="nom"></div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                               Apellidos
-                            </label><input class="form-control" type="text" value=""></div>
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="persona.apellidos" name="apellido"></div>
                         </div>
                       </div>
   
@@ -136,24 +137,24 @@
                         <div class="col-md-4 pr-md-1">
                           <div class="form-group"><label>
                               Tipo Documento </label>
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" name="" id="" [(ngModel)]="persona.t_documento" name="t_doc">
                               <option value="">Seleccione una Opcion</option>
-                              <option value="">DNI</option>
-                              <option value="">Carnet Extranjeria</option>
+                              <option value="1">DNI</option>
+                              <option value="2">Carnet Extranjeria</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-4 px-md-1">
                           <div class="form-group">
                             <label>N° Documento</label>
-                            <input class="form-control" type="text" value="">
+                            <input class="form-control" type="text" value="" [(ngModel)]="persona.n_documento" name="n_doc">
                           </div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
                             Dirección
                           </label>
-                          <input class="form-control" type="text" value="">
+                          <input class="form-control" type="text" value="" [(ngModel)]="persona.direccion" name="direccion">
                         </div>
                         </div>
                       </div>
@@ -162,7 +163,8 @@
                         <div class="col-md-4 pr-md-1">
                           <div class="form-group"><label>
                               Tipo </label>
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" name="" id="tipo" [(ngModel)]="user.tipo" name="tipo" (click)="met_tipo(user.tipo)">
+                              <option value="">Seleccione una Opcion:</option>
                               <option value="1">Estudiante</option>
                               <option value="2">Docente</option>
                               <option value="3">Especial</option>
@@ -172,8 +174,9 @@
                         <div class="col-md-4 px-md-1">
                           <div class="form-group"><label>
                             Escuela Profesional </label>
-                          <select class="form-control" name="" id="">
+                          <select class="form-control" id="" [(ngModel)]="user.idep" name="idep">
                             <option value="">Selecciona una Opcion</option>
+                            <option *ngFor="let es of escuelas" value="{{es.IDEP}}">{{es.NOM_EP}}</option>
                           </select>
                         </div>
                         </div>
@@ -181,20 +184,20 @@
                           <div class="form-group"><label>
                             Rol
                           </label>
-                          <select class="form-control" name="" id="">
+                          <select class="form-control" id="" [(ngModel)]="user.idrol" name="idrol">
                             <option value="">Seleccione una Opcion</option>
-                            <option value="">Profesor</option>
+                            <option *ngFor="let rol of roles" value="{{rol.IDROL}}">{{rol.NOMBRE}}</option>
                           </select>
                         </div>
                           
                         </div>
                       </div>
 
-                      <div class="row">
-                        <div class="col-md-6 pr-md-1">
+                      <div class="row" *ngIf="tipoc">
+                        <div class="col-md-6">
                           <div class="form-group"><label>
                             Ciclo </label>
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" name="" id="" [(ngModel)]="user.ciclo" name="ciclo">
                               <option value="">Seleccione una Opcion</option>
                               <option value="3">III</option>
                             <option value="4">IV</option>
@@ -207,10 +210,10 @@
                             </select>
                           </div>
                         </div>
-                        <div class="col-md-6 px-md-1">
+                        <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                               Codigo
-                            </label><input class="form-control" type="text" value="">
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.codigo" name="codigo">
                           </div>
                         </div>
                         
@@ -221,14 +224,14 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label> Correo (Institucional)</label>
-                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value="">
+                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value="" [(ngModel)]="persona.correo" name="correo">
                           </div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                             Telefono
                           </label>
-                          <input class="form-control" type="text" value="">
+                          <input class="form-control" type="text" value="" [(ngModel)]="persona.telefono" name="telefono">
                         </div>
                         </div>
                       </div>
@@ -236,7 +239,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <center><button class="btn btn-fill btn-danger" type="submit"  (click)="ocultar_crear()"> Guardar Datos </button>
+                            <center><button class="btn btn-fill btn-danger" type="submit"  (click)="crearUser()"> Guardar Datos </button>
                             </center>
                           </div>
                         </div>
@@ -271,8 +274,8 @@
 
         <!-------------------------------Modificar Usuario-->
 
-        <section *ngIf="modifica">
-          <div class="content modificar" >
+        <section *ngIf="modifica;">
+          <div class="content crear" >
             <div class="row">
               <div class="col-md-9">
                 <div class="card">
@@ -281,30 +284,30 @@
                       Perfil de Usuario M
                     </h4>
                   </div>
-                  <div class="card-body">
+                  <div class="card-body ">
                     <form novalidate="" class="ng-untouched ng-pristine ng-valid">
                       <div class="row">
                         <div class="col-md-5 pr-md-1">
                           <div class="form-group"><label>
                               Sede
                             </label>
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" id="" [(ngModel)]="user.sede" name="sede">
                               <option value="">Seleccione una Opcion</option>
-                              <option value="">Lima</option>
-                              <option value="">Juliaca</option>
-                              <option value="">Tarapoto</option>
+                              <option value="1">Lima</option>
+                              <option value="2">Juliaca</option>
+                              <option value="3">Tarapoto</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-3 px-md-1">
                           <div class="form-group"><label>
                               Nombre de usuario
-                            </label><input class="form-control" type="text" placeholder="michael23" value=""></div>
+                            </label><input class="form-control" type="text" placeholder="michael23" value="" [(ngModel)]="user.usuario" name="user"></div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
                               Contraseña
-                            </label><input class="form-control" placeholder="..." type="password"></div>
+                            </label><input class="form-control" placeholder="..." type="password" [(ngModel)]="user.password" name="pass"></div>
                         </div>
                       </div>
   
@@ -312,12 +315,12 @@
                       <div class="row">
                         <div class="col-md-6 pr-md-1">
                           <div class="form-group"><label> Nombres
-                            </label><input class="form-control" type="text" value=""></div>
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.nombres" name="nom"></div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                               Apellidos
-                            </label><input class="form-control" type="text" value=""></div>
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.apellidos" name="apellido"></div>
                         </div>
                       </div>
   
@@ -325,24 +328,24 @@
                         <div class="col-md-4 pr-md-1">
                           <div class="form-group"><label>
                               Tipo Documento </label>
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" name="" id="" [(ngModel)]="user.t_documento" name="t_doc">
                               <option value="">Seleccione una Opcion</option>
-                              <option value="">DNI</option>
-                              <option value="">Carnet Extranjeria</option>
+                              <option value="1">DNI</option>
+                              <option value="2">Carnet Extranjeria</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-4 px-md-1">
                           <div class="form-group">
                             <label>N° Documento</label>
-                            <input class="form-control" type="text" value="">
+                            <input class="form-control" type="text" value="" [(ngModel)]="user.n_documento" name="n_doc">
                           </div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
                             Dirección
                           </label>
-                          <input class="form-control" type="text" value="">
+                          <input class="form-control" type="text" value="" [(ngModel)]="user.direccion" name="direccion">
                         </div>
                         </div>
                       </div>
@@ -351,7 +354,8 @@
                         <div class="col-md-4 pr-md-1">
                           <div class="form-group"><label>
                               Tipo </label>
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" name="" id="tipo" [(ngModel)]="user.tipo" name="tipo" (click)="met_tipo(user.tipo)">
+                              <option value="">Seleccione una Opcion:</option>
                               <option value="1">Estudiante</option>
                               <option value="2">Docente</option>
                               <option value="3">Especial</option>
@@ -361,8 +365,9 @@
                         <div class="col-md-4 px-md-1">
                           <div class="form-group"><label>
                             Escuela Profesional </label>
-                          <select class="form-control" name="" id="">
-                            <option value="3">III</option>
+                          <select class="form-control" id="tipo" [(ngModel)]="user.idep" name="idep">
+                            <option value="">Selecciona una Opcion</option>
+                            <option *ngFor="let es of escuelas" value="{{es.IDEP}}">{{es.NOM_EP}}</option>
                           </select>
                         </div>
                         </div>
@@ -370,62 +375,62 @@
                           <div class="form-group"><label>
                             Rol
                           </label>
-                          <select class="form-control" name="" id="">
+                          <select class="form-control" id="" [(ngModel)]="user.idrol" name="idrol">
                             <option value="">Seleccione una Opcion</option>
-                            <option value="">Profesor</option>
+                            <option *ngFor="let rol of roles" value="{{rol.IDROL}}">{{rol.NOMBRE}}</option>
                           </select>
                         </div>
                           
                         </div>
                       </div>
 
-                      <div class="row">
-                        <div class="col-md-6 pr-md-1">
-                          <div class="form-group"><label>
-                            Ciclo </label>
-                            <select class="form-control" name="" id="">
-                              <option value="">Seleccione una Opcion</option>
-                              <option value="3">III</option>
-                            <option value="4">IV</option>
-                            <option value="5">V</option>
-                            <option value="6">VI</option>
-                            <option value="7">VII</option>
-                            <option value="8">VIII</option>
-                            <option value="9">IX</option>
-                            <option value="10">X</option>
-                            </select>
+
+                          <div class="row" *ngIf="tipo">
+                            <div class="col-md-6">
+                              <div class="form-group"><label>
+                                Ciclo </label>
+                                <select class="form-control" name="" id="" [(ngModel)]="user.ciclo" name="ciclo">
+                                  <option value="">Seleccione una Opcion</option>
+                                  <option value="3">III</option>
+                                <option value="4">IV</option>
+                                <option value="5">V</option>
+                                <option value="6">VI</option>
+                                <option value="7">VII</option>
+                                <option value="8">VIII</option>
+                                <option value="9">IX</option>
+                                <option value="10">X</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6 pl-md-1">
+                              <div class="form-group"><label>
+                                  Codigo
+                                </label><input class="form-control" type="text" value="" [(ngModel)]="user.codigo" name="codigo">
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-md-6 px-md-1">
-                          <div class="form-group"><label>
-                              Codigo
-                            </label><input class="form-control" type="text" value="">
-                          </div>
-                        </div>
-                        
-                      </div>
-  
+      
   
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label> Correo (Institucional)</label>
-                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value="">
+                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value="" [(ngModel)]="user.correo" name="correo">
                           </div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                             Telefono
                           </label>
-                          <input class="form-control" type="text" value="">
+                          <input class="form-control" type="text" value="" [(ngModel)]="user.telefono" name="telefono">
                         </div>
                         </div>
                       </div>
-  
+
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <center><button class="btn btn-fill btn-danger" type="submit" (click)="cabeza=!cabeza; cuerpo=!cuerpo; ver2=!ver2"> Guardar Datos </button>
+                            <center><button class="btn btn-fill btn-danger" type="submit"  (click)="modificarUser(user)"> Guardar Datos </button>
                             </center>
                           </div>
                         </div>
@@ -453,6 +458,7 @@
               </div>
             </div>
           </div>
+         
         </section>
         
 

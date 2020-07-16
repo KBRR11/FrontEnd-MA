@@ -51,6 +51,48 @@ import { Rol} from "src/app/Modelo/Rol";
         }));
       }
 
+      getCont_Pending(): Observable<Usuarios[]> {
+        return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/contador_pending`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+          return throwError(e);
+        }));
+    }
+    
+    getContEst_Pending(): Observable<Usuarios[]> {
+      return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/contEst_pending`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    
+        return throwError(e);
+      }));
+  }
+
+  getContTeach_Pending(): Observable<Usuarios[]> {
+    return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/contTeach_pending`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  
+      return throwError(e);
+    }));
+}
+
+    getCont_Actives(): Observable<Usuarios[]> {
+      return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/contador_active`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    
+        return throwError(e);
+      }));
+  }
+
+  getContEst_Actives(): Observable<Usuarios[]> {
+    return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/contEst_active`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  
+      return throwError(e);
+    }));
+}
+
+getContTeach_Actives(): Observable<Usuarios[]> {
+  return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/contTeach_active`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+
       //////////new inter////////////////////777
       getUser(){
         return this.http.get<Usuario>(`${ environment.apiUrl }/api/listar`,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -95,6 +137,13 @@ import { Rol} from "src/app/Modelo/Rol";
 
       getrolId(idrol:number){
         return this.http.get<Rol>(`${ environment.apiUrl }/api/rol/`+idrol,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
+
+      eliminar(id:number){
+        return this.http.delete<Usuario>(`${ environment.apiUrl }/api/delete/`+id,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
             
           return throwError(e);
         }))

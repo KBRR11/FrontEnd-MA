@@ -17,6 +17,12 @@ export class Usuarios{
     n_documento:string;
     color_fondo:string;
     color_menu:string;
+    ACTIVOS:string;
+    PENDIENTES:string;
+    ESTUDIANTES_PEN:string;
+    DOCENTES_PEN:string;
+    ESTUDIANTES_ACT:string;
+    DOCENTES_ACT:string;
 }
 
 export class Usuario{
@@ -27,7 +33,16 @@ export class Usuario{
     sede:number;
     tipo:number;
     estado:number;
-    idpersona: number;
     idep:number;
+    idrol:number;
     ciclo:string;
+
+    idpersona: number;
+    nombres:string;
+    apellidos:string;
+    t_documento:number;
+    n_documento:string;
+    correo:string;
+    telefono:string;
+    direccion:string;
 }

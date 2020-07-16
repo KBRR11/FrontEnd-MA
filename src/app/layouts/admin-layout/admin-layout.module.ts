@@ -3,6 +3,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import {PdfViewerModule} from 'ng2-pdf-viewer'
 
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
@@ -23,8 +25,8 @@ import { UsuariointComponent } from '../../pages/usuarioint/usuarioint.component
 import { RolesComponent } from '../../pages/roles/roles.component';
 import { RecepcionardocComponent } from '../../pages/recepcionardoc/recepcionardoc.component';
 import { OpcionComponent } from '../../pages/opcion/opcion/opcion.component';
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RequisitoComponent} from '../../pages/requisito/requisito.component'
+import { ViewerComponent} from '..//../pages/viewer/viewer.component'
 
 @NgModule({
   imports: [
@@ -33,6 +35,7 @@ import { RequisitoComponent} from '../../pages/requisito/requisito.component'
     FormsModule,
     HttpClientModule,
     NgbModule,
+    PdfViewerModule
   ],
   declarations: [
     DashboardComponent,
@@ -50,7 +53,8 @@ import { RequisitoComponent} from '../../pages/requisito/requisito.component'
     DetalleconvocatoriaComponent,
     RecepcionardocComponent,
     OpcionComponent,
-    RequisitoComponent
+    RequisitoComponent,
+    ViewerComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent
