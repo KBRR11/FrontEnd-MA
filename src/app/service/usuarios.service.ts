@@ -100,4 +100,11 @@ import { Rol} from "src/app/Modelo/Rol";
         }))
       }
 
+      eliminar(id:number){
+        return this.http.delete<Usuario>(`${ environment.apiUrl }/api/delete/`+id,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
+
     }
