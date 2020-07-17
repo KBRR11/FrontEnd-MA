@@ -35,7 +35,7 @@ export class RequisitoService {
   }
 
   getRequisitoId(idrequisito:number):Observable<Requisito>{
-    return this.http.get<Requisito>(`${environment.apiUrl}/api/requisitos`+idrequisito,{headers: this.Autorization()}).pipe(catchError(e =>{
+    return this.http.get<Requisito>(this.requisito+'api/requisitos/'+idrequisito,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }
@@ -48,7 +48,7 @@ export class RequisitoService {
   }
 
   updateRequisito(requisito:Requisito){
-    return this.http.put<Requisito>(`${environment.apiUrl}/api/requisitos/upd/`+requisito.idrequisitos+requisito,{headers: this.Autorization()}).pipe(catchError(e =>{
+    return this.http.put<Requisito>(`${environment.apiUrl}/api/requisitos/upd/`+requisito.idrequisitos,requisito,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }

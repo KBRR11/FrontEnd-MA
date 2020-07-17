@@ -14,12 +14,16 @@ export class RequisitoComponent implements OnInit {
   show:boolean=true;
   listRequisitos: Requisito[]=[];
   loadReqData: Requisito[]=[];
+  loadRequisitoData: Requisito[] = [];
   listConvenios: Convenio[]=[];
   loadReqConveData: Requisito[]=[];
   selectedConvenio: number= null;
   selectedConvenio2: number= null;
+  selectedConvenio3: number= null;
+  selectedConvenio4: number= null;
   convenio: Convenio = new Convenio();
   AddRequisito: Requisito = new Requisito();
+  modRequisito: Requisito = new Requisito();
   constructor(private service:RequisitoService,private router:Router) { }
 
   ngOnInit(){
@@ -73,9 +77,14 @@ export class RequisitoComponent implements OnInit {
     this.selectedConvenio = event.target.value;
     this.getReqConve();
   }
-
   selectConvenio2(event:any){
     this.selectedConvenio2 = event.target.value;
+  }
+  selectConvenio3(event:any){
+    this.selectedConvenio3 = event.target.value;
+  }
+  selectConvenio4(event:any){
+    this.selectedConvenio4 = event.target.value;
   }
 
   DeleteRequisito(req:Requisito){
@@ -91,6 +100,32 @@ export class RequisitoComponent implements OnInit {
       if(result.value){
         this.service.DeleteNoRequisito(req).subscribe((data)=>{
           Swal.fire('Eliminado!','Requisito Eliminado Correctamente!','success')
+          this.getReqConve();
+        })
+      }
+    })
+  }
+
+  loadRequisito(requisito: Requisito):void{
+    this.service.getRequisitoId(requisito.idrequisitos).subscribe((data) => {
+      console.log(requisito);
+      this.loadRequisitoData = data['REQUISITO'];
+    })
+  }
+  updateReq(requisito:Requisito){
+    Swal.fire({
+      title:'¿Esta seguro?',
+      text:'Se modificaron los datos!',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor:'#3085d6',
+      cancelButtonColor:'#d33',
+      confirmButtonText:'Modificar'
+    }).then(result  =>{
+      if(result.value){
+        console.log("update",requisito)
+        this.service.updateRequisito(requisito).subscribe((data)=>{
+          Swal.fire('Modificado!','Requisito Modificado Correctamente!','success')
           this.getReqConve();
         })
       }
