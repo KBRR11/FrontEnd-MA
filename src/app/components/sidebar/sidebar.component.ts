@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-
+import { Router } from '@angular/router';
 declare interface RouteInfo {
   path: string;
   title: string;
@@ -35,9 +35,9 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-bell-55",
     class: ""
   },
-  {
+ {
     path: "/user",
-    title: "User Profile",
+    title: "Perfil de Usuario",
     rtlTitle: "ملف تعريفي للمستخدم",
     icon: "icon-single-02",
     class: ""
@@ -58,9 +58,9 @@ export const ROUTES: RouteInfo[] = [
     
   },
   {
-    path: "/rtl",
-    title: "RTL Support",
-    rtlTitle: "ار تي ال",
+    path: "/info_convo",
+    title: "info",
+    rtlTitle: "123",
     icon: "icon-world",
     class: ""
   },
@@ -137,13 +137,13 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() {}
+  constructor(private router:Router) {}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     
     this.datosUser();
-   
+   this.Comprobación();
    
   }
   isMobileMenu() {
@@ -155,7 +155,16 @@ export class SidebarComponent implements OnInit {
   datosUser(){/// sirve para obtener los datos
     let datos = JSON.parse(sessionStorage.getItem("personas"))
     document.getElementById("datosu").innerHTML=datos.nombres+"<br> "+datos.apellidos;
-    
-      
   }
+
+  Comprobación(){
+    let rol = JSON.parse(sessionStorage.getItem("personas"))
+    if (rol.nom_rol=="ROLE_SECRETARY" || rol.nom_rol=="ROLE_ADMIN") {
+      this.router.navigate(['/dashboard']);
+    }else{
+      this.router.navigate(['/user']);
+      console.log('funka');
+    }
+  }
+
 }
