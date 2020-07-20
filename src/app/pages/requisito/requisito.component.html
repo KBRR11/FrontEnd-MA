@@ -1,0 +1,127 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" *ngIf="show">
+                <div class="card-header">
+                    <h1 class="title">Requisito</h1>
+                    <div class="container row">
+                        <div class="col-8">
+                            <button class="btn btn-success" (click)="show=!show;show3=!show3;">Agregar</button>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="pers" class="col-form-label">Convenios:</label>
+                                <select class="form-control" (change)="selectConvenio($event)">
+                                  <option value="0">Seleccionar...</option>
+                                  <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
+                                </select>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Estado</th>
+                                    <th colspan="2">Opcion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                <tr *ngFor="let req of loadReqConveData ;let i=index">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>{{req.nombre}}</td> 
+                                    <td>{{req.estado}}</td>
+                                    <td><i class="tim-icons icon-pencil" (click)="show2=!show2;show=!show;loadRequisito(req)"></i></td>
+                                    <td><i class="tim-icons icon-simple-remove" (click)="DeleteRequisito(req)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card" *ngIf="show3">
+                <div class="card-header">
+                    <h1 class="title">Nueva Requisito</h1>
+                </div>
+                <div class="card-body">
+                    <div class="reduccion" >
+                        <form action="">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Nombre:</label>
+                                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="name of the opcion" [(ngModel)]="AddRequisito.nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="pers" class="col-form-label">Convenios:</label>
+                                <select class="form-control" (change)="selectConvenio2($event)">
+                                  <option value="0">Seleccionar...</option>
+                                  <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
+                                </select>
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Icono:</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option >fa fa-user</option>
+                                    <option>fa fa-delete</option>
+                                    <option>fa fa-trash</option>
+                                    <option>fa fa-pencil</option>
+                                    <option>fa fa-cerrar</option>
+                                </select>
+                            </div>-->
+                            <div class="form-group">
+                                
+                            </div>
+                            <div class="form-group">
+                                
+                            </div>
+                            <div class="derecha">
+                                <button type="button" class="btn btn-primary" (click)="show3=!show3;show=!show">Cancelar</button>
+                                <button type="button" class="btn btn-success  btn-fill" (click)="saveRequisito();show3=!show3;show=!show" >Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card" *ngIf="show2">
+                <div class="card-header">
+                    <h1 class="title">Modificar Requisito</h1>
+                </div>
+                <div class="card-body">
+                    <div class="reduccion" *ngFor="let requisito of loadRequisitoData">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Nombre:</label>
+                                <input type="email" class="form-control" [(ngModel)]="requisito.nombre" name="nombre" id="exampleFormControlInput1"
+                                    placeholder="name of the opcion" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Estado:</label>
+                                <select class="form-control" [(ngModel)]="requisito.estado" name="estado"  (change)="selectConvenio4($event)">
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pers" class="col-form-label">Convenios:</label>
+                                <select class="form-control" [(ngModel)]="requisito.idconvenio" name="idconvenio" (change)="selectConvenio3($event)">
+                                  <option value="0">Seleccionar...</option>
+                                  <option *ngFor="let convenio  of listConvenios" class="" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
+                                </select>
+                            </div>
+                            <div class="derecha">
+                                <button type="button" class="btn btn-primary" (click)="show2=!show2;show=!show">Cancelar</button>
+                                <button type="button" class="btn btn-success  btn-fill" (click)="updateReq(requisito);show2=!show2;show=!show" >Actualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

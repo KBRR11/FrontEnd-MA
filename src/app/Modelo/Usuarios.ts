@@ -33,7 +33,16 @@ export class Usuario{
     sede:number;
     tipo:number;
     estado:number;
-    idpersona: number;
     idep:number;
+    idrol:number;
     ciclo:string;
+
+    idpersona: number;
+    nombres:string;
+    apellidos:string;
+    t_documento:number;
+    n_documento:string;
+    correo:string;
+    telefono:string;
+    direccion:string;
 }

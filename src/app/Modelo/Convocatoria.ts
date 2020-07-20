@@ -9,7 +9,7 @@ export class Convocatoria{
     documento:string;
 }
 
-export interface DetalleConvocatoria{
+export class DetalleConvocatoria{
     idetalle_convocatoria:number;
     idconvocatoria:number;
     idescuela:number;
@@ -18,4 +18,5 @@ export interface DetalleConvocatoria{
     hasta:String;
     nombre:String;
     escuela:String;
+    
 }

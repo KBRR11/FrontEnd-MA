@@ -15,6 +15,8 @@ import { RolesComponent } from 'src/app/pages/roles/roles.component';
 import { OpcionComponent} from "../../pages/opcion/opcion/opcion.component";
 import { CrearconvocatoriaComponent } from '../../pages/crearconvocatoria/crearconvocatoria.component';
 import { RecepcionardocComponent } from '../../pages/recepcionardoc/recepcionardoc.component';
+import { RequisitoComponent } from '../../pages/requisito/requisito.component';
+import { InfoConvocatoriaComponent } from 'src/app/pages/info-convocatoria/info-convocatoria.component';
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 //import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 //import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
@@ -48,8 +50,11 @@ export const AdminLayoutRoutes: Routes = [
   canActivate:[AuthGuard]},
   { path: "recepcionardoc", component: RecepcionardocComponent ,
   canActivate:[AuthGuard]},
+  { path: "requisito", component: RequisitoComponent ,
+  canActivate:[AuthGuard]}, 
+  { path: "info_convo", component: InfoConvocatoriaComponent ,
+  canActivate:[AuthGuard]},
   //{ path: "inicio", component: InicioComponent },
   //{ path: "convenios", component: ConveniosComponent },
-  
   // { path: "rtl", component: RtlComponent }
 ];

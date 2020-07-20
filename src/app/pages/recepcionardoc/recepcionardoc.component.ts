@@ -21,7 +21,6 @@ export class RecepcionardocComponent implements OnInit {
   change(id) {
     switch (id) {
       case 1:
-        alert("este es uno")
         document.getElementById('1').nodeValue='<i class=" tim-icons icon-minimal-up" (click)="change(1)" id="1">'
         break;
       case 2:
