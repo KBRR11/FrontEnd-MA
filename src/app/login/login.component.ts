@@ -22,9 +22,11 @@ export class LoginComponent implements OnInit {
     let datosusu = JSON.parse(sessionStorage.getItem("personas"));
     if(this.loginService.isAuthenticated()==true){
       Swal.fire('Login','Hola '+datosusu.nombre1+' ya estas Autentificado', 'info');
-      this.router.navigate(['/dashboard'])
+     
     }
   }
+
+  
 
   login():void{
     // console.log(this.usuarios.usuario);

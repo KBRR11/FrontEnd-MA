@@ -35,8 +35,8 @@ import { CanActivate } from '@angular/router';
       }
 
       login(usuario:Usuarios):Observable<any>{
-        //const urlEndpoint = 'http://localhost:8090/oauth/token';
-        const urlEndpoint = 'https://moviaca-bknd.herokuapp.com/oauth/token';
+        const urlEndpoint = 'http://localhost:8090/oauth/token';
+        //const urlEndpoint = 'https://moviaca-bknd.herokuapp.com/oauth/token';
         const credenciales = btoa('macademica'+':'+'12345678');
 
         const httpHeaders = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
@@ -51,7 +51,7 @@ import { CanActivate } from '@angular/router';
 
       guardarUsuario(accesToken:String):void{
         let datos = JSON.parse(atob(accesToken.split(".")[1]));
-        console.log(sessionStorage);
+        //console.log(sessionStorage);
         this._persona = new Personas();
         this._persona.nombres = datos.NOMBRES;
         this._persona.apellidos = datos.APELLIDOS;
