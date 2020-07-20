@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Convocatoria } from "src/app/Modelo/Convocatoria";
+import { Convocatoria, DetalleConvocatoria} from "src/app/Modelo/Convocatoria";
 import { ConvocatoriaService } from "src/app/service/convocatoria.service";
 import { FormsModule } from '@angular/forms';
 import { EpService } from 'src/app/service/Ep.service';
 import { Ep } from 'src/app/Modelo/EP';
 import swal from 'sweetalert2';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
+
+
 @Component({
   selector: 'app-crearconvocatoria',
   templateUrl: './crearconvocatoria.component.html',
@@ -14,6 +16,10 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 export class CrearconvocatoriaComponent implements OnInit {
   convocatoria:Convocatoria = new Convocatoria();
   listaep:Ep[]=[];
+
+  es: number [] = [];
+  detalle_convo :DetalleConvocatoria [] = [];
+  detalle : DetalleConvocatoria = new DetalleConvocatoria();
 
   //////////////////////
   public archivoSeleccionado: File;
@@ -27,19 +33,36 @@ export class CrearconvocatoriaComponent implements OnInit {
     
 
     this.convocatoriaservice.crearConvocatoria(this.convocatoria).subscribe(
-
       (data)=>{
         alert(data);
         this.convocatoriaservice.listaConvocatoria().subscribe((data)=>{
           console.log(data["LIST_CONVOCATORIA"])
            var x:any = data["LIST_CONVOCATORIA"][0] 
           console.log(x as Convocatoria);
+
+          
+
           this.convocatoriaservice.crear(this.archivoSeleccionado,(x as Convocatoria).idconvocatoria , 1)
           .subscribe(data =>{
             console.log(data)
             swal.fire('Son putos por eso de subio', 'Felicitaciones lo lograron vayanse a dormir', 'success');
           });
+          for (let index = 0; index < this.es.length; index++) {
+            const element = this.es[index];
+            this.detalle.idconvocatoria=(x as Convocatoria).idconvocatoria;
+            this.detalle.idescuela=this.es[index];
+            this.detalle.nombre=(x as Convocatoria).nom_convocatoria
+            this.detalle.desde= "2021-03-05 17:45:01"
+            this.detalle.hasta= "2021-06-20 17:45:01"
+
+            this.detalle_convo.push(this.detalle)
+            this.convocatoriaservice.crearDetConvocatoria(this.detalle_convo[index]).subscribe((data) =>{
+              console.log(data)
+            })
+
+          }
         })
+        
       },(error)=>{
         alert("OCURRIO UN ERROR "+error);
       }
@@ -57,6 +80,23 @@ export class CrearconvocatoriaComponent implements OnInit {
     )
     
   }
+  sele(po: number){
+    let varia: boolean = false;
+    for (let index = 0; index < this.es.length; index++) {
+      const element = this.es[index];
+      if (element==po ) {
+        varia = true;
+        this.es.splice(index,1)
+        break;
+      }
+    }
+    if(!varia){
+      this.es.push(po); 
+    }
+    console.log(this.es)
+  }
+
+
   selecfoto(event){
     this.archivoSeleccionado = event.target.files[0];
     console.log(this.archivoSeleccionado);
