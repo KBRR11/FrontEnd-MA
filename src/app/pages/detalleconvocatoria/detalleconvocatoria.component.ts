@@ -3,6 +3,7 @@ import { Convocatoria,DetalleConvocatoria } from "src/app/Modelo/Convocatoria";
 import { ConvocatoriaService } from "src/app/service/convocatoria.service";
 import { Ep } from 'src/app/Modelo/EP';
 import { EpService } from 'src/app/service/Ep.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-detalleconvocatoria',
@@ -12,7 +13,8 @@ import { EpService } from 'src/app/service/Ep.service';
 export class DetalleconvocatoriaComponent implements OnInit {
   convocatorias: DetalleConvocatoria[]=[];
   listaep:Ep[]=[];
-  constructor(private convocatoriaservice:ConvocatoriaService,private epservice:EpService) { }
+  alumno: any[]=[];
+  constructor(private convocatoriaservice:ConvocatoriaService,private epservice:EpService, private modalService: NgbModal) { }
   id:number = Number(localStorage.getItem("idconvocaotria"))
   ngOnInit(): void {
     this.Listar();
@@ -58,10 +60,15 @@ export class DetalleconvocatoriaComponent implements OnInit {
     //alert(idconvocatoria)
     this.convocatoriaservice.buscarAlumnoDetConvocatoria(idconvocatoria).subscribe(
       (data)=>{
+        this.alumno=data['CONVOCATORIA']
         console.log(data);
       },(error)=>{
         alert("OCURRIO UN ERROR "+error);
       }
     )
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 }
