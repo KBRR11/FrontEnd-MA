@@ -3,7 +3,7 @@ export class Convocatoria{
     idconvocatoria:number;
     nom_convocatoria:String;
     info_convocatoria:String;
-    n_vacnates:number;
+    n_vacantes:number;
     ciclo_academico:String;
     estado:String;
     documento:string;
