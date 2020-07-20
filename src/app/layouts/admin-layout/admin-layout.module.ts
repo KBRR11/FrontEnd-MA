@@ -17,6 +17,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import { CrearconvocatoriaComponent } from "../../pages/crearconvocatoria/crearconvocatoria.component";
 import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
 import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/detalleconvocatoria.component";
+import { InfoConvocatoriaComponent } from '../../pages/info-convocatoria/info-convocatoria.component';
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
@@ -54,7 +55,8 @@ import { ViewerComponent} from '..//../pages/viewer/viewer.component'
     RecepcionardocComponent,
     OpcionComponent,
     RequisitoComponent,
-    ViewerComponent
+    ViewerComponent,
+    InfoConvocatoriaComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent

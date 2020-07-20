@@ -20,11 +20,11 @@
                                     <th class="text-center"><h4>Informe</h4></th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let detconv of convocatorias">
+                            <tbody *ngFor="let detconv of convocatorias; let i = index">
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{i+1}}</td>
                                     <td>{{detconv.desde}} - {{detconv.hasta}}</td>
-                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="listaralumnos(detconv.idetalle_convocatoria)" data-toggle="modal" data-target="#exampleModal"></i></td>
+                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="listaralumnos(detconv.idetalle_convocatoria); open(content)" data-toggle="modal" data-target="#exampleModal"></i></td>
                                     <td >{{detconv.escuela}}</td>
                                     <td>Activo</td>
                                     <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="editardet(detconv)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminardet(detconv.idetalle_convocatoria)"></i></td>
@@ -56,3 +56,36 @@
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Lista de Estudiantes</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Codigo</th>
+                  <th scope="col">Ciclo</th>
+              </tr>
+          </thead>
+          <tbody>
+             
+              <tr *ngFor="let al of alumno ;let i=index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{al.nombre}}</td> 
+                  <td>{{al.codigo}}</td>
+                  <td>{{al.ciclo}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  </div>
+  
+</ng-template>

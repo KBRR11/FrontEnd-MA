@@ -50,18 +50,16 @@
                                     <th class="text-center"><h4>Opciones</h4></th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let convocatoria of listaconvocatorias;">
+                            <tbody *ngFor="let convocatoria of listaconvocatorias; let i = index">
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{i+1}}</td>
                                     <td>{{convocatoria.ciclo_academico}}</td>
                                     <td ><h3 >{{convocatoria.n_vacnates}}</h3></td>
                                     <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="detalleconv(convocatoria.idconvocatoria)" routerLinkActive="router-link-active" ></i></td>
-                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="buscarConvocatoria(convocatoria);open(content)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminarconv(convocatoria.idconvocatoria)"></i></td>
+                                    <td class="text-center"><i class="tim-icons icon-single-copy-04" (click)="openModalWithComponent()"></i><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="buscarConvocatoria(convocatoria);open(content)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminarconv(convocatoria.idconvocatoria)"></i></td>
                                 </tr>
                             </tbody>
                         </table>
-
-                        <button type="button" class="btn btn-primary" (click)="openModalWithComponent()">Create modal with component</button>
                     </div>
                 </div>
             </div>
