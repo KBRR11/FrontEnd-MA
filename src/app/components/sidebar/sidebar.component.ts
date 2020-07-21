@@ -14,7 +14,7 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "لوحة القيادة",
     icon: "icon-chart-pie-36",
     class: ""
-  },
+  }/*,
   {
     path: "/icons",
     title: "Icons",
@@ -56,7 +56,8 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-align-center",
     class: ""
     
-  },
+  }*/
+  ,
   {
     path: "/info_convo",
     title: "info",

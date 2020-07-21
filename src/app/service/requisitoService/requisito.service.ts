@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginService } from 'src/app/service/login.service'
 import { Observable, throwError } from 'rxjs';
@@ -12,11 +13,18 @@ import { catchError } from 'rxjs/operators';
 })
 export class RequisitoService {
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
-  constructor(private http:HttpClient, private loginService: LoginService) { }
+  headers: Headers;
+  constructor(private http:HttpClient, private loginService: LoginService, private router: Router) { 
+    this.headers = new Headers();
+    this.headers.set('Content-Type', 'multipart/form-data');
+  }
+  ////requisito='http://localhost:8090/';
   requisito='http://localhost:8090/';
   convenios='http://localhost:8090/';
+  
 
   private Autorization(){
+
     let token= this.loginService.token;
     if(token!=null){
       return this.httpHeaders.append('Authorization','Bearer'+token);
