@@ -1,38 +1,27 @@
 <div class="content">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="card">
-                <div class="container"> 
-                    <ngb-tabset [justify]="currentJustify">
-                        <ngb-tab title="Simple">
-                          <ng-template ngbTabContent>
-                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-                            master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-                            dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-                            iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                          </ng-template>
-                        </ngb-tab>
-                        <ngb-tab>
-                          <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>
-                          <ng-template ngbTabContent><p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-                            master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-                            dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-                            iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                          </ng-template>
-                        </ngb-tab>
-                        <ngb-tab title="A very long nav title">
-                          <ng-template ngbTabContent>
-                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-                                master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-                                dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-                                iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p></ng-template>
-                        </ngb-tab>
-                      </ngb-tabset>
-                </div>
-                
-            </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="container">
+        <div class="tab">
+          <button class="tablinks btn btn-primary" (click)="openCity(event, 'Information')" class="col-md-4">Informacion de Convenios</button>
+          <button class="tablinks primary" (click)="openCity(event, 'Requisitos')" class="col-md-4">Requisitos</button>
+          <button class="tablinks primary" (click)="openCity(event, 'Vamos')" class="col-md-4">Participa</button>
         </div>
-    </div>
-</div>   
 
+        <div id="Information" class="tabcontent form-group">
+          <app-info-vacantes></app-info-vacantes>
+        </div>
+
+        <div id="Requisitos" class="tabcontent form-group">
+          <app-info-requisitos></app-info-requisitos>
+        </div>
+
+        <div id="Vamos" class="tabcontent form-group">
+          <app-info-validador></app-info-validador>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

@@ -27,7 +27,10 @@ import { RolesComponent } from '../../pages/roles/roles.component';
 import { RecepcionardocComponent } from '../../pages/recepcionardoc/recepcionardoc.component';
 import { OpcionComponent } from '../../pages/opcion/opcion/opcion.component';
 import { RequisitoComponent} from '../../pages/requisito/requisito.component'
-import { ViewerComponent} from '..//../pages/viewer/viewer.component'
+import { ViewerComponent} from '..//../pages/viewer/viewer.component';
+import { InfoVacantesComponent } from '..//../pages/info_components/info-vacantes/info-vacantes.component';
+import { InfoRequisitosComponent } from '..//../pages/info_components/info-requisitos/info-requisitos.component';
+import { InfoValidadorComponent} from '..//../pages/info_components/info-validador/info-validador.component';
 
 @NgModule({
   imports: [
@@ -56,7 +59,10 @@ import { ViewerComponent} from '..//../pages/viewer/viewer.component'
     OpcionComponent,
     RequisitoComponent,
     ViewerComponent,
-    InfoConvocatoriaComponent
+    InfoConvocatoriaComponent,
+    InfoVacantesComponent,
+    InfoRequisitosComponent,
+    InfoValidadorComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent
