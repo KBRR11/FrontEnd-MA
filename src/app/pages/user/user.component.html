@@ -3,139 +3,176 @@
   <div class=" row">
     <div class=" col-md-8">
       <div class=" card">
-        <div class=" card-header"><h5 class=" title">Edit Profile</h5></div>
+        <div class=" card-header" ><h5 class=" title">Información de Contacto</h5></div>
         <div class=" card-body">
           <form>
-            <div class=" row">
-              <div class=" col-md-5 pr-md-1">
+            <div class=" row" *ngFor="let per of persona">
+              <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
-                  <label> Company (disabled) </label>
+                  <label> Ocupación </label>
                   <input
                     class=" form-control"
                     disabled=""
                     placeholder="Company"
                     type="text"
-                    value="Creative Code Inc."
+                    value={{per.TIPO}}
                   />
                 </div>
               </div>
+
               <div class=" col-md-3 px-md-1">
                 <div class=" form-group">
-                  <label> Username </label>
+                  <label> Sede </label>
                   <input
                     class=" form-control"
-                    placeholder="Username"
+                    placeholder="codigo"
+                    disabled=""
                     type="text"
-                    value="michael23"
+                    value={{per.SEDE}}
                   />
                 </div>
               </div>
-              <div class=" col-md-4 pl-md-1">
+
+              <div class=" col-md-6 pl-md-1">
                 <div class=" form-group">
                   <label for="exampleInputEmail1"> Email address </label>
                   <input
                     class=" form-control"
-                    placeholder="mike@email.com"
+                    placeholder="Email"
+                    value={{per.CORREO}}
                     type="email"
                   />
                 </div>
               </div>
             </div>
-            <div class=" row">
+            <div class=" row" *ngFor="let per of persona">
               <div class=" col-md-6 pr-md-1">
                 <div class=" form-group">
-                  <label> First Name </label>
+                  <label> Nombres </label>
                   <input
                     class=" form-control"
-                    placeholder="Company"
+                    placeholder="Nombres"
                     type="text"
-                    value="Mike"
+                    value={{per.NOMBRES}}
                   />
                 </div>
               </div>
               <div class=" col-md-6 pl-md-1">
                 <div class=" form-group">
-                  <label> Last Name </label>
+                  <label> Apellidos </label>
                   <input
                     class=" form-control"
-                    placeholder="Last Name"
+                    placeholder="Apellidos"
                     type="text"
-                    value="Andrew"
+                    value={{per.APELLIDOS}}
                   />
                 </div>
               </div>
             </div>
-            <div class=" row">
+            <div class=" row" *ngFor="let per of persona">
               <div class=" col-md-12">
                 <div class=" form-group">
-                  <label> Address </label>
+                  <label> Dirección </label>
                   <input
                     class=" form-control"
-                    placeholder="Home Address"
+                    placeholder="Dirección domiciliaria"
                     type="text"
-                    value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                    value={{per.DIRECCION}}
                   />
                 </div>
               </div>
             </div>
-            <div class=" row">
+            <div class=" row" *ngFor="let per of persona">
               <div class=" col-md-4 pr-md-1">
                 <div class=" form-group">
-                  <label> City </label>
+                  <label> Código Universitario </label>
                   <input
                     class=" form-control"
-                    placeholder="City"
+                    placeholder="codigo"
+                    disabled=""
                     type="text"
-                    value="Mike"
+                    value={{per.CODIGO}}
                   />
                 </div>
               </div>
               <div class=" col-md-4 px-md-1">
                 <div class=" form-group">
-                  <label> Country </label>
+                  <label> {{per.T_DOCUMENTO}} </label>
                   <input
                     class=" form-control"
-                    placeholder="Country"
+                    placeholder="Nro. de identificación"
+                    disabled=""
                     type="text"
-                    value="Andrew"
+                    value={{per.N_DOCUMENTO}}
                   />
                 </div>
               </div>
               <div class=" col-md-4 pl-md-1">
                 <div class=" form-group">
-                  <label> Postal Code </label>
+                  <label> Telefono </label>
                   <input
                     class=" form-control"
-                    placeholder="ZIP Code"
+                    placeholder="Nro. de Telefono"
                     type="number"
+                    value={{per.TELEFONO}}
                   />
                 </div>
               </div>
             </div>
-            <div class=" row">
-              <div class=" col-md-8">
+            
+            <div class=" row" *ngFor="let per of persona">
+              
+              <div class=" col-md-4 pr-md-1">
                 <div class=" form-group">
-                  <label> About Me </label>
-                  <textarea
+                  <label> Facultad: {{per.ACRONIMO}}</label>
+                  <input
                     class=" form-control"
-                    cols="80"
-                    placeholder="Here can be your description"
-                    rows="4"
-                    value="Mike"
-                  >
-Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.
-</textarea
-                  >
+                    placeholder="Facultad o Area"
+                    disabled=""
+                    type="text"
+                    value={{per.NOM_FACULTAD}}
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 px-md-1">
+                <div class=" form-group">
+                  <label> Carrera </label>
+                  <input
+                    class=" form-control"
+                    disabled=""
+                    type="text"
+                    value={{per.NOM_EP}}
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label> Ciclo </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Ciclo Actual"
+                    disabled=""
+                    type="text"
+                    value={{per.CICLO}}
+                  />
                 </div>
               </div>
             </div>
           </form>
         </div>
+
         <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
+          <button class=" btn btn-fill btn-danger" type="submit">Actualizar datos</button>
         </div>
       </div>
     </div>
+
+
+
+
+
+
+    
     <div class=" col-md-4">
       <div class=" card card-user">
         <div class=" card-body">
@@ -182,5 +219,89 @@ Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.
         </div>
       </div>
     </div>
+
+
+
+
+
+    <div class=" col-md-8">
+      <div class=" card">
+        <div class=" card-header"><h5 class=" title">Información de usuario</h5></div>
+        <div class=" card-body">
+          <form>
+            <div class=" row" *ngFor="let per of persona">
+              <div class=" col-md-7 pr-md-1">
+                <div class=" form-group">
+                  <label> Nombre de Usuario </label>
+                  <input
+                    class=" form-control"
+                    placeholder="username"
+                    type="text"
+                    id="username"
+                    value={{per.USUARIO}}
+                  />
+                </div>
+              </div>
+              
+            </div>
+           
+         
+                
+            
+          </form>
+        </div>
+
+        <div class=" card-footer">
+          <button class=" btn btn-fill btn-danger" (click)="updUsername()">Actualizar Nombre de Usuario</button>
+        </div>
+      </div>
+    </div>
+
+    <div class=" col-md-5">
+      <div class=" card">
+        <div class=" card-header"><h5 class=" title">Actualizar Contraseña</h5></div>
+        <div class=" card-body">
+          <form>
+            <div class="row">
+              <div class=" col-md-7 pr-md-1">
+                <div class=" form-group">
+                  <label> Nueva Contraseña </label>
+                  <input
+                    class=" form-control"
+                    placeholder="new password"
+                    type="password"
+                    id="pass1"
+                  />
+                </div>
+              </div>
+              
+
+              <div class=" col-md-7 pr-md-1">
+                <div class=" form-group">
+                  <label> Confirmar Contraseña </label>
+                  <input
+                    class=" form-control"
+                    placeholder="confirm password"
+                    type="password"
+                    id="pass2"
+                    
+                  />
+                </div>
+              </div>
+            </div>
+           
+         
+                
+            
+          </form>
+        </div>
+
+        <div class=" card-footer">
+          <button class=" btn btn-fill btn-danger" (click)="actualizarPass()">Actualizar Password</button>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>

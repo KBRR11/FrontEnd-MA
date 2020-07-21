@@ -35,7 +35,7 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-dark" (click)="editarconv()">Save</button>
+                          <button type="button" class="btn btn-outline-dark" (click)="editarconv(); modal.dismiss('Cross click')">Save</button>
                         </div>
                         
                       </ng-template>
@@ -46,7 +46,7 @@
                                     <th><h4>Nro</h4></th>
                                     <th><h4>Semestre</h4></th>
                                     <th><h4>Vacantes</h4></th>
-                                    <th><h4>Plan de Convocatoria</h4></th>
+                                    <th><h4>Detalle Convocatoria</h4></th>
                                     <th class="text-center"><h4>Opciones</h4></th>
                                 </tr>
                             </thead>
@@ -54,9 +54,10 @@
                                 <tr>
                                     <td>{{i+1}}</td>
                                     <td>{{convocatoria.ciclo_academico}}</td>
-                                    <td ><h3 >{{convocatoria.n_vacnates}}</h3></td>
+                                    <td ><h3 >{{convocatoria.n_vacantes}}</h3></td>
                                     <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="detalleconv(convocatoria.idconvocatoria)" routerLinkActive="router-link-active" ></i></td>
-                                    <td class="text-center"><i class="tim-icons icon-single-copy-04" (click)="openModalWithComponent()"></i><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="buscarConvocatoria(convocatoria);open(content)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminarconv(convocatoria.idconvocatoria)"></i></td>
+                                    <td class="text-center"><i class="tim-icons icon-single-copy-04" (click)="openModalWithComponent()"></i>
+                                      <i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="buscarConvocatoria(convocatoria);open(content)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminarconv(convocatoria.idconvocatoria)"></i></td>
                                 </tr>
                             </tbody>
                         </table>

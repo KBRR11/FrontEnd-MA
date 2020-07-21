@@ -1,88 +1,33 @@
 <div class="content">
+    <h1>Documentos:</h1>
+    <hr>
     <div class="card">
         <div class="card-header">
-            <h1 class="title">Documentos:</h1>
+            <div class="form-group">
+                <label for="pers" class="col-form-label">Convenios:</label>
+                <select class="form-control" (change)="selectConvenio($event)">
+                  <option value="0">Seleccionar...</option>
+                  <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
+                </select>
+            </div> 
         </div>
-        <div class="card-body">
-            <div>
-                <table class="table" style="width:70%;">
-                    <thead></thead>
-                    <tbody>
-                        <th>1. Carta de Motivacion</th>
-                        <th><div *ngIf="show"><i class=" tim-icons icon-minimal-down" (click)="change(1);show=!show"  id="1"></i></div>
-                            <i class=" tim-icons icon-minimal-up" *ngIf="!show" (click)="change(1);show=!show" id="1"></i> 
-                        </th>
-                    </tbody>
-                    <tbody *ngIf="!show">
-                        <th> Hola soy la carta de motivacion</th>
-                        <th>
-                            <div class="card">
-                                <div class="card-header derecha">
-                                    <input type="button"  class="btn btn-primary" value="Descargar">
-                                    <input type="button"  class="btn btn-success  btn-fill" value="Editar">
-                                </div>
-                                <div class="card-body">
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                </div>
-                            </div>
-                        </th>
-                    </tbody>
-                    <tbody>
-                        <th>2. Solicitud</th>
-                        <th><div *ngIf="show2"><i class=" tim-icons icon-minimal-down" (click)="change(1);show2=!show2"  id="1"></i></div>
-                            <i class=" tim-icons icon-minimal-up" *ngIf="!show2" (click)="change(1);show2=!show2" id="1"></i>
-                        </th>
-                    </tbody>
-                    <tbody *ngIf="!show2">
-                        <th>2. Solicitud</th>
-                        <th>
-                            <div class="card">
-                                <div class="card-header derecha">
-                                    <input type="button"  class="btn btn-primary" value="Descargar">
-                                    <input type="button"  class="btn btn-success  btn-fill" value="Editar">
-                                </div>
-                                <div class="card-body">
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                    DOCUMENTO
-                                </div>
-                            </div>
-                        </th>
-                    </tbody>
-                    <tbody>
-                        <th>3. Documento de Identidad</th>
-                        <th><div *ngIf="show3"><i class=" tim-icons icon-minimal-down" (click)="change(1);show3=!show3"  id="1"></i></div>
-                            <i class=" tim-icons icon-minimal-up" *ngIf="!show3" (click)="change(1);show3=!show3" id="1"></i>
-                        </th>
-                    </tbody>
-                    <tbody>
-                        <th>4. Pasaporte</th>
-                        <th><div *ngIf="show4"><i class=" tim-icons icon-minimal-down" (click)="change(1);show4=!show4"  id="1"></i></div>
-                            <i class=" tim-icons icon-minimal-up" *ngIf="!show4" (click)="change(1);show4=!show4" id="1"></i>
-                        </th>
-                    </tbody>
-                    <tbody>
-                        <th>5. Informes de notas</th>
-                        <th><div *ngIf="show5"><i class=" tim-icons icon-minimal-down" (click)="change(1);show5=!show5"  id="1"></i></div>
-                            <i class=" tim-icons icon-minimal-up" *ngIf="!show5" (click)="change(1);show5=!show5" id="1"></i>
-                        </th>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <ngb-accordion class="">
+            <ngb-panel *ngFor="let req of loadReqConveData">
+                <ng-template ngbPanelTitle>
+                    {{req.nombre}}
+                    <hr>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                   <div class="botones">
+                       <button class="btn btn-primary">Descargar</button>
+                       <button class="btn btn-warning">Cambiar</button>
+                   </div>
+                   <div class="imagen">
+                       imagen
+                   </div> 
+                   <hr>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
     </div>
 </div>

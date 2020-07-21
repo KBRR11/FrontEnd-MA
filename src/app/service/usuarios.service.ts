@@ -25,7 +25,7 @@ import { Rol} from "src/app/Modelo/Rol";
         return this.httpHeaders;
       }
 
-
+//////////////////////////// CREACION DE USUARIOS //////////////////////////////////////////////////////////////////////////////////////////////////
       crearUsuarioEstudiante(usuario:Usuarios){
         return this.http.post<Usuarios>(`${ environment.apiUrl }/api/add_student`,usuario,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
             
@@ -40,7 +40,7 @@ import { Rol} from "src/app/Modelo/Rol";
            }))
       }
 
-
+///////////////////////// CONFIGURACION DE USUARIO //////////////////////////////////////////////////////////////////////////////////////////////
       updateColores(usuario:Usuarios){
         let id = JSON.parse(sessionStorage.getItem("personas"));
   
@@ -50,7 +50,7 @@ import { Rol} from "src/app/Modelo/Rol";
           return throwError(e);
         }));
       }
-
+///////////////////////////// CONTADORES ADMINISTRATIVOS //////////////////////////////////////////////////////////////////
       getCont_Pending(): Observable<Usuarios[]> {
         return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/contador_pending`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
@@ -92,6 +92,47 @@ getContTeach_Actives(): Observable<Usuarios[]> {
     return throwError(e);
   }));
 }
+
+////////////////////////////////// TRAER DATOS PERSONALES Y ACTUALIZAR //////////////////////////////////////////////////////////////////////////
+
+
+DatosPersona(usuario:Usuarios){
+  let id = JSON.parse(sessionStorage.getItem("personas"));
+
+this.usuario.idusuario = id.idusuario;
+  return this.http.get<Usuarios[]>(`${ environment.apiUrl }/api/listar/`+this.usuario.idusuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+//////////////////////////////////////////// ACTUALIZAR CONTRASEñA //////////////////////////////////////////////////////////////////
+
+updatePassword(password:string){
+  let id = JSON.parse(sessionStorage.getItem("personas"));
+//console.log(password);
+this.usuario.idusuario = id.idusuario;
+
+this.usuario.password=password;
+  return this.http.put<Usuarios>(`${ environment.apiUrl }/api/upd/password/`+this.usuario.idusuario,this.usuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+
+//////////////////////////////////////////// ACTUALIZAR USERNAME //////////////////////////////////////////////////////////////////
+
+updateUsername(username:string){
+  let id = JSON.parse(sessionStorage.getItem("personas"));
+//console.log(username);
+this.usuario.idusuario = id.idusuario;
+
+this.usuario.usuario=username;
+  return this.http.put<Usuarios>(`${ environment.apiUrl }/api/upd/nom_user/`+this.usuario.idusuario,this.usuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+
 
       //////////new inter////////////////////777
       getUser(){
