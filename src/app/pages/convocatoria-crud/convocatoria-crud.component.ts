@@ -12,6 +12,10 @@ import { ViewerComponent} from "../../pages/viewer/viewer.component";
   styleUrls: ['./convocatoria-crud.component.scss']
 })
 export class ConvocatoriaCRUDComponent implements OnInit {
+
+
+  title: string = "Convocatorias"
+  //////////////
   bsModalRef: BsModalRef;
 
   listaconvocatorias:Convocatoria[]=[]

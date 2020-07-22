@@ -1,7 +1,33 @@
-.tam-tabla{
-    font-size: 20px ;
+
+.card{
+    padding:20px;
+    border-radius: 9px;
 }
-h3{
-    margin-left: 20%;
-     margin-top: 30px;
+.card-header{
+    margin-left: -57px;
 }
+.card-body{
+    margin-left: -37px;
+}
+table{
+    font-family: "Poppins", sans-serif;
+    box-sizing:border-box;
+    
+}
+#deta{
+    padding-left: -10px;
+    width: 25%;
+}
+table th{
+    text-align: center;
+}
+table td{
+    text-align: center;
+}
+.modal-body table th{
+    color:#525f7f !important; 
+}
+.modal-body table td{
+    color:#525f7f !important; 
+}
+
