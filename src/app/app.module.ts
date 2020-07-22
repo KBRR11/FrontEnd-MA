@@ -25,6 +25,7 @@ import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/d
 
 
 
+
 //import { ConvocatoriasComponent } from './md-inicio/convocatorias/convocatorias.component';
 //import { ConveniosComponent } from './md-inicio/convenios/convenios.component';
 
