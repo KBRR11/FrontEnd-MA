@@ -3,9 +3,10 @@
     <div class=" col-md-12">
       <div class=" card card-plain">
         <div class="titulo">
-          <h2 style="margin-left: 37px; margin-top: 10px; margin-bottom: 10px;">{{title}}</h2>
+          <h3 style="margin-left: 2px; margin-top: -5px; margin-bottom: 4px;">{{title}}</h3>
         </div>
-        <div class=" card-header" *ngIf="header;">
+        <div class="cabesea">  
+          <div class=" card-header" *ngIf="header;">
             <div >
               <form id="formacabeza">
                 <div class="input-group no-border col-md-8">
@@ -13,64 +14,70 @@
                     style="margin-left: 5px;">
                   <div class="input-group-append" id="iconobuscar">
                     <div class="input-group-text">
-                      <i class="tim-icons icon-zoom-split"></i>
+                      <button class="btn btn-link btn-sm btn-icon" id="bus" ria-describedby="tooltip-190" style="margin-bottom: -13px; ">
+                        <i class="tim-icons icon-zoom-split" style="margin-top: -7px;"></i>
+                      </button>
                       <style></style>
                     </div>
                   </div>
                   <div class="boton" style="float: right;">
                     <button class=" btn btn-fill btn-info" type="submit" 
                       (click)="mostrar_crear()">Nuevo Usuario</button>
-                  </div>
+                  </div>                
                 </div>
               </form>
             </div>
         </div>
+        </div>
+        
 
         <section *ngIf="bori;">
-          <div class="card-body col-md-12" id="" >
-            <div *ngFor="let user of users" >
-              <div class="card card-user col-md-3" style="float: left; margin-left: 20px">
-                <div class="image">
-                  <img src="assets/img/damir-bosnjak.jpg" alt="...">
-                </div>
-                <div class="card-body">
-                  <div class="author">
-                    <a href="#">
-                      <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
-                      <h3 class="title">{{user.usuario}}</h3>
-                    </a>
-                    <p class="description">
+          <div class="b_principal">
+            <div class="card-body col-md-12" id="" >
+              <div *ngFor="let user of users" >
+                <div class="card card-user col-md-3" style="float: left; margin-left: 20px">
+                  <div class="image">
+                    <img src="assets/img/damir-bosnjak.jpg" alt="...">
+                  </div>
+                  <div class="card-body">
+                    <div class="author">
+                      <a href="#">
+                        <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+                        <h3 class="title">{{user.usuario}}</h3>
+                      </a>
+                      <p class="description">
+                      </p>
+                    </div>
+                    <p class="description text-center">
+                      {{user.nombres }}
+                      <br> {{user.apellidos }}
+                      <br> Bien Causa
                     </p>
                   </div>
-                  <p class="description text-center">
-                    {{user.nombres }}
-                    <br> {{user.apellidos }}
-                    <br> Bien Causa
-                  </p>
-                </div>
-                <div class="card-footer">
-                  <hr>
-                  <div class="button-container">
-                    <div class="row">
-                      <div class="col-lg-4 col-md-6 col-6 ml-auto">
-                        <h5 (click)="loadUser(user.idusuario); met_tipo(user.tipo)">
-                          <i class="tim-icons icon-refresh-01"></i>
-                          <br>
-                          <small >Actualizar</small>
-                        </h5>
-                      </div>
-                      <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                        <h5>{{user.estado}}
-                          <br>
-                          <small>Estado</small>
-                        </h5>
-                      </div>
-                      <div class="col-lg-3 mr-auto">
-                        <h5 (click)="eliminiarUser(user.idusuario)">
-                          <i class="tim-icons icon-simple-remove"></i>
-                          <br>
-                          <small>Delete</small>
-                        </h5>
+                  <div class="card-footer">
+                    <hr>
+                    <div class="button-container">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-6 col-6 ml-auto">
+                          <h5 (click)="loadUser(user.idusuario); met_tipo(user.tipo)">
+                            <i class="tim-icons icon-refresh-01"></i>
+                            <br>
+                            <small >Actualizar</small>
+                          </h5>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                          <h5>{{user.estado}}
+                            <br>
+                            <small>Estado</small>
+                          </h5>
+                        </div>
+                        <div class="col-lg-3 mr-auto">
+                          <h5 (click)="eliminiarUser(user.idusuario)">
+                            <i class="tim-icons icon-simple-remove"></i>
+                            <br>
+                            <small>Delete</small>
+                          </h5>
+                        </div>
                       </div>
                     </div>
                   </div>

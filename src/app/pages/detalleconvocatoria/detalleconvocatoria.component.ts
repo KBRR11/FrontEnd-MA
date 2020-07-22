@@ -11,6 +11,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./detalleconvocatoria.component.scss']
 })
 export class DetalleconvocatoriaComponent implements OnInit {
+
+  title: string = "Detalle de Convocatorias"
+  ///////////////////
+
   convocatorias: DetalleConvocatoria[]=[];
   listaep:Ep[]=[];
   alumno: any[]=[];

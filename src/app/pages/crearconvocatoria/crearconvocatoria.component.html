@@ -1,10 +1,14 @@
 <div class=" content">
   <div class=" row">
     <div class=" col-md-10">
-      <div class=" card">
+      <div class=" card card-plain">
+        <div class="titulo">
+          <h3 style="margin-left: -20px; margin-top: -25px; margin-bottom: 6px;">{{title}}</h3>
+        </div>
         <div class=" card-header">
           <h1 class="title">CONVOCATORIAS</h1>
         </div>
+
         <div style="height: 50px;"></div>
         <div class=" card-body derecha">
           <div class="row">
@@ -99,27 +103,31 @@
             </div>
           </div>
 
-          <div class=" row">
-            <div class=" col-md-4 col-sm-4">
-              <h4 class=" card-title">
-                Imagen regular
+          <div class="row">
+            <div class="col-md-4 col-sm-4">
+              <h4 class="card-title text-center">
+                Archivos
               </h4>
-
-                <div _ngcontent-vxb-c8="" class="fileinput text-center" >
-                  <input (change)="selecfoto($event)" multiple="multiple" accept="image/*" type="file">
-                  <div _ngcontent-vxb-c8="" class="thumbnail"><img _ngcontent-vxb-c8="" alt="..."
-                      src="assets/img/image_placeholder.jpg"></div>
-                  <div _ngcontent-vxb-c8="">
-                    <!---->
-                    <!----><button _ngcontent-vxb-c8="" class="btn-round btn btn-primary ng-star-inserted">
-                       Seleccionar imagen 
-                    </button>
-                    <!---->
+              <div class="fileinput text-center" >
+                  <div style="display:none">
+                    <input class="" #fil (change)="selecfoto($event)" multiple="multiple" type="file">
                   </div>
-                </div>
+                  
+                  <div class="thumbnail"><img _ngcontent-vxb-c8="" alt="..."
+                      src="assets/img/subir_archivo.jpg"></div>
+                  <div >
+                  <button  class="btn-round btn btn-primary" (click)="fil.click()" ria-describedby="tooltip-190">
+                       Seleccionar imagen 
+                  </button>
+                  <div>
+                    <button  class="btn-round btn btn-danger" (click)="fil.click()" ria-describedby="tooltip-190">
+                      Cambiar
+                 </button>
+                  </div>
+              </div>
             </div>
-            
           </div>
+
           <button class="btn btn-success" (click)="Crear(convocatoria);">Nueva Convocatoria</button>
         </div>
 
