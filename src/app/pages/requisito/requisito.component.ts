@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Requisito } from 'src/app/Modelo/Requisito';
 import { Convenio } from 'src/app/Modelo/Convenio';
 import Swal from 'sweetalert2';
+import { BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
+import { ViewerComponent} from "../../pages/viewer/viewer.component";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-requisito',
@@ -11,20 +14,25 @@ import Swal from 'sweetalert2';
   styleUrls: ['./requisito.component.scss']
 })
 export class RequisitoComponent implements OnInit {
+  bsModalRef: BsModalRef;
   show:boolean=true;
   listRequisitos: Requisito[]=[];
   loadReqData: Requisito[]=[];
   loadRequisitoData: Requisito[] = [];
   listConvenios: Convenio[]=[];
   loadReqConveData: Requisito[]=[];
+  loadReqConveData2: Requisito[]=[];
+  ReqArchivo: Requisito[]=[];
   selectedConvenio: number= null;
   selectedConvenio2: number= null;
   selectedConvenio3: number= null;
   selectedConvenio4: number= null;
+  estadovalue:number=null;
+  archivoSeleccionado: File;
   convenio: Convenio = new Convenio();
   AddRequisito: Requisito = new Requisito();
   modRequisito: Requisito = new Requisito();
-  constructor(private service:RequisitoService,private router:Router) { }
+  constructor(private modalService: NgbModal,private service:RequisitoService,private router:Router) { }
 
   ngOnInit(){
     this.getAll();
@@ -57,17 +65,36 @@ export class RequisitoComponent implements OnInit {
 
   getReqConve(){
     console.log("hola"+this.selectedConvenio)
-    this.service.getReqConve(this.selectedConvenio).subscribe((data)=>{
-      console.log("soy la data",data)
-      this.loadReqConveData = data['REQCONVE'];
-      console.log('busqueda de id'+this.loadReqConveData);
-    })
+    if(this.estadovalue=1){
+      this.service.getReqConve(this.selectedConvenio).subscribe((data)=>{
+        console.log("soy la data",data)
+        this.loadReqConveData = data['REQCONVE'];
+        console.log('busqueda de id'+this.loadReqConveData);
+      })
+    }else{
+      this.service.getReqConve2(this.selectedConvenio).subscribe((data)=>{
+        console.log("soy la data",data)
+        this.loadReqConveData2 = data['REQCONVE'];
+        console.log('busqueda de id'+this.loadReqConveData);
+      })
+    }
   }
 
+  estado(id){
+    this.estadovalue = id;
+  }
   saveRequisito(){
     this.AddRequisito.idconvenio=this.selectedConvenio2;
     console.log('covenioID: '+ this.AddRequisito.idconvenio)
     this.service.createRequisito(this.AddRequisito).subscribe(data=>{
+      this.service.getRequisito().subscribe((data)=>{
+        console.log("soy la data dentro de save",data);
+        this.ReqArchivo = data['LIST_REQUISITO'];
+        console.log("IDNICK"+this.ReqArchivo[0].idrequisitos)
+        this.service.crearArchivo(this.archivoSeleccionado,this.ReqArchivo[0].idrequisitos,4).subscribe((theone)=>{
+          console.log(theone+"=zero");
+        })
+      })
       console.log("soy la data DE GUARDAR",data);
       (Swal.fire('Requisito',''+''+'Requisito registrado con éxito...!'))
     })
@@ -131,4 +158,21 @@ export class RequisitoComponent implements OnInit {
       }
     })
   }
+
+  selecfoto(event){
+    this.archivoSeleccionado = event.target.files[0];
+    console.log(this.archivoSeleccionado);
+  }
+
+  openModalWithComponent() {
+    const initialState = {
+      
+      title: 'Ver Documentos',
+      size: 'xl'
+    };
+    const theone = this.modalService.open(ViewerComponent, initialState);
+    theone.componentInstance.closeBtnName = 'Close';
+    //this.bsModalRef.content.closeBtnName = 'Close';
+  }
+  
 }

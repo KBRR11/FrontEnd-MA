@@ -1,5 +1,5 @@
 <div class="content">
-    <h1>Documentos:</h1>
+    <p class="h1">Recepcionar Documentos</p>
     <hr>
     <div class="card">
         <div class="card-header">
@@ -11,23 +11,27 @@
                 </select>
             </div> 
         </div>
-        <ngb-accordion class="">
-            <ngb-panel *ngFor="let req of loadReqConveData">
-                <ng-template ngbPanelTitle>
-                    {{req.nombre}}
-                    <hr>
-                </ng-template>
-                <ng-template ngbPanelContent>
-                   <div class="botones">
-                       <button class="btn btn-primary">Descargar</button>
-                       <button class="btn btn-warning">Cambiar</button>
-                   </div>
-                   <div class="imagen">
-                       imagen
-                   </div> 
-                   <hr>
-                </ng-template>
-            </ngb-panel>
-        </ngb-accordion>
+        <div class="tamanio">
+            <ngb-accordion class="">
+                <ngb-panel *ngFor="let req of loadReqConveData" class="ngpanel">
+                    <div class="tamanio2">
+                        <ng-template ngbPanelTitle>
+                            <p class="h3">{{req.nombre}}</p>
+                            <hr>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                           <div class="botones">
+                               <button class="btn btn-primary">Descargar</button>
+                               <button class="btn btn-warning">Cambiar</button>
+                           </div>
+                           <div class="imagen">
+                               imagen
+                           </div> 
+                           <hr>
+                        </ng-template>
+                    </div>
+                </ngb-panel>
+            </ngb-accordion>
+        </div>
     </div>
 </div>

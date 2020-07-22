@@ -42,7 +42,7 @@ export class RequisitoService {
 
   createRequisito(requisito:Requisito){
     console.log("service",requisito)
-    return this.http.post<Requisito[]>(this.convenios+'api/requisitos/add',requisito,{headers: this.Autorization()}).pipe(catchError(e =>{
+    return this.http.post<Requisito[]>(this.requisito+'api/requisitos/add',requisito,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }
@@ -55,13 +55,13 @@ export class RequisitoService {
 
   DeleteNoRequisito(requisito:Requisito):Observable<Requisito[]>{
     console.log('hola estamos en delete'+requisito.idrequisitos);
-    return this.http.delete<Requisito[]>(this.convenios+'api/requisitos/del/'+requisito.idrequisitos,{headers: this.Autorization()}).pipe(catchError(e =>{
+    return this.http.delete<Requisito[]>(this.requisito+'api/requisitos/del/'+requisito.idrequisitos,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }
 
   getConvenios():Observable<Convenio[]>{
-    return this.http.get<Convenio[]>(this.convenios+'api/convenios',{headers: this.Autorization()}).pipe(catchError(e =>{
+    return this.http.get<Convenio[]>(this.requisito+'api/convenios',{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
 
@@ -74,8 +74,30 @@ export class RequisitoService {
 
   getReqConve(idconvenio:number):Observable<Requisito[]>{
     console.log("servicio"+idconvenio);
-    return this.http.get<Requisito[]>(this.convenios+'api/requisitos/convenio/'+idconvenio,{headers: this.Autorization()}).pipe(catchError(e =>{
+    return this.http.get<Requisito[]>(this.requisito+'api/requisitos/convenio/'+idconvenio+'/1',{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
+  }
+
+  getReqConve2(idconvenio:number):Observable<Requisito[]>{
+    console.log("servicio"+idconvenio);
+    return this.http.get<Requisito[]>(this.requisito+'api/requisitos/convenio/'+idconvenio+'/0',{headers: this.Autorization()}).pipe(catchError(e =>{
+      return throwError(e);
+    }));
+  }
+
+  uploadArchivo(archivo: File, id, idr,tipo:number): any{
+    const formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+    formData.append("idr", idr)
+    return this.http.post(`${environment.apiUrl}/upload/`+ tipo, formData)
+  }
+
+  crearArchivo(archivo: File, id,tipo:number): any{
+    const formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+    return this.http.post(`${environment.apiUrl}/upload/create/`+ tipo, formData)
   }
 }
