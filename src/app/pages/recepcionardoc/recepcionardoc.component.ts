@@ -19,7 +19,9 @@ export class RecepcionardocComponent implements OnInit {
   listConvenios:Convenio[]=[];
   selectedConvenio: number= null;
   loadReqConveData: Requisito[]=[];
-  constructor(private_config:NgbAccordionConfig,private service:OpcionService,private router:Router, private service2:RequisitoService) { }
+  constructor(private _config:NgbAccordionConfig,private service:OpcionService,private router:Router, private service2:RequisitoService) { 
+    _config.closeOthers=true;
+  }
 
   ngOnInit(){
     //this.listar();

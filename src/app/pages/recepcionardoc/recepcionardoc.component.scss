@@ -1,42 +1,15 @@
-.table{
-    margin: 0px auto;
-}
-.botones{
-    margin-right: 0px auto;
-}
-.abajo{
-    //en espera 
-    margin-top: 0px auto;
-}
-.centrar{
-    margin: 0px auto;
-}
-.reciev{
-    margin: 0px auto;
-}
-.imagen{
-    background-color: red($color: #000000);
-}
-
-.ngpanel{
-    margin: 0px;
-    padding: 0px;
+*{
+    margin: 0;
+    padding: 0;
 }
 .tamanio{
-    padding: 0px;
+    margin: 0px auto;
     width: 60%;
-    margin:0px auto;
-    border-radius: 10px;
-    border-color: black;
-    border: 1px solid #d3d3d3;
-    
+    border-style: solid;
+    border: 1px solid rgba($color: #B8ADAA, $alpha: 1.0);
+    border-radius: 3px;
 }
-.tamanio2{
-    padding: 0px;
-    width: 60%;
-    margin:0px auto;
-    border-radius: 10px;
-    border-color: black;
-    border: 1px solid #d3d3d3;
-    
+.bordedown{
+    border-style: solid;
+    border-top: 1px solid rgba($color: #B8ADAA, $alpha: 1.0);
 }
