@@ -1,7 +1,36 @@
-.tam-tabla{
-    font-size: 20px ;
+
+#iconobuscar{
+    border: 0;
 }
-h3{
-    margin-left: 20%;
-     margin-top: 30px;
+.search{
+    height: 43px;
+    font-size: 15px;
+}
+#bus{
+    color: #666464;
+}
+.card{
+    padding:20px;
+    border-radius: 9px;
+}
+.card-header{
+    margin-left: -57px;
+}
+.card-body{
+    margin-left: -37px;
+}
+table{
+    font-family: "Poppins", sans-serif;
+    box-sizing:border-box;
+}
+#deta{
+    padding-left: -10px;
+    width: 25%;
+}
+table th{
+    text-align: center;
+  }
+table td{
+    text-align: center;
+    
 }
