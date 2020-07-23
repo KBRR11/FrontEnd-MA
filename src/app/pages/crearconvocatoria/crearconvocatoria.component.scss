@@ -1,16 +1,24 @@
-.tam-tabla{
-    font-size: 20px ;
+.table{
+    font-size: 14px ;
 }
-h3{
-    margin-left: 20%;
-     margin-top: 30px;
-}
-.derecha{
-    margin-left: 30px;
-}
+
 .multi{
     background-color: red($color: #d34242);
 }
 .escuela{
     float: right;
+    margin-top:18px;
 }
+.col-md-8{
+    margin-left: -29px;
+    margin-top:-10px;
+}
+img{
+
+    width: 220px; height: 150px;
+}
+#pd{
+
+    width: 75px; height: 85px;
+}
+

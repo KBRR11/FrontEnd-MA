@@ -12,8 +12,11 @@ import { title } from 'process';
 })
 export class OpcionComponent implements OnInit {
   show:boolean = true;
+  bori: boolean = true;
   show3:boolean = false;
   show2:boolean = false;
+  title: string = "Opciones"
+  
   listOpcion: Opcion[]=[];
   AddOpcion: Opcion= new Opcion();
   constructor(private service:OpcionService ,private router:Router) { }
@@ -25,6 +28,27 @@ export class OpcionComponent implements OnInit {
      // this.listOpcion = data['LIST_OPCION']
     })*/
   }
+  mostrar_crear(){
+    this.show=false;
+    this.bori=false;
+    this.show3=true;
+  }
+  ocultar_crear(){
+    this.show=true;
+    this.bori=true;
+    this.show3=false;
+  }
+  mostrar_modifica(){
+    this.show=false;
+    this.bori=false;
+    this.show2=true;
+  }
+  ocultar_modifica(){
+    this.show=true;
+    this.bori=true;
+    this.show2=false;
+  }
+
   ListOpcion(){
     this.service.getOpcion().subscribe((data)=>{
       console.log(data);
