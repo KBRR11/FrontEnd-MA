@@ -1,70 +1,115 @@
-<div class=" content">
-    <div class=" row">
-        <div class=" col-md-12">
-            <div class=" card">
-
-                <div class=" card-header">
-                    <h1 class=" title">CONVOCATORIAS</h1>
-                </div>
-                <div style="height: 50px;"></div>
-                <div class=" card-body ">
-                    <ng-template #content let-modal>
-                        <div class="modal-header">
-                          <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class=" form-group">
-                              <label> Nombre de la Convocatoria </label>
-                              <input class=" form-control" placeholder="Semestre" type="text" [(ngModel)]="convocatora.ciclo_academico"
-                                name="semestre">
-                            </div>
-                            <div class=" form-group">
-                              <label> Nombre de la Convocatoria </label>
-                              <input class=" form-control" placeholder="Nombre" type="text" [(ngModel)]="convocatora.nom_convocatoria"
-                                 name="nom_convocatoria">
-                            </div>
-                            <div class=" form-group">
-                              <label> Vacantes Disponibles </label>
-                              <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatora.n_vacantes"
-                                name="n_vancates">
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-dark" (click)="editarconv(); modal.dismiss('Cross click')">Save</button>
-                        </div>
-                        
-                      </ng-template>
-                    <div class=" table-responsive">
-                        <table class=" table tablesorter tam-tabla"  id="">
-                            <thead  >
-                                <tr >
-                                    <th><h4>Nro</h4></th>
-                                    <th><h4>Semestre</h4></th>
-                                    <th><h4>Vacantes</h4></th>
-                                    <th><h4>Detalle Convocatoria</h4></th>
-                                    <th class="text-center"><h4>Opciones</h4></th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let convocatoria of listaconvocatorias; let i = index">
-                                <tr>
-                                    <td>{{i+1}}</td>
-                                    <td>{{convocatoria.ciclo_academico}}</td>
-                                    <td ><h3 >{{convocatoria.n_vacantes}}</h3></td>
-                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="detalleconv(convocatoria.idconvocatoria)" routerLinkActive="router-link-active" ></i></td>
-                                    <td class="text-center"><i class="tim-icons icon-single-copy-04" (click)="openModalWithComponent()"></i>
-                                      <i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="buscarConvocatoria(convocatoria);open(content)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminarconv(convocatoria.idconvocatoria)"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="titulo">
+          <h3 style="margin-left: -20px; margin-top: -25px; margin-bottom: 6px;">{{title}}</h3>
         </div>
+
+        <div class="card-header">
+          <div>
+            <form id="">
+              <div class="input-group no-border col-md-8">
+                <input type="text" value="" placeholder="Search..." class="form-control search"
+                  style="margin-left: 5px;">
+                <div class="input-group-append" id="iconobuscar">
+                  <div class="input-group-text">
+                    <button class="btn btn-link btn-sm btn-icon" id="bus" ria-describedby="tooltip-190" style="margin-bottom: -13px; ">
+                      <i class="tim-icons icon-zoom-split" style="margin-top: -7px;"></i>
+                    </button>
+                    <style></style>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="card-body col-md-9">
+          <div class="card">
+            <h5>Lista de Convocatorias</h5>
+            <div class="editabla">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Semestre</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Vacantes</th>
+                    <th scope="col" id="deta">Detalle Convocatoria</th>
+                    <th scope="col">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let convocatoria of listaconvocatorias; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{convocatoria.ciclo_academico}}</td>
+                    <td>{{convocatoria.ciclo_academico}}</td>
+                    <td>{{convocatoria.n_vacantes}}</td>
+                    <td>
+                      <button class="btn btn-success btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                        <i class="tim-icons icon-notes" (click)="detalleconv(convocatoria.idconvocatoria)"routerLinkActive="router-link-active"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <button class="btn btn-info btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                        <i class="tim-icons icon-single-copy-04 success" (click)="openModalWithComponent()" style="margin-right: 12px;"></i>
+                      </button>
+                      <button class="btn btn-warning btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                        <i class="tim-icons icon-pencil"(click)="buscarConvocatoria(convocatoria);open(content)" style="margin-right: 12px;"></i>
+                      </button>
+                      <button class="btn btn-danger btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                        <i class="tim-icons icon-trash-simple" (click)="elminarconv(convocatoria.idconvocatoria)"></i>
+                      </button>  
+                       
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
+  </div>
 </div>
+
+<ng-template #content let-modal >
+  <div class="modal-header modal-lg">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body modal-lg">
+    <form>
+      <div class=" form-group">
+        <label> Semestre </label>
+        <input class=" form-control" placeholder="Semestre" type="text" [(ngModel)]="convocatora.ciclo_academico"
+          name="semestre">
+      </div>
+      <div class=" form-group">
+        <label> Nombre de la Convocatoria </label>
+        <input class=" form-control" placeholder="Nombre" type="text" [(ngModel)]="convocatora.nom_convocatoria"
+          name="nom_convocatoria">
+      </div>
+      <div class=" form-group">
+        <label> Vacantes Disponibles </label>
+        <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatora.n_vacantes"
+          name="n_vancates">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"
+      (click)="editarconv(); modal.dismiss('Cross click')">Save</button>
+  </div>
+
+</ng-template>
+
+
+
+
 

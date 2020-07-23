@@ -1,33 +1,46 @@
 <div class="content">
-    <h1>Documentos:</h1>
-    <hr>
-    <div class="card">
-        <div class="card-header">
-            <div class="form-group">
-                <label for="pers" class="col-form-label">Convenios:</label>
-                <select class="form-control" (change)="selectConvenio($event)">
-                  <option value="0">Seleccionar...</option>
-                  <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
-                </select>
-            </div> 
-        </div>
-        <ngb-accordion class="">
-            <ngb-panel *ngFor="let req of loadReqConveData">
-                <ng-template ngbPanelTitle>
-                    {{req.nombre}}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="tittle">Documentos</h1>
                     <hr>
-                </ng-template>
-                <ng-template ngbPanelContent>
-                   <div class="botones">
-                       <button class="btn btn-primary">Descargar</button>
-                       <button class="btn btn-warning">Cambiar</button>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="" class="col-form-label">
+                                Convenios:
+                            </label>
+                            <select class="form-control" (change)="selectConvenio($event)" (click)="estado(1)">
+                                <option value="0">Seleccionar...</option>
+                                <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                   <div class="tamanio">
+                    <ngb-accordion  *ngFor="let req of loadReqConveData">
+                        <div class="bordedown">
+                            <ngb-panel>
+                                <ng-template ngbPanelTitle>
+                                     <p class="h3">{{req.nombre}}</p>
+                                     <hr>
+                                </ng-template>
+                                <ng-template ngbPanelContent [ngTemplateOutlet]="outlet" [ngOutletContext]="context">
+                                     <div class="baja">
+                                         <div class="botones">
+                                             <button>Subir</button>
+                                             <button>cancelar</button>
+                                             <button>Ver Img</button>
+                                         </div>
+                                     </div>
+                                </ng-template>
+                            </ngb-panel>
+                        </div>
+                    </ngb-accordion> 
                    </div>
-                   <div class="imagen">
-                       imagen
-                   </div> 
-                   <hr>
-                </ng-template>
-            </ngb-panel>
-        </ngb-accordion>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -22,7 +22,7 @@ export class InfoRequisitosComponent implements OnInit {
     this.requisito()   }
   idc:number;
   requisito(){
-    this.serviceRequisito.getReqConve(2).subscribe((data)=>{
+    this.serviceRequisito.getReqConve(1).subscribe((data)=>{
       this.requi=data['REQCONVE']
       console.log(data)
     })

@@ -1,37 +1,54 @@
-<div class=" content">
+
+<div class="content">
     <div class=" row">
         <div class=" col-md-12">
-            <div class=" card">
+            <div class="card card-plain">
+              <div class="titulo">
+                <h3 style="margin-left: -20px; margin-top: -25px; margin-bottom: 6px;">{{title}}</h3>
+              </div>
+
                 <div class=" card-header">
-                    <h1 class=" title">DETALLE CONVOCATORIAS</h1>
-                    <button class="btn btn-success">Nueva Convocatoria</button>
                 </div>
-                <div style="height: 50px;"></div>
-                <div class=" card-body ">
-                    <div class=" table-responsive">
-                        <table class=" table tablesorter tam-tabla"  id="">
-                            <thead  >
-                                <tr >
-                                    <th><h4>Nro</h4></th>
-                                    <th><h4>Inicio - Fin</h4></th>
-                                    <th><h4>Estudiantes</h4></th>
-                                    <th><h4>Escuela Profecional</h4></th>
-                                    <th><h4>Estado</h4></th>
-                                    <th class="text-center"><h4>Informe</h4></th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let detconv of convocatorias; let i = index">
-                                <tr>
-                                    <td>{{i+1}}</td>
-                                    <td>{{detconv.desde}} - {{detconv.hasta}}</td>
-                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="listaralumnos(detconv.idetalle_convocatoria); open(content)" data-toggle="modal" data-target="#exampleModal"></i></td>
-                                    <td >{{detconv.escuela}}</td>
-                                    <td>Activo</td>
-                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="editardet(detconv)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminardet(detconv.idetalle_convocatoria)"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+                <div class=" card-body col-md-9">
+                  <div class="card"> 
+                    <h5>Lista de los Detalles</h5>
+                    <table class="table">
+                      <thead  >
+                        <tr >
+                          <th scope="col">Nro</th>
+                          <th scope="col">Periodo</th>
+                          <th scope="col">Estudiantes</th>
+                          <th scope="col" id="deta">Escuela Profesional</th>
+                          <th scope="col">Estado</th>
+                          <th scope="col">Informe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detconv of convocatorias; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{detconv.desde}} - {{detconv.hasta}}</td>
+                            <td >
+                              <button class="btn btn-success btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                                <i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="listaralumnos(detconv.idetalle_convocatoria); open(content)" data-toggle="modal" data-target="#exampleModal"></i>
+                              </button> 
+                            </td>
+                            <td >{{detconv.escuela}}</td>
+                            <td>Activo</td>
+                            <td class="text-center">
+                              <button class="btn btn-warning btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                                <i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="editardet(detconv)"></i>
+                              </button> 
+                              <button class="btn btn-danger btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                                <i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminardet(detconv.idetalle_convocatoria)"></i>
+                              </button> 
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+
+                  </div>
+                    
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
@@ -64,7 +81,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" >
     <div class="">
       <table class="table">
           <thead>
@@ -73,18 +90,20 @@
                   <th scope="col">Nombre</th>
                   <th scope="col">Codigo</th>
                   <th scope="col">Ciclo</th>
+                  <th scope="col">Estado</th>
               </tr>
           </thead>
           <tbody>
-             
               <tr *ngFor="let al of alumno ;let i=index">
-                  <th scope="row">{{i+1}}</th>
+                  <td>{{i+1}}</td>
                   <td>{{al.nombre}}</td> 
                   <td>{{al.codigo}}</td>
                   <td>{{al.ciclo}}</td>
+                  <td>{{1}}</td>
               </tr>
           </tbody>
       </table>
+      
   </div>
   </div>
   
