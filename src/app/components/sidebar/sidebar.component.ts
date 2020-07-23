@@ -113,6 +113,13 @@ export const ROUTES: RouteInfo[] = [
     icon: "tim-icons icon-paper",
     class: ""
   },
+  {
+    path: "/validar_req",
+    title: "Validar Requisito",
+    rtlTitle: "Requisitos",
+    icon: "tim-icons icon-single-copy-04",
+    class: ""
+  },
  /* {
     path: "/inicio",
     title: "FUNCA INICIO",
