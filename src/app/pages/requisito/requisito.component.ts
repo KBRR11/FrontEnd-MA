@@ -35,11 +35,17 @@ export class RequisitoComponent implements OnInit {
   constructor(private modalService: NgbModal,private service:RequisitoService,private router:Router) { }
 
   ngOnInit(){
-    this.getAll();
+    this.getVacio();
     this.getAllConvenio();
-    this.getReqConve();
   }
 
+  getVacio(){
+    if (typeof this.loadReqConveData2=='object' && typeof this.loadReqConveData=='object') {
+      console.log("Esta Vacio")
+    } else {
+      this.getReqConve();
+    }
+  }
   getAll(){
     this.service.getRequisito().subscribe((data)=>{
       console.log(data);
@@ -59,29 +65,23 @@ export class RequisitoComponent implements OnInit {
     this.service.getConvenios().subscribe((data)=>{
       console.log('Lista de convenios'+data);
       this.listConvenios = data['LIST_CONVENIOS'];
-      console.log('Lista de convenios'+this.listConvenios);
     })
   }
 
   getReqConve(){
-    console.log("hola"+this.selectedConvenio)
-    if(this.estadovalue=1){
+    if(this.estadovalue==1){
+      console.log("estamos en listado de estado 1");
       this.service.getReqConve(this.selectedConvenio).subscribe((data)=>{
-        console.log("soy la data",data)
         this.loadReqConveData = data['REQCONVE'];
-        console.log('busqueda de id'+this.loadReqConveData);
+      })
+    }else if(this.estadovalue==0){
+      console.log("estamos en listado de estado 0 ");
+      this.service.getReqConve2(this.selectedConvenio).subscribe((data)=>{
+        this.loadReqConveData2 = data['REQCONVE'];
       })
     }else{
-      this.service.getReqConve2(this.selectedConvenio).subscribe((data)=>{
-        console.log("soy la data",data)
-        this.loadReqConveData2 = data['REQCONVE'];
-        console.log('busqueda de id'+this.loadReqConveData);
-      })
+      console.log("Intentelo Nuevamente")
     }
-  }
-
-  estado(id){
-    this.estadovalue = id;
   }
   saveRequisito(){
     this.AddRequisito.idconvenio=this.selectedConvenio2;
@@ -100,8 +100,10 @@ export class RequisitoComponent implements OnInit {
     })
   }
 
-  selectConvenio(event:any){
+  selectConvenio(event:any,id){
     this.selectedConvenio = event.target.value;
+    this.estadovalue = event.target.value;
+    this.estadovalue=id;
     this.getReqConve();
   }
   selectConvenio2(event:any){
