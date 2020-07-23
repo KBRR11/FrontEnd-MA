@@ -1,157 +1,146 @@
-<div class=" content">
-  <div class=" row">
-    <div class=" col-md-10">
-      <div class=" card card-plain">
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-plain">
         <div class="titulo">
-          <h3 style="margin-left: -20px; margin-top: -25px; margin-bottom: 6px;">{{title}}</h3>
-        </div>
-        <div class=" card-header">
-          <h1 class="title">CONVOCATORIAS</h1>
+          <h3 style="margin-left: 0; margin-top:-7px; margin-bottom: 0;">{{title}}</h3>
         </div>
 
-        <div style="height: 50px;"></div>
-        <div class=" card-body derecha">
-          <div class="row">
-            <div class=" col-md-5 px-md-1">
-              <div class=" form-group">
-                <label> Año Academico </label>
-                <input class=" form-control" placeholder="Año Academico" type="text"
-                  [(ngModel)]="convocatoria.ciclo_academico" name="ciclo_academico">
-              </div>
-            </div>
+        <div class="col-md-8">
 
-            <div class=" col-md-5 px-md-1">
-              <div class=" form-group">
-                <label> Nombre de la Convocatoria </label>
-                <input class=" form-control" placeholder="Nombre" type="text"
-                  [(ngModel)]="convocatoria.nom_convocatoria" name="nom_convocatoria">
-              </div>
-            </div>
-            <div class=" col-lg-5 col-md-12 escuela">
-              <div class=" card">
-                <div class=" card-header">
-                  <h4>Escoja las Escuelas Profesionales</h4>
-                </div>
-                <div class=" card-body">
-                  <div class=" table-full-width table-responsive">
-                    <table class=" table">
-                      <tbody>
-                        <tr *ngFor="let ep of listaep">
-                          <td>
-                            <div class=" form-check">
-                              <label class=" form-check-label">
-                                <input id="chis" name=""class="form-check-input" type="checkbox" value="{{ep.idep}}"
-                                 (change)="sele(ep.idep)"/>
-
-                                <span class=" form-check-sign">
-                                  <span class=" check"> </span>
-                                </span>
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <p class=" title">{{ep.nom_ep}}</p>
-                          </td>
-                          <td class=" td-actions text-right">
-                            <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Editar "
-                              container="body">
-                              <i class=" tim-icons icon-pencil"> </i>
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-            <div class="row" style="margin-top: 19px; margin-left: 23px;">
-              <div class=" col-md-9 px-md-1">
-                <div class=" form-group">
-                  <label> Vacantes Disponibles </label>
-                  <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatoria.n_vacnates"
-                    name="n_vancates">
-                </div>
-              </div>
-              <div class=" col-md-9 px-md-1">
-                <div class=" form-group">
-                  <label> Fecha Duracion </label>
-                  <input type="date" class=" form-control">
-                </div>
-              </div>
-              <div class=" col-md-9 px-md-1">
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Informacion Adicional</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                    [(ngModel)]="convocatoria.info_convocatoria" name="info_convocatoria"></textarea>
-                </div>
-              </div>
-            </div>
-
+          <div class="card-header">
           </div>
 
+          <div class="card-body">
+            <div class="card">
+              <div class="row">
 
-          <div class="row">
+                <div class="col-md-6 inp">
+                    <div class="card-header">
+                    </div>
 
-            <div class=" col-md-4 px-md-1">
-              <div class=" form-group">
-                <label> Subir a Twitter </label>
-                <input class=" form-control" type="file" />
+                    <div class="card-body">
+                    <div class=" form-group">
+                      <label> Año Academico </label>
+                      <input class=" form-control" placeholder="Año Academico" type="text"
+                        [(ngModel)]="convocatoria.ciclo_academico" name="ciclo_academico">
+                    </div>
+
+                    <div class=" form-group">
+                      <label> Nombre de la Convocatoria </label>
+                      <input class=" form-control" placeholder="Nombre" type="text"
+                        [(ngModel)]="convocatoria.nom_convocatoria" name="nom_convocatoria">
+                    </div>
+
+                    <div class=" form-group">
+                      <label> Vacantes Disponibles </label>
+                      <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatoria.n_vacnates"
+                        name="n_vancates">
+                    </div>
+
+                    <div class=" form-group">
+                      <label> Fecha Duracion </label>
+                      <input type="date" class=" form-control">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Informacion Adicional</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        [(ngModel)]="convocatoria.info_convocatoria" name="info_convocatoria"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 escuela">
+                  <div class="">
+                    <div class="card-header">
+                      <h5>Escuelas Profesionales</h5>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-full-width">
+                        <table class="table">
+                          <tbody>
+                            <tr *ngFor="let ep of listaep">
+                              <td>
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input id="chis" name="" class="form-check-input" type="checkbox"
+                                      value="{{ep.idep}}" (change)="sele(ep.idep)" />
+
+                                    <span class=" form-check-sign">
+                                      <span class=" check"> </span>
+                                    </span>
+                                  </label>
+                                </div>
+                              </td>
+                              <td>
+                                <p class="title">{{ep.nom_ep}}</p>
+                              </td>
+                              <td class=" td-actions text-right">
+                                <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Editar "
+                                  container="body">
+                                  <i class=" tim-icons icon-pencil"> </i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-4">
+                  <div class="card-header text-center">
+                    <h5>Archivo</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="fileinput text-center">
+                      <div style="display:none">
+                        <input class="" #fil [(ngModel)]="file" (change)="selecfoto($event); mostrar()" multiple="multiple" type="file">
+                      </div>
+                      
+                      <div *ngIf="primero">
+                        <div class="thumbnail">
+                          <img alt="..." src="assets/img/subir_archivo.jpg">
+                        </div>
+                        <div>
+                          <button class="btn-round btn btn-primary" (click)="fil.click()" ria-describedby="tooltip-190">
+                            Seleccionar Archivo
+                          </button>
+                        </div>
+                      </div>
+                      
+                      
+                      <div *ngIf="segundo">
+                        <div class="thumbnail">
+                          <img id="pd" alt="..." src="assets/img/pdf.PNG">
+                        </div>
+                        <p>{{file}}</p>
+                        <button class="btn-round btn btn-danger" (click)="fil.click()" ria-describedby="tooltip-190">
+                          Cambiar
+                        </button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-12 text-center" style="margin-bottom: 12px;">
+                  <div class="">
+                    <button class="btn btn-success" (click)="Crear(convocatoria);">Nueva Convocatoria</button>
+                  </div>
+                </div>
+                
+
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-md-4 col-sm-4">
-              <h4 class="card-title text-center">
-                Archivos
-              </h4>
-              <div class="fileinput text-center" >
-                  <div style="display:none">
-                    <input class="" #fil (change)="selecfoto($event)" multiple="multiple" type="file">
-                  </div>
-                  
-                  <div class="thumbnail"><img _ngcontent-vxb-c8="" alt="..."
-                      src="assets/img/subir_archivo.jpg"></div>
-                  <div >
-                  <button  class="btn-round btn btn-primary" (click)="fil.click()" ria-describedby="tooltip-190">
-                       Seleccionar imagen 
-                  </button>
-                  <div>
-                    <button  class="btn-round btn btn-danger" (click)="fil.click()" ria-describedby="tooltip-190">
-                      Cambiar
-                 </button>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn btn-success" (click)="Crear(convocatoria);">Nueva Convocatoria</button>
         </div>
 
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+

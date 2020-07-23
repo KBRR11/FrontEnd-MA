@@ -2,6 +2,73 @@
     width: 40rem;
     margin: 0 auto;
 }
-.derecha{
-    float: right;
+
+
+///////////// car completo ///////////////7 
+.card{
+    padding:20px;
+    border-radius: 9px;
 }
+.cabesea{
+    margin-left: -57px;
+}
+.cuerpo{
+    margin-left: -37px;
+}
+
+///////////////////// caja buscar //////////////////7
+#iconobuscar{
+    border: 0;
+}
+.search{
+    height: 43px;
+    font-size: 15px;
+}
+#bus{
+    color: #666464;
+}
+/////////////////// card-header //////////////
+.boton{
+    margin-left: 2%;
+    width: 50px;
+    height: 0px;
+}
+.btn-info{
+    width: 227px;
+    height: 44px;
+    font-size: 15px;
+    margin-top: -2px;
+}
+
+//////////////////// tablas ///////////////
+table{
+    font-family: "Poppins", sans-serif;
+    box-sizing:border-box;
+    
+}
+#deta{
+    padding-left: -10px;
+    width: 25%;
+}
+table th{
+    text-align: center;
+}
+table td{
+    text-align: center;
+}
+.new{
+    margin-top: -110px;
+}
+.modifi{
+    margin-top: -110px;  
+}
+form{
+    margin: center;
+    justify-content: center;
+    align-items: center;
+}
+.gp{
+    max-width: 100%;
+}
+
+

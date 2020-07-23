@@ -14,6 +14,8 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
   styleUrls: ['./crearconvocatoria.component.scss']
 })
 export class CrearconvocatoriaComponent implements OnInit {
+
+  title: string = "Convocatorias"
   convocatoria:Convocatoria = new Convocatoria();
   listaep:Ep[]=[];
 
@@ -22,12 +24,21 @@ export class CrearconvocatoriaComponent implements OnInit {
   detalle : DetalleConvocatoria = new DetalleConvocatoria();
 
   //////////////////////
+  file: string;
+
+  primero: boolean =true;
+  segundo: boolean = false;
   public archivoSeleccionado: File;
   constructor(private convocatoriaservice:ConvocatoriaService, private epservice:EpService, private http:HttpClient) { }
  
   ngOnInit(): void {
     
     this.listarep();
+    }
+
+    mostrar(){
+      this.primero=false;
+      this.segundo=true;
     }
   Crear(){
     
@@ -100,6 +111,10 @@ export class CrearconvocatoriaComponent implements OnInit {
   selecfoto(event){
     this.archivoSeleccionado = event.target.files[0];
     console.log(this.archivoSeleccionado);
+    
+    console.log(this.file.split("\\")[this.file.split("\\").length-1]);
+    this.file=this.file.split("\\")[this.file.split("\\").length-1]
+    
   }
 
   actualizar(){
