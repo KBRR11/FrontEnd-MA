@@ -35,13 +35,13 @@ export class ConvocatoriaCRUDComponent implements OnInit {
   }
   detalleconv(id:number){
     localStorage.setItem("idconvocaotria" , ""+id);
-    alert(localStorage.getItem("idconvocaotria"))
     this.router.navigate(['detalleconv']);
   }
   elminarconv(id:number){
     this.convocatoriaservice.eliminarConvocatoria(id).subscribe(
       (data)=>{
-        console.log(data);
+        this.listar();
+
       }
     )
   }

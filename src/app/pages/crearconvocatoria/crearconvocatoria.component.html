@@ -34,13 +34,15 @@
 
                     <div class=" form-group">
                       <label> Vacantes Disponibles </label>
-                      <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatoria.n_vacnates"
+                      <input class=" form-control" placeholder="" type="number" [(ngModel)]="convocatoria.n_vacantes"
                         name="n_vancates">
                     </div>
 
                     <div class=" form-group">
-                      <label> Fecha Duracion </label>
-                      <input type="date" class=" form-control">
+                      <label> Fecha Inicio </label>
+                      <input type="date" class=" form-control" [(ngModel)]="detalle.desde">
+                      <label> Fecha Fin </label>
+                      <input type="date" class=" form-control" [(ngModel)]="detalle.hasta">
                     </div>
 
                     <div class="form-group">
@@ -53,11 +55,17 @@
 
                 <div class="col-md-6 escuela">
                   <div class="">
+                    
                     <div class="card-header">
                       <h5>Escuelas Profesionales</h5>
                     </div>
                     <div class="card-body">
                       <div class="table-full-width">
+                        <select name="idfac" class="form-control" [(ngModel)]="idfacultad" (change)=listarep()>
+                          <option value="1">Empresariales</option>
+                          <option value="2">Fia</option>
+                          <option value="3">Cocaina</option>
+                        </select>
                         <table class="table">
                           <tbody>
                             <tr *ngFor="let ep of listaep">
@@ -65,7 +73,7 @@
                                 <div class="form-check">
                                   <label class="form-check-label">
                                     <input id="chis" name="" class="form-check-input" type="checkbox"
-                                      value="{{ep.idep}}" (change)="sele(ep.idep)" />
+                                      value="{{ep.IDEP}}" (change)="sele(ep.IDEP)" />
 
                                     <span class=" form-check-sign">
                                       <span class=" check"> </span>
@@ -74,7 +82,7 @@
                                 </div>
                               </td>
                               <td>
-                                <p class="title">{{ep.nom_ep}}</p>
+                                <p class="title">{{ep.NOM_EP}}</p>
                               </td>
                               <td class=" td-actions text-right">
                                 <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Editar "
