@@ -32,6 +32,7 @@ import { InfoVacantesComponent } from '..//../pages/info_components/info-vacante
 import { InfoRequisitosComponent } from '..//../pages/info_components/info-requisitos/info-requisitos.component';
 import { InfoValidadorComponent} from '..//../pages/info_components/info-validador/info-validador.component';
 import { InfoConveniosComponent } from '..//../pages/info_components/info-convenios/info-convenios.component';
+import { ValidarRequisitoComponent } from '../../pages/validar-requisito/validar-requisito.component';
 
 @NgModule({
   imports: [
@@ -64,7 +65,8 @@ import { InfoConveniosComponent } from '..//../pages/info_components/info-conven
     InfoVacantesComponent,
     InfoRequisitosComponent,
     InfoValidadorComponent,
-    InfoConveniosComponent
+    InfoConveniosComponent,
+    ValidarRequisitoComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent

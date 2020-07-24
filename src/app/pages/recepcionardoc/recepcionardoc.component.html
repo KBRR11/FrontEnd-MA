@@ -4,41 +4,43 @@
             <div class="card">
                 <div class="card-header">
                     <h1 class="tittle">Documentos</h1>
-                    <hr>
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label for="" class="col-form-label">
-                                Convenios:
-                            </label>
-                            <select class="form-control" (change)="selectConvenio($event)" (click)="estado(1)">
-                                <option value="0">Seleccionar...</option>
-                                <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
-                              </select>
+                    <div class="container row">
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="" class="col-form-label">
+                                    Convenios:
+                                </label>
+                                <select class="form-control" (change)="selectConvenio($event)">
+                                    <option value="0">Seleccionar...</option>
+                                    <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>
+                                        {{convenio.nom_c_ep}}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                   <div class="tamanio">
-                    <ngb-accordion  *ngFor="let req of loadReqConveData">
-                        <div class="bordedown">
-                            <ngb-panel>
+                    <div class="tamanio">
+                        <ngb-accordion *ngFor="let req of loadReqConveData">
+                            <ngb-panel class="bordedown">
                                 <ng-template ngbPanelTitle>
-                                     <p class="h3">{{req.nombre}}</p>
-                                     <hr>
+                                    <p class="h3">{{req.nombre}}</p>
+                                    <hr>
                                 </ng-template>
-                                <ng-template ngbPanelContent [ngTemplateOutlet]="outlet" [ngOutletContext]="context">
-                                     <div class="baja">
-                                         <div class="botones">
-                                             <button>Subir</button>
-                                             <button>cancelar</button>
-                                             <button>Ver Img</button>
-                                         </div>
-                                     </div>
+                                <ng-template ngbPanelContent>
+                                    <div class="baja">
+                                        <div class="botones">
+                                            <button type="button" class="btn btn-success" style="width: 100px;height:30px ;">Subir</button>
+                                            <button type="button" class="btn btn-success" style="width: 100px;height:30px ;">Ver Img</button>
+                                        </div>
+                                        <div class="ima">
+                                            hola soy la imagen
+                                        </div>
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
-                        </div>
-                    </ngb-accordion> 
-                   </div>
+                        </ngb-accordion>
+                    </div>
                 </div>
             </div>
         </div>

@@ -7,12 +7,12 @@
                     <div class="container row">
                         <div class="col-8">
                             <button class="btn btn-success" (click)="show=!show;show3=!show3;">Agregar</button>
-                            <button class="btn btn-success" (click)="show=!show;show5=!show5;">Papelera</button>
+                            <button class="btn btn-danger" (click)="show=!show;show5=!show5;">Papelera</button>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convenios:</label>
-                                <select class="form-control" (change)="selectConvenio($event)" (click)="estado(1)">
+                                <select class="form-control" (change)="selectConvenio($event,1)">
                                   <option value="0">Seleccionar...</option>
                                   <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
                                 </select>
@@ -56,7 +56,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convenios:</label>
-                                <select class="form-control" (change)="selectConvenio($event)" (click)="estado(2)">
+                                <select class="form-control" (change)="selectConvenio($event,0)" >
                                   <option value="0">Seleccionar...</option>
                                   <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
                                 </select>
@@ -80,7 +80,7 @@
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{req.nombre}}</td> 
                                 <td>{{req.estado}}</td>
-                                <td><i class="tim-icons icon-simple-remove" (click)="DeleteRequisito(req)"></i></td>
+                                <td><i class="tim-icons icon-refresh-01" (click)="DeleteRequisito(req)"></i></td>
                             </tr>
                         </tbody>
                     </table>
