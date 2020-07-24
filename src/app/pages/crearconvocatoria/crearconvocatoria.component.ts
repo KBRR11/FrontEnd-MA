@@ -29,6 +29,7 @@ export class CrearconvocatoriaComponent implements OnInit {
   primero: boolean =true;
   segundo: boolean = false;
   public archivoSeleccionado: File;
+  idfacultad:number;
   constructor(private convocatoriaservice:ConvocatoriaService, private epservice:EpService, private http:HttpClient) { }
  
   ngOnInit(): void {
@@ -56,15 +57,15 @@ export class CrearconvocatoriaComponent implements OnInit {
           this.convocatoriaservice.crear(this.archivoSeleccionado,(x as Convocatoria).idconvocatoria , 1)
           .subscribe(data =>{
             console.log(data)
-            swal.fire('Son putos por eso de subio', 'Felicitaciones lo lograron vayanse a dormir', 'success');
+            swal.fire('Datos ingresados correctamente', 'Convocatoria realizada', 'success');
           });
           for (let index = 0; index < this.es.length; index++) {
             const element = this.es[index];
             this.detalle.idconvocatoria=(x as Convocatoria).idconvocatoria;
             this.detalle.idescuela=this.es[index];
             this.detalle.nombre=(x as Convocatoria).nom_convocatoria
-            this.detalle.desde= "2021-03-05 17:45:01"
-            this.detalle.hasta= "2021-06-20 17:45:01"
+            /*this.detalle.desde= "2021-03-05 17:45:01"
+            this.detalle.hasta= "2021-06-20 17:45:01"*/
 
             this.detalle_convo.push(this.detalle)
             this.convocatoriaservice.crearDetConvocatoria(this.detalle_convo[index]).subscribe((data) =>{
@@ -83,10 +84,11 @@ export class CrearconvocatoriaComponent implements OnInit {
    console.log("hi")*/
   }
   listarep(){
-    this.epservice.ListAllEp().subscribe(
+    console.log(this.idfacultad)
+    this.epservice.getEpforId(this.idfacultad).subscribe(
       (data)=>{
         console.log(data);
-        this.listaep = data["LIST_EP"];
+        this.listaep = data["EP"];
       }
     )
     
