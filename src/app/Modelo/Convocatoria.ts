@@ -12,8 +12,11 @@ export class Convocatoria{
 export class DetalleConvocatoria{
     idetalle_convocatoria:number;
     idconvocatoria:number;
+    nom_convocatoria:string
     idescuela:number;
+    escuela:string;
     idconvenio:number;
+    convenio:string;
     n_vacantes: number;
     
 }

@@ -29,10 +29,6 @@ export class DetalleconvocatoriaComponent implements OnInit {
       (data) =>{
 
         this.convocatorias=data["DETALLE_CONVOCATORIA"];
-        this.convocatorias.forEach(element => {
-          element.hasta=element.hasta.substring(0,10)
-          element.desde=element.desde.substring(0,10)
-        });
         console.log(this.convocatorias);
       },(error)=>{
         alert("OCURRIO UN ERROR "+error);
