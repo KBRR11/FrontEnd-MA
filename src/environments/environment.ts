@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://moviaca-bknd.herokuapp.com'
- // apiUrl: 'http://localhost:8090'
+  //apiUrl: 'https://moviaca-bknd.herokuapp.com'
+  apiUrl: 'http://localhost:8090'
  
 };
 

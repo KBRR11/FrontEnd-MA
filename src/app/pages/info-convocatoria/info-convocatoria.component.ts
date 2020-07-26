@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequisitoService } from 'src/app/service/requisitoService/requisito.service';
 import { Requisito } from 'src/app/Modelo/Requisito';
+import { ConvenioService } from 'src/app/service/convenio.service';
 
 @Component({
   selector: 'app-info-convocatoria',
@@ -10,7 +11,10 @@ import { Requisito } from 'src/app/Modelo/Requisito';
 export class InfoConvocatoriaComponent implements OnInit {
   currentJustify = 'fill';
   idconvenio:number;
-  constructor(private serviceRequisito:RequisitoService) { }
+  conve: any
+  escuela: any
+  respuesta: String
+  constructor(private serviceRequisito:RequisitoService, private convenioService:ConvenioService) { }
   requi: Requisito[] = []
   ngOnInit(): void {
     
@@ -29,11 +33,20 @@ export class InfoConvocatoriaComponent implements OnInit {
   document.getElementById(cityName).style.display = "block";
   //evt.currentTarget.className += "active";
   }
+  
   updateid(e){
     console.log(e)
     this.idconvenio=e
     this.requisito();
+    this.validar()
 
+  }
+
+  validar(){
+    this.convenioService.getValidar(this.idconvenio, 1).subscribe((data) =>{
+      this.respuesta=data['RESPUESTA']
+      console.log(this.respuesta)
+  })
   }
   requisito(){
     this.serviceRequisito.getReqConve(this.idconvenio).subscribe((data)=>{
@@ -41,4 +54,14 @@ export class InfoConvocatoriaComponent implements OnInit {
       console.log(data)
     })
   }
+  updatedataConvenio(e){
+    console.log(e)
+    this.openCity(e, 'Information')
+    this.conve=e
+  }
+  updatedataEscuela(e){
+    console.log(e)
+    this.escuela=e
+  }
+  
 }

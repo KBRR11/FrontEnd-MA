@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
               <div class="" *ngFor="let con of conve">
                 
                 <a (click)="Cambio(con.idconvenio)">
-                <img src="http://localhost:8090/upload/2/{{con.idconvenio}}">
-                  {{con.nom_c_ep}}
+              
+                  <h1>{{con.nom_c_ep}}</h1>
+                  <img src="http://localhost:8090/upload/2/{{con.idconvenio}}">
                 </a>
               </div>
             </div>`,
@@ -19,6 +20,8 @@ import { Router } from '@angular/router';
 })
 export class InfoConveniosComponent implements OnInit {
   @Output() idconvenio = new EventEmitter
+  @Output() infoConvenio = new EventEmitter
+  @Output() universidadConvenio = new EventEmitter
   constructor(private serviceConvenio:ConvenioService, private router:Router) { }
   conve: Convenio[] = []
   ngOnInit(): void {
@@ -27,12 +30,20 @@ export class InfoConveniosComponent implements OnInit {
   }
   Cambio(idconv:number){
     this.idconvenio.emit(idconv);
+    this.serviceConvenio.getConv_Uni(idconv).subscribe((data)=>{
+      this.infoConvenio.emit(data['DATOS_UNIVERSIDAD'])
+      this.universidadConvenio.emit(data['ESCUELA_UNIVERSIDADES'])
+    })
+
   }
   convenios(){
     this.serviceConvenio.getTodoCon().subscribe((data)=>{
       this.conve=data['LIST_CONVENIOS']
       console.log(data)
     })
+  }
+  conve_uni(){
+    
   }
 
 }

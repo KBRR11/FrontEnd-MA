@@ -5,7 +5,7 @@
       <div class="card">
         <div class="container">
           <div>
-            <app-info-convenios (idconvenio)="updateid($event)"></app-info-convenios>
+            <app-info-convenios (universidadConvenio)="updatedataEscuela($event)" (infoConvenio)="updatedataConvenio($event)" (idconvenio)="updateid($event)"></app-info-convenios>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
           </div>
 
           <div id="Information" class="tabcontent form-group">
-            <app-info-vacantes></app-info-vacantes>
+            <app-info-vacantes [dataConvenio]="conve" [dataEscuelas]="escuela"></app-info-vacantes>
           </div>
 
           <div id="Requisitos" class="tabcontent form-group">
@@ -30,7 +30,7 @@
           </div>
 
           <div id="Vamos" class="tabcontent form-group">
-            <app-info-validador></app-info-validador>
+            <app-info-validador [validador] ="respuesta"></app-info-validador>
           </div>
         </div>
       </div>

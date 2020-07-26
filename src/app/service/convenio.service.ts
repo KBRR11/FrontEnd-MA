@@ -37,4 +37,17 @@ export class ConvenioService {
   getTodoCon(){
     return this.http.get<Convenio[]>(`${ environment.apiUrl }/api/convenios`,{headers: this.agregarAutorizacion()});
   }
+  getConv_Uni(id: number){
+    return this.http.get<Convenio[]>(`${ environment.apiUrl }/api/convenios/cursor/${ id }`,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+      return throwError(e);
+    }));
+  }
+
+  getValidar(idc: number, idu){
+    return this.http.get<String>(`${ environment.apiUrl }/api/convenios/${ idc }/${idu}`,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+      return throwError(e);
+    }));
+  }
 }
