@@ -35,6 +35,7 @@ export class ConvocatoriaCRUDComponent implements OnInit {
   }
   detalleconv(id:number){
     localStorage.setItem("idconvocaotria" , ""+id);
+    alert(id)
     this.router.navigate(['detalleconv']);
   }
   elminarconv(id:number){
