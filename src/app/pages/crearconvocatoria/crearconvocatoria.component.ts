@@ -36,6 +36,7 @@ export class CrearconvocatoriaComponent implements OnInit {
  
   ngOnInit(): void {
     this.listarconvnios();
+    this.listarep()
     }
 
     mostrar(){
@@ -96,13 +97,21 @@ export class CrearconvocatoriaComponent implements OnInit {
   }
   listarep(){
     console.log(this.idfacultad)
-    this.epservice.getEpforId(this.idfacultad).subscribe(
-      (data)=>{
-        console.log(data);
-        this.listaep = data["EP"];
-      }
-    )
-    
+    if (this.idfacultad) {
+      this.epservice.getEpforId(0).subscribe(
+        (data)=>{
+          console.log(data);
+          this.listaep = data["EP"];
+        }
+      )
+    } else {
+      this.epservice.getEpforId(0).subscribe(
+        (data)=>{
+          console.log(data);
+          this.listaep = data["EP"];
+        }
+      )
+    }
   }
   sele(po: number){
     let varia: boolean = false;
