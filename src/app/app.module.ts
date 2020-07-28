@@ -20,7 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterPerComponent } from './Registro-Usuarios/register-per/register-per.component';
 import { RegisterUSERComponent } from './Registro-Usuarios/register-user/register-user.component';
 import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/datos-academicos.component';
-import { Detalleconvo2Component } from './pages/detalleconvo2/detalleconvo2.component';
+
 
 
 
@@ -44,7 +44,7 @@ import { Detalleconvo2Component } from './pages/detalleconvo2/detalleconvo2.comp
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, RegisterPerComponent, RegisterUSERComponent, DatosAcademicosComponent, Detalleconvo2Component],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, RegisterPerComponent, RegisterUSERComponent, DatosAcademicosComponent],
   providers: [
     BsModalRef
   ],

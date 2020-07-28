@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Convocatoria,DetalleConvocatoria } from "src/app/Modelo/Convocatoria";
+import { Convocatoria,DetalleConvocatoria} from "src/app/Modelo/Convocatoria";
 import { ConvocatoriaService } from "src/app/service/convocatoria.service";
 import { Ep } from 'src/app/Modelo/EP';
 import { EpService } from 'src/app/service/Ep.service';
@@ -16,9 +16,35 @@ export class Detalleconvo2Component implements OnInit {
   title: string = "Convocatorias"
   convocatorias: DetalleConvocatoria[]=[];
   detconv:DetalleConvocatoria;
+  convocatoria: Convocatoria[]=[];
   listaep:Ep[]=[];
+
+  ////////////////////////////////
+  uni: boolean = false;
   id:number = Number(localStorage.getItem("idconvocaotria"))
   ngOnInit(): void {
+    this.ListarConvo()
+  }
+  mostrar(){
+    this.uni=true;
+  }
+  ocultar(){
+    this.uni=false;
+  }
+  ListarConvo(){
+    this.convocatoriaservice.listaConvocatoria().subscribe(
+      (data) =>{
+        this.convocatoria=data["LIST_CONVOCATORIA"];
+        console.log(this.convocatoria);
+        for (let index = 0; index <  this.convocatoria.length; index++) {
+          this.convocatoria[index].desde=this.convocatoria[index].desde.substring(0,10);
+          this.convocatoria[index].hasta=this.convocatoria[index].hasta.substring(0,10);
+        }
+      },(error)=>{
+        alert("OCURRIO UN ERROR "+error);
+      }
+      
+    )
   }
   Listar() {
     this.convocatoriaservice.buscarDetConvocatoria(this.id, 1).subscribe(

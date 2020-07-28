@@ -93,6 +93,13 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
+    path: "/detalle2",
+    title: "Detalle Directora",
+    rtlTitle: "Detalle",
+    icon: "icon-bullet-list-67",
+    class: ""
+  },
+  {
     path: "/opcion",
     title: "Opcion",
     rtlTitle: "CRUD Opcion",

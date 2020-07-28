@@ -156,7 +156,7 @@ this.usuario.usuario=username;
       }
 
       modificaUser(usuario:Usuario){
-        return this.http.put<Usuario>(`${ environment.apiUrl }/api/update/`+usuario.idusuario,usuario,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+        return this.http.put<Usuario>(`${ environment.apiUrl }/api/update_user/`+usuario.idusuario,usuario,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
             
           return throwError(e);
         }))

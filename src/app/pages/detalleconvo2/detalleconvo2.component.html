@@ -1,25 +1,61 @@
 <div class="content">
     <div class=" row">
         <div class=" col-md-12">
-            <div class="card card-plain">
+            <div class="card-plain">
                 <div class="titulo">
-                    <h3 style="margin-left: -20px; margin-top: -25px; margin-bottom: 6px;">{{title}}</h3>
+                    <h3 style="margin-left: -10px; margin-top: -5px; margin-bottom: 6px;">{{title}}</h3>
                 </div>
                 
-                    <div>
-                        <div class="card-header">
-                        </div>
-                        <div class="card-body">
+                <div class="listconvo">
+                    <div class="card-body col-md-4 convo" *ngFor="let convo of convocatoria">
+                        <a style="cursor: pointer;" (click)="mostrar()">
+                            <div class="card">
+                                <div class="card-body uno">
+                                    <div class="author">
+                                        <img alt="..." src="assets/img/estudent-removebg.png">
+                                        <div class="infor">
+                                            <h3 class="title">{{convo.nom_convocatoria}}</h3>
+                                            <p class="description">
+                                                {{convo.desde}}
+                                                {{convo.hasta}}
+                                            </p>
+                                            <div class="ciclo">
+                                                <label>{{convo.ciclo_academico}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <section *ngIf="uni;">
+                    <div class="convenio">
+                        <div class="card-body col-md-5 boric">
+                            <div class="card">
+                                <div class="card-body dos">
+                                    <div class="">
+                                        <div class="infor">
+                                            <h3 class="title">bebesita</h3>
+                                            <table>
+    
+                                            </table>
+                                            <div class="ciclo">
+                                                <label>{{convo.ciclo_academico}}</label>
+                                            </div>
+                                        </div>
+    
+    
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="card-header">
-                        </div>
-                        <div class="card-body">
-                        </div>
-                    </div>
+                </section>
                 
-                
+
+
             </div>
         </div>
     </div>
