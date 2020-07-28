@@ -18,7 +18,7 @@ import { CrearconvocatoriaComponent } from "../../pages/crearconvocatoria/crearc
 import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
 import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/detalleconvocatoria.component";
 import { InfoConvocatoriaComponent } from '../../pages/info-convocatoria/info-convocatoria.component';
-// import { RtlComponent } from "../../pages/rtl/rtl.component";
+
 import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
 import { OpcionRComponent } from '../../pages/OpcionRol/opcion-r/opcion-r.component';
@@ -27,6 +27,8 @@ import { RolesComponent } from '../../pages/roles/roles.component';
 import { RecepcionardocComponent } from '../../pages/recepcionardoc/recepcionardoc.component';
 import { OpcionComponent } from '../../pages/opcion/opcion/opcion.component';
 import { RequisitoComponent} from '../../pages/requisito/requisito.component'
+import { FiltercodePipe } from 'src/app/pipes/filtercode.pipe';
+import { FilterdocumentPipe } from 'src/app/pipes/filterdocument.pipe';
 import { ViewerComponent} from '..//../pages/viewer/viewer.component';
 import { InfoVacantesComponent } from '..//../pages/info_components/info-vacantes/info-vacantes.component';
 import { InfoRequisitosComponent } from '..//../pages/info_components/info-requisitos/info-requisitos.component';
@@ -62,14 +64,14 @@ import { ValidarRequisitoComponent } from '../../pages/validar-requisito/validar
     RequisitoComponent,
     ViewerComponent,
     InfoConvocatoriaComponent,
+    FiltercodePipe, 
+    FilterdocumentPipe ,
     InfoVacantesComponent,
     InfoRequisitosComponent,
     InfoValidadorComponent,
     InfoConveniosComponent,
     ValidarRequisitoComponent
-    //InicioComponent,
-    //ConveniosComponent
-    // RtlComponent
+    
   ]
 })
 export class AdminLayoutModule {}
