@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Convocatoria } from 'src/app/Modelo/Convocatoria';
 import { ConvocatoriaService } from 'src/app/service/convocatoria.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -9,9 +9,14 @@ import { ViewerComponent} from "../../pages/viewer/viewer.component";
 @Component({
   selector: 'app-convocatoria-crud',
   templateUrl: './convocatoria-crud.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./convocatoria-crud.component.scss']
 })
 export class ConvocatoriaCRUDComponent implements OnInit {
+
+
+  title: string = "Convocatorias"
+  //////////////
   bsModalRef: BsModalRef;
 
   listaconvocatorias:Convocatoria[]=[]
@@ -30,13 +35,14 @@ export class ConvocatoriaCRUDComponent implements OnInit {
   }
   detalleconv(id:number){
     localStorage.setItem("idconvocaotria" , ""+id);
-    alert(localStorage.getItem("idconvocaotria"))
+    alert(id)
     this.router.navigate(['detalleconv']);
   }
   elminarconv(id:number){
     this.convocatoriaservice.eliminarConvocatoria(id).subscribe(
       (data)=>{
-        console.log(data);
+        this.listar();
+
       }
     )
   }
@@ -63,7 +69,7 @@ export class ConvocatoriaCRUDComponent implements OnInit {
       
       title: 'Ver Documentos'
     };
-    this.bsModalRef = this.modalService2.show(ViewerComponent, {initialState});
+    this.bsModalRef = this.modalService2.show(ViewerComponent, Object.assign({initialState},{class:'modal-xl'}));
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 }

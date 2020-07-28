@@ -6,6 +6,8 @@ import { EpService } from 'src/app/service/Ep.service';
 import { Ep } from 'src/app/Modelo/EP';
 import swal from 'sweetalert2';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { Convenio } from 'src/app/Modelo/Convenio';
+import { ConvenioService } from 'src/app/service/convenio.service';
 
 
 @Component({
@@ -14,20 +16,31 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
   styleUrls: ['./crearconvocatoria.component.scss']
 })
 export class CrearconvocatoriaComponent implements OnInit {
+
+  title: string = "Convocatorias"
   convocatoria:Convocatoria = new Convocatoria();
   listaep:Ep[]=[];
-
+  convenios:Convenio[]=[];
   es: number [] = [];
   detalle_convo :DetalleConvocatoria [] = [];
   detalle : DetalleConvocatoria = new DetalleConvocatoria();
 
   //////////////////////
+  file: string;
+
+  primero: boolean =true;
+  segundo: boolean = false;
   public archivoSeleccionado: File;
-  constructor(private convocatoriaservice:ConvocatoriaService, private epservice:EpService, private http:HttpClient) { }
+  idfacultad:number;
+  constructor(private convocatoriaservice:ConvocatoriaService, private epservice:EpService,private convenioservice:ConvenioService, private http:HttpClient) { }
  
   ngOnInit(): void {
-    
-    this.listarep();
+    this.listarconvnios();
+    }
+
+    mostrar(){
+      this.primero=false;
+      this.segundo=true;
     }
   Crear(){
     
@@ -45,15 +58,17 @@ export class CrearconvocatoriaComponent implements OnInit {
           this.convocatoriaservice.crear(this.archivoSeleccionado,(x as Convocatoria).idconvocatoria , 1)
           .subscribe(data =>{
             console.log(data)
-            swal.fire('Son putos por eso de subio', 'Felicitaciones lo lograron vayanse a dormir', 'success');
+            swal.fire('Datos ingresados correctamente', 'Convocatoria realizada', 'success');
           });
           for (let index = 0; index < this.es.length; index++) {
             const element = this.es[index];
             this.detalle.idconvocatoria=(x as Convocatoria).idconvocatoria;
-            this.detalle.idescuela=this.es[index];
-            this.detalle.nombre=(x as Convocatoria).nom_convocatoria
-            this.detalle.desde= "2021-03-05 17:45:01"
-            this.detalle.hasta= "2021-06-20 17:45:01"
+            this.detalle.idconvenio=this.es[index];
+            this.detalle.idescuela=1;
+            this.detalle.n_vacantes=0;
+            //this.detalle.nombre=(x as Convocatoria).nom_convocatoria
+            /*this.detalle.desde= "2021-03-05 17:45:01"
+            this.detalle.hasta= "2021-06-20 17:45:01"*/
 
             this.detalle_convo.push(this.detalle)
             this.convocatoriaservice.crearDetConvocatoria(this.detalle_convo[index]).subscribe((data) =>{
@@ -71,11 +86,20 @@ export class CrearconvocatoriaComponent implements OnInit {
   /* 
    console.log("hi")*/
   }
-  listarep(){
-    this.epservice.ListAllEp().subscribe(
+  listarconvnios(){
+    this.convenioservice.getTodoCon().subscribe(
       (data)=>{
         console.log(data);
-        this.listaep = data["LIST_EP"];
+        this.convenios=data['LIST_CONVENIOS'];
+      }
+    )
+  }
+  listarep(){
+    console.log(this.idfacultad)
+    this.epservice.getEpforId(this.idfacultad).subscribe(
+      (data)=>{
+        console.log(data);
+        this.listaep = data["EP"];
       }
     )
     
@@ -100,6 +124,10 @@ export class CrearconvocatoriaComponent implements OnInit {
   selecfoto(event){
     this.archivoSeleccionado = event.target.files[0];
     console.log(this.archivoSeleccionado);
+    
+    console.log(this.file.split("\\")[this.file.split("\\").length-1]);
+    this.file=this.file.split("\\")[this.file.split("\\").length-1]
+    
   }
 
   actualizar(){

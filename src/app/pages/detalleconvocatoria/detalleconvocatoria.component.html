@@ -1,61 +1,98 @@
-<div class=" content">
+
+<div class="content">
     <div class=" row">
         <div class=" col-md-12">
-            <div class=" card">
+            <div class="card card-plain">
+              <div class="titulo">
+                <h3 style="margin-left: -20px; margin-top: -25px; margin-bottom: 6px;">{{title}}</h3>
+              </div>
+
                 <div class=" card-header">
-                    <h1 class=" title">DETALLE CONVOCATORIAS</h1>
-                    <button class="btn btn-success">Nueva Convocatoria</button>
                 </div>
-                <div style="height: 50px;"></div>
-                <div class=" card-body ">
-                    <div class=" table-responsive">
-                        <table class=" table tablesorter tam-tabla"  id="">
-                            <thead  >
-                                <tr >
-                                    <th><h4>Nro</h4></th>
-                                    <th><h4>Inicio - Fin</h4></th>
-                                    <th><h4>Estudiantes</h4></th>
-                                    <th><h4>Escuela Profecional</h4></th>
-                                    <th><h4>Estado</h4></th>
-                                    <th class="text-center"><h4>Informe</h4></th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let detconv of convocatorias; let i = index">
-                                <tr>
-                                    <td>{{i+1}}</td>
-                                    <td>{{detconv.desde}} - {{detconv.hasta}}</td>
-                                    <td ><i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="listaralumnos(detconv.idetalle_convocatoria); open(content)" data-toggle="modal" data-target="#exampleModal"></i></td>
-                                    <td >{{detconv.escuela}}</td>
-                                    <td>Activo</td>
-                                    <td class="text-center"><i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="editardet(detconv)"></i><i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminardet(detconv.idetalle_convocatoria)"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        ...
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div>
-                    </div>
+
+                <div class=" card-body col-md-9">
+                  <div class="card"> 
+                    <h5>Lista de los Detalles</h5>
+                    <table class="table">
+                      <thead  >
+                        <tr >
+                          <th scope="col">Nro</th>
+                          <th scope="col">Convocatoria</th>
+                          <th scope="col">Estudiantes</th>
+                          <th scope="col" id="deta">Escuela Profesional</th>
+                          <th scope="col">Universidad</th>
+                          <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detconv of convocatorias; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{detconv.nom_convocatoria}}</td>
+                            <td>
+                              <button class="btn btn-success btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                                <i style="margin-left: 20%;" class="tim-icons icon-notes" (click)="listaralumnos(detconv.idetalle_convocatoria); open(content)" data-toggle="modal" data-target="#exampleModal"></i>
+                              </button> 
+                            </td>
+                            <td>{{detconv.escuela}}</td>
+                            <td>{{detconv.convenio }}</td>
+                            <td class="text-center">
+                              <button class="btn btn-warning btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                                <i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="editardet(detconv);open(pudate)"></i>
+                              </button> 
+                              <button class="btn btn-danger btn-link btn-sm btn-icon" ria-describedby="tooltip-190">
+                                <i style="margin-left: 20%;" class="tim-icons icon-trash-simple" (click)="elminardet(detconv.idetalle_convocatoria)"></i>
+                              </button> 
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+
                   </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #pudate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Actualizar Convocatoria</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" >
+    <div class="">
+      <form>
+        <div class=" form-group">
+          <label> Nombre </label>
+          <input class=" form-control" placeholder="Nombre" type="text" [(ngModel)]="detconv.nombre"
+            name="semestre">
+        </div>
+        <div class=" form-group">
+          <label> Escuela </label>
+          <input class=" form-control" placeholder="" type="text" [(ngModel)]="detconv.escuela"
+            name="escuela">
+        </div>
+        <div class=" form-group">
+          <label> Desde </label>
+          <input class=" form-control" placeholder="" type="date" [(ngModel)]="detconv.desde"
+            name="desde">
+        </div>
+        <div class=" form-group">
+          <label> Hasta </label>
+          <input class=" form-control" placeholder="" type="date" [(ngModel)]="detconv.hasta"
+            name="hasta">
+        </div>
+      </form>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"
+      (click)="update(detconv); modal.dismiss('Cross click')">Save</button>
+  </div>
+</ng-template>
 
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -64,7 +101,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" >
     <div class="">
       <table class="table">
           <thead>
@@ -73,19 +110,25 @@
                   <th scope="col">Nombre</th>
                   <th scope="col">Codigo</th>
                   <th scope="col">Ciclo</th>
+                  <th scope="col">Estado</th>
               </tr>
           </thead>
           <tbody>
-             
               <tr *ngFor="let al of alumno ;let i=index">
-                  <th scope="row">{{i+1}}</th>
+                  <td>{{i+1}}</td>
                   <td>{{al.nombre}}</td> 
                   <td>{{al.codigo}}</td>
                   <td>{{al.ciclo}}</td>
+                  <td>{{1}}</td>
               </tr>
           </tbody>
       </table>
+      
   </div>
   </div>
   
 </ng-template>
+
+
+
+

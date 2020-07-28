@@ -1,11 +1,13 @@
 
-
 #iconobuscar{
     border: 0;
 }
 .search{
-    height: 53px;
-    font-size: 18px;
+    height: 43px;
+    font-size: 15px;
+}
+#bus{
+    color: #666464;
 }
 .boton{
     margin-left: 2%;
@@ -13,9 +15,9 @@
     height: 0px;
 }
 .btn-info{
-    width: 237px;
-    height: 55px;
-    font-size: 20px;
+    width: 227px;
+    height: 44px;
+    font-size: 15px;
     margin-top: -2px;
 }
 .copyright{
@@ -37,4 +39,27 @@
 .modificar{
     margin-top: -70px;
 
+}
+section .b_principal{
+    margin-left: -46px !important;
+}
+.cabesea{
+    margin-left: -32px !important;
+}
+.ic{
+    padding-bottom: 25px;
+}
+.es{
+    margin-bottom: 19px;
+    margin-bottom: -15px;
+}
+#estado{
+    padding-bottom: -30px !important;
+    margin-top: 25px;
+    margin-bottom: 4px;
+    color: #1d8cf8;
+}
+.btn-link{
+    width: 60px;
+    height: 60px;
 }

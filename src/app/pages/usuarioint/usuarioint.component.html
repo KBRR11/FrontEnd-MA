@@ -3,88 +3,108 @@
     <div class=" col-md-12">
       <div class=" card card-plain">
         <div class="titulo">
-          <h2 style="margin-left: 37px; margin-top: 10px; margin-bottom: 10px;">{{title}}</h2>
+          <h3 style="margin-left: 2px; margin-top: -5px; margin-bottom: 4px;">{{title}}</h3>
         </div>
-        <div class=" card-header" *ngIf="header;">
-            <div >
+        <div class="cabesea">
+          <div class=" card-header" *ngIf="header;">
+            <div>
               <form id="formacabeza">
                 <div class="input-group no-border col-md-8">
                   <input type="text" value="" placeholder="Search..." class="form-control search"
                     style="margin-left: 5px;">
                   <div class="input-group-append" id="iconobuscar">
                     <div class="input-group-text">
-                      <i class="tim-icons icon-zoom-split"></i>
+                      <button class="btn btn-link btn-sm btn-icon" id="bus" ria-describedby="tooltip-190"
+                        style="margin-bottom: -13px; ">
+                        <i class="tim-icons icon-zoom-split" style="margin-top: -7px;"></i>
+                      </button>
                       <style></style>
                     </div>
                   </div>
                   <div class="boton" style="float: right;">
-                    <button class=" btn btn-fill btn-info" type="submit" 
-                      (click)="mostrar_crear()">Nuevo Usuario</button>
+                    <button class=" btn btn-fill btn-info" type="submit" (click)="mostrar_crear()">Nuevo
+                      Usuario</button>
                   </div>
                 </div>
               </form>
             </div>
+          </div>
         </div>
 
         <section *ngIf="bori;">
-          <div class="card-body col-md-12" id="" >
-            <div *ngFor="let user of users" >
-              <div class="card card-user col-md-3" style="float: left; margin-left: 20px">
-                <div class="image">
-                  <img src="assets/img/damir-bosnjak.jpg" alt="...">
-                </div>
-                <div class="card-body">
-                  <div class="author">
-                    <a href="#">
-                      <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
-                      <h3 class="title">{{user.usuario}}</h3>
-                    </a>
-                    <p class="description">
-                    </p>
+          <div class="b_principal">
+            <div class="card-body col-md-12" id="">
+              <div *ngFor="let user of users">
+                <div class=" card-user col-md-3" style="float: left; margin-left: 20px">
+                  <div class="image">
+                    <img src="assets/img/bg5.jpg" alt="...">
                   </div>
-                  <p class="description text-center">
-                    {{user.nombres }}
-                    <br> {{user.apellidos }}
-                    <br> Bien Causa
-                  </p>
-                </div>
-                <div class="card-footer">
-                  <hr>
-                  <div class="button-container">
-                    <div class="row">
-                      <div class="col-lg-4 col-md-6 col-6 ml-auto">
-                        <h5 (click)="loadUser(user.idusuario); met_tipo(user.tipo)">
-                          <i class="tim-icons icon-refresh-01"></i>
-                          <br>
-                          <small >Actualizar</small>
-                        </h5>
+
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="author">
+                        <a href="#">
+                          <img class="avatar border-gray" src="http://localhost:8090/api/userfoto/4" alt="...">
+                          <h3 class="title">{{user.usuario}}</h3>
+                        </a>
+                        <p class="description">
+                        </p>
                       </div>
-                      <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                        <h5>{{user.estado}}
-                          <br>
-                          <small>Estado</small>
-                        </h5>
-                      </div>
-                      <div class="col-lg-3 mr-auto">
-                        <h5 (click)="eliminiarUser(user.idusuario)">
-                          <i class="tim-icons icon-simple-remove"></i>
-                          <br>
-                          <small>Delete</small>
-                        </h5>
+                      <p class="description text-center">
+                        {{user.nombres }}
+                        <br> {{user.apellidos }}
+                      </p>
+                    </div>
+  
+                    <div class="card-footer">
+                      <hr>
+                      <div class="button-container">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-6 col-6 ml-auto">
+                            <button class="btn btn-warning  btn-link  btn-icon"
+                              (click)="loadUser(user.idusuario); met_tipo(user.tipo)" ria-describedby="tooltip-190">
+                              <div class="ic">
+                                <i class="tim-icons icon-refresh-01 t"></i>
+                              </div>
+                              <small>Update</small>
+                            </button>
+  
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                            <button class="btn btn-info  btn-link  btn-icon" ria-describedby="tooltip-190">
+                              <div class="es">
+                                <p id="estado">{{user.estado}}</p>
+                              </div>
+                              <small>Estado</small>
+                            </button>
+                          </div>
+  
+                          <div class="col-lg-3 mr-auto">
+                            <button class="btn btn-danger btn-link  btn-icon" (click)="eliminiarUser(user.idusuario)"
+                              ria-describedby="tooltip-190">
+                              <div class="ic">
+                                <i class="tim-icons icon-simple-remove torre"></i>
+                              </div>
+                              <small>Delete</small>
+                            </button>
+  
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
           </div>
         </section>
-        
+
 
 
         <!-------------------------------Registrar Usuario-->
         <section *ngIf="crea;">
-          <div class="content crear" >
+          <div class="content crear">
             <div class="row">
               <div class="col-md-9">
                 <div class="card">
@@ -111,28 +131,32 @@
                         <div class="col-md-3 px-md-1">
                           <div class="form-group"><label>
                               Nombre de usuario
-                            </label><input class="form-control" type="text" placeholder="michael23" value="" [(ngModel)]="user.usuario" name="user"></div>
+                            </label><input class="form-control" type="text" placeholder="michael23" value=""
+                              [(ngModel)]="user.usuario" name="user"></div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
                               Contraseña
-                            </label><input class="form-control" placeholder="..." type="password" [(ngModel)]="user.password" name="pass"></div>
+                            </label><input class="form-control" placeholder="..." type="password"
+                              [(ngModel)]="user.password" name="pass"></div>
                         </div>
                       </div>
-  
-  
+
+
                       <div class="row">
                         <div class="col-md-6 pr-md-1">
                           <div class="form-group"><label> Nombres
-                            </label><input class="form-control" type="text" value="" [(ngModel)]="persona.nombres" name="nom"></div>
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="persona.nombres"
+                              name="nom"></div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                               Apellidos
-                            </label><input class="form-control" type="text" value="" [(ngModel)]="persona.apellidos" name="apellido"></div>
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="persona.apellidos"
+                              name="apellido"></div>
                         </div>
                       </div>
-  
+
                       <div class="row">
                         <div class="col-md-4 pr-md-1">
                           <div class="form-group"><label>
@@ -147,23 +171,26 @@
                         <div class="col-md-4 px-md-1">
                           <div class="form-group">
                             <label>N° Documento</label>
-                            <input class="form-control" type="text" value="" [(ngModel)]="persona.n_documento" name="n_doc">
+                            <input class="form-control" type="text" value="" [(ngModel)]="persona.n_documento"
+                              name="n_doc">
                           </div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
-                            Dirección
-                          </label>
-                          <input class="form-control" type="text" value="" [(ngModel)]="persona.direccion" name="direccion">
-                        </div>
+                              Dirección
+                            </label>
+                            <input class="form-control" type="text" value="" [(ngModel)]="persona.direccion"
+                              name="direccion">
+                          </div>
                         </div>
                       </div>
-                      
+
                       <div class="row">
                         <div class="col-md-4 pr-md-1">
                           <div class="form-group"><label>
                               Tipo </label>
-                            <select class="form-control" name="" id="tipo" [(ngModel)]="user.tipo" name="tipo" (click)="met_tipo(user.tipo)">
+                            <select class="form-control" name="" id="tipo" [(ngModel)]="user.tipo" name="tipo"
+                              (click)="met_tipo(user.tipo)">
                               <option value="">Seleccione una Opcion:</option>
                               <option value="1">Estudiante</option>
                               <option value="2">Docente</option>
@@ -173,78 +200,82 @@
                         </div>
                         <div class="col-md-4 px-md-1">
                           <div class="form-group"><label>
-                            Escuela Profesional </label>
-                          <select class="form-control" id="" [(ngModel)]="user.idep" name="idep">
-                            <option value="">Selecciona una Opcion</option>
-                            <option *ngFor="let es of escuelas" value="{{es.IDEP}}">{{es.NOM_EP}}</option>
-                          </select>
-                        </div>
+                              Escuela Profesional </label>
+                            <select class="form-control" id="" [(ngModel)]="user.idep" name="idep">
+                              <option value="">Selecciona una Opcion</option>
+                              <option *ngFor="let es of escuelas" value="{{es.IDEP}}">{{es.NOM_EP}}</option>
+                            </select>
+                          </div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
-                            Rol
-                          </label>
-                          <select class="form-control" id="" [(ngModel)]="user.idrol" name="idrol">
-                            <option value="">Seleccione una Opcion</option>
-                            <option *ngFor="let rol of roles" value="{{rol.IDROL}}">{{rol.NOMBRE}}</option>
-                          </select>
-                        </div>
-                          
+                              Rol
+                            </label>
+                            <select class="form-control" id="" [(ngModel)]="user.idrol" name="idrol">
+                              <option value="">Seleccione una Opcion</option>
+                              <option *ngFor="let rol of roles" value="{{rol.IDROL}}">{{rol.NOMBRE}}</option>
+                            </select>
+                          </div>
+
                         </div>
                       </div>
 
                       <div class="row" *ngIf="tipoc">
                         <div class="col-md-6">
                           <div class="form-group"><label>
-                            Ciclo </label>
+                              Ciclo </label>
                             <select class="form-control" name="" id="" [(ngModel)]="user.ciclo" name="ciclo">
                               <option value="">Seleccione una Opcion</option>
                               <option value="3">III</option>
-                            <option value="4">IV</option>
-                            <option value="5">V</option>
-                            <option value="6">VI</option>
-                            <option value="7">VII</option>
-                            <option value="8">VIII</option>
-                            <option value="9">IX</option>
-                            <option value="10">X</option>
+                              <option value="4">IV</option>
+                              <option value="5">V</option>
+                              <option value="6">VI</option>
+                              <option value="7">VII</option>
+                              <option value="8">VIII</option>
+                              <option value="9">IX</option>
+                              <option value="10">X</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                               Codigo
-                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.codigo" name="codigo">
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.codigo"
+                              name="codigo">
                           </div>
                         </div>
-                        
+
                       </div>
-  
-  
+
+
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label> Correo (Institucional)</label>
-                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value="" [(ngModel)]="persona.correo" name="correo">
+                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value=""
+                              [(ngModel)]="persona.correo" name="correo">
                           </div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
-                            Telefono
-                          </label>
-                          <input class="form-control" type="text" value="" [(ngModel)]="persona.telefono" name="telefono">
-                        </div>
+                              Telefono
+                            </label>
+                            <input class="form-control" type="text" value="" [(ngModel)]="persona.telefono"
+                              name="telefono">
+                          </div>
                         </div>
                       </div>
-  
+
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <center><button class="btn btn-fill btn-danger" type="submit"  (click)="crearUser()"> Guardar Datos </button>
+                            <center><button class="btn btn-fill btn-danger" type="submit" (click)="crearUser()"> Guardar
+                                Datos </button>
                             </center>
                           </div>
                         </div>
                       </div>
-  
+
                     </form>
                   </div>
                   <div class="card-footer">
@@ -261,21 +292,21 @@
                         for a better web.
                       </div>
                     </div>
-  
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
-         
+
         </section>
-          
-        
+
+
 
         <!-------------------------------Modificar Usuario-->
 
         <section *ngIf="modifica;">
-          <div class="content crear" >
+          <div class="content crear">
             <div class="row">
               <div class="col-md-9">
                 <div class="card">
@@ -302,28 +333,32 @@
                         <div class="col-md-3 px-md-1">
                           <div class="form-group"><label>
                               Nombre de usuario
-                            </label><input class="form-control" type="text" placeholder="michael23" value="" [(ngModel)]="user.usuario" name="user"></div>
+                            </label><input class="form-control" type="text" placeholder="michael23" value=""
+                              [(ngModel)]="user.usuario" name="user"></div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
                               Contraseña
-                            </label><input class="form-control" placeholder="..." type="password" [(ngModel)]="user.password" name="pass"></div>
+                            </label><input class="form-control" placeholder="..." type="password"
+                              [(ngModel)]="user.password" name="pass"></div>
                         </div>
                       </div>
-  
-  
+
+
                       <div class="row">
                         <div class="col-md-6 pr-md-1">
                           <div class="form-group"><label> Nombres
-                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.nombres" name="nom"></div>
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.nombres"
+                              name="nom"></div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                               Apellidos
-                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.apellidos" name="apellido"></div>
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.apellidos"
+                              name="apellido"></div>
                         </div>
                       </div>
-  
+
                       <div class="row">
                         <div class="col-md-4 pr-md-1">
                           <div class="form-group"><label>
@@ -338,23 +373,26 @@
                         <div class="col-md-4 px-md-1">
                           <div class="form-group">
                             <label>N° Documento</label>
-                            <input class="form-control" type="text" value="" [(ngModel)]="user.n_documento" name="n_doc">
+                            <input class="form-control" type="text" value="" [(ngModel)]="user.n_documento"
+                              name="n_doc">
                           </div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
-                            Dirección
-                          </label>
-                          <input class="form-control" type="text" value="" [(ngModel)]="user.direccion" name="direccion">
-                        </div>
+                              Dirección
+                            </label>
+                            <input class="form-control" type="text" value="" [(ngModel)]="user.direccion"
+                              name="direccion">
+                          </div>
                         </div>
                       </div>
-                      
+
                       <div class="row">
                         <div class="col-md-4 pr-md-1">
                           <div class="form-group"><label>
                               Tipo </label>
-                            <select class="form-control" name="" id="tipo" [(ngModel)]="user.tipo" name="tipo" (click)="met_tipo(user.tipo)">
+                            <select class="form-control" name="" id="tipo" [(ngModel)]="user.tipo" name="tipo"
+                              (click)="met_tipo(user.tipo)">
                               <option value="">Seleccione una Opcion:</option>
                               <option value="1">Estudiante</option>
                               <option value="2">Docente</option>
@@ -364,78 +402,82 @@
                         </div>
                         <div class="col-md-4 px-md-1">
                           <div class="form-group"><label>
-                            Escuela Profesional </label>
-                          <select class="form-control" id="tipo" [(ngModel)]="user.idep" name="idep">
-                            <option value="">Selecciona una Opcion</option>
-                            <option *ngFor="let es of escuelas" value="{{es.IDEP}}">{{es.NOM_EP}}</option>
-                          </select>
-                        </div>
+                              Escuela Profesional </label>
+                            <select class="form-control" id="tipo" [(ngModel)]="user.idep" name="idep">
+                              <option value="">Selecciona una Opcion</option>
+                              <option *ngFor="let es of escuelas" value="{{es.IDEP}}">{{es.NOM_EP}}</option>
+                            </select>
+                          </div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group"><label>
-                            Rol
-                          </label>
-                          <select class="form-control" id="" [(ngModel)]="user.idrol" name="idrol">
-                            <option value="">Seleccione una Opcion</option>
-                            <option *ngFor="let rol of roles" value="{{rol.IDROL}}">{{rol.NOMBRE}}</option>
-                          </select>
-                        </div>
-                          
+                              Rol
+                            </label>
+                            <select class="form-control" id="" [(ngModel)]="user.idrol" name="idrol">
+                              <option value="">Seleccione una Opcion</option>
+                              <option *ngFor="let rol of roles" value="{{rol.IDROL}}">{{rol.NOMBRE}}</option>
+                            </select>
+                          </div>
+
                         </div>
                       </div>
 
 
-                          <div class="row" *ngIf="tipo">
-                            <div class="col-md-6">
-                              <div class="form-group"><label>
-                                Ciclo </label>
-                                <select class="form-control" name="" id="" [(ngModel)]="user.ciclo" name="ciclo">
-                                  <option value="">Seleccione una Opcion</option>
-                                  <option value="3">III</option>
-                                <option value="4">IV</option>
-                                <option value="5">V</option>
-                                <option value="6">VI</option>
-                                <option value="7">VII</option>
-                                <option value="8">VIII</option>
-                                <option value="9">IX</option>
-                                <option value="10">X</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6 pl-md-1">
-                              <div class="form-group"><label>
-                                  Codigo
-                                </label><input class="form-control" type="text" value="" [(ngModel)]="user.codigo" name="codigo">
-                              </div>
-                            </div>
-                          </div>
-      
-  
-                      <div class="row">
+                      <div class="row" *ngIf="tipo">
                         <div class="col-md-6">
-                          <div class="form-group">
-                            <label> Correo (Institucional)</label>
-                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value="" [(ngModel)]="user.correo" name="correo">
+                          <div class="form-group"><label>
+                              Ciclo </label>
+                            <select class="form-control" name="" id="" [(ngModel)]="user.ciclo" name="ciclo">
+                              <option value="">Seleccione una Opcion</option>
+                              <option value="3">III</option>
+                              <option value="4">IV</option>
+                              <option value="5">V</option>
+                              <option value="6">VI</option>
+                              <option value="7">VII</option>
+                              <option value="8">VIII</option>
+                              <option value="9">IX</option>
+                              <option value="10">X</option>
+                            </select>
                           </div>
                         </div>
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
-                            Telefono
-                          </label>
-                          <input class="form-control" type="text" value="" [(ngModel)]="user.telefono" name="telefono">
+                              Codigo
+                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.codigo"
+                              name="codigo">
+                          </div>
                         </div>
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label> Correo (Institucional)</label>
+                            <input class="form-control" placeholder="example@upeu.edu.pe" type="email" value=""
+                              [(ngModel)]="user.correo" name="correo">
+                          </div>
+                        </div>
+                        <div class="col-md-6 pl-md-1">
+                          <div class="form-group"><label>
+                              Telefono
+                            </label>
+                            <input class="form-control" type="text" value="" [(ngModel)]="user.telefono"
+                              name="telefono">
+                          </div>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <center><button class="btn btn-fill btn-danger" type="submit"  (click)="modificarUser(user)"> Guardar Datos </button>
+                            <center><button class="btn btn-fill btn-danger" type="submit" (click)="modificarUser(user)">
+                                Guardar Datos </button>
                             </center>
                           </div>
                         </div>
                       </div>
-  
+
                     </form>
                   </div>
                   <div class="card-footer">
@@ -452,15 +494,15 @@
                         for a better web.
                       </div>
                     </div>
-  
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
-         
+
         </section>
-        
+
 
 
       </div>

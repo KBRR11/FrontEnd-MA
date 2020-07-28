@@ -69,8 +69,8 @@ export class ConvocatoriaService {
                     .pipe(catchError(this.handlerError));
   }
   //buscar convocatoria
-  buscarDetConvocatoria(idconvocatoria:number): Observable<DetalleConvocatoria> {
-    return this.http.get<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/`+idconvocatoria,{headers: this.agregarAutorizacion()})
+  buscarDetConvocatoria(idconvocatoria:number, tipo:number): Observable<DetalleConvocatoria> {
+    return this.http.get<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/`+idconvocatoria+`/`+tipo,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
   //buscar convocatoria

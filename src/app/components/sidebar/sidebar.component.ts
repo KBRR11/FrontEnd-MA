@@ -17,7 +17,7 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "لوحة القيادة",
     icon: "icon-chart-pie-36",
     class: ""
-  },
+  }/*,
   {
     path: "/icons",
     title: "Icons",
@@ -61,18 +61,18 @@ export const ROUTES: RouteInfo[] = [
     
   },
   {
-    path: "/info_convo",
-    title: "info",
-    rtlTitle: "123",
-    icon: "icon-world",
-    class: ""
-  },
-  {
     path: "/rol",
     title: "Rol",
     rtlTitle: "111",
     icon: "icon-atom",
     class: "",
+  }*/,
+  {
+    path: "/info_convo",
+    title: "info",
+    rtlTitle: "123",
+    icon: "icon-world",
+    class: ""
   },
   {
     path: "/usuario_i",
@@ -114,6 +114,13 @@ export const ROUTES: RouteInfo[] = [
     title: "Requisito",
     rtlTitle: "Requisitos",
     icon: "tim-icons icon-paper",
+    class: ""
+  },
+  {
+    path: "/validar_req",
+    title: "Validar Requisito",
+    rtlTitle: "Requisitos",
+    icon: "tim-icons icon-single-copy-04",
     class: ""
   },
  /* {

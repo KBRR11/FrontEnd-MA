@@ -7,11 +7,12 @@
                     <div class="container row">
                         <div class="col-8">
                             <button class="btn btn-success" (click)="show=!show;show3=!show3;">Agregar</button>
+                            <button class="btn btn-danger" (click)="show=!show;show5=!show5;">Papelera</button>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convenios:</label>
-                                <select class="form-control" (change)="selectConvenio($event)">
+                                <select class="form-control" (change)="selectConvenio($event,1)">
                                   <option value="0">Seleccionar...</option>
                                   <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
                                 </select>
@@ -27,7 +28,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Estado</th>
-                                    <th colspan="2">Opcion</th>
+                                    <th colspan="3">Opcion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,10 +39,51 @@
                                     <td>{{req.estado}}</td>
                                     <td><i class="tim-icons icon-pencil" (click)="show2=!show2;show=!show;loadRequisito(req)"></i></td>
                                     <td><i class="tim-icons icon-simple-remove" (click)="DeleteRequisito(req)"></i></td>
+                                    <td><i class="tim-icons icon-map-big" (click)="openModalWithComponent()"></i></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+            <div class="card" *ngIf="show5">
+                <div class="card-header">
+                    <h1 class="title">Papelera Requisito</h1>
+                    <div class="container row">
+                        <div class="col-8">
+                            <button type="button" class="btn btn-primary" (click)="show5=!show5;show=!show">Regresar</button>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="pers" class="col-form-label">Convenios:</label>
+                                <select class="form-control" (change)="selectConvenio($event,0)" >
+                                  <option value="0">Seleccionar...</option>
+                                  <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>{{convenio.nom_c_ep}}</option>
+                                </select>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Estado</th>
+                                <th colspan="1">Opcion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                            <tr *ngFor="let req of loadReqConveData2 ;let i=index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{req.nombre}}</td> 
+                                <td>{{req.estado}}</td>
+                                <td><i class="tim-icons icon-refresh-01" (click)="DeleteRequisito(req)"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="card" *ngIf="show3">
@@ -55,6 +97,10 @@
                                 <label for="exampleFormControlInput1">Nombre:</label>
                                 <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1"
                                     placeholder="name of the opcion" [(ngModel)]="AddRequisito.nombre">
+                            </div>
+                            <div class="form-group">
+                                <label>File:</label>
+                                <input type="file" (change)="selecfoto($event)" multiple="multiple">
                             </div>
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convenios:</label>

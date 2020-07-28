@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class OpcionService {
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
   constructor(private http:HttpClient, private loginService: LoginService) {   }
-  opcion='http://localhost:8090/opcion/';
+  opcion='http://localhost:8090/api/opcion/';
   
   private Autorization(){
     let token= this.loginService.token;

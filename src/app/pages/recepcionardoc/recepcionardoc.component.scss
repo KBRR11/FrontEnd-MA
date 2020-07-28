@@ -1,10 +1,24 @@
-.table{
+*{
+    margin: 0;
+    padding: 0;
+}
+.tamanio{
     margin: 0px auto;
+    width: 60%;
+    border-style: solid;
+    border: 1px solid rgba($color: #B8ADAA, $alpha: 1.0);
+    border-radius: 3px;
 }
-.derecha{
-    margin-right: 0px auto;
+.bordedown{
+    border-style: solid;
+    border-top: 1px solid rgba($color: #B8ADAA, $alpha: 1.0);
 }
-.abajo{
-    //en espera 
-    margin-top: 0px auto;
+.botones{
+    margin-left: 63%;
+}
+.ima{
+    margin: 0px auto;
+    width: 95%;
+    height: 100vh;
+    background:rgba($color: #B8ADAA, $alpha: 1.0);
 }
