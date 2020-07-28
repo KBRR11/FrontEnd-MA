@@ -24,6 +24,10 @@ import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/d
 
 
 
+
+
+
+
 //import { ConvocatoriasComponent } from './md-inicio/convocatorias/convocatorias.component';
 //import { ConveniosComponent } from './md-inicio/convenios/convenios.component';
 
@@ -41,7 +45,7 @@ import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/d
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, RegisterPerComponent, RegisterUSERComponent, DatosAcademicosComponent ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, RegisterPerComponent, RegisterUSERComponent, DatosAcademicosComponent],
   providers: [
     BsModalRef
   ],

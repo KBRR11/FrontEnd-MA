@@ -1,6 +1,7 @@
 export class Rol{
     idrol:number;
-    nombres:string;
-    estado:number;
+    nombre:string;
     detalle:string;
+    estado:number;
+    
 }

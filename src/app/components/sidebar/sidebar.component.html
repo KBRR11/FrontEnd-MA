@@ -12,12 +12,12 @@
   <ul class="nav">
     <li
       routerLinkActive="active"
-      *ngFor="let menuItem of menuItems"
-      class="{{ menuItem.class }} nav-item"
+      *ngFor="let opc of opciones"
+      class=" nav-item"
     >
-      <a [routerLink]="[menuItem.path]">
-        <i class="tim-icons  {{ menuItem.icon }}"></i>
-        <p>{{ menuItem.title }}</p>
+      <a [routerLink]="[opc.ENLACE]">
+        <i class={{opc.ICONO}}></i>
+        <p>{{ opc.NOMBRE }}</p>
       </a>
     </li>
   </ul>

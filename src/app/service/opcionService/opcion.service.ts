@@ -4,6 +4,8 @@ import { Observable, from, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Opcion } from '../../Modelo/Opcion';
 import { LoginService } from 'src/app/service/login.service'
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +36,12 @@ export class OpcionService {
     return this.http.delete<Opcion[]>(this.opcion+'delete/'+opcion.idopcion,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
+  }
+
+  cargarOpciones(nom_rol:string){
+return this.http.get<Opcion[]>(`${ environment.apiUrl }/api/opc/`+nom_rol,{headers: this.Autorization()}).pipe(catchError(e =>{
+  return throwError(e);
+}));
+
   }
 }

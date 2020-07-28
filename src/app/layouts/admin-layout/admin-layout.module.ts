@@ -18,7 +18,7 @@ import { CrearconvocatoriaComponent } from "../../pages/crearconvocatoria/crearc
 import { ConvocatoriaCRUDComponent } from "../../pages/convocatoria-crud/convocatoria-crud.component";
 import { DetalleconvocatoriaComponent } from "../../pages/detalleconvocatoria/detalleconvocatoria.component";
 import { InfoConvocatoriaComponent } from '../../pages/info-convocatoria/info-convocatoria.component';
-// import { RtlComponent } from "../../pages/rtl/rtl.component";
+
 import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
 import { OpcionRComponent } from '../../pages/OpcionRol/opcion-r/opcion-r.component';
@@ -28,7 +28,8 @@ import { RecepcionardocComponent } from '../../pages/recepcionardoc/recepcionard
 import { OpcionComponent } from '../../pages/opcion/opcion/opcion.component';
 import { RequisitoComponent} from '../../pages/requisito/requisito.component'
 import { ViewerComponent} from '..//../pages/viewer/viewer.component'
-
+import { FiltercodePipe } from 'src/app/pipes/filtercode.pipe';
+import { FilterdocumentPipe } from 'src/app/pipes/filterdocument.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,10 +57,10 @@ import { ViewerComponent} from '..//../pages/viewer/viewer.component'
     OpcionComponent,
     RequisitoComponent,
     ViewerComponent,
-    InfoConvocatoriaComponent
-    //InicioComponent,
-    //ConveniosComponent
-    // RtlComponent
+    InfoConvocatoriaComponent,
+    FiltercodePipe, 
+    FilterdocumentPipe 
+    
   ]
 })
 export class AdminLayoutModule {}

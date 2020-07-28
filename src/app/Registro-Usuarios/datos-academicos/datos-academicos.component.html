@@ -152,7 +152,7 @@
                                     <select name="ep" class="form-control" id="ep"
                                         [(ngModel)]="usuario.idep">
                                         <option disabled selected class="diselec">Escuela Profesional:</option>
-                                        <option *ngFor="let eps of ep" value={{eps.IDEP}}>{{eps.NOM_EP}}</option>
+                                        <option *ngFor="let eps of epResult" value={{eps.IDEP}}>{{eps.NOM_EP}}</option>
                                         
                                     </select>
                                     <!---->

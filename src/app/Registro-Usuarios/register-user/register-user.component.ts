@@ -3,6 +3,7 @@ import { Usuarios } from "src/app/Modelo/Usuarios";
 import { UsuariosService } from "src/app/service/usuarios.service";
 import { PersonasService } from "src/app/service/personas.service";
 import { Personas } from "src/app/Modelo/Personas";
+import { LoginService } from 'src/app/service/login.service';
 import { Router } from '@angular/router'
 import Swal from 'sweetalert2';
 @Component({
@@ -13,12 +14,21 @@ import Swal from 'sweetalert2';
 export class RegisterUSERComponent implements OnInit {
   usuario:Usuarios = new Usuarios();
   persona:Personas = new Personas();
-  constructor(private usuariosService:UsuariosService, private router:Router, private personasService:PersonasService) { }
+  constructor(private usuariosService:UsuariosService, private router:Router, private personasService:PersonasService, private loginService:LoginService) { }
 
   ngOnInit(): void {
     this.iniciarProceso();
     
-   
+    let datosusu = JSON.parse(sessionStorage.getItem("personas"));
+    if(this.loginService.isAuthenticated()==true){
+      Swal.fire('Login','Hola '+ datosusu.nombres +' ya estas Autentificado', 'info');
+      this.router.navigate(['/dashboard']);
+      
+    }else{
+      localStorage.clear();
+      sessionStorage.clear();
+      
+    }
     
   }
 
