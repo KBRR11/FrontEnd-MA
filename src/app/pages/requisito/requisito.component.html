@@ -101,7 +101,7 @@
             </div>
             <div class="card" *ngIf="show3">
                 <div class="card-header">
-                    <h1 class="title">Nueva Requisito</h1>
+                    <h1 class="title">Nuevo Requisito</h1>
                 </div>
                 <div class="card-body">
                     <div class="reduccion">
@@ -112,7 +112,7 @@
                                         <label for="exampleFormControlInput1">Nombre:</label>
                                         <input type="text" name="nombre" class="form-control"
                                             id="exampleFormControlInput1" placeholder="name of the opcion"
-                                            [(ngModel)]="AddRequisito.nombre" onkeypress="duplicateRequisito()">
+                                            [(ngModel)]="AddRequisito.nombre">
                                     </div>
                                     <div class="form-group">
                                         <div class="thumbnail">
@@ -150,12 +150,12 @@
                                 <button type="button" class="btn btn-primary"
                                     (click)="show3=!show3;show=!show">Cancelar</button>
                                 <button type="button" class="btn btn-success  btn-fill"
-                                    (click)="saveRequisito();show3=!show3;show=!show">Guardar</button>
+                                    (click)="duplicateRequisito();show3=!show3;show=!show">Guardar</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> 
             <div class="card" *ngIf="show2">
                 <div class="card-header">
                     <h1 class="title">Modificar Requisito</h1>
@@ -167,15 +167,7 @@
                                 <label for="exampleFormControlInput1">Nombre:</label>
                                 <input type="email" class="form-control" [(ngModel)]="requisito.nombre" name="nombre"
                                     id="exampleFormControlInput1" placeholder="name of the opcion">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Estado:</label>
-                                <select class="form-control" [(ngModel)]="requisito.estado" name="estado"
-                                    (change)="selectConvenio4($event)">
-                                    <option value="1">Activo</option>
-                                    <option value="0">Inactivo</option>
-                                </select>
-                            </div>
+                            </div>                            
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convenios:</label>
                                 <select class="form-control" [(ngModel)]="requisito.idconvenio" name="idconvenio"

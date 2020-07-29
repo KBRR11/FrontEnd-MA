@@ -70,17 +70,12 @@ import { Detalleconvo2Component } from '../../pages/detalleconvo2/detalleconvo2.
     InfoVacantesComponent,
     InfoRequisitosComponent,
     InfoValidadorComponent,
-    InfoConveniosComponent,
-<<<<<<< HEAD
-    ValidarRequisitoComponent
-    
-=======
+    InfoConveniosComponent,    
     ValidarRequisitoComponent,
     Detalleconvo2Component
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent
->>>>>>> albert
   ]
 })
 export class AdminLayoutModule {}

@@ -109,7 +109,7 @@ export class RequisitoComponent implements OnInit {
 
     }
   }
-  duplicateRequisito(){
+  duplicateRequisito(){ 
   console.log("Duplicate Requisito",this.AddRequisito.nombre);
   console.log("Lista R",this.listRequisitos);
    this.listRequisitos.forEach(req =>  { 
