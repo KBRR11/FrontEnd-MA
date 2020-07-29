@@ -70,7 +70,7 @@ import { Detalleconvo2Component } from '../../pages/detalleconvo2/detalleconvo2.
     InfoVacantesComponent,
     InfoRequisitosComponent,
     InfoValidadorComponent,
-    InfoConveniosComponent,
+    InfoConveniosComponent,    
     ValidarRequisitoComponent,
     Detalleconvo2Component
     //InicioComponent,
