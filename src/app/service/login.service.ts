@@ -62,7 +62,9 @@ import { CanActivate } from '@angular/router';
        this._persona.color_fondo=datos.COLOR_FONDO;
        this._persona.color_menu=datos.COLOR_MENU;
         sessionStorage.setItem('personas',JSON.stringify(this._persona));
-        
+        sessionStorage.getItem("personas")
+        localStorage.setItem("rol",datos.NOM_ROL)
+        localStorage.setItem("idu",datos.IDUSUARIO)
         
       }
 

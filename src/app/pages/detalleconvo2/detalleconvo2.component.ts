@@ -32,7 +32,7 @@ export class Detalleconvo2Component implements OnInit {
     this.uni=false;
   }
   ListarConvo(){
-    this.convocatoriaservice.listaConvocatoria().subscribe(
+    this.convocatoriaservice.listaConvocatoria(1).subscribe(
       (data) =>{
         this.convocatoria=data["LIST_CONVOCATORIA"];
         console.log(this.convocatoria);
@@ -46,26 +46,5 @@ export class Detalleconvo2Component implements OnInit {
       
     )
   }
-  Listar() {
-    this.convocatoriaservice.buscarDetConvocatoria(this.id, 1).subscribe(
-      (data) =>{
-
-        this.convocatorias=data["DETALLE_CONVOCATORIA"];
-        console.log(this.convocatorias);
-      },(error)=>{
-        alert("OCURRIO UN ERROR "+error);
-      }
-    )
-  }
-  update(){
-    console.log(this.detconv)
-    this.convocatoriaservice.actualizarDetConvocatoria(this.detconv).subscribe(
-      (respons)=>{
-        console.log(respons)
-        this.Listar();
-      },(error)=>{
-        alert("OCURRIO UN ERROR "+error);
-      }
-    )
-  }
+  
 }

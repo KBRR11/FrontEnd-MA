@@ -50,11 +50,6 @@
                     </div>
                     <div class="card-body">
                       <div class="table-full-width">
-                        <select name="idfac" class="form-control" [(ngModel)]="idfacultad" (change)=listarep()>
-                          <option value="1">Empresariales</option>
-                          <option value="2">Fia</option>
-                          <option value="3">Cocaina</option>
-                        </select>
                         <table class="table">
                           <tbody>
                             <tr *ngFor="let conv of convenios">

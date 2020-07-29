@@ -7,14 +7,28 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-info-convenios',
   template: `<div class="container">
-              <div class="" *ngFor="let con of conve">
-                
-                <a (click)="Cambio(con.idconvenio)">
               
-                  <h1>{{con.nom_c_ep}}</h1>
-                  <img src="http://localhost:8090/upload/2/{{con.idconvenio}}">
-                </a>
-              </div>
+              <div class="listconvo">
+                    <div class="card-body col-md-4 convo" *ngFor="let con of conve">
+                        <a style="cursor: pointer;" (click)="Cambio(con.idconvenio)">
+                            <div class="card">
+                                <div class="card-body uno">
+                                    <div class="author">
+                                    <img src="http://localhost:8090/upload/2/{{con.idconvenio}}">
+                                        <div class="infor">
+                                            <h3 class="title">{{con.nom_c_ep}}</h3>
+                                            <p class="description">
+                                            </p>
+                                            <div class="ciclo">
+                                                <label></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>`,
   styleUrls: ['./info-convenios.component.scss']
 })

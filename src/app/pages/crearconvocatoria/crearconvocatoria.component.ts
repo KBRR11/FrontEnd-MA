@@ -32,7 +32,7 @@ export class CrearconvocatoriaComponent implements OnInit {
   segundo: boolean = false;
   public archivoSeleccionado: File;
   idfacultad:number;
-  constructor(private convocatoriaservice:ConvocatoriaService, private epservice:EpService,private convenioservice:ConvenioService, private http:HttpClient) { }
+  constructor( private convocatoriaservice:ConvocatoriaService, private epservice:EpService,private convenioservice:ConvenioService, private http:HttpClient) { }
  
   ngOnInit(): void {
     this.listarconvnios();
@@ -49,7 +49,7 @@ export class CrearconvocatoriaComponent implements OnInit {
     this.convocatoriaservice.crearConvocatoria(this.convocatoria).subscribe(
       (data)=>{
         alert(data);
-        this.convocatoriaservice.listaConvocatoria().subscribe((data)=>{
+        this.convocatoriaservice.listaConvocatoria(1).subscribe((data)=>{
           console.log(data["LIST_CONVOCATORIA"])
            var x:any = data["LIST_CONVOCATORIA"][0] 
           console.log(x as Convocatoria);
@@ -74,6 +74,22 @@ export class CrearconvocatoriaComponent implements OnInit {
             this.detalle_convo.push(this.detalle)
             this.convocatoriaservice.crearDetConvocatoria(this.detalle_convo[index]).subscribe((data) =>{
               console.log(data)
+            })
+           
+            this.convenioservice.getConv_Uni(element).subscribe((data) =>{
+                console.log("soy el element" + element)
+                console.log(data)
+                data['ESCUELA_UNIVERSIDADES'].forEach(element => {
+                  this.detalle.idconvocatoria=(x as Convocatoria).idconvocatoria;
+                  this.detalle.idconvenio=this.es[index];
+                  this.detalle.n_vacantes=0;
+                  this.detalle.idescuela=element.idep;
+                  this.detalle_convo.push(this.detalle)
+                  this.convocatoriaservice.crearDetConvocatoria(this.detalle_convo[index]).subscribe((data) =>{
+                    console.log(data)
+                  })
+                  
+                });
             })
 
           }
