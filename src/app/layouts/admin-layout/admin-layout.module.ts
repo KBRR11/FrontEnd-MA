@@ -71,16 +71,11 @@ import { Detalleconvo2Component } from '../../pages/detalleconvo2/detalleconvo2.
     InfoRequisitosComponent,
     InfoValidadorComponent,
     InfoConveniosComponent,
-<<<<<<< HEAD
-    ValidarRequisitoComponent
-    
-=======
     ValidarRequisitoComponent,
     Detalleconvo2Component
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent
->>>>>>> albert
   ]
 })
 export class AdminLayoutModule {}
