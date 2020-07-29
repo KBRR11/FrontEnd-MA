@@ -112,10 +112,10 @@ export class RequisitoComponent implements OnInit {
   duplicateRequisito(){
   console.log("Duplicate Requisito",this.AddRequisito.nombre);
   console.log("Lista R",this.listRequisitos);
-   this.listRequisitos.forEach(req => {
+   this.listRequisitos.forEach(req =>  { 
      console.log("requisito nombres ",req.nombre)
       if(req.nombre==this.AddRequisito.nombre){
-        Swal.fire('Requisito ya existe!', 'Ingrese otro nombre..!', 'warning')
+        Swal.fire('Requisito ya existe!', 'Ingrese otro nombre..!', 'warning');
       }else{
         console.log("Requisito listo para agregarse.");
         //this.saveRequisito();
