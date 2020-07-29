@@ -30,7 +30,7 @@ import Swal from 'sweetalert2';
     
 
     getEpforId(idfacutad:number){
-        console.log(idfacutad);
+        //console.log(idfacutad);
         return this.http.get<Ep[]>(`${ environment.apiUrl }/api/fac_ep/${ idfacutad }`);
     }
     ListAllEp(){

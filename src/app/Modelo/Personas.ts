@@ -26,10 +26,12 @@ export class Personas {
     NOM_FACULTAD:string;
     ACRONIMO:string;
     NOM_EP:string;
+    IDUSUARIO:number;
     USUARIO:string;
     SEDE:string;
     CODIGO:string;
     CICLO:string;
+    
     }
 
 export class Persona{

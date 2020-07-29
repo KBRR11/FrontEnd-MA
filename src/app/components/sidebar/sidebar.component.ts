@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
+import { Rol } from "src/app/Modelo/Rol";
+import { Opcion } from "src/app/Modelo/Opcion";
+import { OpcionService } from "src/app/service/opcionService/opcion.service";
 declare interface RouteInfo {
   path: string;
   title: string;
@@ -93,6 +96,13 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
+    path: "/detalle2",
+    title: "Detalle Directora",
+    rtlTitle: "Detalle",
+    icon: "icon-bullet-list-67",
+    class: ""
+  },
+  {
     path: "/opcion",
     title: "Opcion",
     rtlTitle: "CRUD Opcion",
@@ -143,14 +153,16 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-
-  constructor(private router:Router) {}
+  roles : Rol = new Rol();
+opciones:Opcion[] = [];
+  constructor(private router:Router, private opcionService:OpcionService) {}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     
     this.datosUser();
    this.Comprobación();
+   this.cargarOpcion();
    
   }
   isMobileMenu() {
@@ -162,6 +174,7 @@ export class SidebarComponent implements OnInit {
   datosUser(){/// sirve para obtener los datos
     let datos = JSON.parse(sessionStorage.getItem("personas"))
     document.getElementById("datosu").innerHTML=datos.nombres+"<br> "+datos.apellidos;
+    //console.log(datos.nombres);
   }
 
   Comprobación(){
@@ -170,8 +183,17 @@ export class SidebarComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     }else{
       this.router.navigate(['/user']);
-      console.log('funka');
+     
     }
+  }
+
+  cargarOpcion(){
+    let datos = JSON.parse(sessionStorage.getItem("personas"));
+    
+    this.opcionService.cargarOpciones(datos.nom_rol).subscribe((data) => {
+      this.opciones = data['LIST_OPTIONS'];
+    
+    });
   }
 
 }

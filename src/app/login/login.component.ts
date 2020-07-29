@@ -4,6 +4,7 @@ import { Usuarios } from 'src/app/Modelo/Usuarios';
 import Swal from 'sweetalert2';
 import { LoginService } from 'src/app/service/login.service';
 import { SeviceloginService } from 'src/app/service/servicelogin.service';
+import { Session } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -18,12 +19,18 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.clear();
+    
     let datosusu = JSON.parse(sessionStorage.getItem("personas"));
     if(this.loginService.isAuthenticated()==true){
-      Swal.fire('Login','Hola '+datosusu.nombre1+' ya estas Autentificado', 'info');
-     
+      Swal.fire('Login','Hola '+ datosusu.nombres +' ya estas Autentificado', 'info');
+      this.router.navigate(['/dashboard']);
+      
+    }else{
+      localStorage.clear();
+      sessionStorage.clear();
+      //console.log("este es el local storage: " + localStorage.length);
     }
+
   }
 
   

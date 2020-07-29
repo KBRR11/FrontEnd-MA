@@ -14,8 +14,9 @@ export class DetalleconvocatoriaComponent implements OnInit {
 
   title: string = "Detalle de Convocatorias"
   ///////////////////
-
+  estado:string;
   convocatorias: DetalleConvocatoria[]=[];
+  detconv:DetalleConvocatoria;
   listaep:Ep[]=[];
   alumno: any[]=[];
   constructor(private convocatoriaservice:ConvocatoriaService,private epservice:EpService, private modalService: NgbModal) { }
@@ -24,14 +25,10 @@ export class DetalleconvocatoriaComponent implements OnInit {
     this.Listar();
   }
   Listar() {
-    this.convocatoriaservice.buscarDetConvocatoria(this.id).subscribe(
+    this.convocatoriaservice.buscarDetConvocatoria(this.id, 2).subscribe(
       (data) =>{
 
         this.convocatorias=data["DETALLE_CONVOCATORIA"];
-        this.convocatorias.forEach(element => {
-          element.hasta=element.hasta.substring(0,10)+" "
-          element.desde=element.desde.substring(0,10)
-        });
         console.log(this.convocatorias);
       },(error)=>{
         alert("OCURRIO UN ERROR "+error);
@@ -49,7 +46,19 @@ export class DetalleconvocatoriaComponent implements OnInit {
     )
   }
   editardet(detconv:DetalleConvocatoria){
-    console.log(detconv)
+    this.detconv=detconv;
+    
+  }
+  update(){
+    console.log(this.detconv)
+    this.convocatoriaservice.actualizarDetConvocatoria(this.detconv).subscribe(
+      (respons)=>{
+        console.log(respons)
+        this.Listar();
+      },(error)=>{
+        alert("OCURRIO UN ERROR "+error);
+      }
+    )
   }
   elminardet(idconvocatoria:number){
     this.convocatoriaservice.eliminarDetConvocatoria(idconvocatoria).subscribe(
@@ -73,6 +82,9 @@ export class DetalleconvocatoriaComponent implements OnInit {
   }
 
   open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
+  open2(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 }

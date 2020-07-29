@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Personas } from "src/app/Modelo/Personas";
 import { PersonasService } from "src/app/service/personas.service";
+import { LoginService } from 'src/app/service/login.service';
 import { Router } from '@angular/router'
 import Swal from 'sweetalert2';
 @Component({
@@ -10,11 +11,20 @@ import Swal from 'sweetalert2';
 })
 export class RegisterPerComponent implements OnInit {
   persona:Personas = new Personas();
-  constructor(private personasService:PersonasService, private router:Router ){ }
+  constructor(private personasService:PersonasService, private router:Router,private loginService:LoginService  ){ }
 
   ngOnInit() {
     this.terminarProceso();
-    //console.log(localStorage);
+    let datosusu = JSON.parse(sessionStorage.getItem("personas"));
+    if(this.loginService.isAuthenticated()==true){
+      Swal.fire('Login','Hola '+ datosusu.nombres +' ya estas Autentificado', 'info');
+      this.router.navigate(['/dashboard']);
+      
+    }else{
+      localStorage.clear();
+      sessionStorage.clear();
+      
+    }
   }
 
   addpersona (persona:Personas){ 
@@ -75,7 +85,7 @@ localStorage.setItem('registerper',JSON.stringify(this.persona));
 
   terminarProceso(){
     //console.log(localStorage);
-     if(localStorage.length!=0){
+     if(localStorage.getItem("registerper")!=null){
       (<HTMLInputElement>document.getElementById("nombres")).disabled=true;
       (<HTMLInputElement>document.getElementById("apellidos")).disabled=true;
       (<HTMLInputElement>document.getElementById("t_doc")).disabled=true;
@@ -93,7 +103,13 @@ localStorage.setItem('registerper',JSON.stringify(this.persona));
        }).then((result) => {
          if (result.value) {
            
-         this.router.navigate(['/register-user']);
+          if(localStorage.getItem("Tipo")===null){
+            this.router.navigate(['/datos-academicos']);
+          }else{
+            if (localStorage.getItem("Tipo")!=null) {
+              this.router.navigate(['/register-user']);
+            }
+          }
            
          }
        });
@@ -121,7 +137,13 @@ localStorage.setItem('registerper',JSON.stringify(this.persona));
         this.router.navigate(['/login']);
           
         }else{
-          this.router.navigate(['/register-user']);
+          if(localStorage.getItem("Tipo")===null){
+          this.router.navigate(['/datos-academicos']);
+        }else{
+          if (localStorage.getItem("Tipo")!=null) {
+            this.router.navigate(['/register-user']);
+          }
+        }
         }
       })
     }else{

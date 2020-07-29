@@ -3,6 +3,7 @@ import { Usuarios } from "src/app/Modelo/Usuarios";
 import { Facultades } from "src/app/Modelo/Facultades";
 import { FacultadesService } from "src/app/service/facultades.service";
 import { EpService } from "src/app/service/Ep.service";
+import { LoginService } from 'src/app/service/login.service';
 import { Ep } from "src/app/Modelo/EP";
 import Swal from 'sweetalert2';
 
@@ -14,17 +15,28 @@ import { Router } from '@angular/router'
 })
 export class DatosAcademicosComponent implements OnInit {
 usuario : Usuarios = new Usuarios();
-facultad: Facultades=new Facultades();
+facultad: Facultades[]=[];
 
 ep: Ep = new Ep();
+epResult :Ep[]=[];
 estudiante:boolean = false;
-  constructor(private facultadService:FacultadesService, private epService:EpService, private router:Router) { }
+  constructor(private facultadService:FacultadesService, private epService:EpService, private router:Router, private loginService:LoginService ) { }
 
   ngOnInit(): void {
     this.iniciarProceso();
    this.facultadService.getAllFacultades().subscribe((data) =>{
      this.facultad = data['LIST_FACULTADES'];
    })
+   let datosusu = JSON.parse(sessionStorage.getItem("personas"));
+    if(this.loginService.isAuthenticated()==true){
+      Swal.fire('Login','Hola '+ datosusu.nombres +' ya estas Autentificado', 'info');
+      this.router.navigate(['/dashboard']);
+      
+    }else{
+      localStorage.clear();
+      sessionStorage.clear();
+      
+    }
   }
    datos = JSON.parse(localStorage.getItem("registerper"));
   updateTipo(){
@@ -37,12 +49,12 @@ estudiante:boolean = false;
   }
 
   ObtenerIdfac(){
-console.log(this.ep.IDFACULTAD);
+//console.log(this.ep.IDFACULTAD);
 
 this.epService.getEpforId(this.ep.IDFACULTAD).subscribe(
   (data) => {
-    this.ep = data['EP'];
-   console.log(this.ep);
+    this.epResult = data['EP'];
+   //console.log(this.epResult);
   });
   }
 
@@ -84,7 +96,7 @@ this.epService.getEpforId(this.ep.IDFACULTAD).subscribe(
           confirmButtonText:'Continuar'
         })
         this.router.navigate(['/register-user']);
-       // console.log(localStorage);
+        //console.log(localStorage);
         }else{
           if (this.usuario.tipo==2 && (this.usuario.sede && this.usuario.idep) !=null ) {
             localStorage.setItem('Tipo',JSON.stringify(this.usuario.tipo));
@@ -124,6 +136,22 @@ iniciarProceso(){
       }
     })
     
+  }else{
+    if(localStorage.getItem("Ep")!=null){
+      Swal.fire({
+        icon: 'info',
+        title: 'Termina tu Proceso',
+        text: 'Para evitar que tu proceso se borre, Porfavor Terminalo',
+        confirmButtonText: "Entiendo"
+        
+      }).then((result) => {
+        if (result.value) {
+          
+        this.router.navigate(['/register-user']);
+          
+        }
+      })
+    }
   }
 }
 

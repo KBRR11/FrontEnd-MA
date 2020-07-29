@@ -23,6 +23,18 @@ export class Usuarios{
     DOCENTES_PEN:string;
     ESTUDIANTES_ACT:string;
     DOCENTES_ACT:string;
+    
+    ////////////// TABLAS DE ESTUDIANTES Y DOCENTES PENDIENTES Y ACTIVOS
+    IDUSUARIO:number;
+    CODIGO:string;
+    N_DOCUMENTO:string;
+    NOMBRES:string;
+    TIPO:string;
+    SEDE:string;
+    FACULTAD:string;
+    ESCUELA:string;
+    ESTADO:string;
+    CORREO:string;
 }
 
 export class Usuario{

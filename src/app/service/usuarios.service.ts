@@ -96,11 +96,9 @@ getContTeach_Actives(): Observable<Usuarios[]> {
 ////////////////////////////////// TRAER DATOS PERSONALES Y ACTUALIZAR //////////////////////////////////////////////////////////////////////////
 
 
-DatosPersona(usuario:Usuarios){
-  let id = JSON.parse(sessionStorage.getItem("personas"));
-
-this.usuario.idusuario = id.idusuario;
-  return this.http.get<Usuarios[]>(`${ environment.apiUrl }/api/listar/`+this.usuario.idusuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+DatosPersona(idusuario:number){
+  
+  return this.http.get<Usuarios[]>(`${ environment.apiUrl }/api/listarDatosPersona/`+idusuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
 
     return throwError(e);
   }));
@@ -133,6 +131,75 @@ this.usuario.usuario=username;
   }));
 }
 
+////////////////////////////////// TABLA DE USUARIOS PENDIENTES EN DASHBOARD /////////////////////////////////////////////
+getAllPending_Est(): Observable<Usuarios[]> {
+  return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/all_pending_Est`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+
+getAllPending_Doc(): Observable<Usuarios[]> {
+  return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/all_pending_Doc`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+////////////////////////////////// TABLA DE USUARIOS ACTIVOS EN DASHBOARD /////////////////////////////////////////////
+getAllActives_Est(): Observable<Usuarios[]> {
+  return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/all_students`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+
+getAllActives_Doc(): Observable<Usuarios[]> {
+  return this.http.get<Usuarios[]>(`${ environment.apiUrl}/api/all_teachers`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+
+//////////////////////////////////////// ACTIVAR POSTULANTES //////////////////////////////////////////////////////////
+
+ActivarUser(idusuario:number){ /////////////////// ANGULAR AHORA ASI SE HACE EL PUT
+  //console.log(idusuario+ " llega al service");
+  this.usuario.idusuario=idusuario;
+  return this.http.put<Usuarios>(`${ environment.apiUrl }/api/activate/`+idusuario,this.usuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+//////////////////////////////////////// DESACTIVAR POSTULANTES //////////////////////////////////////////////////////////
+DesactivarUser(idusuario:number){ /////////////////// ANGULAR AHORA ASI SE HACE EL PUT
+  //console.log(idusuario+ " llega al service");
+  this.usuario.idusuario=idusuario;
+  return this.http.put<Usuarios>(`${ environment.apiUrl }/api/deactivate/`+idusuario,this.usuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+
+//////////////////////////////////////// ELMINAR POSTULANTES PARA SIEMPRE //////////////////////////////////////////////////////////
+
+deleteUserx100PRE(idusuario: number){
+  return this.http.delete<Usuarios[]>(`${ environment.apiUrl }/api/delete_user/` + idusuario,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
+
+//////////////////////////////////////// ACTULIZAR FOTO USUARIO //////////////////////////////////////////////////////////
+
+updateFotoUser(archivo:File,id){
+  const formdata = new FormData();
+  formdata.append("archivo",archivo);
+  formdata.append("id",id);
+  return this.http.post(`${ environment.apiUrl }/api/subirfoto`,formdata).pipe(catchError(e =>{
+
+    return throwError(e);
+  }));
+}
 
       //////////new inter////////////////////777
       getUser(){
@@ -156,7 +223,7 @@ this.usuario.usuario=username;
       }
 
       modificaUser(usuario:Usuario){
-        return this.http.put<Usuario>(`${ environment.apiUrl }/api/update/`+usuario.idusuario,usuario,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+        return this.http.put<Usuario>(`${ environment.apiUrl }/api/update_user/`+usuario.idusuario,usuario,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
             
           return throwError(e);
         }))

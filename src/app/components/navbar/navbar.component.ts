@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
-
+  iduserFOTO : number;
   public isCollapsed = true;
 
   closeResult: string;
@@ -55,6 +55,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
+    let userfoto = JSON.parse(sessionStorage.getItem("personas"));
+    this.iduserFOTO = userfoto.idusuario
   }
 
   collapse() {

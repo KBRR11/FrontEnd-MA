@@ -44,14 +44,19 @@ export class UsuariointComponent implements OnInit {
   tipo: boolean = true;
   tipoc: boolean = true;
 
+  ciclo: string;
+  codigo: string;
+
   constructor(private facultadService:FacultadesService , private persService:PersonasService, private epService:EpService, private userService:UsuariosService, private router:Router) { }
 
   ngOnInit(): void {
+    this.getuser();
+    this.getpersona();
     this.getEscuela();
     this.getFacultad();
     this.getRol();
-    this.getpersona();
-    this.getuser();
+    
+    
   }
 
   met_tipo(t: number){
@@ -127,16 +132,32 @@ export class UsuariointComponent implements OnInit {
       if (true) {
         const x = this.persona.n_documento;
         this.user.n_documento=x;
+        if(this.user.tipo==2 || this.user.tipo==3){
+          this.user.ciclo="";
+          this.user.codigo=""
+        }
+        console.log(this.user.codigo + " " + this.user.ciclo)
         this.userService.crearUser(this.user).subscribe((data) => {
           console.log(data);
+          this.getuser();
         })
-        this.getuser();
+        
       }
     })
     this.ocultar_crear()
    }
-
+   limpiar(te: number){
+     console.log(te);
+     if(te==2 || te==3){
+      this.ciclo="";
+      this.codigo="";
+     }
+   }
    modificarUser(user: Usuario){
+    if(user.tipo==2 || user.tipo==3){
+      user.ciclo="";
+      user.codigo=""
+    }
     console.log(user)
     this.userService.modificaUser(user).subscribe((data) => {
       console.log(data);
