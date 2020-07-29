@@ -3,4 +3,5 @@ export class Requisito{
     nombre:string;
     idconvenio:number;
     estado:string;
+    idrequisito_convenio:number;
 }
