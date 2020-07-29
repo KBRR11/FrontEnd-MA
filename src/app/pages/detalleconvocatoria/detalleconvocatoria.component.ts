@@ -25,7 +25,7 @@ export class DetalleconvocatoriaComponent implements OnInit {
     this.Listar();
   }
   Listar() {
-    this.convocatoriaservice.buscarDetConvocatoria(this.id, 2).subscribe(
+    this.convocatoriaservice.buscarDetConvocatoria(this.id, 1).subscribe(
       (data) =>{
 
         this.convocatorias=data["DETALLE_CONVOCATORIA"];
