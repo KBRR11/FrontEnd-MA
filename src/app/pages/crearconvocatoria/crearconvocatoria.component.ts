@@ -36,6 +36,7 @@ export class CrearconvocatoriaComponent implements OnInit {
  
   ngOnInit(): void {
     this.listarconvnios();
+    this.listarep()
     }
 
     mostrar(){
@@ -64,7 +65,7 @@ export class CrearconvocatoriaComponent implements OnInit {
             const element = this.es[index];
             this.detalle.idconvocatoria=(x as Convocatoria).idconvocatoria;
             this.detalle.idconvenio=this.es[index];
-            this.detalle.idescuela=1;
+            this.detalle.idescuela=0;
             this.detalle.n_vacantes=0;
             //this.detalle.nombre=(x as Convocatoria).nom_convocatoria
             /*this.detalle.desde= "2021-03-05 17:45:01"
@@ -96,13 +97,21 @@ export class CrearconvocatoriaComponent implements OnInit {
   }
   listarep(){
     console.log(this.idfacultad)
-    this.epservice.getEpforId(this.idfacultad).subscribe(
-      (data)=>{
-        console.log(data);
-        this.listaep = data["EP"];
-      }
-    )
-    
+    if (this.idfacultad) {
+      this.epservice.getEpforId(0).subscribe(
+        (data)=>{
+          console.log(data);
+          this.listaep = data["EP"];
+        }
+      )
+    } else {
+      this.epservice.getEpforId(0).subscribe(
+        (data)=>{
+          console.log(data);
+          this.listaep = data["EP"];
+        }
+      )
+    }
   }
   sele(po: number){
     let varia: boolean = false;
