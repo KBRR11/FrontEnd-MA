@@ -1,51 +1,208 @@
-<div class="content">
+<div class="content" *ngIf="solicitudes">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="tittle">Documentos</h1>
-                    <div class="container row">
-                        <div class="col-8">
-                            <div class="form-group" style="display: none;">
-                                <label for="" class="col-form-label">
-                                    Convenios:
-                                </label>
-                                <select class="form-control" (change)="selectConvenio($event)">
-                                    <option value="0">Seleccionar...</option>
-                                    <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>
-                                        {{convenio.nom_c_ep}}</option>
+            <div class="titulo">
+                <h3 style="margin-left: 2px; margin-top: -5px; margin-bottom: 4px;">{{title}}</h3>
+            </div>
+
+            <div>
+                <div class="card col-md-9">
+                    <div class="card-header">
+                        <div class="col-md-2 new_soli">
+                            <a style="cursor: pointer;" (click)="open(solicitud)" data-toggle="modal"
+                            data-target="#exampleModal">
+                                <img src="assets/img/solicitud.png"><br>
+                                <p id="solicitud">Nueva Solicitud</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3" id="estado">
+                            <div>
+                                <select class="form-control" name="" id="">
+                                    <option value="" hidden selected>Seleccione Estado</option>
+                                    <option value="2">Aprovado</option>
+                                    <option value="1">Proceso</option>
+                                    <option value="3">Desaprovado</option>
                                 </select>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="tsolicitud">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nro</th>
+                                    <th scope="col">Convocatoria</th>
+                                    <th scope="col">Universidad</th>
+                                    <th scope="col">Fecha de Resistro</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Revisar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{1}}</td>
+                                    <td>Sueña en Grande</td>
+                                    <td>La Plata</td>
+                                    <td>30-07-2020</td>
+                                    <td>pendiente</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                            ria-describedby="tooltip-190">
+                                            <i style="margin-left: 20%;" class="tim-icons icon-pencil"
+                                                (click)="openrequisito()"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="tamanio">
-                        <ngb-accordion *ngFor="let req of loadReqConveData">
-                            <ngb-panel class="bordedown">
-                                <ng-template ngbPanelTitle>
-                                    <p class="h3">{{req.nombre}}</p>
-                                    <hr>
-                                </ng-template>
-                                <ng-template ngbPanelContent>
-                                    <div class="baja">
-                                        <div class="botones">
+            </div>
+
+            <div>
+                <div class="card col-md-9">
+                    <div class="card-header">
+                        <div class="col-md-2 new_soli">
+                            <a style="cursor: pointer;" (click)="open2(content)">
+                                <img src="assets/img/soli3.png"><br>
+                                <p id="solicitud">Modificar Solicitud</p>
+                            </a>
+                        </div>
+                        
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="trequisito">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nro</th>
+                                    <th scope="col">Requisito</th>
+                                    <th scope="col">Formato</th>
+                                    <th scope="col">Opciones</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{1}}</td>
+                                    <td>Solicitud MA</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                            ria-describedby="tooltip-190">
+                                            <i style="margin-left: 20%;" class="tim-icons icon-pencil"
+                                                (click)="openModalWithComponent(47)"></i>
+                                        </button>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="fileinput text-center" style="display:none">
                                             <div style="display:none">
-                                                <input class="" #fil [(ngModel)]="file" (change)="selecfoto($event); mostrar()" multiple="multiple" type="file">
-                                              </div>
-                                            <button type="button" class="btn btn-success" style="width: 100px;height:30px ;" (click)="fil.click()">Subir</button>
-                                            <button type="button" class="btn btn-success" style="width: 100px;height:30px ;">Descargar</button>
+                                              <input class="" #fil [(ngModel)]="file" (change)="selecfoto($event)" multiple="multiple" type="file">
+                                            </div>
                                         </div>
-                                        <div class="ima">
-                                            hola soy la imagen
+                                        <div *ngIf="carga">
+                                            <button class="btn btn-success btn-link btn-sm btn-icon"
+                                            ria-describedby="tooltip-190" (click)="fil.click()">
+                                            <i style="margin-left: 20%;" class="tim-icons icon-cloud-upload-94"
+                                                (click)="editardet(detconv);open(pudate)"></i>
+                                             </button>
                                         </div>
-                                    </div>
-                                </ng-template>
-                            </ngb-panel>
-                        </ngb-accordion>
+                                        <div *ngIf="recarga">
+                                            <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                            ria-describedby="tooltip-190">
+                                            <i style="margin-left: 20%;" class="tim-icons icon-refresh-02"
+                                                (click)="editardet(detconv);open(pudate)"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-link btn-sm btn-icon"
+                                            ria-describedby="tooltip-190">
+                                            <i style="margin-left: 20%;" class="tim-icons icon-link-72"
+                                                (click)="editardet(detconv);open(pudate)"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>pendiente</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+<ng-template #solicitud let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Nueva Solicitud</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="">
+            <form>
+                <div class=" form-group">
+                    <label> Convocatoria </label>
+                    <select class="form-control" name="convocatoria" id="">
+                        <option value="" hidden selected>Seleccione Convocatoria</option>
+                        <option value="2">Sueña en Grande</option>
+                        <option value="1">Somos Peru</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                    <label> Universidad </label>
+                    <select class="form-control" name="universidad" id="">
+                        <option value="" hidden selected>Seleccione Universidad</option>
+                        <option value="2">La Plata</option>
+                        <option value="1">Brasil</option>
+                        <option value="3">Desaprovado</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark"
+            (click)="update(detconv); modal.dismiss('Cross click')">Save</button>
+    </div>
+</ng-template>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Modificar Solicitud</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="">
+            <form>
+                <div class=" form-group">
+                    <label> Convocatoria </label>
+                    <select class="form-control" name="convocatoria" id="convoca" [(ngModel)]="solicitud.idconvocatoria" [disabled]="content">
+                        <option value="" hidden selected>Seleccione Convocatoria</option>
+                        <option value="2">Sueña en Grande</option>
+                        <option value="1">Somos Peru</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                    <label> Universidad </label>
+                    <select class="form-control" name="universidad" id="" [(ngModel)]="solicitud.idconvenio">
+                        <option value="" hidden selected>Seleccione Universidad</option>
+                        <option value="2">La Plata</option>
+                        <option value="1">Brasil</option>
+                        <option value="3">Desaprovado</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark"
+            (click)="crearsolicitud(); modal.dismiss('Cross click')">Save</button>
+    </div>
+</ng-template>
+
+<div *ngIf="requisitos">
+    <app-requisito-solicitud></app-requisito-solicitud>
 </div>

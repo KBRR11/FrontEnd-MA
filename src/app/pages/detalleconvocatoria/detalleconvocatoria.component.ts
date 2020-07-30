@@ -149,6 +149,7 @@ export class DetalleconvocatoriaComponent implements OnInit {
   }
   listaralumnos(idconvocatoria:number){
     //alert(idconvocatoria)
+    console.log("tutu: " + idconvocatoria)
     this.convocatoriaservice.buscarAlumnoDetConvocatoria(idconvocatoria).subscribe(
       (data)=>{
         this.alumno=data['CONVOCATORIA']
