@@ -8,6 +8,7 @@ import { Convenio } from '../../Modelo/Convenio';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { Requisito_Convenio } from 'src/app/Modelo/Requisito_Convenio';
+import { format } from 'path';
 
 @Injectable({
   providedIn: 'root'
@@ -49,11 +50,14 @@ export class RequisitoService {
     }));
   }
 
-  createRequisito(requisito:Requisito){
+
+  createRequisito(requisito:Requisito,archivo:File){
+    const form = new FormData();
+    form.append("archivo",archivo);
+    form.append("nombre",requisito.nombre);
     console.log("service",requisito)
-    return this.http.post<Requisito[]>(this.requisito+'api/requisitos/add',requisito,{headers: this.Autorization()}).pipe(catchError(e =>{
-      return throwError(e);
-    }));
+    console.log("service",archivo)
+    return this.http.post(`${environment.apiUrl}/api/requisito/create`,form);
   }
 
   VincularConvenioRequisito(requisisto_Convenio:Requisito_Convenio){

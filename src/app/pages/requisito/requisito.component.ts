@@ -38,7 +38,9 @@ export class RequisitoComponent implements OnInit {
   modRequisito: Requisito = new Requisito();
 
   idco: number[] = [];
-  constructor(private modalService: NgbModal, private service: RequisitoService, private router: Router) { }
+  file: string;
+  title: string = "Requisitos";
+  constructor(private modalService: BsModalService, private service: RequisitoService, private router: Router) { }
 
   ngOnInit() {
     this.getVacio();
@@ -110,33 +112,28 @@ export class RequisitoComponent implements OnInit {
     }
   }
   duplicateRequisito(){ 
+  var encontrado : boolean;
   console.log("Duplicate Requisito",this.AddRequisito.nombre);
   console.log("Lista R",this.listRequisitos);
-   this.listRequisitos.forEach(req =>  { 
+   this.listRequisitos.forEach(req => { 
      console.log("requisito nombres ",req.nombre)
       if(req.nombre==this.AddRequisito.nombre){
         Swal.fire('Requisito ya existe!', 'Ingrese otro nombre..!', 'warning');
-      }else{
-        console.log("Requisito listo para agregarse.");
-        //this.saveRequisito();
+        encontrado=true;
       }
     });
+    if(encontrado){
+      Swal.fire('Requisito ya existe!', 'Ingrese otro nombre..!', 'warning');
+    }else{
+      console.log("Requisito listo para agregarse.");
+        this.saveRequisito();
+    }
   }
   saveRequisito() {
-    this.service.createRequisito(this.AddRequisito).subscribe(data => {
+    this.service.createRequisito(this.AddRequisito,this.archivoSeleccionado).subscribe(data => {
       this.service.getRequisito().subscribe((data) => {
         this.AddRequisito1 = data['LIST_REQUISITO'];
         this.obtenerIdRC();
-        try {
-          console.log("soy la data dentro de save", data);
-          this.ReqArchivo = data['LIST_REQUISITO'];
-          console.log("IDNICK" + this.ReqArchivo[0].idrequisitos)
-          this.service.crearArchivo(this.archivoSeleccionado, this.ReqArchivo[0].idrequisitos, 4).subscribe((theone) => {
-            console.log(theone + "=zero");
-          })
-        } catch (error) {
-          console.log(error);
-        }
       })
       console.log("soy la data DE GUARDAR", data);
       (Swal.fire('Requisito', '' + '' + 'Requisito registrado con éxito...!'))
@@ -147,7 +144,7 @@ export class RequisitoComponent implements OnInit {
     //this.AddRequisitoConvenio.idconvenio = this.selectedConvenio2;
     console.log("data de obtener id " + this.AddRequisitoConvenio.idrequisito);
     console.log("data de obtener id " + this.AddRequisitoConvenio.idconvenio);
-    for (let i = 0; i < this.idco.length; i++) {
+    for (let i = 0; i < this.idco.length; i++) { 
       this.AddRequisitoConvenio.idrequisito = this.AddRequisito1[0].idrequisitos;
       this.AddRequisitoConvenio.idconvenio = this.idco[i];
       console.log("data de obtener id " + i + "nro:" + this.AddRequisitoConvenio.idrequisito);
@@ -233,17 +230,17 @@ export class RequisitoComponent implements OnInit {
   selecfoto(event) {
     this.archivoSeleccionado = event.target.files[0];
     console.log(this.archivoSeleccionado);
+    this.file=this.file.split("\\")[this.file.split("\\").length-1]
   }
 
-  openModalWithComponent() {
+  openModalWithComponent(req:number) {
     const initialState = {
-
+      
       title: 'Ver Documentos',
-      size: 'xl'
+      idr:req
     };
-    const theone = this.modalService.open(ViewerComponent, initialState);
-    theone.componentInstance.closeBtnName = 'Close';
-    //this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef = this.modalService.show(ViewerComponent, Object.assign({initialState},{class:'modal-xl'}));
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
   vincular(co: number) {
     let selec: boolean = false;
