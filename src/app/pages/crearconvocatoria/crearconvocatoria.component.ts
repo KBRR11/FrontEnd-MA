@@ -159,7 +159,7 @@ export class CrearconvocatoriaComponent implements OnInit {
     this.convocatoriaservice.upload(this.archivoSeleccionado, 1, 4, 3)
       .subscribe(data =>{
         console.log(data)
-        swal.fire('Son putos por eso de subio', 'Felicitaciones lo lograron vayanse a dormir', 'success');
+        swal.fire('Felicitaciones', ' lo lograron vayanse a dormir', 'success');
       });
       console.log("hi")
   }

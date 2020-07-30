@@ -17,8 +17,11 @@ export class RecepcionardocComponent implements OnInit {
   show:boolean = true;
   listReq:Requisito[]=[]
   listConvenios:Convenio[]=[];
-  selectedConvenio: number= null;
+  selectedConvenio: number= 1;
   loadReqConveData: Requisito[]=[];
+
+  file: string;
+  public archivoSeleccionado: File;
   constructor(private _config:NgbAccordionConfig,private service:OpcionService,private router:Router, private service2:RequisitoService) { 
     _config.closeOthers=true;
   }
@@ -26,8 +29,17 @@ export class RecepcionardocComponent implements OnInit {
   ngOnInit(){
     //this.listar();
     this.getAllConvenio();
+    this.getReqConve()
   }
- 
+  
+  selecfoto(event){
+    this.archivoSeleccionado = event.target.files[0];
+    console.log(this.archivoSeleccionado);
+    
+    console.log(this.file.split("\\")[this.file.split("\\").length-1]);
+    this.file=this.file.split("\\")[this.file.split("\\").length-1]
+    
+  }
   getReqConve(){
     console.log("hola"+this.selectedConvenio)
     this.service2.getReqConve(this.selectedConvenio).subscribe((data)=>{
