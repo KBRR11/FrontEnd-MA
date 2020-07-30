@@ -24,20 +24,39 @@ export class ConvocatoriaCRUDComponent implements OnInit {
   listaconvocatorias:Convocatoria[]=[]
   convocatora:Convocatoria = new Convocatoria();
   closeResult = '';
+
+  mevine: string
+  rol:string = localStorage.getItem("rol")
+
+  primera: boolean
+  segunda: boolean
   constructor(private modalService2: BsModalService, private convocatoriaservice:ConvocatoriaService,private epservice:EpService, private router: Router, private modalService: NgbModal ) { }
 
   ngOnInit(): void {
     this.listar();
   }
   listar(){
-    this.convocatoriaservice.listaConvocatoria().subscribe((data)=>{
-      console.log(data["LIST_CONVOCATORIA"])
-      this.listaconvocatorias=data["LIST_CONVOCATORIA"]
-      for (let index = 0; index <  this.listaconvocatorias.length; index++) {
-        this.listaconvocatorias[index].desde=this.listaconvocatorias[index].desde.substring(0,10);
-        this.listaconvocatorias[index].hasta=this.listaconvocatorias[index].hasta.substring(0,10);
-      }
-    })
+    if (this.rol=="ROLE_SECRETARY") {
+      this.convocatoriaservice.listaConvocatoria(1).subscribe((data)=>{
+        console.log(data["LIST_CONVOCATORIA"])
+        this.listaconvocatorias=data["LIST_CONVOCATORIA"]
+        for (let index = 0; index <  this.listaconvocatorias.length; index++) {
+          this.listaconvocatorias[index].desde=this.listaconvocatorias[index].desde.substring(0,10);
+          this.listaconvocatorias[index].hasta=this.listaconvocatorias[index].hasta.substring(0,10);
+        }
+      })
+    } else if(this.rol=="ROLE_DIRECTOR"){
+      console.log("me vine")
+      this.convocatoriaservice.listaConvocatoria(2).subscribe((data)=>{
+        console.log(data["LIST_CONVOCATORIA"])
+        this.listaconvocatorias=data["LIST_CONVOCATORIA"]
+        for (let index = 0; index <  this.listaconvocatorias.length; index++) {
+          this.listaconvocatorias[index].desde=this.listaconvocatorias[index].desde.substring(0,10);
+          this.listaconvocatorias[index].hasta=this.listaconvocatorias[index].hasta.substring(0,10);
+        }
+      })
+    }
+    
   }
   listarep(){
     console.log(this.idfacultad)
@@ -67,6 +86,7 @@ export class ConvocatoriaCRUDComponent implements OnInit {
   detalleconv(id:number){
     localStorage.setItem("idconvocaotria" , ""+id);
     alert(id)
+
     this.router.navigate(['detalleconv']);
   }
   elminarconv(id:number){

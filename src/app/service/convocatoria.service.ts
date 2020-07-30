@@ -5,7 +5,7 @@ import { Convocatoria,DetalleConvocatoria } from '../Modelo/Convocatoria';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { catchError, map } from 'rxjs/operators';
-import { Usuarios } from '../Modelo/Usuarios';
+import { Usuario, Usuarios} from '../Modelo/Usuarios';
 import { LoginService } from './login.service';
 import { Recurso} from '../Modelo/Recursos'
 
@@ -31,9 +31,9 @@ export class ConvocatoriaService {
     return this.httpHeaders;
   }
   /////////////CONVOCATORIA/////////////
-  listaConvocatoria(): Observable<Convocatoria[]> {
+  listaConvocatoria(tipo:number): Observable<Convocatoria[]> {
     console.log("llegue aca");
-    return this.http.get<Convocatoria[]>(`${environment.apiUrl}/api/convocatoria`,{headers: this.agregarAutorizacion()})
+    return this.http.get<Convocatoria[]>(`${environment.apiUrl}/api/convocatoria/`+tipo,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
   //actualizar convocatoria
@@ -48,7 +48,7 @@ export class ConvocatoriaService {
   }
   //buscar convocatoria
   buscarConvocatoria(idconvocatoria:number): Observable<Convocatoria> {
-    return this.http.get<Convocatoria>(`${environment.apiUrl}/api/convocatoria/`+idconvocatoria,{headers: this.agregarAutorizacion()})
+    return this.http.get<Convocatoria>(`${environment.apiUrl}/api/convocatorias/`+idconvocatoria,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
   //buscar convocatoria
@@ -69,8 +69,8 @@ export class ConvocatoriaService {
                     .pipe(catchError(this.handlerError));
   }
   //buscar convocatoria
-  buscarDetConvocatoria(idconvocatoria:number, tipo:number): Observable<DetalleConvocatoria> {
-    return this.http.get<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/`+idconvocatoria+`/`+tipo,{headers: this.agregarAutorizacion()})
+  buscarDetConvocatoria(idconvocatoria:number, tipo:number, id:number): Observable<DetalleConvocatoria> {
+    return this.http.get<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/`+idconvocatoria+`/`+tipo+`/`+id,{headers: this.agregarAutorizacion()})
                     .pipe(catchError(this.handlerError));
   }
   //buscar convocatoria
@@ -87,6 +87,19 @@ export class ConvocatoriaService {
     return throwError(error.message || "Server Error")
   }
 
+  listaruser_idep(id:number): Observable<Usuario> {
+    return this.http.get<Usuario>(`${environment.apiUrl}/api/detconvocatoria/user/`+id,{headers: this.agregarAutorizacion()})
+                    .pipe(catchError(this.handlerError));
+  }
+
+  listar_vacante(idc:number, ide:number){
+    return this.http.get<DetalleConvocatoria>(`${environment.apiUrl}/api/detconvocatoria/vacante/`+idc+`/`+ide,{headers: this.agregarAutorizacion()})
+                    .pipe(catchError(this.handlerError));
+  }
+  actualizar_vacante(idc:number, ide:number, nvacante:number){
+    return this.http.put<number>(`${environment.apiUrl}/api/detconvocatoria/vacante/`+idc+`/`+ide+`/`+nvacante,idc,{headers: this.agregarAutorizacion()})
+                    .pipe(catchError(this.handlerError));
+  }
   ///////////////// subir archivo //////////////
 
   upload(archivo: File, id, idr,tipo:number): any{

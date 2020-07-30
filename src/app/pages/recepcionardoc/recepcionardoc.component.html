@@ -6,7 +6,7 @@
                     <h1 class="tittle">Documentos</h1>
                     <div class="container row">
                         <div class="col-8">
-                            <div class="form-group">
+                            <div class="form-group" style="display: none;">
                                 <label for="" class="col-form-label">
                                     Convenios:
                                 </label>
@@ -30,8 +30,11 @@
                                 <ng-template ngbPanelContent>
                                     <div class="baja">
                                         <div class="botones">
-                                            <button type="button" class="btn btn-success" style="width: 100px;height:30px ;">Subir</button>
-                                            <button type="button" class="btn btn-success" style="width: 100px;height:30px ;">Ver Img</button>
+                                            <div style="display:none">
+                                                <input class="" #fil [(ngModel)]="file" (change)="selecfoto($event); mostrar()" multiple="multiple" type="file">
+                                              </div>
+                                            <button type="button" class="btn btn-success" style="width: 100px;height:30px ;" (click)="fil.click()">Subir</button>
+                                            <button type="button" class="btn btn-success" style="width: 100px;height:30px ;">Descargar</button>
                                         </div>
                                         <div class="ima">
                                             hola soy la imagen

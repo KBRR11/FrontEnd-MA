@@ -30,4 +30,30 @@ table td{
 .modal-body table td{
     color:#525f7f !important; 
 }
+.maso{
+    margin-left: 370px;
+    margin-top: -67px;
+}
+#vacante{
+    width:80px;
+    height: 37px;
+    margin-left: 7px;
+    
+}
+#subtitulo{
+    margin-top: 15px;
+}
+input[type=number]::-webkit-outer-spin-button,
 
+input[type=number]::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+input[type=number] {
+
+    -moz-appearance:textfield;
+
+}

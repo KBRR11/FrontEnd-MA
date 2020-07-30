@@ -6,14 +6,19 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-info-vacantes',
   template: `<div class="container">
-      <div class="" *ngFor="let convenio of dataConvenio">
-        <h1>{{convenio.ruta}}</h1>
-        <div class="">
-  <img src="http://localhost:8090/upload/2/{{convenio.idconvenio}}">
-</div>
-      </div>
-      
-  </div>`,
+              <div class="" *ngFor="let convenio of dataConvenio">
+                 <h1>{{convenio.ruta}}</h1>
+                 <div class="">
+                   <img src="http://localhost:8090/upload/2/{{convenio.idconvenio}}">
+                 </div>
+                 <div class="" >
+                    <ol type="I">
+                      <li *ngFor="let escuela of dataEscuelas">{{escuela.nom_ep}}</li>
+                    </ol>
+                 </div>
+
+             </div>
+            </div>`,
   styleUrls: ['./info-vacantes.component.scss']
 })
 
@@ -30,6 +35,8 @@ export class InfoVacantesComponent implements OnInit {
     this.serviceConvenio.getConvenioId(2).subscribe((data)=>{
       this.conve=data['CONVENIOS']
       console.log(data)
+      console.log(this.dataConvenio)
+      console.log(this.dataEscuelas)
     })
   }
   
