@@ -30,6 +30,8 @@
     @include linear-gradient($danger-states, $danger);
   }
   &[data="primary"]{
+    $primary:#921538 !important;
+    $primary-states: #921538 !important;
     @include linear-gradient($primary-states, $primary);
   }
 }

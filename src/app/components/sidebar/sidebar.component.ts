@@ -175,7 +175,7 @@ opciones:Opcion[] = [];
     if (rol.nom_rol=="ROLE_SECRETARY" || rol.nom_rol=="ROLE_ADMIN") {
       this.router.navigate(['/dashboard']);
     }else{
-      this.router.navigate(['/user']);
+      this.router.navigate(['/user']);//cambiar
      
     }
   }
