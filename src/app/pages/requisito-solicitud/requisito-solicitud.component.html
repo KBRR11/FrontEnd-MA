@@ -1,0 +1,66 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card col-md-10">
+                <div class="card-header">
+                    <div class="col-md-2 new_soli">
+                        <a style="cursor: pointer;">
+                            <img src="assets/img/solicitud.png"><br>
+                            <p id="solicitud">Nueva Solicitud</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="" id="estadolabel">Estado</label>
+                        <div>
+                            <select class="form-control" name="" id="">
+                                <option value="" hidden selected>Seleccione estado</option>
+                                <option value="2">Aprovado</option>
+                                <option value="1">Proceso</option>
+                                <option value="3">Desaprovado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table" id="trequisito">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nro</th>
+                                <th scope="col">Requisito</th>
+                                <th scope="col">Formato</th>
+                                <th scope="col">Opciones</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{1}}</td>
+                                <td>Solicitud MA</td>
+                                <td>
+                                    <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                        ria-describedby="tooltip-190">
+                                        <i style="margin-left: 20%;" class="tim-icons icon-pencil"
+                                            (click)="editardet(detconv);open(pudate)"></i>
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                        ria-describedby="tooltip-190">
+                                        <i style="margin-left: 20%;" class="tim-icons icon-pencil"
+                                            (click)="editardet(detconv);open(pudate)"></i>
+                                    </button>
+                                    <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                        ria-describedby="tooltip-190">
+                                        <i style="margin-left: 20%;" class="tim-icons icon-pencil"
+                                            (click)="editardet(detconv);open(pudate)"></i>
+                                    </button>
+                                </td>
+                                <td>pendiente</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
