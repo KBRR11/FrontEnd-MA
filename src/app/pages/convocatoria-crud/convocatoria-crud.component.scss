@@ -10,21 +10,22 @@
     color: #666464;
 }
 .cabeza{
-    margin-left: -57px;
+    margin-left: -21px;
 }
 .card{
     padding:20px;
     border-radius: 9px;
 }
-.card-header{
-    margin-left: -57px;
-}
-.card-body{
-    margin-left: -37px;
-}
+
 table{
     font-family: "Poppins", sans-serif;
     box-sizing:border-box;
+    border-top-style: solid;
+    border-top-width: .25rem;
+    border-top-color: #e89a00;
+    border-radius: .25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1);
+    overflow: auto;
 }
 #deta{
     padding-left: -10px;
@@ -43,4 +44,10 @@ input {
 .modal-xl{
     max-width: 1100px !important;
     
+}
+.card{
+    border-top-color: #96344e;
+    border-top-style: solid;
+    border-top-width: .25rem;
+
 }

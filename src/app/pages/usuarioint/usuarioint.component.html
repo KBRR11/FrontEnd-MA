@@ -1,35 +1,32 @@
 <div class=" content">
   <div class="row">
     <div class=" col-md-12">
-      <div class=" card card-plain">
-        <div class="titulo">
-          <h3 style="margin-left: 2px; margin-top: -5px; margin-bottom: 4px;">{{title}}</h3>
-        </div>
-        <div class="cabesea">
-          <div class=" card-header" *ngIf="header;">
-            <div>
-              <form id="formacabeza">
-                <div class="input-group no-border col-md-8">
-                  <input type="text" value="" placeholder="Search..." class="form-control search"
-                    style="margin-left: 5px;">
-                  <div class="input-group-append" id="iconobuscar">
-                    <div class="input-group-text">
-                      <button class="btn btn-link btn-sm btn-icon" id="bus" ria-describedby="tooltip-190"
-                        style="margin-bottom: -13px; ">
-                        <i class="tim-icons icon-zoom-split" style="margin-top: -7px;"></i>
-                      </button>
-                      <style></style>
-                    </div>
-                  </div>
-                  <div class="boton" style="float: right;">
-                    <button class=" btn btn-fill btn-info" type="submit" (click)="mostrar_crear()">Nuevo
-                      Usuario</button>
+      <div class="titulo">
+        <h3 style="margin-left: 10px; margin-top: -5px; margin-bottom: 9px;">{{title}}</h3>
+      </div>
+      <div class="cabesea">
+        <div *ngIf="header;">
+            <form id="formacabeza">
+              <div class="input-group no-border col-md-8">
+                <input type="text" value="" placeholder="Search..." class="form-control search"
+                  style="margin-left: 5px;">
+                <div class="input-group-append" id="iconobuscar">
+                  <div class="input-group-text">
+                    <button class="btn btn-link btn-sm btn-icon" id="bus" ria-describedby="tooltip-190"
+                      style="margin-bottom: -13px; ">
+                      <i class="tim-icons icon-zoom-split" style="margin-top: -7px;"></i>
+                    </button>
+                    <style></style>
                   </div>
                 </div>
-              </form>
-            </div>
-          </div>
+                <div class="boton" style="float: right;">
+                  <button class=" btn btn-fill btn-info" type="submit" (click)="mostrar_crear()">Nuevo
+                    Usuario</button>
+                </div>
+              </div>
+            </form>
         </div>
+      </div>
 
         <section *ngIf="bori;">
           <div class="b_principal">
@@ -40,13 +37,11 @@
                     <img src="assets/img/bg5.jpg" alt="...">
                   </div>
 
-                  <div class="card">
+                  <div class="card bor">
                     <div class="card-body">
                       <div class="author">
-                        <a href="#">
-                          <img class="avatar border-gray" src="http://localhost:8090/api/userfoto/4" alt="...">
+                          <img class="avatar border-gray" src="http://localhost:8090/api/userfoto/user.idusuario" alt="...">
                           <h3 class="title">{{user.usuario}}</h3>
-                        </a>
                         <p class="description">
                         </p>
                       </div>
@@ -56,7 +51,7 @@
                       </p>
                     </div>
   
-                    <div class="card-footer">
+                    <div class="card-footer bajo">  
                       <hr>
                       <div class="button-container">
                         <div class="row">
@@ -73,9 +68,9 @@
                           <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
                             <button class="btn btn-info  btn-link  btn-icon" ria-describedby="tooltip-190">
                               <div class="es">
-                                <p id="estado">{{user.estado}}</p>
+                                <p id="estado"></p>
                               </div>
-                              <small>Estado</small>
+                              <small>{{user.estado ? 'Activo':'Inactivo'}}</small>
                             </button>
                           </div>
   
@@ -107,7 +102,6 @@
           <div class="content crear">
             <div class="row">
               <div class="col-md-9">
-                <div class="card">
                   <div class="card-header">
                     <h4 class="title">
                       Perfil de Usuario C
@@ -190,7 +184,7 @@
                           <div class="form-group"><label>
                               Tipo </label>
                             <select class="form-control" name="" id="tipo" [(ngModel)]="user.tipo" name="tipo"
-                              (click)="met_tipo(user.tipo)">
+                              (click)="met_tipo(user.tipo); limpiar(user.tipo)">
                               <option value="">Seleccione una Opcion:</option>
                               <option value="1">Estudiante</option>
                               <option value="2">Docente</option>
@@ -224,7 +218,7 @@
                         <div class="col-md-6">
                           <div class="form-group"><label>
                               Ciclo </label>
-                            <select class="form-control" name="" id="" [(ngModel)]="user.ciclo" name="ciclo">
+                            <select class="form-control" name="" id="ciclo" [(ngModel)]="user.ciclo" name="ciclo">
                               <option value="">Seleccione una Opcion</option>
                               <option value="3">III</option>
                               <option value="4">IV</option>
@@ -240,7 +234,7 @@
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group"><label>
                               Codigo
-                            </label><input class="form-control" type="text" value="" [(ngModel)]="user.codigo"
+                            </label><input class="form-control" type="text" id="codigo" [(ngModel)]="user.codigo"
                               name="codigo">
                           </div>
                         </div>
@@ -295,7 +289,6 @@
 
                   </div>
                 </div>
-              </div>
             </div>
           </div>
 
@@ -309,7 +302,6 @@
           <div class="content crear">
             <div class="row">
               <div class="col-md-9">
-                <div class="card">
                   <div class="card-header">
                     <h4 class="title">
                       Perfil de Usuario M
@@ -498,14 +490,12 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
 
         </section>
 
 
 
-      </div>
     </div>
   </div>
 </div>

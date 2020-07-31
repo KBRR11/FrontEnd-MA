@@ -1,18 +1,16 @@
 <div class="content">
   <div class="row">
     <div class="col-md-12">
-      <div class="card card-plain">
-        <div class="titulo">
-          <h3 style="margin-left: 0; margin-top:-7px; margin-bottom: 0;">{{title}}</h3>
-        </div>
-
+      <div class="titulo">
+        <h3 style="margin-left: 0; margin-top:-7px; margin-bottom: 0;">{{title}}</h3>
+      </div>
+      <div class="card">
         <div class="col-md-8">
 
           <div class="card-header">
           </div>
 
           <div class="card-body">
-            <div class="card">
               <div class="row">
 
                 <div class="col-md-6 inp">
@@ -50,11 +48,6 @@
                     </div>
                     <div class="card-body">
                       <div class="table-full-width">
-                        <select name="idfac" class="form-control" [(ngModel)]="idfacultad" (change)=listarep()>
-                          <option value="1">Empresariales</option>
-                          <option value="2">Fia</option>
-                          <option value="3">Cocaina</option>
-                        </select>
                         <table class="table">
                           <tbody>
                             <tr *ngFor="let conv of convenios">
@@ -131,7 +124,6 @@
                 
 
               </div>
-            </div>
           </div>
 
         </div>

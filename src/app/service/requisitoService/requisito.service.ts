@@ -7,6 +7,8 @@ import { Requisito } from '../../Modelo/Requisito';
 import { Convenio } from '../../Modelo/Convenio';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
+import { Requisito_Convenio } from 'src/app/Modelo/Requisito_Convenio';
+import { format } from 'path';
 
 @Injectable({
   providedIn: 'root'
@@ -48,9 +50,19 @@ export class RequisitoService {
     }));
   }
 
-  createRequisito(requisito:Requisito){
+
+  createRequisito(requisito:Requisito,archivo:File){
+    const form = new FormData();
+    form.append("archivo",archivo);
+    form.append("nombre",requisito.nombre);
     console.log("service",requisito)
-    return this.http.post<Requisito[]>(this.requisito+'api/requisitos/add',requisito,{headers: this.Autorization()}).pipe(catchError(e =>{
+    console.log("service",archivo)
+    return this.http.post(`${environment.apiUrl}/api/requisito/create`,form);
+  }
+
+  VincularConvenioRequisito(requisisto_Convenio:Requisito_Convenio){
+    console.log("service vincular requisito", requisisto_Convenio);
+    return this.http.post<Requisito_Convenio[]>(this.requisito+'api/requisitos_convenio/add',requisisto_Convenio,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }
@@ -62,8 +74,8 @@ export class RequisitoService {
   }
 
   DeleteNoRequisito(requisito:Requisito):Observable<Requisito[]>{
-    console.log('hola estamos en delete'+requisito.idrequisitos);
-    return this.http.delete<Requisito[]>(this.requisito+'api/requisitos/del/'+requisito.idrequisitos,{headers: this.Autorization()}).pipe(catchError(e =>{
+    console.log('hola estamos en delete'+requisito.idrequisito_convenio);
+    return this.http.delete<Requisito[]>(this.requisito+'api/requisitos/del/'+requisito.idrequisito_convenio,{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }
@@ -94,6 +106,12 @@ export class RequisitoService {
     }));
   }
 
+  getReqConveDiferente(idconvenio:number):Observable<Requisito[]>{
+    console.log("servicio"+idconvenio);
+    return this.http.get<Requisito[]>(this.requisito+'api/requisitos/convenio2/'+idconvenio+'/1',{headers: this.Autorization()}).pipe(catchError(e =>{
+      return throwError(e);
+    }));
+  }
   uploadArchivo(archivo: File, id, idr,tipo:number): any{
     const formData = new FormData();
     formData.append("archivo", archivo);

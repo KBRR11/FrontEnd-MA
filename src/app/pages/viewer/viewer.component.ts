@@ -9,7 +9,8 @@ import { PdfViewerModule} from 'ng2-pdf-viewer';
 })
 export class ViewerComponent implements OnInit {
   
-
+  id:number;  
+  idr:number;
   title: string;
   closeBtnName: string;
   

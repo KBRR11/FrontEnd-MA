@@ -5,6 +5,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 import { ViewerComponent} from "../../pages/viewer/viewer.component";
+import { EpService } from 'src/app/service/Ep.service';
+import { Ep } from 'src/app/Modelo/EP';
 
 @Component({
   selector: 'app-convocatoria-crud',
@@ -13,29 +15,78 @@ import { ViewerComponent} from "../../pages/viewer/viewer.component";
   styleUrls: ['./convocatoria-crud.component.scss']
 })
 export class ConvocatoriaCRUDComponent implements OnInit {
-
-
+  idfacultad:number;
+  listaep:Ep[]=[];
   title: string = "Convocatorias"
   //////////////
   bsModalRef: BsModalRef;
-
+  es: number [] = [];
   listaconvocatorias:Convocatoria[]=[]
   convocatora:Convocatoria = new Convocatoria();
   closeResult = '';
-  constructor(private modalService2: BsModalService, private convocatoriaservice:ConvocatoriaService, private router: Router, private modalService: NgbModal ) { }
+
+  mevine: string
+  rol:string = localStorage.getItem("rol")
+
+  primera: boolean
+  segunda: boolean
+  constructor(private modalService2: BsModalService, private convocatoriaservice:ConvocatoriaService,private epservice:EpService, private router: Router, private modalService: NgbModal ) { }
 
   ngOnInit(): void {
     this.listar();
   }
   listar(){
-    this.convocatoriaservice.listaConvocatoria().subscribe((data)=>{
-      console.log(data["LIST_CONVOCATORIA"])
-      this.listaconvocatorias=data["LIST_CONVOCATORIA"]
-    })
+    if (this.rol=="ROLE_SECRETARY") {
+      this.convocatoriaservice.listaConvocatoria(1).subscribe((data)=>{
+        console.log(data["LIST_CONVOCATORIA"])
+        this.listaconvocatorias=data["LIST_CONVOCATORIA"]
+        for (let index = 0; index <  this.listaconvocatorias.length; index++) {
+          this.listaconvocatorias[index].desde=this.listaconvocatorias[index].desde.substring(0,10);
+          this.listaconvocatorias[index].hasta=this.listaconvocatorias[index].hasta.substring(0,10);
+        }
+      })
+    } else if(this.rol=="ROLE_DIRECTOR"){
+      console.log("me vine")
+      this.convocatoriaservice.listaConvocatoria(2).subscribe((data)=>{
+        console.log(data["LIST_CONVOCATORIA"])
+        this.listaconvocatorias=data["LIST_CONVOCATORIA"]
+        for (let index = 0; index <  this.listaconvocatorias.length; index++) {
+          this.listaconvocatorias[index].desde=this.listaconvocatorias[index].desde.substring(0,10);
+          this.listaconvocatorias[index].hasta=this.listaconvocatorias[index].hasta.substring(0,10);
+        }
+      })
+    }
+    
+  }
+  listarep(){
+    console.log(this.idfacultad)
+    
+    this.epservice.getEpforId(this.idfacultad).subscribe(
+      (data)=>{
+        console.log(data);
+        this.listaep = data["EP"];
+      }
+    )
+  }
+  sele(po: number){
+    let varia: boolean = false;
+    for (let index = 0; index < this.es.length; index++) {
+      const element = this.es[index];
+      if (element==po ) {
+        varia = true;
+        this.es.splice(index,1)
+        break;
+      }
+    }
+    if(!varia){
+      this.es.push(po); 
+    }
+    console.log(this.es)
   }
   detalleconv(id:number){
     localStorage.setItem("idconvocaotria" , ""+id);
     alert(id)
+
     this.router.navigate(['detalleconv']);
   }
   elminarconv(id:number){
@@ -49,6 +100,8 @@ export class ConvocatoriaCRUDComponent implements OnInit {
   buscarConvocatoria(convocatoria:Convocatoria){
     console.log(convocatoria)
     this.convocatora=convocatoria
+    this.convocatora.hasta=this.convocatora.hasta.substring(0,10)
+    this.convocatora.desde=this.convocatora.desde.substring(0,10)
     
   }
   editarconv(){
@@ -58,16 +111,17 @@ export class ConvocatoriaCRUDComponent implements OnInit {
     })
   }
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    this.modalService.open(content, {size: 'xl'});
   }
   open2(pila) {
-    this.modalService.open(pila, {ariaLabelledBy: 'modal-basic'});
+    this.modalService.open(pila, {size: 'xl'});
   }
 
-  openModalWithComponent() {
+  openModalWithComponent(idc:number) {
     const initialState = {
       
-      title: 'Ver Documentos'
+      title: 'Ver Documentos',
+      id:idc
     };
     this.bsModalRef = this.modalService2.show(ViewerComponent, Object.assign({initialState},{class:'modal-xl'}));
     this.bsModalRef.content.closeBtnName = 'Close';
