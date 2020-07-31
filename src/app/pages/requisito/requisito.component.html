@@ -1,14 +1,24 @@
 <div class="content">
+    <div class="row" >
+        <div class="col-md-10" >
+            <h1 class="title">Requisito</h1>
+        </div>
+        <div class="col-md-2" >
+            <div class="form-group">
+                <div>
+                    <i class="tim-icons icon-minimal-right"  (click)="show=!show;show5=!show5;" placement="left" ngbTooltip="Papelera Requisito" ></i>
+                </div>                            
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card" *ngIf="show">
                 <div class="card-header">
-                    <h1 class="title">Requisito</h1>
                     <div class="container row">
                         <div class="col-8">
                             <button class="btn btn-success" (click)="show=!show;show3=!show3;">Agregar</button>
                             <button class="btn btn-success" (click)="show=!show;show6=!show6;">Vincular</button>
-                            
                         </div>
                         <div class="col-4">
                             <div class="form-group">
@@ -18,10 +28,6 @@
                                     <option *ngFor="let convenio  of listConvenios" value={{convenio.idconvenio}}>
                                         {{convenio.nom_c_ep}}</option>
                                 </select>
-                            </div>
-                            <div class="form-group" style="margin-right: 0px auto;">
-                                <span style="margin-right: 0px auto;"><i class="tim-icons icon-minimal-right" (click)="show=!show;show5=!show5;" placement="right" ngbTooltip="Papelera Requisito" style="margin-right: 0px auto;"></i>
-                                </span>
                             </div>
                         </div>
                     </div>
@@ -34,7 +40,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Estado</th>
-                                    <th colspan="3">Opcion</th>
+                                    <th colspan="2">Opcion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,9 +49,9 @@
                                     <th scope="row">{{i+1}}</th>
                                     <td>{{req.nombre}}</td>
                                     <td>{{req.estado}}</td>
-                                    <td><i class="tim-icons icon-pencil"
+                                    <!-- <td><i class="tim-icons icon-pencil"
                                             (click)="show2=!show2;show=!show;loadRequisito(req)" placement="left"
-                                            ngbTooltip="Modificar "></i></td>
+                                            ngbTooltip="Modificar "></i></td>-->
                                     <td><i class="tim-icons icon-simple-remove" (click)="DeleteRequisito(req)"
                                             placement="left" ngbTooltip="Eliminar"></i></td>
                                     <td><i class="tim-icons icon-map-big" (click)="openModalWithComponent(req.idrequisitos)"
