@@ -85,4 +85,19 @@ export class SolicitudService {
     return this.http.get<Convenio[]>(this.requisito+'api/convenios',{headers: this.Autorization()}).pipe(catchError(e =>{
       return throwError(e);
     })); */
+
+  secreuni(idconvo:number){
+    return this.http.get<Universidades>(`${ environment.apiUrl }/api/solicitud_deta_convo/`+idconvo,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      return throwError(e);
+    }));
+  }
+
+  solicitudesdirect(idescu:number,idconvo:number){
+    return this.http.get<Universidades>(`${ environment.apiUrl }/api/solicitudes_direc/`+idconvo,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      return throwError(e);
+    }));
+  }
+
+
+
   }
