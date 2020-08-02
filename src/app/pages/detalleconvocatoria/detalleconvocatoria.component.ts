@@ -37,6 +37,7 @@ export class DetalleconvocatoriaComponent implements OnInit {
   check:boolean=false
   quitar: boolean=true
   poner: boolean=true
+  cheee:boolean =false;
   rol: string = localStorage.getItem("rol")
   es:number = Number(localStorage.getItem("idu"))
   vacante:number = 0
@@ -178,8 +179,10 @@ export class DetalleconvocatoriaComponent implements OnInit {
       }
     )
   }
+  
   listaralumnos(idconvocatoria:number){
     //alert(idconvocatoria)
+    this.cheee
     console.log("tutu: " + idconvocatoria)
       this.convocatoriaservice.buscarAlumnoDetConvocatoria(idconvocatoria).subscribe(
         (data)=>{
@@ -189,6 +192,7 @@ export class DetalleconvocatoriaComponent implements OnInit {
           alert("OCURRIO UN ERROR "+error);
         }
       )
+      
     this.id_det_conv=idconvocatoria  
 
     
@@ -211,28 +215,40 @@ export class DetalleconvocatoriaComponent implements OnInit {
   }
   agregar_id(po: number){
     let varia: boolean = false;
-    for (let index = 0; index < this.seleccionados.length; index++) {
-      const element = this.seleccionados[index];
-      if (element==po ) {
-        varia = true;
-        this.seleccionados.splice(index,1)
-        break;
+    if(this.cont_seleccionados>=0){
+      for (let index = 0; index < this.seleccionados.length; index++) {
+        const element = this.seleccionados[index];
+        if (element==po ) {
+          varia = true;
+          this.seleccionados.splice(index,1)
+          break;
+        }
       }
+      if(!varia){
+        this.seleccionados.push(po);
+        this.cont_seleccionados-- 
+  
+      }
+      console.log(this.seleccionados)
+      console.log(this.cont_seleccionados)
+      
+    }else{
+      Swal.fire('No hay vacantes', 'Aumente el numero de vacantes o deseleccione un participante', 'success');
     }
-    if(!varia){
-      this.seleccionados.push(po);
-      this.cont_seleccionados-- 
-
-    }
-    console.log(this.seleccionados)
-    console.log(this.cont_seleccionados)
   }
+    
   guardar_ganador(){
-    this.ganador.iddetalle_convocatoria=this.id_det_conv
+    
+    for (let index = 0; index < this.seleccionados.length; index++) {
 
-    this.ganadorService.crearGanador(this.ganador).subscribe(data => {
+      this.ganador.idusuario = this.seleccionados[index];
+      this.ganador.iddetalle_convocatoria=this.id_det_conv
+      this.ganadorService.crearGanador(this.ganador).subscribe(data => {
         
-    })
+      })
+    }
+    Swal.fire('Registro exitoso', 'Los participantes seleccionados se agregaron', 'success');
   }
+  
   
 }

@@ -10,9 +10,9 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convocatoria:</label>
-                                <select class="form-control" (change)="selectUniversidad($event)">
-                                    <option value="0">Seleccionar Convocatoria</option>
-                                    <option *ngFor="let uni  of listUniversidad"></option>
+                                <select class="form-control" [(ngModel)]="idc" name="idc">
+                                    <option value="" hidden selected>Seleccionar Convocatoria</option>
+                                    <option *ngFor="let con of convocatorias" value="{{con.idconvocatoria}}">{{con.nom_convocatoria}}</option>
                                 </select>
                             </div>
                         </div>
@@ -20,8 +20,8 @@
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Escuela Profesional:</label>
                                 <select class="form-control" (change)="selectConvenio($event)">
-                                    <option value="">Seleccionar Escuela</option>
-                                    <option *ngFor="let convenio  of listConvenios"></option>
+                                    <option value="" hidden selected>Seleccionar Escuela</option>
+                                    <option></option>
                                 </select>
                             </div>
                         </div>
