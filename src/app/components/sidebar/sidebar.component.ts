@@ -124,8 +124,8 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/validar_req",
-    title: "Validar Requisito",
+    path: "/ganadores",
+    title: "MA Ganadores",
     rtlTitle: "Requisitos",
     icon: "tim-icons icon-single-copy-04",
     class: ""

@@ -19,6 +19,7 @@ import { RequisitoComponent } from '../../pages/requisito/requisito.component';
 import { InfoConvocatoriaComponent } from 'src/app/pages/info-convocatoria/info-convocatoria.component';
 import { ValidarRequisitoComponent } from '../../pages/validar-requisito/validar-requisito.component';
 import { Detalleconvo2Component } from 'src/app/pages/detalleconvo2/detalleconvo2.component';
+import { RecepcionardirectoraComponent } from 'src/app/pages/recepcionardirectora/recepcionardirectora.component';
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 //import { InicioComponent } from "../../md-inicio/inicio/inicio.component";
 //import { ConveniosComponent } from "../../md-inicio/convenios/convenios.component";
@@ -56,9 +57,11 @@ export const AdminLayoutRoutes: Routes = [
   canActivate:[AuthGuard]}, 
   { path: "info_convo", component: InfoConvocatoriaComponent ,
   canActivate:[AuthGuard]},
-  { path: "validar_req", component: ValidarRequisitoComponent ,
+  { path: "ganadores", component: ValidarRequisitoComponent ,
   canActivate:[AuthGuard]},
   { path: "detalle2", component: Detalleconvo2Component ,
+  canActivate:[AuthGuard]},
+  { path: "solicitudes", component: RecepcionardirectoraComponent ,
   canActivate:[AuthGuard]},
   //{ path: "inicio", component: InicioComponent },
   //{ path: "convenios", component: ConveniosComponent },

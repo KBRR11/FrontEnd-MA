@@ -21,4 +21,26 @@ img{
 
     width: 75px; height: 85px;
 }
-
+#hiu{
+    padding-top: 0;
+}
+.card #cvt{
+    padding-top: 8;
+}
+h5{
+    margin-bottom: 0;
+}
+.card{
+    border-top-color: #96344e;
+    border-top-style: solid;
+    border-top-width: .25rem;
+    padding-top: 0;
+}
+table{
+    border-top-style: solid;
+    border-top-width: .25rem;
+    border-top-color: #e89a00;
+    border-radius: .25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1);
+    overflow: auto;
+}
