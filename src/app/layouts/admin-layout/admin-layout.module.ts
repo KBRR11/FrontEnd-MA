@@ -36,6 +36,7 @@ import { InfoValidadorComponent} from '..//../pages/info_components/info-validad
 import { InfoConveniosComponent } from '..//../pages/info_components/info-convenios/info-convenios.component';
 import { ValidarRequisitoComponent } from '../../pages/validar-requisito/validar-requisito.component';
 import { Detalleconvo2Component } from '../../pages/detalleconvo2/detalleconvo2.component';
+import { RecepcionardirectoraComponent } from '..//../pages/recepcionardirectora/recepcionardirectora.component';
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import { Detalleconvo2Component } from '../../pages/detalleconvo2/detalleconvo2.
     InfoValidadorComponent,
     InfoConveniosComponent,    
     ValidarRequisitoComponent,
-    Detalleconvo2Component
+    Detalleconvo2Component,
+    RecepcionardirectoraComponent
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent

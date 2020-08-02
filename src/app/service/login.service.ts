@@ -35,8 +35,8 @@ import { CanActivate } from '@angular/router';
       }
 
       login(usuario:Usuarios):Observable<any>{
-        //const urlEndpoint = 'http://localhost:8090/oauth/token';
-        const urlEndpoint = 'https://moviaca-bknd.herokuapp.com/oauth/token';
+        const urlEndpoint = 'http://localhost:8090/oauth/token';
+        //const urlEndpoint = 'https://moviaca-bknd.herokuapp.com/oauth/token';
         const credenciales = btoa('macademica'+':'+'12345678');
 
         const httpHeaders = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
@@ -51,7 +51,8 @@ import { CanActivate } from '@angular/router';
 
       guardarUsuario(accesToken:String):void{
         let datos = JSON.parse(atob(accesToken.split(".")[1]));
-       // console.log(sessionStorage);
+        console.log(sessionStorage);
+       console.log(datos)
         this._persona = new Personas();
         this._persona.nombres = datos.NOMBRES;
         this._persona.apellidos = datos.APELLIDOS;
@@ -61,6 +62,7 @@ import { CanActivate } from '@angular/router';
         this._persona.usuario=datos.USUARIO;
        this._persona.color_fondo=datos.COLOR_FONDO;
        this._persona.color_menu=datos.COLOR_MENU;
+
         sessionStorage.setItem('personas',JSON.stringify(this._persona));
         sessionStorage.getItem("personas")
         localStorage.setItem("rol",datos.NOM_ROL)

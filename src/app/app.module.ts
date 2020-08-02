@@ -25,6 +25,7 @@ import { Viewer2Component } from './pages/viewer2/viewer2.component';
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -38,7 +39,7 @@ import { Viewer2Component } from './pages/viewer2/viewer2.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, RegisterPerComponent, RegisterUSERComponent, DatosAcademicosComponent, RequisitoSolicitudComponent, Viewer2Component,],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent,],
   providers: [
     BsModalRef
   ],
