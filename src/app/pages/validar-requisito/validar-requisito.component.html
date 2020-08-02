@@ -4,7 +4,7 @@
             <div class="titulo">
                 <h3 style="margin-left: 10px; margin-top: -5px; margin-bottom: 9px;">{{title}}</h3>
               </div>
-            <div class="card col-md-8">
+            <div class="card col-md-10">
                 <div class="card-header">
                     <div class="container row" style="margin: 0px auto;">
                         <div class="col-4">
@@ -37,16 +37,18 @@
                                 <th scope="col">Codigo</th>
                                 <th scope="col">Ciclo</th>
                                 <th scope="col">Correo</th>
+                                <th scope="col">Universidad</th>
                                 <th scope="col">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let win of ganadores; let i=index">
                                 <th scope="row">{{i+1}}</th>
-                                <td>{{win.nombre}}</td>
-                                <td>{{win.codigo}}</td>
-                                <td>{{win.ciclo}}</td>
-                                <td>{{win.correo}}</td>
+                                <td>{{win.NOMBRES}}{{win.APELLIDOS}}</td>
+                                <td>{{win.CODIGO}}</td>
+                                <td>{{win.CICLO}}</td>
+                                <td>{{win.CORREO}}</td>
+                                <td>{{win.NOM_UNIVERSIDAD}}</td>
                                 <td><i class="tim-icons icon-check-2"></i></td>
                             </tr>
                         </tbody>

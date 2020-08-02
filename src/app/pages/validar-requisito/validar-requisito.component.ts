@@ -52,7 +52,7 @@ export class ValidarRequisitoComponent implements OnInit {
   }
   listar_win(){
     this.ganadorService.getGanadorEscuela(this.idc,this.ide).subscribe(data =>{
-      this.ganadores=data['P_USUARIO']
+      this.ganadores=data['GANADORES']
       console.log(this.ganadores)
     })
   }
