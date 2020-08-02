@@ -4,10 +4,19 @@
     
 }
 .bg-primary{
-    background-color:#0d4b85 !important ;
+    background: #921538 !important;
 }
 .btn-primary{
-    background: #0d4b85 !important ;
+    background: #921538 !important;
     background-image: linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
 }
-
+.btn-danger{
+    background: #e89a00 !important ;
+    background-image: linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+}
+/*.container{
+    background: #f5f6fa;
+}
+.app-body{
+    background: #f5f6fa;
+}*/
