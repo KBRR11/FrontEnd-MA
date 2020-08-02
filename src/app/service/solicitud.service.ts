@@ -87,7 +87,7 @@ export class SolicitudService {
     })); */
 
   secreuni(idconvo:number){
-    return this.http.get<Universidades>(`${ environment.apiUrl }/api/solicitud_deta_convo/`+idconvo,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Universidades>(`${ environment.apiUrl }/api/secre_uni/`+idconvo,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       return throwError(e);
     }));
   }

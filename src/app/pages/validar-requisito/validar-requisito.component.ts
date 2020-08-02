@@ -5,6 +5,8 @@ import { Ganador } from 'src/app/Modelo/Ganador';
 import { UsuariosService } from 'src/app/service/usuarios.service';
 import { ConvocatoriaService } from "src/app/service/convocatoria.service";
 import { Convocatoria } from 'src/app/Modelo/Convocatoria';
+import { SolicitudService } from 'src/app/service/solicitud.service';
+import { Ep } from 'src/app/Modelo/EP';
 
 @Component({
   selector: 'app-validar-requisito',
@@ -15,14 +17,17 @@ export class ValidarRequisitoComponent implements OnInit {
   title: string = "Participantes Ganadores"
   ganadores:Ganador[]=[];
   convocatorias: Convocatoria[]=[]
+  escuela: Ep[]=[]
   iduser:number = Number(localStorage.getItem("idu"))
   idescuela: number
   idc: number
-  constructor(private convoService: ConvocatoriaService ,private ganadorService: GanadoresService, private usuarioService: UsuariosService ,private router:Router) { }
+  ide: number
+  constructor(private soliService: SolicitudService ,private convoService: ConvocatoriaService ,private ganadorService: GanadoresService, private usuarioService: UsuariosService ,private router:Router) { }
 
   ngOnInit(): void {
     this.listar_Convo()
     this.listar_ides()
+    this.listar_escuela()
     
   }
   listar_ides(){
@@ -38,9 +43,17 @@ export class ValidarRequisitoComponent implements OnInit {
       
     })
   }
+  listar_escuela(){
+    console.log(this.idc)
+    this.soliService.secreuni(this.idc).subscribe(data=>{
+        this.escuela=data['UNIVERSIDADES']
+        console.log(this.escuela)
+    })
+  }
   listar_win(){
-    this.ganadorService.getGanadorEscuela(1,this.idescuela).subscribe(data =>{
-
+    this.ganadorService.getGanadorEscuela(this.idc,this.ide).subscribe(data =>{
+      this.ganadores=data['P_USUARIO']
+      console.log(this.ganadores)
     })
   }
 }

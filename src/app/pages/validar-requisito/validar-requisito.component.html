@@ -10,7 +10,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convocatoria:</label>
-                                <select class="form-control" [(ngModel)]="idc" name="idc">
+                                <select class="form-control" [(ngModel)]="idc" name="idc" (change)="listar_escuela($event)">
                                     <option value="" hidden selected>Seleccionar Convocatoria</option>
                                     <option *ngFor="let con of convocatorias" value="{{con.idconvocatoria}}">{{con.nom_convocatoria}}</option>
                                 </select>
@@ -19,9 +19,9 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Escuela Profesional:</label>
-                                <select class="form-control" (change)="selectConvenio($event)">
+                                <select class="form-control" [(ngModel)]="ide" (change)="listar_win($event)">
                                     <option value="" hidden selected>Seleccionar Escuela</option>
-                                    <option></option>
+                                    <option *ngFor="let es of escuela" value="{{es.IDEP}}">{{es.NOM_EP}}</option>
                                 </select>
                             </div>
                         </div>
@@ -34,19 +34,19 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Estudiante</th>
+                                <th scope="col">Codigo</th>
                                 <th scope="col">Ciclo</th>
                                 <th scope="col">Correo</th>
-                                <th scope="col">Universidad</th>
                                 <th scope="col">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Juan Ramirez Humala</td>
-                                <td>cuarto</td>
-                                <td>perz@upeu.edu.pe</td>
-                                <td>Brasil</td>
+                            <tr *ngFor="let win of ganadores; let i=index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{win.nombre}}</td>
+                                <td>{{win.codigo}}</td>
+                                <td>{{win.ciclo}}</td>
+                                <td>{{win.correo}}</td>
                                 <td><i class="tim-icons icon-check-2"></i></td>
                             </tr>
                         </tbody>
