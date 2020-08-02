@@ -256,5 +256,11 @@ updateFotoUser(archivo:File,id){
           return throwError(e);
         }))
       }
+      listar_idescuela(id: number){
+        return this.http.get<Usuario>(`${ environment.apiUrl }/api/listaridescuela/`+ id,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+            
+          return throwError(e);
+        }))
+      }
 
     }

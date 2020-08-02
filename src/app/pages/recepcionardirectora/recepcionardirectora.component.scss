@@ -1,0 +1,48 @@
+
+.card{
+    border-radius: .25rem;
+    border-top-color: #96344e;
+    border-top-style: solid;
+    border-top-width: .25rem;
+}
+#estadolabel{
+    margin-left: 4px;
+}
+#solicitud{
+    font-size: 0.7500000025rem;
+    color: #5b5b5c;
+    font-family: "Poppins", sans-serif;
+}
+img{
+    height: 50px;
+    width: 47px;
+}
+.new_soli{
+    float: right;
+    text-align: center;
+    margin-right: 30px;
+}
+#tsolicitud{
+    border-top-style: solid;
+    border-top-width: .25rem;
+    border-top-color: #e89a00;
+    border-radius: .25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1);
+    overflow: auto;
+}
+
+table th{
+    text-align: center;
+}
+table td{
+    text-align: center;
+}
+
+#trequisito{
+    border-top-style: solid;
+    border-top-width: .25rem;
+    border-top-color: #e89a00;
+    border-radius: .25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1);
+    overflow: auto;
+}

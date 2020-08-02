@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./validar-requisito.component.scss']
 })
 export class ValidarRequisitoComponent implements OnInit {
-
+  title: string = "Participantes Ganadores"
   constructor() { }
 
   ngOnInit(): void {

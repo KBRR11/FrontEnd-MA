@@ -33,8 +33,8 @@ this.router.navigateByUrl("/dashboard", {skipLocationChange:true}).then(() => {
 })
   }
   subirFoto(event){
-console.log(this.iduserFOTO);
-console.log(event);
+//console.log(this.iduserFOTO);
+//console.log(event);
 this.usuarioService.updateFotoUser(event, this.iduserFOTO).subscribe(response=>{
   
   Swal.fire('Actualizado con éxito!!', 'la foto de perfil fue actualizada con exito','success');

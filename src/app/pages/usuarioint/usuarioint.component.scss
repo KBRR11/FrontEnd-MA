@@ -20,29 +20,11 @@
     font-size: 15px;
     margin-top: -2px;
 }
-.copyright{
-    float: right;
-}
-
 .upeu{
     margin-right: 100px;
     float: left;
 }
 
-.crear{
-    margin-top: -70px;
-    
-}
-.form-group{
-    font-size: 18px;
-}
-.modificar{
-    margin-top: -70px;
-
-}
-section .b_principal{
-    margin-left: -46px !important;
-}
 .cabesea{
     margin-left: -12px !important;
 }
@@ -68,4 +50,27 @@ section .b_principal{
 }
 .bajo{
     margin-top: -75px;
+}
+.card{
+    padding:20px;
+    border-radius: 9px;
+    border-top-color: #96344e;
+    border-top-style: solid;
+    border-top-width: .25rem;
+}
+.card-body{
+    padding-top: 0;
+}
+.col-md-8 .card-header{
+    padding-top: 4px;
+}
+.bor{
+    padding-top: 8px;
+}
+
+.cre{
+    margin: auto;
+}
+.mod{
+    margin: auto;
 }

@@ -27,7 +27,7 @@ import Swal from 'sweetalert2';
 })
 export class DashboardComponent implements OnInit {
   closeResult: string;
-
+ 
   public isCollapsedPen = true;
   public isCollapsedAct=true;
   public tableStudents= false;
@@ -101,19 +101,20 @@ Swal.fire({
 }
 
 datosper(idusuario:number){
-//console.log(idusuario+ " viene de la tabla");
-//this.usuario.idusuario=idusuario;
+ 
+ 
 this.usuarioService.DatosPersona(idusuario).subscribe(
   (data) => {
     this.personadata = data['LIST_USER'];
-   //console.log(this.personadata);
+     
+    
   });
 }
  
 
 
 public activar(usuario:Usuarios){
-  console.log(usuario.IDUSUARIO);
+  //console.log(usuario.IDUSUARIO);
   
   Swal.fire({
     title: '¿ Estás Seguro ?',

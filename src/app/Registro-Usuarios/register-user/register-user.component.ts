@@ -18,15 +18,11 @@ export class RegisterUSERComponent implements OnInit {
 
   ngOnInit(): void {
     this.iniciarProceso();
-    
+    //console.log(localStorage);
     let datosusu = JSON.parse(sessionStorage.getItem("personas"));
     if(this.loginService.isAuthenticated()==true){
       Swal.fire('Login','Hola '+ datosusu.nombres +' ya estas Autentificado', 'info');
       this.router.navigate(['/dashboard']);
-      
-    }else{
-      localStorage.clear();
-      sessionStorage.clear();
       
     }
     
