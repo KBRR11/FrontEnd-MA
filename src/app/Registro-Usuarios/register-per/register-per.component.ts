@@ -14,15 +14,12 @@ export class RegisterPerComponent implements OnInit {
   constructor(private personasService:PersonasService, private router:Router,private loginService:LoginService  ){ }
 
   ngOnInit() {
+    //console.log(localStorage);
     this.terminarProceso();
     let datosusu = JSON.parse(sessionStorage.getItem("personas"));
     if(this.loginService.isAuthenticated()==true){
       Swal.fire('Login','Hola '+ datosusu.nombres +' ya estas Autentificado', 'info');
       this.router.navigate(['/dashboard']);
-      
-    }else{
-      localStorage.clear();
-      sessionStorage.clear();
       
     }
   }
@@ -38,8 +35,8 @@ export class RegisterPerComponent implements OnInit {
     let direccion=(<HTMLInputElement>document.getElementById("direcc")).value;
     
    
-
-
+//console.log(n_documento);
+console.log(this.persona.n_documento);
 
 if((this.persona.nombres && this.persona.apellidos && this.persona.t_documento
   && this.persona.n_documento && this.persona.correo && this.persona.telefono

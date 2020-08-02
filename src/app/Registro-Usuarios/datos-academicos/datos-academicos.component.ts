@@ -23,6 +23,7 @@ estudiante:boolean = false;
   constructor(private facultadService:FacultadesService, private epService:EpService, private router:Router, private loginService:LoginService ) { }
 
   ngOnInit(): void {
+    //console.log(localStorage);
     this.iniciarProceso();
    this.facultadService.getAllFacultades().subscribe((data) =>{
      this.facultad = data['LIST_FACULTADES'];
@@ -31,10 +32,6 @@ estudiante:boolean = false;
     if(this.loginService.isAuthenticated()==true){
       Swal.fire('Login','Hola '+ datosusu.nombres +' ya estas Autentificado', 'info');
       this.router.navigate(['/dashboard']);
-      
-    }else{
-      localStorage.clear();
-      sessionStorage.clear();
       
     }
   }

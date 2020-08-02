@@ -188,6 +188,7 @@ export class RecepcionardocComponent implements OnInit {
 
   ////////////////////////////////////////////////// modal de documentos/////////////
   openModalWithComponent(idc:number) {
+    console.log("open modeal",idc)
     const initialState = {
       
       title: 'Ver Documentos',

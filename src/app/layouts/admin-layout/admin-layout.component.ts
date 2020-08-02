@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Usuarios } from "src/app/Modelo/Usuarios";
 import { UsuariosService } from "src/app/service/usuarios.service";
 import Swal from 'sweetalert2';
+
 @Component({
   selector: "app-admin-layout",
   templateUrl: "./admin-layout.component.html",
@@ -53,7 +54,7 @@ export class AdminLayoutComponent implements OnInit {
     this.usuario.color_fondo = localStorage.getItem("color_fondo");
     this.usuario.color_menu = localStorage.getItem("color_menu");
     this.usuariosService.updateColores(this.usuario).subscribe();
-    
+    //console.log(localStorage)
     Swal.fire({
       position: 'top-end',
       icon: 'success',
