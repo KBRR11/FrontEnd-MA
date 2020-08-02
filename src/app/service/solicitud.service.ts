@@ -36,7 +36,7 @@ export class SolicitudService {
        }))
   }
   getSolicitudNidea(idu:number){
-    return this.http.get<Solicitud>(`${ environment.apiUrl }/api/solicitud_requisitos/`+idu,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Solicitud>(`${ environment.apiUrl }/api/solicitud_requisitos/read/`+idu,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
             
       return throwError(e);
     }))
