@@ -96,7 +96,5 @@ export class SolicitudService {
     return this.http.get<Universidades>(`${ environment.apiUrl }/api/solicitudes_direc/`+idescu+`/`+idconvo,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       return throwError(e);
     }));
-  
-
-
   }
+}
