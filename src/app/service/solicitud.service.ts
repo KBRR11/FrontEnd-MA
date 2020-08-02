@@ -36,7 +36,7 @@ export class SolicitudService {
        }))
   }
   getSolicitudNidea(idu:number){
-    return this.http.get<Solicitud>(`${ environment.apiUrl }/api/solicitud/`+idu,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Solicitud>(`${ environment.apiUrl }/api/solicitud_requisitos/`+idu,{ headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
             
       return throwError(e);
     }))
@@ -93,11 +93,10 @@ export class SolicitudService {
   }
 
   solicitudesdirect(idescu:number,idconvo:number){
-    return this.http.get<Universidades>(`${ environment.apiUrl }/api/solicitudes_direc/`+idconvo,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Universidades>(`${ environment.apiUrl }/api/solicitudes_direc/`+idescu+`/`+idconvo,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       return throwError(e);
     }));
-  }
-
+  
 
 
   }

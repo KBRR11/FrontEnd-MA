@@ -11,9 +11,9 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convocatoria:</label>
-                                <select class="form-control" (change)="selectUniversidad($event)">
+                                <select class="form-control" (change)="selectConvocatoria($event)">
                                     <option value="0">Seleccionar Convocatoria</option>
-                                    <option *ngFor="let uni  of listUniversidad"></option>
+                                    <option *ngFor="let convo  of listConvocatorias" value="{{convo.idconvocatoria}}">{{convo.nom_convocatoria}}</option>
                                 </select>
                             </div>
                         </div>
@@ -31,15 +31,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{{1}}</td>
-                                <td>Ing. Sistemas</td>
+                            <tr *ngFor="let ep of UniversidadList;let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{ep.NOM_EP}}</td>
                                 <td>
                                     <button class="btn btn-success btn-link btn-sm btn-icon"
                                         ria-describedby="tooltip-190">
                                         <i style="margin-left: 20%;" class="tim-icons icon-notes"
-                                            (click)="listaralumnos(detconv.idetalle_convocatoria); open(content)"
-                                            data-toggle="modal" data-target="#exampleModal"></i>
+                                            (click)="getSolicitudDirect(ep.IDEP); "                                            ></i>
                                     </button>
                                 </td>
                                 
@@ -78,18 +77,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>{{1}}</td>
-                                    <td>Nick Meza Rivera</td>
+                                <tr *ngFor="let item of listSolicitudes;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.nombres}}</td>
                                     <td>Sueña en Grande</td>
-                                    <td>La Plata</td>
-                                    <td>30-07-2020</td>
-                                    <td><a style="cursor: pointer;">pendiente</a></td>
+                                    <td>{{item.nom_universidad}}</td>
+                                    <td>{{item.fecha}}</td>
+                                    <td><a style="cursor: pointer;">{{item.estado?'pendiente':'Revisado'}}</a></td>
                                     <td class="text-center">
                                         <button class="btn btn-warning btn-link btn-sm btn-icon"
                                             ria-describedby="tooltip-190">
                                             <i style="margin-left: 20%;" class="tim-icons icon-pencil"
-                                                (click)="openrequisito()"></i>
+                                                (click)="getRequisitoID(item.idsolicitud)"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -113,7 +112,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let item of listRequisitos">
                                     <td>{{1}}</td>
                                     <td>Solicitud MA</td>
                                     <td>
