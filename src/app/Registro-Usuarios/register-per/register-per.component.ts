@@ -69,7 +69,7 @@ if (this.persona.t_documento == 1 && event.length>8) {
     
    
 //console.log(n_documento);
-//console.log(this.persona.n_documento);
+console.log(this.persona.n_documento);
 if (t_documento=="1" && n_documento.length!=8) {
   Swal.fire({
     icon: 'error',

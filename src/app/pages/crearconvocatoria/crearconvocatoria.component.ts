@@ -96,7 +96,7 @@ export class CrearconvocatoriaComponent implements OnInit {
         })
         
       },(error)=>{
-        alert("OCURRIO UN ERROR "+error);
+        swal.fire('Error ', ' al subir pdf', 'error');
       }
     )
    

@@ -83,7 +83,7 @@
                                 <tr>
                                     <th scope="col">Nro</th>
                                     <th scope="col">Estudiante</th>
-                                    <th scope="col">Convocatoria</th>
+                                    
                                     <th scope="col">Universidad</th>
                                     <th scope="col">Fecha de Resistro</th>
                                     <th scope="col">Estado</th>
@@ -94,7 +94,7 @@
                                 <tr *ngFor="let item of listSolicitudes;let i=index">
                                     <td>{{i+1}}</td>
                                     <td>{{item.nombres}}</td>
-                                    <td>Sueña en Grande</td>
+                                    
                                     <td>{{item.nom_universidad}}</td>
                                     <td>{{item.fecha}}</td>
                                     <td><a style="cursor: pointer;">{{item.estado?'pendiente':'Revisado'}}</a></td>
