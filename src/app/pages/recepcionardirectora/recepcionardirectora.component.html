@@ -112,14 +112,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of listRequisitos">
-                                    <td>{{1}}</td>
-                                    <td>Solicitud MA</td>
+                                <tr *ngFor="let item of listRequisitos;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.nombre}}</td>
                                     <td>
                                         <button class="btn btn-warning btn-link btn-sm btn-icon"
                                             ria-describedby="tooltip-190">
                                             <i style="margin-left: 20%;" class="tim-icons icon-pencil"
-                                                (click)="openModalWithComponent(47)"></i>
+                                            (click)="openModalWithComponent2(item.idrequisito)" (click)="openModalWithComponent(47)"></i>
                                         </button>
                                     </td>
                                     <td class="text-center">
@@ -127,11 +127,11 @@
                                             <button class="btn btn-danger btn-link btn-sm btn-icon"
                                                 ria-describedby="tooltip-190">
                                                 <i style="margin-left: 20%;" class="tim-icons icon-link-72"
-                                                    (click)="editardet(detconv);open(pudate)"></i>
+                                                    (click)="openModalWithComponent(item.idrequisito_solicitud)"></i>
                                             </button>
                                         </div>
                                     </td>
-                                    <td>pendiente</td>
+                                    <td>{{item.estado?'pendiente':'Revisado'}}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbAccordionConfig, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap'
 import { Router } from '@angular/router';
 import { ConvocatoriaService } from 'src/app/service/convocatoria.service';
 import { SolicitudService } from 'src/app/service/solicitud.service';
@@ -6,6 +7,9 @@ import { Convocatoria, Universidades } from 'src/app/Modelo/Convocatoria';
 import { Ep } from 'src/app/Modelo/EP';
 import { Requisito } from 'src/app/Modelo/Requisito';
 import { Solicitud } from 'src/app/Modelo/Solicitud';
+import { Viewer2Component} from "../../pages/viewer2/viewer2.component";
+import { ViewerComponent } from "../../pages/viewer/viewer.component";
+import { BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-recepcionardirectora',
@@ -17,9 +21,10 @@ export class RecepcionardirectoraComponent implements OnInit {
   listConvocatorias:Convocatoria[]=[];
   UniversidadList:Ep[]=[];
   listRequisitos:Requisito[]=[];
-  listSolicitudes:Solicitud[]=[]
-
-  constructor(private convocatoria:ConvocatoriaService,private serviceSolicitud:SolicitudService,private router:Router) { }
+  listSolicitudes:Solicitud[]=[];
+  bsModalRef: BsModalRef;
+  title: string = "Solicitudes";
+  constructor(private router:Router,private convocatoria:ConvocatoriaService, private modalService: NgbModal,private modalService2: BsModalService,private serviceSolicitud:SolicitudService) { }
 
   ngOnInit(): void {
     this.listAllConvocatorias();
@@ -58,5 +63,25 @@ export class RecepcionardirectoraComponent implements OnInit {
       this.listRequisitos = data['REQUISITOS'];
       console.log("list listRequisitos  : ",this.listRequisitos);
     })
+  }
+  openModalWithComponent(idc:number) {
+    console.log("open modeal",idc)
+    const initialState = {
+      
+      title: 'Ver Documentos',
+      id:idc
+    };
+    this.bsModalRef = this.modalService2.show(Viewer2Component, Object.assign({initialState},{class:'modal-xl'}));
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+  openModalWithComponent2(idc:number) {
+    console.log("open modeal",idc)
+    const initialState = {
+      
+      title: 'Ver Documentos',
+      idr:idc
+    };
+    this.bsModalRef = this.modalService2.show(ViewerComponent, Object.assign({initialState},{class:'modal-xl'}));
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 }
