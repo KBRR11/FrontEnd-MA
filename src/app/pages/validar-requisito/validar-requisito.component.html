@@ -3,16 +3,18 @@
         <div class="col-md-12">
             <div class="titulo">
                 <h3 style="margin-left: 10px; margin-top: -5px; margin-bottom: 9px;">{{title}}</h3>
-              </div>
+            </div>
             <div class="card col-md-10">
                 <div class="card-header">
                     <div class="container row" style="margin: 0px auto;">
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="pers" class="col-form-label">Convocatoria:</label>
-                                <select class="form-control" [(ngModel)]="idc" name="idc" (change)="listar_escuela($event)">
+                                <select class="form-control" [(ngModel)]="idc" name="idc"
+                                    (change)="listar_escuela($event)">
                                     <option value="" hidden selected>Seleccionar Convocatoria</option>
-                                    <option *ngFor="let con of convocatorias" value="{{con.idconvocatoria}}">{{con.nom_convocatoria}}</option>
+                                    <option *ngFor="let con of convocatorias" value="{{con.idconvocatoria}}">
+                                        {{con.nom_convocatoria}}</option>
                                 </select>
                             </div>
                         </div>
@@ -25,7 +27,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="card-body col-md-12">
@@ -44,12 +46,16 @@
                         <tbody>
                             <tr *ngFor="let win of ganadores; let i=index">
                                 <th scope="row">{{i+1}}</th>
-                                <td>{{win.NOMBRES}}{{win.APELLIDOS}}</td>
+                                <td>{{win.NOMBRES}}</td>
                                 <td>{{win.CODIGO}}</td>
                                 <td>{{win.CICLO}}</td>
                                 <td>{{win.CORREO}}</td>
                                 <td>{{win.NOM_UNIVERSIDAD}}</td>
-                                <td><i class="tim-icons icon-check-2"></i></td>
+                                <td>
+                                    <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                        ria-describedby="tooltip-190">
+                                        <i class="tim-icons icon-check-2" (click)="correo(win)"></i>
+                                    </button></td>
                             </tr>
                         </tbody>
                     </table>

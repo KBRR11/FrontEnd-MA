@@ -26,6 +26,7 @@ import { RequisitoSolicitudComponent } from './pages/requisito-solicitud/requisi
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

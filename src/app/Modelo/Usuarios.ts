@@ -57,4 +57,5 @@ export class Usuario{
     correo:string;
     telefono:string;
     direccion:string;
+    foto:string;
 }

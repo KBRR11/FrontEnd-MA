@@ -29,9 +29,9 @@ export class DetalleconvocatoriaComponent implements OnInit {
   ganador: Ganador = new Ganador();
   user: Usuario;
 
-  vengo: boolean
-  home:boolean
-  escul:boolean
+  vengo: boolean=false
+  home:boolean=true
+  escul:boolean=false
   vacan:boolean=false
   lapiz:boolean=true
   check:boolean=false
@@ -51,12 +51,14 @@ export class DetalleconvocatoriaComponent implements OnInit {
       this.user=data
       this.Listar();
       console.log(this.id,this.user.idep)
+      if(this.rol!="ROLE_SECRETARY"){
       this.convocatoriaservice.listar_vacante(this.id,this.user.idep).subscribe(data => {
         this.vacante=data['VACANTES'] as number;
         this.cont_seleccionados=this.vacante
         console.log(this.cont_seleccionados)
+    })}
     })
-    })
+    
     this.listarep()
     
   }
@@ -136,6 +138,11 @@ export class DetalleconvocatoriaComponent implements OnInit {
     this.vengo=false;
       this.escul=false;
       this.home=true;
+      this.convocatoriaservice.listar_vacante(this.id,id).subscribe(data => {
+        this.vacante=data['VACANTES'] as number;
+        this.cont_seleccionados=this.vacante
+        console.log(this.cont_seleccionados)
+    })
       this.convocatoriaservice.buscarDetConvocatoria(this.id, 2, id).subscribe(
         (data) =>{
   
@@ -144,7 +151,9 @@ export class DetalleconvocatoriaComponent implements OnInit {
         },(error)=>{
           alert("OCURRIO UN ERROR "+error);
         }
+
       )
+
   }
   Crear(convocatoria:Convocatoria){
     this.convocatoriaservice.crearConvocatoria(convocatoria).subscribe(

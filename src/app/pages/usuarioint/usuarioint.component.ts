@@ -10,6 +10,7 @@ import { Facultades } from 'src/app/Modelo/Facultades';
 import { PersonasService } from 'src/app/service/personas.service';
 import { Persona } from 'src/app/Modelo/Personas';
 import { Rol } from 'src/app/Modelo/Rol';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -43,6 +44,7 @@ export class UsuariointComponent implements OnInit {
   header: boolean = true;
   tipo: boolean = true;
   tipoc: boolean = true;
+  espro: boolean=false;
 
   ciclo: string;
   codigo: string;
@@ -64,9 +66,12 @@ export class UsuariointComponent implements OnInit {
       this.tipo=true;
       this.tipoc=true
     }
-    if(t==2 || t==3){
+    if(t!=1){
       this.tipo=false
       this.tipoc=false
+    }
+    if(t==6 || t==3){
+      this.espro=true
     }
   }
   mostrar_crear(){
@@ -145,6 +150,7 @@ export class UsuariointComponent implements OnInit {
       }
     })
     this.ocultar_crear()
+    Swal.fire('Usuario', '' + '' + 'Usuario registrado con éxito...!','success')
    }
    limpiar(te: number){
      console.log(te);
@@ -176,6 +182,7 @@ export class UsuariointComponent implements OnInit {
       })  
     })
     this.ocultar_modi()
+    Swal.fire('Usuario', '' + '' + 'Usuario modificado con éxito...!','success')
    }
 
    eliminiarUser(id:number){
@@ -188,6 +195,7 @@ export class UsuariointComponent implements OnInit {
         });
       });
     });
+    Swal.fire('Usuario', '' + '' + 'Usuario eliminado con éxito...!','success')
    }
 
    loadUser(id:number){

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { RequisitoService } from 'src/app/service/requisitoService/requisito.service';
 import { Convenio } from 'src/app/Modelo/Convenio';
 import { BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
-import { ViewerComponent } from "../../pages/viewer/viewer.component";
+import { Viewer3Component } from "../../pages/viewer3/viewer3.component";
 import { Viewer2Component} from "../../pages/viewer2/viewer2.component";
 import { SolicitudService } from 'src/app/service/solicitud.service';
 import { Solicitud} from 'src/app/Modelo/Solicitud';
@@ -47,6 +47,8 @@ export class RecepcionardocComponent implements OnInit {
   solicitudes: boolean=true
   carga:boolean=true
   recarga: boolean=false
+  soli:boolean=true
+  requi:boolean=false
 
   bsModalRef: BsModalRef;
   public archivoSeleccionado: File;
@@ -75,6 +77,8 @@ export class RecepcionardocComponent implements OnInit {
   }
 
   getSolicitudId(idsolicitud:number){
+    this.soli=false
+    this.requi=true
     console.log(idsolicitud,"idsolicitud")
     this.solicitudService.getSolicitudNidea(idsolicitud).subscribe((data)=>{
       this.listRequisitos = data['REQUISITOS'];
@@ -205,7 +209,7 @@ export class RecepcionardocComponent implements OnInit {
       title: 'Ver Documentos',
       idr:idc
     };
-    this.bsModalRef = this.modalService2.show(ViewerComponent, Object.assign({initialState},{class:'modal-xl'}));
+    this.bsModalRef = this.modalService2.show(Viewer3Component, Object.assign({initialState},{class:'modal-xl'}));
     this.bsModalRef.content.closeBtnName = 'Close';
   }
   crearsolicitud(){

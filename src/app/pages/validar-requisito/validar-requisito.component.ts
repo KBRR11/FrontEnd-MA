@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GanadoresService } from 'src/app/service/ganadores.service';
-import { Ganador } from 'src/app/Modelo/Ganador';
+import { Ganador} from 'src/app/Modelo/Ganador';
 import { UsuariosService } from 'src/app/service/usuarios.service';
 import { ConvocatoriaService } from "src/app/service/convocatoria.service";
 import { Convocatoria } from 'src/app/Modelo/Convocatoria';
 import { SolicitudService } from 'src/app/service/solicitud.service';
 import { Ep } from 'src/app/Modelo/EP';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-validar-requisito',
@@ -55,5 +56,12 @@ export class ValidarRequisitoComponent implements OnInit {
       this.ganadores=data['GANADORES']
       console.log(this.ganadores)
     })
+  }
+  correo(win: any){
+    Swal.fire(
+      'Usuario Seleccionado!',
+      'Enviale la confimacion por correo dale click: '+`<a href=https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${win.CORREO}&su=Movilidad+Académica&body=Hola+${win.NOMBRES.split(' ').join('+')},+usted+ha+sido+elegido+para+viajar+a+la+universidad+de+${win.NOM_UNIVERSIDAD}+.+Felicitaciones+,+Por+favor+acercarse+a+su+escuela.&tf=1 target='_blank'>`+win.CORREO+`</a>`,
+      'success'
+    )
   }
 }
