@@ -21,7 +21,8 @@ import { RegisterPerComponent } from './Registro-Usuarios/register-per/register-
 import { RegisterUSERComponent } from './Registro-Usuarios/register-user/register-user.component';
 import { DatosAcademicosComponent } from './Registro-Usuarios/datos-academicos/datos-academicos.component';
 import { RequisitoSolicitudComponent } from './pages/requisito-solicitud/requisito-solicitud.component';
-import { Viewer2Component } from './pages/viewer2/viewer2.component';
+
+
 
 
 
@@ -38,7 +39,7 @@ import { Viewer2Component } from './pages/viewer2/viewer2.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent, RegisterPerComponent, RegisterUSERComponent, DatosAcademicosComponent, RequisitoSolicitudComponent, Viewer2Component,],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CabezaComponent, LoginComponent,],
   providers: [
     BsModalRef
   ],

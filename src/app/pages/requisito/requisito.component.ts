@@ -136,7 +136,7 @@ export class RequisitoComponent implements OnInit {
         this.obtenerIdRC();
       })
       console.log("soy la data DE GUARDAR", data);
-      (Swal.fire('Requisito', '' + '' + 'Requisito registrado con éxito...!'))
+      (Swal.fire('Requisito', '' + '' + 'Requisito registrado con éxito...!','success'))
     })
   }
   obtenerIdRC() {

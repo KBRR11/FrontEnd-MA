@@ -4,8 +4,10 @@ import { ConvocatoriaService } from "src/app/service/convocatoria.service";
 import { Ep } from 'src/app/Modelo/EP';
 import { EpService } from 'src/app/service/Ep.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { GanadoresService } from 'src/app/service/ganadores.service';
 import { Usuario } from 'src/app/Modelo/Usuarios';
 import Swal from 'sweetalert2';
+import { Ganador } from 'src/app/Modelo/Ganador';
 
 
 
@@ -23,6 +25,8 @@ export class DetalleconvocatoriaComponent implements OnInit {
   detconv:DetalleConvocatoria;
   listaep:Ep[]=[];
   alumno: any[]=[];
+  seleccionados: number []=[];
+  ganador: Ganador = new Ganador();
   user: Usuario;
 
   vengo: boolean
@@ -31,11 +35,15 @@ export class DetalleconvocatoriaComponent implements OnInit {
   vacan:boolean=false
   lapiz:boolean=true
   check:boolean=false
+  quitar: boolean=true
+  poner: boolean=true
+  cheee:boolean =false;
   rol: string = localStorage.getItem("rol")
   es:number = Number(localStorage.getItem("idu"))
   vacante:number = 0
-
-  constructor(private escuelaService:EpService,private convocatoriaservice:ConvocatoriaService,private epservice:EpService, private modalService: NgbModal) { }
+  cont_seleccionados:number=0
+  id_det_conv: number
+  constructor(private ganadorService:GanadoresService, private escuelaService:EpService,private convocatoriaservice:ConvocatoriaService,private epservice:EpService, private modalService: NgbModal) { }
   id:number = Number(localStorage.getItem("idconvocaotria"))
   ngOnInit(): void {
     
@@ -45,9 +53,33 @@ export class DetalleconvocatoriaComponent implements OnInit {
       console.log(this.id,this.user.idep)
       this.convocatoriaservice.listar_vacante(this.id,this.user.idep).subscribe(data => {
         this.vacante=data['VACANTES'] as number;
+        this.cont_seleccionados=this.vacante
+        console.log(this.cont_seleccionados)
     })
     })
     this.listarep()
+    
+  }
+  cambiar_seleccion(){
+    this.quitar=true
+    if (this.poner==false) {
+      this.poner=true
+      console.log("lle")
+    }else{
+      this.poner=false
+    }
+    
+  }
+  cambiar_seleccion2(){
+    var chec = document.getElementById("selec")
+    chec.spellcheck=true
+    this.poner=true
+    if (this.quitar==false) {
+      this.quitar=true
+    }else{
+      this.quitar=false
+      console.log("te")
+    }
     
   }
   listarep(){
@@ -147,21 +179,28 @@ export class DetalleconvocatoriaComponent implements OnInit {
       }
     )
   }
+  
   listaralumnos(idconvocatoria:number){
     //alert(idconvocatoria)
+    this.cheee
     console.log("tutu: " + idconvocatoria)
-    this.convocatoriaservice.buscarAlumnoDetConvocatoria(idconvocatoria).subscribe(
-      (data)=>{
-        this.alumno=data['CONVOCATORIA']
-        console.log(data);
-      },(error)=>{
-        alert("OCURRIO UN ERROR "+error);
-      }
-    )
+      this.convocatoriaservice.buscarAlumnoDetConvocatoria(idconvocatoria).subscribe(
+        (data)=>{
+          this.alumno=data['CONVOCATORIA']
+          console.log(data);
+        },(error)=>{
+          alert("OCURRIO UN ERROR "+error);
+        }
+      )
+      
+    this.id_det_conv=idconvocatoria  
+
+    
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    this.modalService.open(content, { size: 'lg' });
+    
   }
   open2(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
@@ -174,4 +213,42 @@ export class DetalleconvocatoriaComponent implements OnInit {
         this.vacante --
     }
   }
+  agregar_id(po: number){
+    let varia: boolean = false;
+    if(this.cont_seleccionados>=0){
+      for (let index = 0; index < this.seleccionados.length; index++) {
+        const element = this.seleccionados[index];
+        if (element==po ) {
+          varia = true;
+          this.seleccionados.splice(index,1)
+          break;
+        }
+      }
+      if(!varia){
+        this.seleccionados.push(po);
+        this.cont_seleccionados-- 
+  
+      }
+      console.log(this.seleccionados)
+      console.log(this.cont_seleccionados)
+      
+    }else{
+      Swal.fire('No hay vacantes', 'Aumente el numero de vacantes o deseleccione un participante', 'success');
+    }
+  }
+    
+  guardar_ganador(){
+    
+    for (let index = 0; index < this.seleccionados.length; index++) {
+
+      this.ganador.idusuario = this.seleccionados[index];
+      this.ganador.iddetalle_convocatoria=this.id_det_conv
+      this.ganadorService.crearGanador(this.ganador).subscribe(data => {
+        
+      })
+    }
+    Swal.fire('Registro exitoso', 'Los participantes seleccionados se agregaron', 'success');
+  }
+  
+  
 }

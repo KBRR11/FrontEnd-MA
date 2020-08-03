@@ -9,8 +9,8 @@
                 <div class="card col-md-9">
                     <div class="card-header">
                         <div class="col-md-2 new_soli">
-                            <a style="cursor: pointer;" (click)="open(solicitud)" data-toggle="modal"
-                            data-target="#exampleModal">
+                            <a style="cursor: pointer;" (click)="open(solicitud);getUniversidad();getConvActivas()"
+                                data-toggle="modal" data-target="#exampleModal">
                                 <img src="assets/img/solicitud.png"><br>
                                 <p id="solicitud">Nueva Solicitud</p>
                             </a>
@@ -40,22 +40,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>{{1}}</td>
-                                    <td>Sueña en Grande</td>
-                                    <td>La Plata</td>
-                                    <td>30-07-2020</td>
+                                <tr *ngFor="let soli of listSolicitud ;let i=index">
+                                    <td scope="row">{{i+1}}</td>
+                                    <td>{{soli.nom_convocatoria}}</td>
+                                    <td>{{soli.universidad}}</td>
+                                    <td>{{soli.fecha}}</td>
                                     <td>pendiente</td>
                                     <td class="text-center">
                                         <button class="btn btn-warning btn-link btn-sm btn-icon"
                                             ria-describedby="tooltip-190">
                                             <i style="margin-left: 20%;" class="tim-icons icon-pencil"
-                                                (click)="openrequisito()"></i>
+                                                (click)="getSolicitudId(soli.idsolicitud)"></i>
+                                                <!--openrequisito();-->
                                         </button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>
@@ -69,7 +71,7 @@
                                 <p id="solicitud">Modificar Solicitud</p>
                             </a>
                         </div>
-                        
+
                     </div>
                     <div class="card-body">
                         <table class="table" id="trequisito">
@@ -83,39 +85,45 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>{{1}}</td>
-                                    <td>Solicitud MA</td>
+                                <tr *ngFor="let req of listRequisitos;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{req.nombre}}</td>
                                     <td>
                                         <button class="btn btn-warning btn-link btn-sm btn-icon"
                                             ria-describedby="tooltip-190">
-                                            <i style="margin-left: 20%;" class="tim-icons icon-pencil"
-                                                (click)="openModalWithComponent(47)"></i>
+                                            <i style="margin-left: 20%;" class="tim-icons icon-pencil" (click)="openModalWithComponent2(req.idrequisito)"
+                                                ></i>
                                         </button>
                                     </td>
                                     <td class="text-center">
                                         <div class="fileinput text-center" style="display:none">
                                             <div style="display:none">
-                                              <input class="" #fil [(ngModel)]="file" (change)="selecfoto($event)" multiple="multiple" type="file">
+                                                <input class="" #fil (change)="selectfoto($event,req.idrequisito_solicitud);"
+                                                    multiple="multiple" type="file">
                                             </div>
                                         </div>
                                         <div *ngIf="carga">
                                             <button class="btn btn-success btn-link btn-sm btn-icon"
-                                            ria-describedby="tooltip-190" (click)="fil.click()">
-                                            <i style="margin-left: 20%;" class="tim-icons icon-cloud-upload-94"
-                                                (click)="editardet(detconv);open(pudate)"></i>
-                                             </button>
+                                                ria-describedby="tooltip-190" (click)="fil.click()">
+                                                <i style="margin-left: 20%;" class="tim-icons icon-cloud-upload-94"
+                                                    (click)="open(pudate);"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-link btn-sm btn-icon"
+                                                ria-describedby="tooltip-190" >
+                                                <i style="margin-left: 20%;" (click)="openModalWithComponent(req.idrequisito_solicitud)" class="tim-icons icon-link-72"
+                                                    ></i>
+                                            </button>
                                         </div>
                                         <div *ngIf="recarga">
                                             <button class="btn btn-warning btn-link btn-sm btn-icon"
-                                            ria-describedby="tooltip-190">
-                                            <i style="margin-left: 20%;" class="tim-icons icon-refresh-02"
-                                                (click)="editardet(detconv);open(pudate)"></i>
+                                                ria-describedby="tooltip-190">
+                                                <i style="margin-left: 20%;" class="tim-icons icon-refresh-02"
+                                                    (click)="open(pudate)"></i>
                                             </button>
                                             <button class="btn btn-danger btn-link btn-sm btn-icon"
-                                            ria-describedby="tooltip-190">
-                                            <i style="margin-left: 20%;" class="tim-icons icon-link-72"
-                                                (click)="editardet(detconv);open(pudate)"></i>
+                                                ria-describedby="tooltip-190">
+                                                <i style="margin-left: 20%;" class="tim-icons icon-link-72"
+                                                    (click)="open(pudate)"></i>
                                             </button>
                                         </div>
                                     </td>
@@ -126,6 +134,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
@@ -143,19 +152,18 @@
             <form>
                 <div class=" form-group">
                     <label> Convocatoria </label>
-                    <select class="form-control" name="convocatoria" id="">
+                    <select class="form-control" name="convocatoria" id="" [(ngModel)]="selectedConvoActivas">
                         <option value="" hidden selected>Seleccione Convocatoria</option>
-                        <option value="2">Sueña en Grande</option>
-                        <option value="1">Somos Peru</option>
+                        <option *ngFor="let ca of listConvoActivas2" value="{{ca.idconvocatoria}}">
+                            {{ca.nom_convocatoria}}</option>
                     </select>
                 </div>
                 <div class=" form-group">
                     <label> Universidad </label>
-                    <select class="form-control" name="universidad" id="">
+                    <select class="form-control" name="universidad" id="" (change)="selectUniversidad($event)">
                         <option value="" hidden selected>Seleccione Universidad</option>
-                        <option value="2">La Plata</option>
-                        <option value="1">Brasil</option>
-                        <option value="3">Desaprovado</option>
+                        <option *ngFor="let uni of listUniversity2" value="{{uni.iduniversidad}},{{uni.idconvenio}}">
+                            {{uni.nom_universidad}}</option>
                     </select>
                 </div>
             </form>
@@ -163,7 +171,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark"
-            (click)="update(detconv); modal.dismiss('Cross click')">Save</button>
+            (click)="update(); modal.dismiss('Cross click')">Save</button>
     </div>
 </ng-template>
 
@@ -179,7 +187,8 @@
             <form>
                 <div class=" form-group">
                     <label> Convocatoria </label>
-                    <select class="form-control" name="convocatoria" id="convoca" [(ngModel)]="solicitud.idconvocatoria" [disabled]="content">
+                    <select class="form-control" name="convocatoria" id="convoca" [(ngModel)]="solicitud.idconvocatoria"
+                        [disabled]="content">
                         <option value="" hidden selected>Seleccione Convocatoria</option>
                         <option value="2">Sueña en Grande</option>
                         <option value="1">Somos Peru</option>

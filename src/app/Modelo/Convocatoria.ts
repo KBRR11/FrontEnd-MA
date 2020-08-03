@@ -20,3 +20,10 @@ export class DetalleConvocatoria{
     n_vacantes: number;
     
 }
+
+export class Universidades{
+    iduniversidad:number;
+    nom_universidad:string;
+    pais:string; 
+    idconvenio:number;
+}

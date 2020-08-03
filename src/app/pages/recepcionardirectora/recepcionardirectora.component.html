@@ -1,0 +1,146 @@
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="titulo">
+                <h3 style="margin-left: 10px; margin-top: -5px; margin-bottom: 9px;">{{title}}</h3>
+            </div>
+            <div class="card col-md-5">
+                <div class="card-header">
+                    <div class="container row" style="margin: 0px auto;">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="pers" class="col-form-label">Convocatoria:</label>
+                                <select class="form-control" (change)="selectConvocatoria($event)">
+                                    <option value="0">Seleccionar Convocatoria</option>
+                                    <option *ngFor="let convo  of listConvocatorias" value="{{convo.idconvocatoria}}">{{convo.nom_convocatoria}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <h5>Lista de los Escuelas</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nro</th>
+                                <th scope="col">Escuela</th>
+                                <th scope="col">Solicitudes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ep of UniversidadList;let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{ep.NOM_EP}}</td>
+                                <td>
+                                    <button class="btn btn-success btn-link btn-sm btn-icon"
+                                        ria-describedby="tooltip-190">
+                                        <i style="margin-left: 20%;" class="tim-icons icon-notes"
+                                            (click)="getSolicitudDirect(ep.IDEP); "                                            ></i>
+                                    </button>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <div class="card col-md-10">
+                    <div class="card-header">
+                        <div class="col-md-3" id="estado">
+                            <div>
+                                <select class="form-control" name="" id="">
+                                    <option value="" hidden selected>Seleccione Estado</option>
+                                    <option value="2">Aprovado</option>
+                                    <option value="1">Proceso</option>
+                                    <option value="3">Desaprovado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="tsolicitud">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nro</th>
+                                    <th scope="col">Estudiante</th>
+                                    <th scope="col">Convocatoria</th>
+                                    <th scope="col">Universidad</th>
+                                    <th scope="col">Fecha de Resistro</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Revisar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listSolicitudes;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.nombres}}</td>
+                                    <td>Sueña en Grande</td>
+                                    <td>{{item.nom_universidad}}</td>
+                                    <td>{{item.fecha}}</td>
+                                    <td><a style="cursor: pointer;">{{item.estado?'pendiente':'Revisado'}}</a></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                            ria-describedby="tooltip-190">
+                                            <i style="margin-left: 20%;" class="tim-icons icon-pencil"
+                                                (click)="getRequisitoID(item.idsolicitud)"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="card col-md-9">
+                    <div class="card-body">
+                        <table class="table" id="trequisito">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nro</th>
+                                    <th scope="col">Requisito</th>
+                                    <th scope="col">Formato</th>
+                                    <th scope="col">Documento</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listRequisitos;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.nombre}}</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-link btn-sm btn-icon"
+                                            ria-describedby="tooltip-190">
+                                            <i style="margin-left: 20%;" class="tim-icons icon-pencil"
+                                            (click)="openModalWithComponent2(item.idrequisito)" (click)="openModalWithComponent(47)"></i>
+                                        </button>
+                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <button class="btn btn-danger btn-link btn-sm btn-icon"
+                                                ria-describedby="tooltip-190">
+                                                <i style="margin-left: 20%;" class="tim-icons icon-link-72"
+                                                    (click)="openModalWithComponent(item.idrequisito_solicitud)"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>{{item.estado?'pendiente':'Revisado'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
