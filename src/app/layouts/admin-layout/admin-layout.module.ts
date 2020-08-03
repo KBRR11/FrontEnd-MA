@@ -38,6 +38,7 @@ import { ValidarRequisitoComponent } from '../../pages/validar-requisito/validar
 import { Detalleconvo2Component } from '../../pages/detalleconvo2/detalleconvo2.component';
 import { RecepcionardirectoraComponent } from '..//../pages/recepcionardirectora/recepcionardirectora.component';
 import { Viewer2Component } from '..//../pages/viewer2/viewer2.component';
+import { Viewer3Component } from '..//../pages/viewer3/viewer3.component';
 
 @NgModule({
   imports: [
@@ -76,7 +77,8 @@ import { Viewer2Component } from '..//../pages/viewer2/viewer2.component';
     ValidarRequisitoComponent,
     Detalleconvo2Component,
     RecepcionardirectoraComponent,
-    Viewer2Component
+    Viewer2Component,
+    Viewer3Component
     //InicioComponent,
     //ConveniosComponent
     // RtlComponent

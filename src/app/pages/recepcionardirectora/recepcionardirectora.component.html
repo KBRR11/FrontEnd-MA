@@ -5,7 +5,7 @@
             <div class="titulo">
                 <h3 style="margin-left: 10px; margin-top: -5px; margin-bottom: 9px;">{{title}}</h3>
             </div>
-            <div class="card col-md-5">
+            <div class="card col-md-5" *ngIf="escuelaa">
                 <div class="card-header">
                     <div class="container row" style="margin: 0px auto;">
                         <div class="col-6">
@@ -48,22 +48,36 @@
                 </div>
             </div>
 
-            <div>
+            <div *ngIf="solicitude">
                 <div class="card col-md-10">
                     <div class="card-header">
-                        <div class="col-md-3" id="estado">
-                            <div>
-                                <select class="form-control" name="" id="">
-                                    <option value="" hidden selected>Seleccione Estado</option>
-                                    <option value="2">Aprovado</option>
-                                    <option value="1">Proceso</option>
-                                    <option value="3">Desaprovado</option>
-                                </select>
+                        
+                        <div class="container row" style="margin: 0px auto;">
+                            <div class="col-4" *ngIf="sel">
+                                <div class="form-group">
+                                    <label for="pers" class="col-form-label">Convocatoria:</label>
+                                    <select class="form-control" name="i"  (change)="selectConvocatoria($event)">
+                                        <option value="" hidden selected>Seleccione Convocatoria</option>
+                                        <option value="{{convo.idconvocatoria}}" *ngFor="let convo  of listConvocatorias">{{convo.nom_convocatoria}}</option>
+                                    </select>
+                                </div>
                             </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="pers" class="col-form-label">Estado:</label>
+                                    <select class="form-control" name="" id="">
+                                        <option value="" hidden selected>Seleccione Estado</option>
+                                        <option value="2">Aprovado</option>
+                                        <option value="1">Proceso</option>
+                                        <option value="3">Desaprovado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
                         </div>
-
                     </div>
                     <div class="card-body">
+                        <h5>Lista de Solicitudes</h5>
                         <table class="table" id="tsolicitud">
                             <thead>
                                 <tr>
@@ -98,9 +112,10 @@
                 </div>
             </div>
 
-            <div>
+            <div *ngIf="requisitoo">
                 <div class="card col-md-9">
                     <div class="card-body">
+                        <h5>Lista de Requisitos</h5>
                         <table class="table" id="trequisito">
                             <thead>
                                 <tr>
@@ -119,7 +134,7 @@
                                         <button class="btn btn-warning btn-link btn-sm btn-icon"
                                             ria-describedby="tooltip-190">
                                             <i style="margin-left: 20%;" class="tim-icons icon-pencil"
-                                            (click)="openModalWithComponent2(item.idrequisito)" (click)="openModalWithComponent(47)"></i>
+                                            (click)="openModalWithComponent3(item.idrequisito)"></i>
                                         </button>
                                     </td>
                                     <td class="text-center">

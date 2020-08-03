@@ -31,13 +31,14 @@
           <div *ngFor="let user of users">
             <div class="card-user col-md-3" style="float: left; margin-left: 20px">
               <div class="image">
-                <img src="assets/img/bg5.jpg" alt="...">
+                <img src="assets/img/logo-aniversario-2018.png" alt="...">
               </div>
 
               <div class="card bor">
                 <div class="card-body">
                   <div class="author">
-                    <img class="avatar border-gray" src="http://localhost:8090/api/userfoto/user.idusuario" alt="...">
+                    <img class="avatar border-gray"   
+                    src="http://localhost:8090/api/userfoto/{{user.idusuario}}" onerror="this.onerror=null; this.src='https://jeffjbutler.com/wp-content/uploads/2018/01/default-user.png'" alt="...">
                     <h3 class="title">{{user.usuario}}</h3>
                     <p class="description">
                     </p>
@@ -184,7 +185,7 @@
                 <div class="col-md-6 pl-md-1">
                   <div class="form-group"><label>
                       Escuela Profesional </label>
-                    <select class="form-control" id="" [(ngModel)]="user.idep" name="idep">
+                    <select class="form-control" id="" [(ngModel)]="user.idep" name="idep" [disabled]="espro">
                       <option value="" hidden selected>Selecciona una Opcion</option>
                       <option *ngFor="let es of escuelas" value="{{es.IDEP}}">{{es.NOM_EP}}</option>
                     </select>
