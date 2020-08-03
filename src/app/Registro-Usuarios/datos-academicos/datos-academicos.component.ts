@@ -36,6 +36,16 @@ estudiante:boolean = false;
     }
   }
    datos = JSON.parse(localStorage.getItem("registerper"));
+   validateCode(event){
+if (this.usuario.tipo==1 && event.length>9) {
+  Swal.fire({
+    icon: 'warning',
+    title: 'Advertencia:',
+    text: 'El código universitario consta de 9 dígitos.',
+    
+  })
+}
+   }
   updateTipo(){
     
     if(this.usuario.tipo==1){
@@ -54,8 +64,9 @@ this.epService.getEpforId(this.ep.IDFACULTAD).subscribe(
    //console.log(this.epResult);
   });
   }
-
+  
   adddatAcademic(){
+    
   if(this.usuario.tipo==null && (this.usuario.sede && this.usuario.idep) ==null){
     Swal.fire({
       icon: 'error',
@@ -80,6 +91,7 @@ this.epService.getEpforId(this.ep.IDFACULTAD).subscribe(
           
         })
     }else{
+      
       if (this.usuario.tipo==1 &&(this.usuario.codigo && this.usuario.ciclo && this.usuario.sede && this.usuario.idep) !=null) {
         localStorage.setItem('Tipo',JSON.stringify(this.usuario.tipo));
         localStorage.setItem('Sede',JSON.stringify(this.usuario.sede));
@@ -109,7 +121,8 @@ this.epService.getEpforId(this.ep.IDFACULTAD).subscribe(
           //console.log(localStorage);
           }
         }
-    } 
+    
+     } 
     }
     
   }

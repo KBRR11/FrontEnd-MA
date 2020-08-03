@@ -24,6 +24,39 @@ export class RegisterPerComponent implements OnInit {
     }
   }
 
+  validateDoc(event){
+   //console.log(this.persona.t_documento);
+//console.log(event);
+if (this.persona.t_documento == 1 && event.length>8) {
+  Swal.fire({
+    icon: 'warning',
+    title: 'Advertencia:',
+    text: 'El Dni solo puede tener 8 dígitos.',
+    
+  })
+}else{
+  if (this.persona.t_documento == 3 && event.length>9) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Advertencia:',
+      text: 'El Carnet de Extranjería solo puede tener 9 dígitos.',
+      
+    })
+  }
+}
+  }
+
+  validatePhone(event){
+    if (event.length>9) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Advertencia:',
+        text: 'El número de telefono solo puede tener 9 dígitos (PERÚ). EJEMPLO: (930471871) ',
+        
+      })
+    }
+  }
+
   addpersona (persona:Personas){ 
     
     let nombres= (<HTMLInputElement>document.getElementById("nombres")).value;
@@ -36,8 +69,31 @@ export class RegisterPerComponent implements OnInit {
     
    
 //console.log(n_documento);
-console.log(this.persona.n_documento);
-
+//console.log(this.persona.n_documento);
+if (t_documento=="1" && n_documento.length!=8) {
+  Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    text: 'El número de dígitos de DNI no es correcto',
+    
+  })
+}else{
+  if (t_documento=="3" && n_documento.length!=9) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'El número de dígitos de Carnet de Extranjería no es correcto',
+      
+    })
+  }else{ 
+    if (telefono.length!=9) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'El número de dígitos de telefono no es correcto',
+        
+      })
+    }else{
 if((this.persona.nombres && this.persona.apellidos && this.persona.t_documento
   && this.persona.n_documento && this.persona.correo && this.persona.telefono
    && this.persona.direccion) !=null ){
@@ -63,9 +119,10 @@ localStorage.setItem('registerper',JSON.stringify(this.persona));
     text: 'Hay datos Importantes que no llenaste',
     
   })
-
+ }
 }
-
+}
+}
  
   }
 

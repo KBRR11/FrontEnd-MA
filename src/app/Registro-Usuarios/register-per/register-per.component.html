@@ -94,9 +94,9 @@
                                                         <i class="fas fa-id-card"></i>
                                                     </div>
                                                 </span>
-                                                <input aria-describedby="addon-right addon-left" name="identity"
+                                                <input aria-describedby="addon-right addon-left" (keyup)="validateDoc($event.target.value)" name="identity"
                                                     id="docid" placeholder="Documento de Identidad*"
-                                                    class="form-control" [(ngModel)]="persona.n_documento">
+                                                    class="form-control" [(ngModel)]="persona.n_documento" type="number">
                                                 <!---->
                                             </div>
                                             <!---->
@@ -133,7 +133,7 @@
                                                         <i class="tim-icons icon-mobile"></i>
                                                     </div>
                                                 </span>
-                                                <input aria-describedby="addon-right addon-left" name="phone"
+                                                <input aria-describedby="addon-right addon-left" name="phone" (keyup)="validatePhone($event.target.value)"
                                                     id="telefono" placeholder="Teléfono*" class="form-control"
                                                     [(ngModel)]="persona.telefono" type="number">
                                                 <!---->

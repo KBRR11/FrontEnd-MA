@@ -73,7 +73,7 @@
                                 </span>
                                 <input aria-describedby="addon-right addon-left" name="codigo"
                                     id="codigo" placeholder="Codigo Universitario*" [(ngModel)]="usuario.codigo" class="form-control"
-                                    >
+                                    (keyup)="validateCode($event.target.value)" type="number">
                                 <!---->
                             </div>
                             <!---->
